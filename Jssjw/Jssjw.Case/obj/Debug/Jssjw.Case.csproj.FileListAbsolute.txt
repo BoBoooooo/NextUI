@@ -1,0 +1,13 @@
+F:\NextUI\Jssjw\Jssjw.Case\bin\Debug\Jssjw.Case.dll
+F:\NextUI\Jssjw\Jssjw.Case\bin\Debug\Jssjw.Case.pdb
+F:\NextUI\Jssjw\Jssjw.Case\bin\Debug\Next.Admin.dll
+F:\NextUI\Jssjw\Jssjw.Case\bin\Debug\Next.Framework.Core.dll
+F:\NextUI\Jssjw\Jssjw.Case\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+F:\NextUI\Jssjw\Jssjw.Case\bin\Debug\System.Data.SQLite.dll
+F:\NextUI\Jssjw\Jssjw.Case\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+F:\NextUI\Jssjw\Jssjw.Case\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+F:\NextUI\Jssjw\Jssjw.Case\bin\Debug\Next.Admin.pdb
+F:\NextUI\Jssjw\Jssjw.Case\bin\Debug\Next.Framework.Core.pdb
+F:\NextUI\Jssjw\Jssjw.Case\obj\Debug\Jssjw.Case.csprojResolveAssemblyReference.cache
+F:\NextUI\Jssjw\Jssjw.Case\obj\Debug\Jssjw.Case.dll
+F:\NextUI\Jssjw\Jssjw.Case\obj\Debug\Jssjw.Case.pdb

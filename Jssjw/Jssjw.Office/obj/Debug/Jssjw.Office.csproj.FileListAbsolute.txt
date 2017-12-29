@@ -1,0 +1,12 @@
+F:\NextUI\Jssjw\Jssjw.Office\bin\Debug\Jssjw.Office.dll
+F:\NextUI\Jssjw\Jssjw.Office\bin\Debug\Jssjw.Office.pdb
+F:\NextUI\Jssjw\Jssjw.Office\bin\Debug\Next.Admin.dll
+F:\NextUI\Jssjw\Jssjw.Office\bin\Debug\Next.Framework.Core.dll
+F:\NextUI\Jssjw\Jssjw.Office\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+F:\NextUI\Jssjw\Jssjw.Office\bin\Debug\System.Data.SQLite.dll
+F:\NextUI\Jssjw\Jssjw.Office\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+F:\NextUI\Jssjw\Jssjw.Office\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+F:\NextUI\Jssjw\Jssjw.Office\bin\Debug\Next.Admin.pdb
+F:\NextUI\Jssjw\Jssjw.Office\bin\Debug\Next.Framework.Core.pdb
+F:\NextUI\Jssjw\Jssjw.Office\obj\Debug\Jssjw.Office.dll
+F:\NextUI\Jssjw\Jssjw.Office\obj\Debug\Jssjw.Office.pdb

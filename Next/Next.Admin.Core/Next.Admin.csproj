@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8601BAFD-A7B2-4389-867B-AA6FD8BB6CDC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Next.Admin</RootNamespace>
+    <AssemblyName>Next.Admin</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Reference\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\..\packages\Reference\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder">
+      <HintPath>..\..\packages\Reference\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\DictDataBLL.cs" />
+    <Compile Include="BLL\DictTypeBLL.cs" />
+    <Compile Include="BLL\LoginLogBLL.cs" />
+    <Compile Include="BLL\OperationLogBLL.cs" />
+    <Compile Include="BLL\RoleDataBLL.cs" />
+    <Compile Include="BLL\SystemTypeBLL.cs" />
+    <Compile Include="BLL\FunctionBLL.cs" />
+    <Compile Include="BLL\RoleBLL.cs" />
+    <Compile Include="BLL\MenuBLL.cs" />
+    <Compile Include="BLL\DeptBLL.cs" />
+    <Compile Include="BLL\UserBLL.cs" />
+    <Compile Include="DAL\DALMySql\DictDataDAL.cs" />
+    <Compile Include="DAL\DALMySql\DictTypeDAL.cs" />
+    <Compile Include="DAL\DALMySql\LoginLogDAL.cs" />
+    <Compile Include="DAL\DALMySql\OperationLogDAL.cs" />
+    <Compile Include="DAL\DALMySql\RoleData.cs" />
+    <Compile Include="DAL\DALMySql\SystemTypeDAL.cs" />
+    <Compile Include="DAL\DALMySql\RoleDAL.cs" />
+    <Compile Include="DAL\DALMySql\FunctionDAL.cs" />
+    <Compile Include="DAL\DALMySql\MenuDAL.cs" />
+    <Compile Include="DAL\DALMySql\DeptDAL.cs" />
+    <Compile Include="DAL\DALMySql\UserDAL.cs" />
+    <Compile Include="Entity\Dept.cs" />
+    <Compile Include="Entity\Dept_Role.cs" />
+    <Compile Include="Entity\Dept_User.cs" />
+    <Compile Include="Entity\DictData.cs" />
+    <Compile Include="Entity\DictType.cs" />
+    <Compile Include="Entity\Function.cs" />
+    <Compile Include="Entity\LoginLog.cs" />
+    <Compile Include="Entity\Menu.cs" />
+    <Compile Include="Entity\OperationLog.cs" />
+    <Compile Include="Entity\Role.cs" />
+    <Compile Include="Entity\Role_Function.cs" />
+    <Compile Include="Entity\RoleData.cs" />
+    <Compile Include="Entity\SystemType.cs" />
+    <Compile Include="Entity\User.cs" />
+    <Compile Include="Entity\User_Role.cs" />
+    <Compile Include="IDAL\IDictDataDAL.cs" />
+    <Compile Include="IDAL\IDictTypeDAL.cs" />
+    <Compile Include="IDAL\ILoginLogDAL.cs" />
+    <Compile Include="IDAL\IOperationLogDAL.cs" />
+    <Compile Include="IDAL\IRoleDataDAL.cs" />
+    <Compile Include="IDAL\ISystemTypeDAL.cs" />
+    <Compile Include="IDAL\IFunctionDAL.cs" />
+    <Compile Include="IDAL\IRoleDAL.cs" />
+    <Compile Include="IDAL\IMenuDAL.cs" />
+    <Compile Include="IDAL\IDeptDAL.cs" />
+    <Compile Include="IDAL\IUserDAL.cs" />
+    <Compile Include="Model\CategoryEnum.cs" />
+    <Compile Include="Model\DeptNode.cs" />
+    <Compile Include="Model\EasyTreeData.cs" />
+    <Compile Include="Model\MenuData.cs" />
+    <Compile Include="Model\FunctionNode.cs" />
+    <Compile Include="Model\MenuNode.cs" />
+    <Compile Include="Model\SimpleUser.cs" />
+    <Compile Include="Model\TreeData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Next.Framework.Core\Next.Framework.Core.csproj">
+      <Project>{8408ea95-7bdb-43b2-9edb-3f2629b02bda}</Project>
+      <Name>Next.Framework.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

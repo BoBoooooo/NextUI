@@ -1,0 +1,315 @@
+﻿@using Jssjw.Case.Entity;
+@using Next.Commons;
+@{
+
+    Layout = null;
+    Property info = ViewBag.item;
+    string flag = ViewBag.flag;
+    List<SelectListItem> caseName = ViewBag.caseName;
+    List<SelectListItem> caseCode = ViewBag.caseCode;
+    List<SelectListItem> list = new List<SelectListItem> {
+
+                new SelectListItem { Text = "移送检察机关", Value = "移送检察机关"},
+
+                new SelectListItem { Text = "本委收缴", Value = "本委收缴" },
+
+                new SelectListItem { Text = "退换原持有人", Value = "退换原持有人" },
+                new SelectListItem { Text = "待处理", Value = "待处理" ,Selected = true},
+                };
+}
+
+
+<div id="Edit" class="easyui-panel">
+    <form id="ffAdd" method="post" novalidate="novalidate">
+        <table id="tblAdd" class="view">
+            <tr>
+                <th colspan="6">
+                    <h3 align="center">信息录入</h3>
+                    @Html.HiddenFor(i => info.ID)
+                    @Html.HiddenFor(i => info.IsDeleted)
+                    @Html.HiddenFor(i => info.UserID)
+                    @Html.HiddenFor(i => info.DeptID)
+                    <input type="hidden" id="info_AttachmentID" name="info.AttachmentID" value='@info.AttachmentID' />
+                </th>
+
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content" style="width:50px;">专案名称</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.CaseName, Html.DropDownListFor(i => info.CaseName, caseName))
+                </td>
+                <td colspan="2">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnLogin" iconcls="icon-ok" onclick="CopyData()">复制上件物品信息</a>
+                </td>
+                <td colspan="2" rowspan="8" align="center">
+                    预　　览:
+                    <div id="localImag" style="width: 400px; height: 300px;">
+                        <img id="img" src="@info.ImagePath" height="300" width="400" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content" style="width:50px;">代码</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.CaseCode, Html.DropDownListFor(i => info.CaseCode, caseCode))
+                </td>
+                <th>
+                    <label for="Content">编号</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.GoodsNumber, Html.TextBoxFor(i => info.GoodsNumber, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+
+
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="Content">物品名称</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.GoodsName, Html.TextBoxFor(i => info.GoodsName, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+                <th>
+                    <label for="Content">件数</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.GoodsCount, Html.TextBoxFor(i => info.GoodsCount, new { size = 30, @class = "easyui-numberbox", @data_options ="min:1,precision:0"}))
+                </td>
+
+
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">价格</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.GoodsPrice, Html.TextBoxFor(i => info.GoodsPrice, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+                <th>
+                    <label for="Content">原持有人</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.GoodsHolder, Html.TextBoxFor(i => info.GoodsHolder, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+
+
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">暂扣时间</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.DetainDate, Html.TextBoxFor(i => info.DetainDate, new { size = 30, @class = "easyui-datebox" }))
+                </td>
+                <th>
+                    <label for="Content">暂扣人</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.DetainPerson, Html.TextBoxFor(i => info.DetainPerson, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">移交时间</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.ReturnTime, Html.TextBoxFor(i => info.ReturnTime, new { size = 30, @class = "easyui-datebox" }))
+                </td>
+                <th>
+                    <label for="Content">保管人</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.Keeper, Html.TextBoxFor(i => info.Keeper, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">存放地点</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.KeepSpace, Html.TextBoxFor(i => info.KeepSpace, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+                <th>
+                    <label for="Content">处理情况</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.Process, Html.TextBoxFor(i => info.Process, new { size = 30, @class = "easyui-combobox", @data_options = "valueField:'text',textField:'text',method: 'get',url:'/json/Jssjw/Property/handle.json'" }))
+                </td>
+
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">处理时间</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.ProcessTime, Html.TextBoxFor(i => info.ProcessTime, new { size = 30, @class = "easyui-datebox" }))
+                </td>
+                <th>
+                    <label for="Content">备注</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.GoodsDetail, Html.TextAreaFor(i => info.GoodsDetail, new { size = 300, style = "width:99%;resize: none", row = 3 }))
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">图片地址</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ImagePath, Html.TextBoxFor(i => info.ImagePath, new { size = 30, @class = "easyui-textbox" }))
+                    <a href="#" class="easyui-linkbutton" onclick="open1()">上传</a>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">附件上传：</label>
+                </th>
+                <td colspan="5">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnUpload" data-options="plain:true,iconCls:'icon-save'"
+                       onclick="showUploadWindow()">上传</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="6" style="text-align:right; padding-top:10px">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnLogin" iconcls="icon-ok" onclick="Prev()">上一条</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnLogin" iconcls="icon-ok" onclick="Next()">下一条</a>
+                    @if (flag != "View")
+                    {
+                        <text>
+                            <a href="javascript:void(0)" class="easyui-linkbutton" id="btnAddOK" iconcls="icon-ok" onclick="saveData();">确定</a>
+                        </text>
+                    }
+                    <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="closeMyWindow()">关闭</a>
+
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div id="uploadWindow" class="easyui-window" closed="true" cache="false" icon="icon-save">
+</div>
+<div id="dd" class="easyui-window" title="上传照片" style=" padding:5px;width:500px;height:140px;" closed="true" icon="icon-save">
+    <form target="frm" id="fileForm" method="post" action="@Url.Content("/Jssjw/Property/ImageUpLoad")" enctype="multipart/form-data">
+        文件路径：
+        <input type="text" name="showPath" id="showPath" />
+        <input type="file" id="selectPic" name="selectPic" />
+        <br />
+    </form>
+    <iframe id='frm' name='frm' style="display:none"></iframe>
+</div>
+
+
+<script type="text/javascript">
+    function showUploadWindow() {
+        var title = "上传附件";
+        var url = '/FileUpload/Index?AttachmentID=@info.AttachmentID&Flag=@flag';
+        openSpecifiedWindow("uploadWindow", title, url, 800, 500);
+    }
+    function Prev() {
+        $("#mywindow").window({
+            href: '/Jssjw/Property/Prev?type=@flag'
+        });
+    }
+
+    function Next() {
+        $("#mywindow").window({
+            href: '/Jssjw/Property/Next?type=@flag'
+        });
+    }
+    function uploadFile() {
+        //验证用户必须输入必填项
+        $('#fileForm').submit();
+        close1();
+
+    }
+    $(function () {
+        $("#info_CaseName").change(function () {
+
+            $("#info_CaseCode").get(0).selectedIndex = $("#info_CaseName").get(0).selectedIndex;
+
+        });
+
+        $('#dd').dialog({
+            buttons: [{
+                text: '上传',
+                iconCls: 'icon-ok',
+                handler: function () {
+                    flag = true;
+                    uploadFile();
+
+                }
+            }, {
+                text: '取消',
+                handler: function () {
+                    $('#dd').dialog('close');
+                }
+            }]
+        });
+
+        $('#selectPic').bind('change', function (event) {
+
+            $('#img').val($('#selectPic').val());
+        })
+    });
+    function callback(res) {
+        if (flag) {
+            $('#showPath').val("");
+            $('#selectPic').val("");
+            $('#img').attr("src", res);
+            $('#info_ImagePath').textbox("setValue", res);
+        }
+    }
+    var flag = false;
+    var frm = $("#frm");
+    frm.load(function () {
+        var wnd = this.contentWindow;
+        var str = $(wnd.document.body).html();
+        callback(str);
+    });
+    function open1() {
+        $('#dd').dialog('open');
+    }
+    function close1() {
+        $('#dd').dialog('close');
+    }
+
+    function saveData() {
+        @if (flag == "Add")
+                {
+                    <text> saveOrUploadForm("ffAdd", '/Property/Insert', 'funAfterSubmit'); </text>
+                }
+        @if (flag == "Edit") {
+                    <text> saveOrUploadForm("ffAdd", '/Property/Update?ID=@info.ID', 'funAfterSubmit'); </text>
+                }
+    }
+    function CopyData() {
+        $.getJSON("/Jssjw/Property/GetLastData",
+            function (jsonData) {
+                $("#info_Dept").textbox("setValue", jsonData.Dept);
+                $("#info_CaseCode").val(jsonData.CaseCode);
+                $("#info_CaseName").val(jsonData.CaseName);
+                $("#info_GoodsNumber").textbox("setValue", jsonData.GoodsNumber);
+                $("#info_GoodsCount").textbox("setValue", jsonData.GoodsCount);
+                $("#info_GoodsHolder").textbox("setValue", jsonData.GoodsHolder);
+                $("#info_GoodsName").textbox("setValue", jsonData.GoodsName);
+                $("#info_DetainPerson").textbox("setValue", jsonData.DetainPerson);
+                $("#info_GoodsPrice").textbox("setValue", jsonData.GoodsPrice);
+                $("#info_DetainDate").datebox("setValue", jsonData.DetainDate);
+                //$("#info_GoodsDetail").val(jsonData.GoodsDetail);
+                $("#info_Keeper").textbox("setValue", jsonData.Keeper);
+                $("#info_KeepSpace").textbox("setValue", jsonData.KeepSpace);
+                $("#info_Process").combobox("setValue", jsonData.Process);
+                $("#info_ProcessTime").datebox("setValue", jsonData.ProcessTime);
+
+            }
+    );
+    }
+</script>

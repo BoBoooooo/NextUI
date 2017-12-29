@@ -1,0 +1,7 @@
+﻿[
+{"id":"Name","text":"连接名称"},
+{"id":"Type","text":"类型"},
+{"id":"ConnectionString","text":"连接字符串"},
+{"id":"Note","text":"备注"},
+]
+

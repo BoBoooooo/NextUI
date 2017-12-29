@@ -1,0 +1,11 @@
+﻿@using Next.WorkFlow.BLL;
+@using Next.WorkFlow.Entity;
+
+@{
+    Layout = null;
+    
+    string json = Request.Form["json"];
+    string msg = new WorkFlowInfoBLL().InstallFlow(json);
+    //Next.WorkFlow.Utility.Log.Add("安装了流程", json + "(" + msg + ")", RoadFlow.Platform.Log.Types.流程相关);
+    Response.Write(msg);
+}

@@ -1,0 +1,240 @@
+﻿@using Jssjw.Organization.Entity;
+@using Next.Commons;
+@{
+
+    Layout = null;
+    Loan info = ViewBag.item;
+    string flag = ViewBag.flag;
+}
+
+<div id="Edit" class="easyui-panel"  >
+    <form id="ffAdd" method="post" novalidate="novalidate">
+        <table id="tblAdd" class="view">
+            <tr>
+                <th colspan="6">
+                    <h3 align="center">借用信息</h3>
+                    @Html.HiddenFor(i => info.ID)
+                    @Html.HiddenFor(i => info.IsDeleted)
+                    @Html.HiddenFor(i => info.UserID)
+                    @Html.HiddenFor(i => info.DeptID)
+                    <input type="hidden" id="info_AttachmentID" name="info.AttachmentID" value="@info.AttachmentID" />
+                </th>
+
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">批次：</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.Orders, Html.TextBoxFor(i => info.Orders, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+            <tr>
+                <th style="width:100px">
+                    <label for="Content">借用单位：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.BorrowUnit, Html.TextBoxFor(i => info.BorrowUnit, new { size = 30, @class = "easyui-combobox", @data_options = "valueField:'text',textField:'text',method: 'get',url:'/json/Jssjw/Organization/BorrowUnit.json'" }))
+                </td>
+                <th style="width:100px">
+                    <label for="Content">部门：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.BorrowRoom, Html.TextBoxFor(i => info.BorrowRoom, new { size = 30, @class = "easyui-combobox", @data_options = "valueField:'text',textField:'text',method: 'get',url:'/json/Jssjw/Organization/BorrowDept.json'" }))
+                </td>
+                <th style="width:100px">
+                    <label for="Content">用途：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.Usings, Html.TextBoxFor(i => info.Usings, new { size = 30, @class = "easyui-combobox", @data_options = "valueField:'text',textField:'text',method: 'get',url:'/json/Jssjw/Organization/BorrowUse.json'" }))
+                </td>
+            </tr>
+            <tr>
+                <th style="width:100px">
+                    <label for="Content">借用人员姓名：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.PersonName, Html.TextBoxFor(i => info.PersonName, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+                <th>
+                    <label for="Content">所在地区：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.Area, Html.TextBoxFor(i => info.Area, new { size = 30, @class = "easyui-combobox", @data_options = "valueField:'text',textField:'text',method: 'get',url:'/json/Jssjw/Organization/Area.json'" }))
+                </td>
+                <th rowspan="2">
+                    <label for="Content">办案专长</label>
+                </th>
+                <td rowspan="2">
+                    @Html.HtmlOutput(flag, info.Skill, Html.TextBoxFor(i => info.Skill, new { size = 30, @class = "easyui-combobox", @data_options = "valueField:'text',textField:'text',method: 'get',url:'/json/Jssjw/Organization/Skill.json'" }))
+                </td>
+            </tr>
+            <tr>
+                <th style="width:100px">
+                    <label for="Content">性别：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.Gender, Html.TextBoxFor(i => info.Gender, new { size = 30, @class = "easyui-combobox", @data_options = "valueField:'text',textField:'text',method: 'get',url:'/json/Jssjw/Organization/Gender.json'" }))
+                </td>
+                <th>
+                    <label for="Content">所在单位：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.Unit, Html.TextBoxFor(i => info.Unit, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">职级：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.WorkLevel, Html.TextBoxFor(i => info.WorkLevel, new { size = 30, @class = "easyui-combobox", @data_options = "valueField:'text',textField:'text',method: 'get',url:'/json/Jssjw/Organization/BorrowLevel.json'" }))
+                </td>
+                <th rowspan="2">
+                    <label for="Content">借用期限：</label>
+                </th>
+                <td rowspan="2">
+                    @Html.HtmlOutput(flag, info.BorrowTime, Html.TextBoxFor(i => info.BorrowTime, new { size = 30, @class = "easyui-combobox", @data_options = "valueField:'text',textField:'text',method: 'get',url:'/json/Jssjw/Organization/BorrowTime.json',onSelect:onSelect" }))
+                </td>
+                <th>
+                    <label for="Content">开始时间：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.StartTime, Html.TextBoxFor(i => info.StartTime, new { size = 30, @class = "easyui-datebox", @data_options = "onSelect:onSelect" }))
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">现任职务：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.WorkDuty, Html.TextBoxFor(i => info.WorkDuty, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+
+                <th>
+                    <label for="Content">结束时间：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.EndTime, Html.TextBoxFor(i => info.EndTime, new { size = 30, @class = "easyui-datebox" }))
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">文件编号：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.DoNumber, Html.TextBoxFor(i => info.DoNumber, new { size = 30, @class = "easyui-textbox", @Value = "苏纪组函[]号" }), Html.TextBoxFor(i => info.DoNumber, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+                <th>
+                    <label for="Content">是否发放工作证：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.IsDistributed, Html.TextBoxFor(i => info.IsDistributed, new { size = 30, @class = "easyui-combobox", @data_options = "valueField:'text',textField:'text',method: 'get',url:'/json/Commons/YesorNo.json'" }))
+                </td>
+                <th>
+                    <label for="Content">证件号：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.CardNumber, Html.TextBoxFor(i => info.CardNumber, new { size = 30, @class = "easyui-textbox", @Value = "苏纪临证字L[]号" }), Html.TextBoxFor(i => info.CardNumber, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+            <tr>
+                <th style="width:100px">
+                    <label for="Content">代办人：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.HandlePerson, Html.TextBoxFor(i => info.HandlePerson, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+                <th>
+                    <label for="Content">是否回收：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.IsRecycled, Html.TextBoxFor(i => info.IsRecycled, new { size = 30, @class = "easyui-combobox", @data_options = "valueField:'text',textField:'text',method: 'get',url:'/json/Commons/YesorNo.json'" }))
+                </td>
+                <th>
+                    <label for="Content">是否出具鉴定：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.IsIdentified, Html.TextBoxFor(i => info.IsIdentified, new { size = 30, @class = "easyui-combobox", @data_options = "valueField:'text',textField:'text',method: 'get',url:'/json/Commons/YesorNo.json'" }))
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">备注：</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.Remark, Html.TextAreaFor(i => info.Remark, new { size = 30, style = "width:99%;resize: none", row = 3 }))
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">附件上传：</label>
+                </th>
+                <td colspan="5">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnUpload" data-options="plain:true,iconCls:'icon-save'"
+                       onclick="showUploadWindow()">上传</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="6" style="text-align:right; padding-top:10px">
+                    @if(flag!="View"){
+                        <text>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnAddOK" iconcls="icon-ok" onclick="saveData();">确定</a>
+                    </text>
+                    }
+                    <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="closeMyWindow()">关闭</a>
+
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div id="uploadWindow" class="easyui-window" closed="true" cache="false" icon="icon-save" >
+</div>
+
+@*添加对uploadify控件的支持*@
+@*<script type="text/javascript" src="~/Assets/WorkFlow/Scripts/jquery-2.0.3.min.js"></script>*@
+
+<script type="text/javascript">
+    function showUploadWindow() {
+        var title = "上传附件";
+        var url = '/FileUpload/Index?AttachmentID=@info.AttachmentID&Flag=@flag';
+        openSpecifiedWindow("uploadWindow", title, url, 800, 500);
+    }
+    $(function () {
+ 
+    });
+    function saveData() {
+        @if (flag == "Add")
+                {
+                    <text> saveOrUploadForm("ffAdd", '/Loan/Insert', 'funAfterSubmit'); </text>
+                }
+        @if (flag == "Edit") {
+                    <text> saveOrUploadForm("ffAdd", '/Loan/Update?ID=@info.ID', 'funAfterSubmit'); </text>
+                }
+    }
+    function beforeSubmit() {
+        saveOrUploadForm("frm_win_add", '/Admin/RoleSaveOrUpdate', 'funAfterSubmit');
+    }
+    function onSelect(date) {
+
+        var time = $("#info_BorrowTime").combobox("getValue");
+
+        var startime = $("#info_StartTime").datebox("getValue");
+        var d = new Date(startime.replace(/-/g, "/"));
+        var n = null;
+
+        if (time == "1个月" || time == "2个月" || time == "3个月" || time == "6个月") {
+            n = time[0];
+            d.setMonth(d.getMonth() + parseInt(n));
+            var endtime = d.getFullYear() + "-" + (d.getMonth() >= 9 ? d.getMonth() + 1 : "0" + (d.getMonth() + 1)) + "-" + (d.getDate() > 9 ? d.getDate() : "0" + d.getDate());
+
+            $('#info_EndTime').datebox('setValue', endtime);
+        }
+        else {
+            $('#info_EndTime').datebox('setValue', "");
+        }
+
+    }
+</script>

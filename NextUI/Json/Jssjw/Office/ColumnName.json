@@ -1,0 +1,6 @@
+﻿[
+{"id":"FullName","text":"姓名"},
+{"id":"DeptName","text":"部门"},
+{"id":"RecordDate","text":"日期"},
+{"id":"TextContent","text":"工作内容"}
+]

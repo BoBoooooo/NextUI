@@ -1,0 +1,103 @@
+﻿@using Jssjw.Office.Entity;
+@using Next.Commons;
+@{
+
+    Layout = null;
+    Journal info = ViewBag.item;
+    string flag = ViewBag.flag;
+}
+
+<div id="Edit" class="easyui-panel">
+    <form id="ffAdd" method="post" novalidate="novalidate">
+        <table id="tblAdd" class="view">
+            <tr>
+                <th colspan="4">
+                    <h3 align="center">日志编辑</h3>
+                    @Html.HiddenFor(i => info.ID)
+
+                    @Html.HiddenFor(i => info.Deleted)
+                    @Html.HiddenFor(i => info.UserID)
+                    @Html.HiddenFor(i => info.DeptID)
+                </th>
+
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">日期：</label>
+                </th>
+                <td colspan="3">
+                    @Html.HtmlOutput(flag, info.RecordDate.ToString(), Html.TextBoxFor(i => info.RecordDate, new { size = 30, @class = "easyui-datebox" }))
+                </td>
+            </tr>
+            <tr>
+                <th style="width:100px">
+                    <label for="Content">姓名：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.FullName, Html.TextBoxFor(i => info.FullName, new { size = 30, @class = "easyui-textbox" }))
+
+                </td>
+                <th style="width:100px">
+                    <label for="Content">部门：</label>
+                </th>
+                <td>
+                    @Html.HtmlOutput(flag, info.DeptName, Html.TextBoxFor(i => info.DeptName, new { size = 30, @class = "easyui-textbox" }))
+
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">工作内容：</label>
+                </th>
+                <td colspan="3">
+                    @Html.HtmlOutput(flag, info.Content, Html.TextAreaFor(i => info.Content, new { size = 30, style = "width:99%;resize: none", rows = 6 }))
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label for="Content">附件上传：</label>
+                </th>
+                <td colspan="5">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnUpload" data-options="plain:true,iconCls:'icon-save'"
+                       onclick="showUploadWindow()">上传</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align:right; padding-top:10px">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnAddOK" iconcls="icon-ok" onclick="saveData();">确定</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="closeMyWindow()">关闭</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div id="uploadWindow" class="easyui-window" closed="true" cache="false" icon="icon-save">
+</div>
+<script src="~/Assets/JQueryTools/ckeditor/ckeditor.js"></script>
+
+<script type="text/javascript">
+    function showUploadWindow() {
+        var title = "上传附件";
+        var url = '/FileUpload/Index?AttachmentID=@info.AttachmentID&Flag=@flag';
+        openSpecifiedWindow("uploadWindow", title, url, 800, 500);
+    }
+    $(function () {
+
+        $('#info_Content').ckeditor();
+        $('#info_FullName').attr('readonly', true);
+        $('#info_DeptName').attr('readonly', true);
+
+    });
+    function saveData() {
+        for (instance in CKEDITOR.instances)
+            CKEDITOR.instances[instance].updateElement();
+        @if (flag == "Add")
+                {
+                    <text> saveOrUploadForm("ffAdd", '/Journal/Insert', 'funAfterSubmit'); </text>
+                }
+        @if (flag == "Edit") {
+                    <text> saveOrUploadForm("ffAdd", '/Journal/Update?ID=@info.ID', 'funAfterSubmit'); </text>
+                }
+    }
+
+</script>

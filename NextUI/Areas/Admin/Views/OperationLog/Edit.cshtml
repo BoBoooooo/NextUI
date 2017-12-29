@@ -1,0 +1,133 @@
+﻿@using Next.Admin.Entity;
+@using Next.Commons;
+@{
+
+    Layout = null;
+    OperationLog info = ViewBag.item;
+    string flag = ViewBag.flag;
+}
+
+<div id="Edit" class="easyui-panel"  >
+    <form id="ffAdd" method="post" novalidate="novalidate">
+        <table id="tblAdd" class="view">
+            <tr>
+                <th colspan="6">
+                    <h3 align="center">信息录入</h3>
+                    @Html.HiddenFor(i => info.ID)
+
+                    @Html.HiddenFor(i => info.UserID)
+
+                </th>
+
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">登录名</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.LoginName, Html.TextBoxFor(i => info.LoginName, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+                <th>
+                    <label for="Content">用户姓名</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.FullName, Html.TextBoxFor(i => info.FullName, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+                <th>
+                    <label for="Content">公司名称</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.CompanyName, Html.TextBoxFor(i => info.CompanyName, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">数据表名</label>
+                </th>
+                <td colspan="3">
+                    @Html.HtmlOutput(flag, info.TableName, Html.TextBoxFor(i => info.TableName, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+                <th>
+                    <label for="Content">操作类型</label>
+                </th>
+                <td colspan="1">
+                    @Html.HtmlOutput(flag, info.OperationType, Html.TextBoxFor(i => info.OperationType, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+
+			<tr>
+				<th>
+                    <label for="Content">备注</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.Note, Html.TextAreaFor(i => info.Note, new { size = 30, style = "width:99%;resize: none", rows = 8 }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">IP地址</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.IPAddress, Html.TextBoxFor(i => info.IPAddress, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">Mac地址</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.MacAddress, Html.TextBoxFor(i => info.MacAddress, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">创建时间</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.CreateTime, Html.TextBoxFor(i => info.CreateTime, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="Content">附件上传：</label>
+                </th>
+                <td colspan="5">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnUpload" data-options="plain:true,iconCls:'icon-save'"
+                       onclick="showUploadWindow()">上传</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="6" style="text-align:right; padding-top:10px">
+                    @if(flag!="View"){
+                        <text>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnAddOK" iconcls="icon-ok" onclick="saveData();">确定</a>
+                    </text>
+                    }
+                    <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="closeMyWindow()">关闭</a>
+
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div id="uploadWindow" class="easyui-window" closed="true" cache="false" icon="icon-save" >
+</div>
+
+
+<script type="text/javascript">
+
+    $(function () {
+ 
+    });
+    function saveData() {
+        @if (flag == "Add")
+                {
+                    <text> saveOrUploadForm("ffAdd", '/OperationLog/Insert', 'funAfterSubmit'); </text>
+                }
+        @if (flag == "Edit") {
+                    <text> saveOrUploadForm("ffAdd", '/OperationLog/Update?ID=@info.ID', 'funAfterSubmit'); </text>
+                }
+    }
+</script>

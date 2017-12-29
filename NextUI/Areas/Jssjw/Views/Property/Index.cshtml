@@ -1,0 +1,508 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+
+    @Styles.Render("~/Assets/InsdepStyle")
+    @Scripts.Render("~/Assets/InsdepScript")
+
+
+    <script src="/Assets/Next/Script/public.js"></script>
+    <script src="/Assets/Next/Script/datapattern.js"></script>
+
+    <script src="/Assets/JQueryTools/ckeditor/ckeditor.js"></script>
+    <script src="/Assets/JQueryTools/ckeditor/adapters/jquery.js"></script>
+    <script>
+        function initEditor() {
+            $('#Content').ckeditor();
+            $('#Content1').ckeditor();
+        }
+    </script>
+
+
+    <script type="text/javascript">
+        function SaveAs() {
+            var id = $('#ID2').val();
+            window.open('/Jssjw/Property/ExportWordById?id=' + id);
+        }
+    </script>
+
+    <script type="text/javascript">
+        var isAddOrEdit = 'add';//标识是新增还是编辑对话框弹出，用于删除附件的操作
+
+        $(function () {
+            $("#simpleSearchForm").show();
+            $("#advSearchForm").hide();
+            initEditor();     //初始化CKEditor
+            var queryData = {};
+            InitGrid(queryData);       //初始化Datagrid表格数据
+
+            BindSearchEvent();//绑定查询按钮事件
+            
+        });
+
+
+        function funAfterSubmit() {
+            refeshGrid();
+            closeMyWindow();
+        }
+
+        function funAfterDel() {
+            refeshGrid();
+        }
+        function reload() {
+            $("#grid").datagrid("reload")
+        }
+        function refeshGrid() {
+            $('#grid').datagrid({});
+        }
+        function add() {
+
+            var title = "新增";
+            var url = '/Jssjw/Property/Edit?id=null&Type=Add';
+            openSpecifiedWindow("mywindow", title, url, 1000, 600);
+        }
+        function edit() {
+            //首先取出来用户选择的数据的ID
+            var rows = $("#grid").datagrid("getSelections");
+            //首先取出来值判断用户只能选择一个
+            if (rows.length == 0) {
+                $.messager.alert("提示", "请选择一条记录", "error");
+                return;
+            }
+            else if (rows.length > 1) {
+                $.messager.alert("提示", "每次只能修改/查看一条记录，你已经选择了<font color='red'  size='6'>" + rows.length + "</font>条", "error");
+                return;
+            }
+
+            var ID = $("#grid").datagrid("getSelections")[0].ID;
+            var title = "编辑";
+            var url = '/Jssjw/Property/Edit?id=' + ID + '&Type=Edit';
+            openSpecifiedWindow("mywindow", title, url, 1000, 600);
+        }
+
+        function view(ID) {
+            //首先取出来用户选择的数据的ID
+            var rows = $("#grid").datagrid("getSelections");
+            //首先取出来值判断用户只能选择一个
+            if (rows.length == 0) {
+                $.messager.alert("提示", "请选择一条记录", "error");
+                return;
+            }
+            else if (rows.length > 1) {
+                $.messager.alert("提示", "每次只能修改/查看一条记录，你已经选择了<font color='red'  size='6'>" + rows.length + "</font>条", "error");
+                return;
+            }
+            var ID = $("#grid").datagrid("getSelections")[0].ID;
+            var title = "查看";
+            var url = '/Jssjw/Property/Edit?id=' + ID + '&Type=View';
+            openSpecifiedWindow("mywindow", title, url, 1000, 600);
+        }
+        //实现对DataGird控件的绑定操作
+        function InitGrid(queryData) {
+            $('#grid').datagrid({   //定位到Table标签，Table标签的ID是grid
+                url: '/Jssjw/Property/FindWithPager',   //指向后台的Action来获取当前用户的信息的Json格式的数据
+                title: '',
+                iconCls: 'icon-view',
+                height: 800,
+                width: function () { return document.body.clientWidth * 0.9 },//自动宽度
+                nowrap: true,
+                autoRowHeight: true,
+                striped: true,
+                collapsible: true,
+                pagination: true,
+                pageSize: 10,
+                pageList: [10, 100, 1000],
+                rownumbers: true,
+                //sortName: 'ID',    //根据某个字段给easyUI排序
+                sortOrder: 'asc',
+                remoteSort: false,
+                idField: 'IntID',
+                fitColumns : true,
+                fit: true,
+                singleSelect: true,
+                queryParams: queryData,  //异步查询的参数
+                columns: [[
+	                 { field: 'ck', checkbox: true },   //选择
+				
+				{ title: '物品名称', field: 'GoodsName', width: 150, sortable: true, align: 'center' },
+                { title: '专案名称', field: 'CaseName', width: 150, sortable: true, align: 'center' },
+				{ title: '件数', field: 'GoodsCount', width: 50, sortable: true, align: 'center' },
+                { title: '存放地点', field: 'KeepSpace', width: 150, sortable: true, align: 'center' },
+				{ title: '暂扣人', field: 'DetainPerson', width: 150, sortable: true, align: 'center' },
+				{ title: '特征藐视', field: 'GoodsDetail', width: 250, sortable: true, align: 'center' },
+				
+
+                ]],
+                toolbar:"#toolbar",
+                onDblClickRow: function (rowIndex, rowData) {
+                    $('#grid').datagrid('uncheckAll');
+                    $('#grid').datagrid('checkRow', rowIndex);
+                    edit();
+                }
+            })
+        };
+        //修改或查看明细信息（绑定显示数据）
+        function ShowEditOrViewDialog(view) {
+            //首先取出来用户选择的数据的ID
+            var rows = $("#grid").datagrid("getSelections");
+            //首先取出来值判断用户只能选择一个
+            if (rows.length == 0) {
+                $.messager.alert("提示", "请选择一条记录", "error");
+                return;
+            }
+            else if (rows.length > 1) {
+                $.messager.alert("提示", "每次只能修改/查看一条记录，你已经选择了<font color='red'  size='6'>" + rows.length + "</font>条", "error");
+                return;
+            }
+            if (view == null) {
+                //处理修改的信息
+                $("#DivEdit").dialog('open').dialog('setTitle', '修改信息');
+                //绑定修改详细信息的方法
+                BindEditInfo();
+            }
+            else {
+                //处理查看详细
+                $("#DivView").dialog('open').dialog('setTitle', '查看详细信息');
+                //绑定查看详细信息方法
+                BindViewInfo();
+            }
+        }
+        //绑定搜索按钮的的点击事件
+        function BindSearchEvent() {
+            //按条件进行查询数据，首先我们得到数据的值
+            $("#btnSearch").click(function () {
+                //得到用户输入的参数
+                //取值有几种方式：$("#id").combobox('getValue'), $("#id").datebox('getValue'), $("#id").val()
+                //字段增加WHC_前缀字符，避免传递如URL这样的Request关键字冲突
+                if ($("#columnValue").val() == "") {
+                    condition = '';
+                } else {
+                    if ($("#expression").combobox('getValue') == 'LIKE') {
+                        condition = $("#columnName").combobox('getValue') + ' ' + $("#expression").combobox('getValue') + ' \'%' + $("#columnValue").val() + '%\''
+                    } else {
+                        condition = $("#columnName").combobox('getValue') + ' ' + $("#expression").combobox('getValue') + ' \'' + $("#columnValue").val() + '\''
+                    }
+                }
+                queryStr = condition;
+                var queryData = {
+                    columnName: $("#columnName").combobox('getValue'),
+                    expression: $("#expression").combobox('getValue'),
+                    columnValue: $("#columnValue").val(),
+                    CustomedCondition: condition
+                }
+                //将值传递给
+                InitGrid(queryData);
+                return false;
+            });
+        }
+
+        //实现删除数据的方法
+        function Delete() {
+            //得到用户选择的数据的ID
+            var rows = $("#grid").datagrid("getSelections");
+            if (rows.length >= 1) {
+                //遍历出用户选择的数据的信息，这就是用户用户选择删除的用户ID的信息
+                var ids = "";   //1,2,3,4,5
+                for (var i = 0; i < rows.length; i++) {
+                    ids += rows[i].ID + ",";
+                }
+                //最后去掉最后的那一个,
+                ids = ids.substring(0, ids.length - 1);
+                var postData = { Ids: ids };
+
+                //然后确认发送异步请求的信息到后台删除数据
+                $.messager.confirm("删除确认", "您确认删除选定的记录吗？", function (deleteAction) {
+                    if (deleteAction) {
+                        $.get("/Jssjw/Property/DeletebyIds", postData, function (data) {
+                            if (data == "true") {
+                                $.messager.alert("提示", "删除选定的记录成功");
+                                $("#grid").datagrid("reload");
+
+                                //当删除完成之后，第二次删除的时候还记得上次的信息，这样是不可以的，所以我们需要清除第一次的信息
+                                rows.length = "";//第一种方法
+                                $("#grid").datagrid("clearSelections");//第二种方法
+                            }
+                            else {
+                                $.messager.alert("提示", data);
+                            }
+                        });
+                    }
+                });
+            }
+            else {
+                $.messager.alert("提示", "请选择你要删除的数据");
+            }
+        }
+        function toggle() {
+
+            $("#simpleSearchForm").toggle();
+            $("#advSearchForm").toggle();
+        }
+        function AddSe() {
+            var val, Sql, oAdd;
+
+            var Field = $("#advColumnName").combobox('getText');
+            var TextVal = $('#advColumnValue').val();
+            var Condition = $("#advExpression").combobox('getText');
+            var Relation = $("#relation").combobox('getText');
+
+
+            var val_Field = $("#advColumnName").combobox('getValue');
+            var fh = $("#advExpression").combobox('getValue');
+
+            if (fh == 'LIKE') {
+                val = $("#relation").combobox('getValue') + " " + val_Field + " LIKE '%" + TextVal + "%' ";
+            } else {
+                val = $("#relation").combobox('getValue') + " " + val_Field + fh + "'" + TextVal + "'";
+            }
+            Sql = Relation + Field + Condition + TextVal;
+            oAdd = document.createElement("option");
+            oAdd.value = val;
+            oAdd.text = Sql;
+            /*if ($.browser.msie) {
+                qry_frm.seSql.add(oAdd);
+            } else {
+                $("#seSql").append(oAdd);
+            }*/
+            $("#seSql").append(oAdd);
+        }
+
+        // 把条件查询语句从<select>查询列表框中删除；
+        function moveSe() {
+            /*if ($.browser.msie) {
+                var gettxt = "";
+                for (var i = 1; i < qry_frm.seSql.options.length; i++) {
+                    if (qry_frm.seSql.options[i].selected) {
+                        qry_frm.seSql.remove(qry_frm.seSql.selectedIndex);
+                    }
+                }
+
+            } else {
+                $("#seSql").find("option:selected").remove();
+            }*/
+            $("#seSql").find("option:selected").remove();
+
+        }
+
+        function clearSe() {
+            $('#advColumnValue').val('');
+            $('#advColumnName').combobox('setValues', '');
+            $('#advExpression').combobox('setValues', '');
+            $('#relation').combobox('setValues', '')
+            $("#seSql").find("option").remove();
+            $("#seSql").append("<option value=\"\">------------查询条件-----------</option>");
+
+        }
+        function queryGrid() {
+            var gettxt = "";
+            var count = $("#seSql option").length;
+
+            for (var i = 0; i < count; i++) {
+                gettxt = gettxt + $("#seSql ").get(0).options[i].value;
+            }
+
+            if (gettxt.indexOf("and") == 0) {
+                gettxt = gettxt.substring(gettxt.indexOf("and") + 3);
+            }
+            if (gettxt.indexOf("or") == 0) {
+                gettxt = gettxt.substring(gettxt.indexOf("or") + 2);
+            }
+            queryStr = gettxt;
+            $('#grid').datagrid({
+                queryParams: { 'CustomedCondition': gettxt },
+                pageNumber: 1
+            });
+        }
+        var queryStr = '';
+        function exportExcel() {
+            //alert($("#ExcelInfo").combotree('getValues'));
+            if ($("#ExcelInfo").combotree('getValues') == '') {
+                alert("请先选择要导出的字段");
+            } else {
+                var str = '';
+
+                var form = $("<form>");//定义一个form表单
+                form.attr("style", "display:none");
+                form.attr("target", "");
+                form.attr("method", "post");
+                form.attr("action", "/Jssjw/Property/Export");
+                var input1 = $("<input>");
+                input1.attr("type", "hidden");
+                input1.attr("name", "exportData");
+                input1.attr("value", $("#ExcelInfo").combotree('getValues'));
+                var input2 = $("<input>");
+                input2.attr("type", "hidden");
+                input2.attr("name", "CustomedCondition");
+                input2.attr("value", queryStr);
+                $("body").append(form);//将表单放置在web中
+                form.append(input1);
+                form.append(input2);
+                form.submit();//表单提交
+            }
+        }
+
+        //}
+
+    </script>
+
+    <style>
+        table.view {
+            border: 1px solid #A8CFEB;
+            border-collapse: collapse;
+            margin-bottom: 5px;
+            height: 98%;
+            width: 98%;
+        }
+
+        .view th {
+            padding-left: 10px;
+            padding-right: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            width: 50px;
+            border: 1px solid silver;
+            background-color: #F1F6FF;
+        }
+
+        .view td {
+            padding-left: 10px;
+            padding-right: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border: 1px solid silver;
+            background-color: #FAFCFF;
+        }
+
+        .toolbar {
+            position: absolute;
+            top: 30px;
+            right: 10px;
+            width: 180px;
+            height: 45px;
+            border: 1px solid #A8CFEB;
+            background-color: #F0F6FF;
+            _margin: 0 16px 0 0;
+        }
+
+            .toolbar a {
+                display: block;
+                text-align: center;
+                width: 50px;
+                float: left;
+                height: 40px;
+                text-decoration: none;
+                margin: 0 5px;
+            }
+
+                .toolbar a img {
+                    border: none;
+                    width: 16px;
+                    height: 16px;
+                    margin: 5px 10px 4px 10px;
+                }
+    </style>
+</head>
+<body class="easyui-layout" style="width: 100%;height: 100%;">
+    <div id="loading" style="display: none;"><img alt="数据正在加载中..." src="/Assets/images/loading02.gif" /></div>
+    <div id="tb" region="north" split="true" style="height:80px;padding:10px;">
+        <!-------------------------------搜索框----------------------------------->
+        <div id="simpleSearchForm">
+                <legend>信息查询</legend>
+                <form id="ffSearch" method="post">
+                    <div>
+                        <table border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td width="75" align="right">查询条件：</td>
+                                <td>
+                                    <input id="columnName" name="columnName" class="easyui-combobox" data-options="editable:false, valueField:'id',textField:'text',method: 'get',panelHeight: 'auto',url:'/json/Jssjw/Property/ColumnName.json'" />
+                                    <input id="expression" name="expression" class="easyui-combobox" data-options="editable:false, valueField:'id',textField:'text',method: 'get',url:'/json/Commons/Expression.json'" />
+                                    <input style="width: 250px;" name="columnValue" id="columnValue" class="easyui-textbox" />
+                                </td>
+                                <td width="100" align="right">
+                                    <a href="#" id="btnSearch" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+
+                                </td>
+                                <td width="100" align="right">
+                                    <a href="#" onclick="$('#ffSearch')[0].reset();" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">清除</a>
+                                </td>
+                                <!--<td width="150" align="right">
+                                    <a href="#" id="btnAdvSearch" onclick="toggle();" class="easyui-linkbutton" data-options="iconCls:'icon-search'">高级查询</a>
+
+                                </td>-->
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+
+        </div>
+
+        <div id="advSearchForm">
+
+                <form id="qry_frm" onsubmit="return false">
+                    <table border="0" cellpadding="0" cellspacing="0" style="width: 100%;height: 100%;">
+                        <tr>
+                            <td class="td_input_text">查询字段</td>
+                            <td class="td_input"><input id="advColumnName" name="advColumnName" class="easyui-combobox" data-options="editable:false, valueField:'id',textField:'text',panelHeight: 'auto',method: 'get',url:'/json/Jssjw/Property/ColumnName.json'" /></td>
+                            <td class="td_btn"><a class="easyui-linkbutton" icon="icon-add" href="javascript:AddSe()">添加</a></td>
+                            <td class="td_area" rowspan="4">
+                                <select id="seSql" size="6">
+                                    <option value="">------------查询条件-----------</option>
+                                </select>
+                            </td>
+                            <td class="td_btn"><a class="easyui-linkbutton" icon="icon-search" onclick="toggle();">一般查询</a></td>
+                        </tr>
+                        <tr>
+                            <td class="td_input_text">查询条件</td>
+                            <td class="td_input"><input id="advExpression" name="advExpression" class="easyui-combobox" data-options="editable:false, valueField:'id',textField:'text',method: 'get',url:'/json/Commons/Expression.json'" /></td>
+                            <td class="td_btn"><a class="easyui-linkbutton" icon="icon-remove" href="javascript:moveSe()">删除</a></td>
+                            <td class="td_btn"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_input_text">条件值</td>
+                            <td class="td_input"><input style="width: 150px;" name="advColumnValue" id="advColumnValue" class="easyui-textbox" /></td>
+                            <td class="td_btn"><a class="easyui-linkbutton" icon="icon-remove" href="javascript:clearSe()">清空</a></td>
+                            <td class="td_btn"></td>
+                        </tr>
+                        <tr>
+                            <td class="td_input_text">关系运算符</td>
+                            <td class="td_input"><input id="relation" name="relation" class="easyui-combobox" data-options="editable:false, valueField:'id',textField:'text',method: 'get',url:'/json/Commons/Relation.json'" /></td>
+                            <td class="td_btn">
+                                <a class="easyui-linkbutton" icon="icon-search" href="javascript:queryGrid();">查询</a>
+                            </td>
+                            <td class="td_btn"></td>
+                        </tr>
+                    </table>
+                </form>
+
+        </div>
+        <!-------------------------------详细信息展示表格----------------------------------->
+        <div id="toolbar" style="padding:5px;height:auto">
+            <div>
+                <a href="#" class="easyui-linkbutton" iconcls="icon-add" id="btnAdd" onclick="add()">添加</a>
+                <a href="#" class="easyui-linkbutton" iconcls="icon-edit" id="btnEdit" onclick="edit()">修改</a>
+                <a href="#" class="easyui-linkbutton" iconcls="icon-remove" id="btnDelete" onclick="Delete()">删除</a>
+                <a href="#" class="easyui-linkbutton" iconcls="icon-table" id="btnView" onclick="view()">查看</a>
+                <a href="#" class="easyui-linkbutton" iconcls="icon-reload" id="btnReload" onclick="reload()">刷新</a>
+                <label for="name">请选择导出字段:</label> 
+                <input class="easyui-combotree" data-options="panelHeight: 'auto'," style="width:400px" url="/json/Jssjw/Property/ColumnName.json" valuefield="id" textfield="text" method="get" selected="true" multiple="true" id="ExcelInfo" />
+                <a href="#" class="easyui-linkbutton" iconcls="icon-search" id="ExportExcel" onclick="exportExcel()">导出Excel</a>
+            </div>
+        </div>  
+    </div>
+    <div region="center" id="table_div" style="overflow:hidden;">
+        <table id="grid" style="width: 940px" title="用户操作" iconcls="icon-view"></table>
+    </div>
+    <div id="mywindow" class="easyui-window" closed="true" cache="false" icon="icon-save" style="width:500px;height:200px;padding:5px;background: #fafafa;">
+    </div>
+
+
+</body>
+</html>
+
+

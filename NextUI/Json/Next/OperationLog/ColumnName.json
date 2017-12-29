@@ -1,0 +1,12 @@
+﻿[
+{"id":"LoginName","text":"登录名"},
+{"id":"FullName","text":"用户姓名"},
+{"id":"CompanyName","text":"公司名称"},
+{"id":"TableName","text":"数据表名"},
+{"id":"OperationType","text":"操作类型"},
+{"id":"Note","text":"备注"},
+{"id":"IPAddress","text":"IP地址"},
+{"id":"MacAddress","text":"Mac地址"},
+{"id":"CreateTime","text":"创建时间"},
+]
+

@@ -1,0 +1,23 @@
+﻿[
+{"id":"Orders","text":"批次"},
+{"id":"BorrowUnit","text":"借用单位"},
+{"id":"BorrowRoom","text":"部门"},
+{"id":"Usings","text":"用途"},
+{"id":"PersonName","text":"借用人员姓名"},
+{"id":"Gender","text":"性别"},
+{"id":"Area","text":"所在地区"},
+{"id":"Unit","text":"所在单位"},
+{"id":"Skill","text":"办案专长"},
+{"id":"WorkLevel","text":"职级"},
+{"id":"WorkDuty","text":"现任职务"},
+{"id":"BorrowTime","text":"借用期限"},
+{"id":"StartTime","text":"开始时间"},
+{"id":"EndTime","text":"结束时间"},
+{"id":"DoNumber","text":"文件编号"},
+{"id":"IsDistributed","text":"是否发放工作证"},
+{"id":"CardNumber","text":"证件号"},
+{"id":"HandlePerson","text":"代办人"},
+{"id":"IsRecycled","text":"是否回收"},
+{"id":"IsIdentified","text":"是否出具鉴定"},
+{"id": "Remark", "text": "备注" }
+]

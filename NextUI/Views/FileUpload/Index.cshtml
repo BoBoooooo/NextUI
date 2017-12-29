@@ -1,0 +1,129 @@
+﻿@{
+
+    Layout = null;
+
+    string attachmentID = ViewBag.attachmentID;
+    string flag = ViewBag.flag;
+}
+<div id="UpLoadDialog"  class="easyui-panel" >
+    <div class="easyui-layout" data-options="fit:true">
+        <!-- 搜索条件 -->
+        <div>
+            @if (flag != "View")
+                            {
+    <text>
+            <table style="width:100%">
+                <tr>
+                    <th>
+                        <label for="Attachment_GUID">附件上传：</label>
+                        <input class="easyui-textbox" type="hidden" id="info_AttachmentID" name="info.AttachmentID" value="@attachmentID" />
+                    </th>
+                    <td colspan="1">
+                        <div style="vertical-align: middle;">
+                            
+
+                            <input class="easyui-textbox" id="file_upload" name="file_upload" type="file" multiple="multiple">
+
+                        </div>
+                    </td>
+
+
+                    <td colspan="1">
+
+                        <a href="javascript:void(0)" class="easyui-linkbutton" id="btnUpload" data-options="plain:true,iconCls:'icon-save'"
+                           onclick="checkQueue()">
+                            上传
+                        </a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" id="btnCancelUpload" data-options="plain:true,iconCls:'icon-cancel'"
+                           onclick="checkCancel()">取消</a>
+                        <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div id="fileQueue" class="fileQueue"></div>
+                    </td>
+                </tr>
+
+            </table>
+        </text>
+                            }
+
+        </div>
+        <div  id="table_div" style="overflow:hidden;">
+
+            <table id="grid_table1" style="height:400px"></table>
+        </div>
+    </div>
+
+ </div>
+
+@*添加对uploadify控件的支持*@
+@*<script type="text/javascript" src="~/Scripts/jquery-2.0.3.min.js"></script>*@
+<script type="text/javascript" src="~/Assets/JQueryTools/uploadifive/jquery.uploadifive.js"></script>
+<script type="text/javascript" src="~/Assets/Next/Script/upload.js"></script>
+<link href="~/Assets/JQueryTools/uploadifive/uploadifive.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    $(function () {
+
+    });
+    $('#grid_table1').datagrid({
+        url: '/FileUpload/FindWithPager?AttachmentID=@attachmentID',
+        sortName: 'ID',
+        idField: 'ID',
+        pagination: true,
+        fit: false,
+        fitColumns: false,
+        
+        pageSize: 10,
+        pageList: [10, 100, 200],
+        nowrap: false,
+        autoRowHeight: true,
+        striped: true,
+        collapsible: true,
+        
+
+        columns: [[
+        {
+             field: 'opt', title: '操作', width: 180, align: 'center',
+                   formatter: function (value, r) {
+                            var optBtn = '';
+                            optBtn = ' <a class="button blue small" style="color: white;text-decoration: none;" href="/FileUpload/Download?ID=' + r.ID + '" title=\"下载\">下载</a> ';
+                            @if (flag != "View")
+                            {
+                                <text>
+                       optBtn += ' <a class="button blue small" style="color: white;text-decoration: none;" href="javascript:deleteAttach(\'' + r.ID + '\')" title=\"删除\">删除</a> ';
+                                </text>
+                            }
+                            return optBtn;
+                            }
+             
+        },
+        { field: 'FileName', title: '文件名', width: 500, sortable: true, align: 'center' }
+
+        ]]
+    });
+
+    function checkQueue() {
+        if ($("#fileQueue").children().length == 0) {
+            $.messager.alert("操作提示", "请先点击浏览选择要上传的文件！", "info");
+        } else {
+            $('#file_upload').uploadifive('upload');
+            $('#grid_table1').datagrid({});
+        }
+    }
+    function checkCancel() {
+        if ($("#fileQueue").children().length == 0) {
+            $.messager.alert("操作提示", "没有待上传的文件！", "info");
+        } else {
+            $('#file_upload').uploadifive('clearQueue');
+            $('#grid_table1').datagrid({});
+        }
+    }
+
+    function refreshFileUploadGrid() {
+        $('#grid_table1').datagrid({});
+    }
+
+
+</script>

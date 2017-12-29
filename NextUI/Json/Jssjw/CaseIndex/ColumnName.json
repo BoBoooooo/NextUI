@@ -1,0 +1,11 @@
+﻿[
+{"id":"Dept","text":"录入部门"},
+{"id":"CaseName","text":"专案名称"},
+{"id":"CaseCode","text":"代码"},
+{"id":"CaseTarget","text":"涉案对象"},
+{"id":"CaseCharge","text":"查办部门"},
+{"id":"CaseAgent","text":"承办人"},
+{"id":"CaseDuration","text":"起始时间"},
+{"id":"CaseContentCount","text":"物品数量"}
+]
+

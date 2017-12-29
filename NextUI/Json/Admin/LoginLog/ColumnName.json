@@ -1,0 +1,10 @@
+﻿[
+{"id":"LoginName","text":"用户名"},
+{"id":"FullName","text":"姓名"},
+{"id":"CompanyName","text":"单位名称"},
+{"id":"Note","text":"备注"},
+{"id":"IPAddress","text":"IP地址"},
+{"id":"MacAddress","text":"Mac地址"},
+{"id":"LastUpdated","text":"最后登陆时间"},
+]
+

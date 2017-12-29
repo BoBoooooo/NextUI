@@ -1,0 +1,348 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>信息管理系统</title>
+
+    <meta name="description" content="overview &amp; stats" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="../../Assets/Bootstrap/Style/bootstrap.css" />
+    <link rel="stylesheet" href="../../Assets/Bootstrap/Style/font-awesome.css" />
+
+    <!-- page specific plugin styles -->
+    <!-- text fonts -->
+    <link rel="stylesheet" href="../../Assets/Bootstrap/Style/ace-fonts.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="../../Assets/Bootstrap/Style/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="../../Assets/Bootstrap/Style/ace-part2.css" class="ace-main-stylesheet" />
+    <![endif]-->
+    <link rel="stylesheet" href="../../Assets/Bootstrap/Style/ace-skins.css" />
+    <link rel="stylesheet" href="../../Assets/Bootstrap/Style/ace-rtl.css" />
+
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" href="../../Assets/Bootstrap/Style/ace-ie.css" />
+    <![endif]-->
+    <!-- inline styles related to this page -->
+    <!-- ace settings handler -->
+    <script src="../../Assets/Bootstrap/Script/ace-extra.js"></script>
+
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+    <!--[if lte IE 8]>
+    <script src="../../Assets/Bootstrap/Script/IE/html5shiv.min.js"></script>
+    <script src="../../Assets/Bootstrap/Script/IE/respond.min.js"></script>
+    <![endif]-->
+    <link href="~/assets/workflow/Style/Theme/Common.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="~/assets/workflow/Style/Theme/blue/Style/style.css" id="style_style" rel="stylesheet" type="text/css" media="screen" />
+    <link href="~/assets/workflow/Style/Theme/blue/Style/ui.css" id="style_ui" rel="stylesheet" type="text/css" media="screen" />
+@Styles.Render("~/Assets/RoadUIStyle")
+@Scripts.Render("~/Assets/RoadUIScript")
+</head>
+
+<body class="no-skin" >
+    <!-- #section:basics/navbar.layout -->
+    <div id="navbar" class="navbar navbar-default          ace-save-state">
+        <div class="navbar-container ace-save-state" id="navbar-container">
+            <!-- #section:basics/sidebar.mobile.toggle -->
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- /section:basics/sidebar.mobile.toggle -->
+            <div class="navbar-header pull-left">
+                <!-- #section:basics/navbar.layout.brand -->
+                <a href="#" class="navbar-brand">
+                    <small>
+                        <i class="fa fa-leaf"></i>
+                        江苏省纪委综合应用平台
+                    </small>
+                </a>
+
+                <!-- /section:basics/navbar.layout.brand -->
+                <!-- #section:basics/navbar.toggle -->
+                <!-- /section:basics/navbar.toggle -->
+            </div>
+
+            <!-- #section:basics/navbar.dropdown -->
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+                    @Html.Raw(@ViewBag.HeaderScript)
+                    <!--<li class="grey dropdown-modal">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="ace-icon fa fa-tasks"></i>
+                            系统管理
+                        </a>
+                    </li>
+
+                    <li class="purple dropdown-modal">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+                            用户字典
+                        </a>
+
+                    </li>
+
+                    <li class="green dropdown-modal">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+                            用户应用
+                        </a>
+                    </li>
+                    -->
+                    <!-- #section:basics/navbar.user_menu -->
+                    <li class="light-blue dropdown-modal">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <span >
+                                @ViewBag.FullName
+                            </span>
+
+                            <i class="ace-icon fa fa-caret-down"></i>
+                        </a>
+
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="#" onclick="changePassword();">
+                                    <i class="ace-icon fa fa-cog"></i>
+                                    修改密码
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="#" onclick="confirm();">
+                                    <i class="ace-icon fa fa-power-off"></i>
+                                    退出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- /section:basics/navbar.user_menu -->
+                </ul>
+            </div>
+
+            <!-- /section:basics/navbar.dropdown -->
+        </div><!-- /.navbar-container -->
+    </div>
+
+    <!-- /section:basics/navbar.layout -->
+    <div class="main-container ace-save-state" id="main-container">
+
+
+        <!-- #section:basics/sidebar -->
+        <div id="sidebar" class="sidebar                  responsive                    ace-save-state">
+
+
+            <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                    <button class="btn btn-success">
+                        <!--<i class="ace-icon fa fa-signal"></i>-->
+                    </button>
+
+                    <button class="btn btn-info">
+                        <!--<i class="ace-icon fa fa-pencil"></i>-->
+                    </button>
+
+                    <!-- #section:basics/sidebar.layout.shortcuts -->
+                    <button class="btn btn-warning">
+                        <!--<i class="ace-icon fa fa-users"></i>-->
+                    </button>
+
+                    <button class="btn btn-danger">
+                        <!--<i class="ace-icon fa fa-cogs"></i>-->
+                    </button>
+
+                    <!-- /section:basics/sidebar.layout.shortcuts -->
+                </div>
+
+                <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                    <span class="btn btn-success"></span>
+
+                    <span class="btn btn-info"></span>
+
+                    <span class="btn btn-warning"></span>
+
+                    <span class="btn btn-danger"></span>
+                </div>
+            </div><!-- /.sidebar-shortcuts -->
+
+            <div class="sidebar" id="sidebar">
+                <ul class="nav nav-list" id="menu">
+                    <!--<li class="">
+                        <a href="#">
+                            <i class="menu-icon fa fa-tachometer"></i>
+                            <span class="menu-text">导航菜单</span>
+                        </a>
+                    </li>-->
+                </ul>
+                <div class="sidebar-collapse" id="sidebar-collapse">
+                    <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+                </div>
+            </div>
+
+            <!-- /section:basics/sidebar.layout.minimize -->
+        </div>
+
+        <!-- /section:basics/sidebar -->
+        <div class="main-content">
+            <div class="main-content-inner">
+                <!-- #section:basics/content.breadcrumbs -->
+
+
+                <!-- /section:basics/content.breadcrumbs -->
+                <div class="page-content">
+                    <!-- #section:settings.box -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <ul class="nav nav-tabs" role="tablist" id="tabs">
+                                <li class="active"><a href="/Statistic/Count" role="tab" data-toggle="tab">首页</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="Index">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.page-content -->
+            </div>
+        </div><!-- /.main-content -->
+
+        <!--<div class="footer">
+            <div class="footer-inner">
+                <!-- #section:basics/footer 
+                <div class="footer-content">
+                    <span class="bigger-120">
+                        <span class="blue bolder"></span>
+                        Next Framework &copy; 2015-2017
+                    </span>
+
+                    &nbsp; &nbsp;
+                    <span class="action-buttons">
+
+                    </span>
+                </div>
+
+                <!-- /section:basics/footer 
+            </div>
+        </div>-->
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div><!-- /.main-container -->
+    <script src="../../Assets/jquery.js"></script>
+    <script src='../../Assets/Bootstrap/Script/bootstrap.js'></script>
+    <script src="../../Assets/Bootstrap/Script/ace.js"></script>
+    <script src="../../Assets/Bootstrap/Script/bootbox.js"></script>
+    <script src="../../Assets/Bootstrap/Script/sidebar-menu.js"></script>
+    <script src="../../Assets/Bootstrap/Script/bootstrap-tab.js"></script>
+    <script type="text/javascript">
+
+        var mainDialog = new RoadUI.Window();
+        var rootdir = '@Url.Content("~/WorkFlow")';
+    $(function () {
+
+        $.ajax({
+            type: 'GET',
+            url: '/Menu/GetMenuData?title=@Html.Raw(ViewBag.FirstMenu)&r=' + Math.random(),
+                async: false,//同步
+                dataType: 'json',
+                success: function (json) {
+                    var _menus = JSON.stringify(json);
+
+                    _menus = _menus.replace("default", "data");
+                    _menus = _menus.replace(/&quot;/g, "\"");
+                    _menus = _menus.replace(/menuname/g, "text");
+                    _menus = _menus.replace(/icon-nav/g, "menu-icon fa fa-tag");
+                    _menus = _menus.replace(/icon-blank/g, "menu-icon fa fa-desktop");
+                    _menus = _menus.replace(/menuid/g, "id");
+                    var _menus = eval('(' + _menus + ')');
+
+                    $('#menu').sidebarMenu(_menus);
+                },
+                error: function (xhr, status, error) {
+                    alert("操作失败"); //xhr.responseText
+                }
+            });
+
+        });
+
+        function showSubMenu(url, title, menuCategory, defaultIcon) {
+            $("#menu").find("li").remove();
+            $.ajax({
+                type: 'GET',
+                url: '/Menu/GetMenuData?title='+title+'&r=' + Math.random(),
+                async: false,//同步
+                dataType: 'json',
+                success: function (json) {
+                    var _menus = JSON.stringify(json);
+
+                    _menus = _menus.replace("default", "data");
+                    _menus = _menus.replace(/&quot;/g, "\"");
+                    _menus = _menus.replace(/menuname/g, "text");
+                    _menus = _menus.replace(/icon-nav/g, "menu-icon fa fa-tag");
+                    _menus = _menus.replace(/icon-blank/g, "menu-icon fa fa-desktop");
+                    _menus = _menus.replace(/menuid/g, "id");
+                    var _menus = eval('(' + _menus + ')');
+
+                    $('#menu').sidebarMenu(_menus);
+                },
+                error: function (xhr, status, error) {
+                    alert("操作失败"); //xhr.responseText
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+
+
+
+        function confirm() {
+
+            bootbox.confirm( '确认退出系统吗？', function (result) {
+                if (result) {
+                    window.location.href = "/Login/Login";
+                }
+            });
+        }
+        function ShowPasswordDialog() {
+            $("#divModPass").dialog('open').dialog('setTitle', '修改用户密码');
+        }
+
+        function changePassword() {
+            addTabs({id: 'ChangePassword' ,title: '修改密码',close: true,url: "/admin/User/ChangePassword"});
+            //addTab("修改密码", "/Admin/ChangePassword", 'icon-house');
+            var ieset = navigator.userAgent;
+            if (ieset.indexOf("MSIE 6.0") > -1) {
+                var currTab1 = $('#tabs').tabs('getSelected');
+                setTimeout(function () { refreshTab(currTab1) }, 0);
+                function refreshTab(refresh_tab) {
+                    if (refresh_tab && refresh_tab.find('iframe').length > 0) {
+                        var _refresh_ifram = refresh_tab.find('iframe')[0];
+                        var refresh_url = _refresh_ifram.src;
+                        _refresh_ifram.contentWindow.location.href = refresh_url;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+

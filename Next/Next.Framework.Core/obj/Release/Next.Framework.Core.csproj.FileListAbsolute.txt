@@ -1,0 +1,17 @@
+D:\Next\Next.Framework.Core\bin\Release\Next.Framework.Core.dll
+D:\Next\Next.Framework.Core\bin\Release\Next.Framework.Core.pdb
+D:\Next\Next.Framework.Core\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\Next\Next.Framework.Core\bin\Release\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\Next\Next.Framework.Core\bin\Release\MySql.Data.dll
+D:\Next\Next.Framework.Core\bin\Release\Microsoft.Practices.ObjectBuilder.dll
+D:\Next\Next.Framework.Core\obj\Release\Next.Framework.Core.dll
+D:\Next\Next.Framework.Core\obj\Release\Next.Framework.Core.pdb
+D:\Next\Next.Framework.Core\obj\Release\Next.Framework.Core.csprojResolveAssemblyReference.cache
+F:\NextUI\Next\Next.Framework.Core\bin\Release\Next.Framework.Core.dll
+F:\NextUI\Next\Next.Framework.Core\bin\Release\Next.Framework.Core.pdb
+F:\NextUI\Next\Next.Framework.Core\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.dll
+F:\NextUI\Next\Next.Framework.Core\bin\Release\Microsoft.Practices.EnterpriseLibrary.Data.dll
+F:\NextUI\Next\Next.Framework.Core\bin\Release\Microsoft.Practices.ObjectBuilder.dll
+F:\NextUI\Next\Next.Framework.Core\obj\Release\Next.Framework.Core.csprojResolveAssemblyReference.cache
+F:\NextUI\Next\Next.Framework.Core\obj\Release\Next.Framework.Core.dll
+F:\NextUI\Next\Next.Framework.Core\obj\Release\Next.Framework.Core.pdb

@@ -1,0 +1,135 @@
+﻿@using Jssjw.Case.Entity;
+@using Next.Commons;
+@{
+
+    Layout = null;
+    CaseIndex info = ViewBag.item;
+    string flag = ViewBag.flag;
+}
+
+<div id="Edit" class="easyui-panel"  >
+    <form id="ffAdd" method="post" novalidate="novalidate">
+        <table id="tblAdd" class="view">
+            <tr>
+                <th colspan="6">
+                    <h3 align="center">信息录入</h3>
+                    @Html.HiddenFor(i => info.ID)
+                    @Html.HiddenFor(i => info.IsDeleted)
+                    @Html.HiddenFor(i => info.UserID)
+                    @Html.HiddenFor(i => info.DeptID)
+                    <input type="hidden" id="info_AttachmentID" name="info.AttachmentID" value='@info.AttachmentID' />
+                </th>
+
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">录入部门</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.Dept, Html.TextBoxFor(i => info.Dept, new { size = 30, @class = "easyui-textbox", @data_options = "readonly:'true'" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">专案名称</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.CaseName, Html.TextBoxFor(i => info.CaseName, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">代码</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.CaseCode, Html.TextBoxFor(i => info.CaseCode, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">涉案对象</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.CaseTarget, Html.TextBoxFor(i => info.CaseTarget, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">查办部门</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.CaseCharge, Html.TextBoxFor(i => info.CaseCharge, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">承办人</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.CaseAgent, Html.TextBoxFor(i => info.CaseAgent, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">起始时间</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.CaseDuration, Html.TextBoxFor(i => info.CaseDuration, new { size = 30, @class = "easyui-datebox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">物品数量</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.CaseContentCount, Html.TextBoxFor(i => info.CaseContentCount, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="Content">附件上传：</label>
+                </th>
+                <td colspan="5">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnUpload" data-options="plain:true,iconCls:'icon-save'"
+                       onclick="showUploadWindow()">上传</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="6" style="text-align:right; padding-top:10px">
+                    @if(flag!="View"){
+                        <text>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnAddOK" iconcls="icon-ok" onclick="saveData();">确定</a>
+                    </text>
+                    }
+                    <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="closeMyWindow()">关闭</a>
+
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div id="uploadWindow" class="easyui-window" closed="true" cache="false" icon="icon-save" >
+</div>
+
+
+<script type="text/javascript">
+    function showUploadWindow() {
+        var title = "上传附件";
+        var url = '/FileUpload/Index?AttachmentID=@info.AttachmentID&Flag=@flag';
+        openSpecifiedWindow("uploadWindow", title, url, 800, 500);
+    }
+    $(function () {
+ 
+    });
+    function saveData() {
+        @if (flag == "Add")
+                {
+                    <text> saveOrUploadForm("ffAdd", '/CaseIndex/Insert', 'funAfterSubmit'); </text>
+                }
+        @if (flag == "Edit") {
+                    <text> saveOrUploadForm("ffAdd", '/CaseIndex/Update?ID=@info.ID', 'funAfterSubmit'); </text>
+                }
+    }
+</script>

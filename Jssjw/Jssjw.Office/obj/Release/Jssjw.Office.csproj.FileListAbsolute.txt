@@ -1,0 +1,10 @@
+F:\NextUI\Jssjw\Jssjw.Office\bin\Release\Jssjw.Office.dll
+F:\NextUI\Jssjw\Jssjw.Office\bin\Release\Jssjw.Office.pdb
+F:\NextUI\Jssjw\Jssjw.Office\bin\Release\Next.Framework.Core.dll
+F:\NextUI\Jssjw\Jssjw.Office\bin\Release\Microsoft.Practices.EnterpriseLibrary.Data.dll
+F:\NextUI\Jssjw\Jssjw.Office\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.dll
+F:\NextUI\Jssjw\Jssjw.Office\bin\Release\Microsoft.Practices.ObjectBuilder.dll
+F:\NextUI\Jssjw\Jssjw.Office\bin\Release\Next.Framework.Core.pdb
+F:\NextUI\Jssjw\Jssjw.Office\obj\Release\Jssjw.Office.csprojResolveAssemblyReference.cache
+F:\NextUI\Jssjw\Jssjw.Office\obj\Release\Jssjw.Office.dll
+F:\NextUI\Jssjw\Jssjw.Office\obj\Release\Jssjw.Office.pdb

@@ -1,0 +1,16 @@
+F:\NextUI\Next\Next.WorkFlow\bin\Debug\Next.WorkFlow.dll
+F:\NextUI\Next\Next.WorkFlow\bin\Debug\Next.WorkFlow.pdb
+F:\NextUI\Next\Next.WorkFlow\bin\Debug\LitJSON.dll
+F:\NextUI\Next\Next.WorkFlow\bin\Debug\MySql.Data.dll
+F:\NextUI\Next\Next.WorkFlow\bin\Debug\Next.Admin.dll
+F:\NextUI\Next\Next.WorkFlow\bin\Debug\Next.Framework.Core.dll
+F:\NextUI\Next\Next.WorkFlow\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+F:\NextUI\Next\Next.WorkFlow\bin\Debug\System.Data.SQLite.dll
+F:\NextUI\Next\Next.WorkFlow\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+F:\NextUI\Next\Next.WorkFlow\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+F:\NextUI\Next\Next.WorkFlow\bin\Debug\LitJSON.pdb
+F:\NextUI\Next\Next.WorkFlow\bin\Debug\Next.Admin.pdb
+F:\NextUI\Next\Next.WorkFlow\bin\Debug\Next.Framework.Core.pdb
+F:\NextUI\Next\Next.WorkFlow\obj\Debug\Next.WorkFlow.csprojResolveAssemblyReference.cache
+F:\NextUI\Next\Next.WorkFlow\obj\Debug\Next.WorkFlow.dll
+F:\NextUI\Next\Next.WorkFlow\obj\Debug\Next.WorkFlow.pdb

@@ -1,0 +1,11 @@
+D:\Next\Next.Admin.Core\obj\Debug\Next.Admin.Core.csprojResolveAssemblyReference.cache
+D:\Next\Next.Admin.Core\bin\Debug\Next.Admin.Core.dll
+D:\Next\Next.Admin.Core\bin\Debug\Next.Admin.Core.pdb
+D:\Next\Next.Admin.Core\bin\Debug\Next.Framework.Core.dll
+D:\Next\Next.Admin.Core\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+D:\Next\Next.Admin.Core\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\Next\Next.Admin.Core\bin\Debug\Next.Framework.Core.pdb
+D:\Next\Next.Admin.Core\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.xml
+D:\Next\Next.Admin.Core\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\Next\Next.Admin.Core\obj\Debug\Next.Admin.Core.dll
+D:\Next\Next.Admin.Core\obj\Debug\Next.Admin.Core.pdb

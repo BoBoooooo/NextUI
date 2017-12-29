@@ -1,0 +1,208 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+
+    @Styles.Render("~/Assets/InsdepStyle")
+    @Scripts.Render("~/Assets/InsdepScript")
+
+
+    <script src="/Assets/Next/Script/public.js"></script>
+    <script src="/Assets/Next/Script/datapattern.js"></script>
+
+    <script src="/Assets/JQueryTools/ckeditor/ckeditor.js"></script>
+    <script src="/Assets/JQueryTools/ckeditor/adapters/jquery.js"></script>
+
+    <script type="text/javascript">
+        var isAddOrEdit = 'add';//标识是新增还是编辑对话框弹出，用于删除附件的操作
+
+        $(function () {
+
+            var queryData = {};
+            InitGrid(queryData);       //初始化Datagrid表格数据
+
+        });
+
+
+        function funAfterSubmit() {
+            refeshGrid();
+            closeMyWindow();
+        }
+
+        function funAfterDel() {
+            refeshGrid();
+        }
+        function reload() {
+            $("#grid").datagrid("reload")
+        }
+        function refeshGrid() {
+            $('#grid').datagrid({});
+        }
+
+        //实现对DataGird控件的绑定操作
+        function InitGrid(queryData) {
+            $('#grid').datagrid({   //定位到Table标签，Table标签的ID是grid
+                url: '/Jssjw/CaseIndex/FindSummaryWithPager',   //指向后台的Action来获取当前用户的信息的Json格式的数据
+                title: '',
+                iconCls: 'icon-view',
+                height: 800,
+                width: function () { return document.body.clientWidth * 0.9 },//自动宽度
+                nowrap: true,
+                autoRowHeight: true,
+                striped: true,
+                collapsible: true,
+                pagination: true,
+                pageSize: 10,
+                pageList: [10, 100, 200],
+                rownumbers: true,
+                //sortName: 'ID',    //根据某个字段给easyUI排序
+                sortOrder: 'asc',
+                remoteSort: false,
+                idField: 'ID',
+                fitColumns: true,
+                fit: true,
+                singleSelect: true,
+                queryParams: queryData,  //异步查询的参数
+                columns: [[
+	                 { field: 'ck', checkbox: true },   //选择
+
+				{ title: '专案名称', field: 'CaseName', width: 150, sortable: true, align: 'center' },
+                { title: '录入部门', field: 'Dept', width: 150, sortable: true, align: 'center' },
+				{ title: '涉案对象', field: 'CaseTarget', width: 150, sortable: true, align: 'center' },
+				{ title: '查办部门', field: 'CaseCharge', width: 150, sortable: true, align: 'center' },
+				{ title: '承办人', field: 'CaseAgent', width: 150, sortable: true, align: 'center' },
+				{ title: '起始时间', field: 'CaseDuration', width: 150, sortable: true, align: 'center' },
+				{ title: '物品数量', field: 'CaseContentCount', width: 150, sortable: true, align: 'center' },
+                {
+                    field: 'opt', title: '物品明细', width: 100, align: 'center',
+                    formatter: function (value, rec) {
+                        var optBtn = '';
+                        optBtn += ' <a  class="button blue small" href="/Jssjw/Property/PropertyQuery?CaseName=' + rec.CaseName + '" style="color:white" title=\"查看详细\">查看详细</a> ';
+                        return optBtn;
+                    }
+                }
+                ]],
+                toolbar: "#toolbar",
+                onDblClickRow: function (rowIndex, rowData) {
+                    $('#grid').datagrid('uncheckAll');
+                    $('#grid').datagrid('checkRow', rowIndex);
+                    edit();
+                }
+            })
+        };
+        //修改或查看明细信息（绑定显示数据）
+
+        function queryGrid() {
+            var gettxt = "";
+            var count = $("#seSql option").length;
+
+            for (var i = 0; i < count; i++) {
+                gettxt = gettxt + $("#seSql ").get(0).options[i].value;
+            }
+
+            if (gettxt.indexOf("and") == 0) {
+                gettxt = gettxt.substring(gettxt.indexOf("and") + 3);
+            }
+            if (gettxt.indexOf("or") == 0) {
+                gettxt = gettxt.substring(gettxt.indexOf("or") + 2);
+            }
+            queryStr = gettxt;
+            $('#grid').datagrid({
+                queryParams: { 'CustomedCondition': gettxt },
+                pageNumber: 1
+            });
+        }
+        var queryStr = '';
+
+        //}
+
+    </script>
+
+    <style>
+        table.view {
+            border: 1px solid #A8CFEB;
+            border-collapse: collapse;
+            margin-bottom: 5px;
+            height: 98%;
+            width: 98%;
+        }
+
+        .view th {
+            padding-left: 10px;
+            padding-right: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            width: 50px;
+            border: 1px solid silver;
+            background-color: #F1F6FF;
+        }
+
+        .view td {
+            padding-left: 10px;
+            padding-right: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border: 1px solid silver;
+            background-color: #FAFCFF;
+        }
+
+        .toolbar {
+            position: absolute;
+            top: 30px;
+            right: 10px;
+            width: 180px;
+            height: 45px;
+            border: 1px solid #A8CFEB;
+            background-color: #F0F6FF;
+            _margin: 0 16px 0 0;
+        }
+
+            .toolbar a {
+                display: block;
+                text-align: center;
+                width: 50px;
+                float: left;
+                height: 40px;
+                text-decoration: none;
+                margin: 0 5px;
+            }
+
+                .toolbar a img {
+                    border: none;
+                    width: 16px;
+                    height: 16px;
+                    margin: 5px 10px 4px 10px;
+                }
+    </style>
+</head>
+<body class="easyui-layout" style="width: 100%;height: 100%;">
+    <div id="loading" style="display: none;"><img alt="数据正在加载中..." src="/Assets/images/loading02.gif" /></div>
+    <div id="tb" region="north" split="true" style="height:50px;padding:10px;">
+
+        <form id="qry_frm" onsubmit="return false">
+            <table class="detail_table" border="0" cellspacing="1" cellpadding="0" align="center" width="100%">
+                <tr class="detail_tr">
+                    <td class="detail_td1">案件总数：</td>
+                    <td class="detail_td2" colspan="2">@ViewBag.CaseCount</td>
+                    <td class="detail_td1">物品总数：</td>
+                    <td class="detail_td2" colspan="2">@ViewBag.GoodsCount</td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div region="center" id="table_div" style="overflow:hidden;">
+        <table id="grid" style="width: 940px" title="用户操作" iconcls="icon-view"></table>
+    </div>
+    <div id="mywindow" class="easyui-window" closed="true" cache="false" icon="icon-save" style="width:500px;height:200px;padding:5px;background: #fafafa;">
+    </div>
+
+
+</body>
+</html>
+
+
