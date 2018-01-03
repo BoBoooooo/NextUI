@@ -125,7 +125,7 @@
         new RoadUI.Tab({ id: "tabdiv", replace: true, contextmenu: false });
         var iframes = top.frames;
         for (var i = 0; i < iframes.length; i++) {
-            alert(iframes[i].name);
+            //alert(iframes[i].name);
             if (iframes[i].name == openerid + "_iframe") {
                 frame = iframes[i]; break;
             }
@@ -138,7 +138,7 @@
 
         if (!isAdd) {
             var json = frame.wf_json;
-            alert(json);
+            //alert(json);
             if (json) {
                 $("#base_Name").val(json.name);
                 $("#base_Type").val(json.type);

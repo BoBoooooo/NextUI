@@ -935,36 +935,36 @@ namespace Next.WorkFlow.Utility
             return guid.ToString("N").TrimStart('0').ToInt();
         }
 
-        /*
+        
         public static string ToDateString(this string date)
         {
-            return date.ToDateTime().ToString(RoadFlow.Utility.Config.DateFormat);
+            return date.ToDateTime().ToString(Next.WorkFlow.Utility.Config.DateFormat);
         }
 
         public static string ToDateTimeString(this string dateTime)
         {
-            return dateTime.ToDateTime().ToString(RoadFlow.Utility.Config.DateTimeFormat);
+            return dateTime.ToDateTime().ToString(Next.WorkFlow.Utility.Config.DateTimeFormat);
         }
 
         public static string ToDateTimeStringS(this string dateTime)
         {
-            return dateTime.ToDateTime().ToString(RoadFlow.Utility.Config.DateTimeFormatS);
+            return dateTime.ToDateTime().ToString(Next.WorkFlow.Utility.Config.DateTimeFormatS);
         }
 
         public static string ToDateString(this DateTime date)
         {
-            return date.ToString(RoadFlow.Utility.Config.DateFormat);
+            return date.ToString(Next.WorkFlow.Utility.Config.DateFormat);
         }
 
         public static string ToDateTimeString(this DateTime dateTime)
         {
-            return dateTime.ToString(RoadFlow.Utility.Config.DateTimeFormat);
+            return dateTime.ToString(Next.WorkFlow.Utility.Config.DateTimeFormat);
         }
 
         public static string ToDateTimeStringS(this DateTime dateTime)
         {
-            return dateTime.ToString(RoadFlow.Utility.Config.DateTimeFormatS);
-        }*/
+            return dateTime.ToString(Next.WorkFlow.Utility.Config.DateTimeFormatS);
+        }
     }
 }
 

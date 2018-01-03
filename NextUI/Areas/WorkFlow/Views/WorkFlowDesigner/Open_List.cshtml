@@ -1,11 +1,19 @@
-﻿@{
+﻿@using Next.Admin.BLL;
+@using Next.WorkFlow.BLL;
+@using Next.WorkFlow.Entity;
+@using Next.WorkFlow.Utility;
+@using System.Linq;
+@{
     ViewBag.Title = "Open_List";
-    RoadFlow.Platform.Users busers = new RoadFlow.Platform.Users();
-    RoadFlow.Platform.Organize borg = new RoadFlow.Platform.Organize();
-    RoadFlow.Platform.WorkFlow bwf = new RoadFlow.Platform.WorkFlow();
+    UserBLL busers = new UserBLL();
+    DeptBLL borg = new DeptBLL();
+    Next.WorkFlow.BLL.WorkFlowInfoBLL bwf = new Next.WorkFlow.BLL.WorkFlowInfoBLL();
     string type = Request.QueryString["typeid"];
 }
-@model IEnumerable<RoadFlow.Data.Model.WorkFlow>
+@model IEnumerable<Next.WorkFlow.Entity.WorkFlowInfo>
+
+@Styles.Render("~/Assets/RoadUIStyle")
+@Scripts.Render("~/Assets/RoadUIScript")
 <form action="" method="post">
 @Html.AntiForgeryToken()
 <table cellpadding="0" cellspacing="1" border="0" width="99%" align="center">
@@ -30,22 +38,22 @@
     <tbody>
     @foreach (var flow in Model.OrderBy(p => p.Name))
     {
-        if (!borg.GetAllUsers(flow.Manager).Exists(p => p.ID == RoadFlow.Platform.Users.CurrentUserID))
+        /*if (!borg.GetAllUsers(flow.Manager).Exists(p => p.ID == (string)HttpContext.Current.Session["UserID"]))
         {
             continue;
-        }
-        if (type.IsGuid() && !bwf.GetAllChildsIDString(type.ToGuid()).Contains(flow.Type.ToString(),  StringComparison.CurrentCultureIgnoreCase))
+        }*/
+        if (string.IsNullOrEmpty(type) && !bwf.GetAllChildsIDString(type).Contains(flow.Type.ToString(),  StringComparison.CurrentCultureIgnoreCase))
         {
             continue;
         }
         <tr>
             <td>@flow.Name</td>
             <td>@flow.CreateDate.ToDateTimeStringS()</td>
-            <td>@busers.GetName(flow.CreateUserID)</td>
+            <td>@busers.FindByID(flow.CreateUserID).FullName</td>
             <td>@bwf.GetStatusTitle(flow.Status)</td>
             <td>
                 <a href="javascript:void(0);" onclick="openflow('@flow.ID');return false;">
-                <img src="@Url.Content("~/Images/ico/folder_classic_opened.png")" alt="" style="vertical-align:middle; border:0;" />
+                <img src="@Url.Content("~/assets/workflow/Images/ico/folder_classic_opened.png")" alt="" style="vertical-align:middle; border:0;" />
                 <span style="vertical-align:middle;">打开</span>
                 </a>
             </td>

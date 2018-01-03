@@ -16,8 +16,6 @@ using Next.Commons;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-using Next.Admin.Entity;
-using Next.Admin.BLL;
 using System.Data.Common;
 namespace Next.Areas.Admin.Controllers
 {

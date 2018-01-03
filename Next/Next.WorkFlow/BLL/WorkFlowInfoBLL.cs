@@ -22,13 +22,38 @@ namespace Next.WorkFlow.BLL
 			baseDal.OnOperationLog += new OperationLogEventHandler(Next.Admin.BLL.OperationLogBLL.OnOperationLog);//如果需要记录操作日志，则实现这个事件
 			this.workFlowInfoDAL = (IWorkFlowInfoDAL)base.baseDal;
 		}
+
+
+        /// <summary>
+        /// 得到所有流程选择项
+        /// </summary>
+        /// <returns></returns>
+        public string GetOptions(string value = "")
+        {
+            var dicts = GetAllIDAndName();
+            StringBuilder options = new StringBuilder();
+            foreach (var dict in dicts.OrderBy(p => p.Value))
+            {
+                options.AppendFormat("<option value=\"{0}\" {1}>{2}</option>", dict.Key,
+                    ("," + value + ",").Contains("," + dict.Key.ToString() + ",") ? "selected=\"selected\"" : "", dict.Value);
+            }
+            return options.ToString();
+        }
+
+        /// <summary>
+        /// 查询所有ID和名称
+        /// </summary>
+        public Dictionary<string, string> GetAllIDAndName()
+        {
+            return workFlowInfoDAL.GetAllIDAndName();
+        }
         /// <summary>
         /// 得到类型选择项
         /// </summary>
         /// <returns></returns>
         public string GetTypeOptions(string value = "")
         {
-            return new DictDataBLL().GetOptionsByName("流程分类", value);
+            return new DictTypeBLL().GetOptionsByName("流程分类", value);
         }
 
         /// <summary>
@@ -71,7 +96,7 @@ namespace Next.WorkFlow.BLL
                 wf.InstanceManager = jsonData["instanceManager"].ToString();
                 wf.Manager = jsonData["manager"].ToString();
                 wf.Name = name.Trim();
-                wf.Type = string.IsNullOrEmpty(type) ? type : new DictDataBLL().GetIDByName("流程分类");
+                wf.Type = string.IsNullOrEmpty(type) ? type : new DictTypeBLL().GetIDByName("流程分类");
                 try
                 {
                     if (isAdd)
@@ -146,7 +171,7 @@ namespace Next.WorkFlow.BLL
                         app.OpenMode = 0;
                         app.Params = "flowid=" + wfInstalled.ID.ToString();
                         app.Title = wfInstalled.Name;
-                        app.Type = wfInstalled.Type.IsNullOrEmpty() ? wfInstalled.Type : new DictDataBLL().GetIDByName("流程分类");
+                        app.Type = wfInstalled.Type.IsNullOrEmpty() ? wfInstalled.Type : new DictTypeBLL().GetIDByName("流程分类");
                         if (isAdd)
                         {
                             bappLibrary.Insert(app);
@@ -200,7 +225,7 @@ namespace Next.WorkFlow.BLL
             }
 
             string type = json["type"].ToString();
-            wfInstalled.Type = string.IsNullOrEmpty(type) ? new DictDataBLL().GetIDByName("流程分类").ToString() : type.Trim();
+            wfInstalled.Type = string.IsNullOrEmpty(type) ? new DictTypeBLL().GetIDByName("流程分类").ToString() : type.Trim();
 
 
             string manager = json["manager"].ToString();
@@ -502,6 +527,45 @@ namespace Next.WorkFlow.BLL
             
 
             return wfInstalled;
+        }
+
+        /// <summary>
+        /// 得到下级ID字符串
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public string GetAllChildsIDString(string id, bool isSelf = true)
+        {
+            return new DictTypeBLL().GetAllChildsIDString(id, true);
+        }
+
+        /// <summary>
+        /// 得到流程状态显示
+        /// </summary>
+        /// <param name="status"></param>
+        /// <returns></returns>
+        public string GetStatusTitle(int status)
+        {
+            string title = string.Empty;
+            switch (status)
+            {
+                case 1:
+                    title = "设计中";
+                    break;
+                case 2:
+                    title = "已安装";
+                    break;
+                case 3:
+                    title = "已卸载";
+                    break;
+                case 4:
+                    title = "已删除";
+                    break;
+                case 5:
+                    title = "等待他人处理";
+                    break;
+            }
+            return title;
         }
 	}
 }

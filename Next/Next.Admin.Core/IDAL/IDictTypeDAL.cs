@@ -10,5 +10,10 @@ namespace Next.Admin.IDAL
 {
     public interface IDictTypeDAL : IBaseDAL<DictType>
     {
+        List<DictType> GetChilds(string id);
+        DictType GetRoot();
+        bool HasChilds(string id);
+
+        
     }
 }

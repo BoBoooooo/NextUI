@@ -10,5 +10,6 @@ namespace Next.WorkFlow.IDAL
 {
     public interface IWorkFlowInfoDAL : IBaseDAL<WorkFlowInfo>
     {
+        Dictionary<string, string> GetAllIDAndName();
     }
 }

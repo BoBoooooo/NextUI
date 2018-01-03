@@ -10,10 +10,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web;
+using Next.Controllers;
 
 namespace NextUI.Areas.WorkFlow.Controllers
 {
-    public class WorkFlowDesignerController : Controller
+    public class WorkFlowDesignerController : BaseController
     {
         //
         // GET: /WorkFlow/WorkFlowDesigner/
@@ -60,7 +61,7 @@ namespace NextUI.Areas.WorkFlow.Controllers
         {
             string flowid = Request.QueryString["flowid"];
             string type = Request.QueryString["type"];
-            if (!string.IsNullOrEmpty(flowid))
+            if (string.IsNullOrEmpty(flowid))
             {
                 return "{}";
             }

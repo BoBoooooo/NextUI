@@ -1,9 +1,11 @@
-﻿@{
+﻿@using Next.Admin.BLL;
+@using Next.WorkFlow.BLL;
+@{
     ViewBag.Title = "Set_Step";
-    RoadFlow.Platform.WorkFlow bworkFlow = new RoadFlow.Platform.WorkFlow();
-    RoadFlow.Platform.DBConnection bdbConn = new RoadFlow.Platform.DBConnection();
-    RoadFlow.Platform.WorkFlowButtons bworkFlowButtons = new RoadFlow.Platform.WorkFlowButtons();
-    RoadFlow.Platform.AppLibrary bappLibrary = new RoadFlow.Platform.AppLibrary();
+    WorkFlowInfoBLL bworkFlow = new WorkFlowInfoBLL();
+    DBConnectionBLL bdbConn = new DBConnectionBLL();
+    WorkFlowButtonsBLL bworkFlowButtons = new WorkFlowButtonsBLL();
+    AppLibraryBLL bappLibrary = new AppLibraryBLL();
 
     string appLibraryTypes = bappLibrary.GetTypeOptions();
     string stepID = Request.QueryString["id"];
@@ -13,6 +15,8 @@
     string stepHeight = Request.QueryString["height"];
     string flowOptions = bworkFlow.GetOptions("");
 }
+@Styles.Render("~/Assets/RoadUIStyle")
+@Scripts.Render("~/Assets/RoadUIScript")
 <form method="post">
     <div id="tabdiv">
     <div id="div_base" title="&nbsp;&nbsp;基本&nbsp;&nbsp;">
@@ -240,7 +244,7 @@
     <div id="button_List" style="width:220px; height:270px; overflow:auto; border:1px solid #e8e8e8; padding:3px; float:left;">
     <div style="width:94%;">  
     <ul class="listulli" note="按钮之间的分隔线" title="按钮之间的分隔线" val="other_splitline" onmouseover="$(this).removeClass().addClass('listulli1');" onmouseout="if($currentButton==null || $currentButton.get(0)!==this){$(this).removeClass().addClass('listulli');}" onclick="button_click(this);" ondblclick="button_dblclick(this)" >- -分隔线- -</ul>
-    @foreach(var button in bworkFlowButtons.GetAll(true))
+    @foreach(var button in bworkFlowButtons.GetAll())
     {
         <ul class="listulli" note="@button.Note" title="@button.Note"  val="@button.ID" onmouseover="$(this).removeClass().addClass('listulli1');" onmouseout="if($currentButton==null || $currentButton.get(0)!==this){$(this).removeClass().addClass('listulli');}" onclick="button_click(this);" ondblclick="button_dblclick(this)" ><label style="background:url(@Url.Content("~"+button.Ico)) no-repeat left;padding-left:20px;">@button.Title</label></ul>
     }

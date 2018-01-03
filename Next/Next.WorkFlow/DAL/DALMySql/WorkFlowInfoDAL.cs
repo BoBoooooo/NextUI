@@ -26,5 +26,20 @@ namespace Next.WorkFlow.DALMySql
 			this.sortField = "ID";
 			this.IsDescending = false;
 		}
+
+        /// <summary>
+        /// 查询所有ID和名称
+        /// </summary>
+        public Dictionary<string, string> GetAllIDAndName()
+        {
+            string sql = "SELECT * FROM WorkFlowInfo WHERE Status<4 ORDER BY Name";
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            var resultList = GetList(sql);
+            foreach (var item in resultList)
+            {
+                dict.Add(item.ID, item.Name);
+            }
+            return dict;
+        }
 	}
 }

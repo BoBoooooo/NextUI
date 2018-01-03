@@ -10,6 +10,6 @@ namespace Next.Admin.IDAL
 {
     public interface IDictDataDAL : IBaseDAL<DictData>
     {
-
+       
     }
 }

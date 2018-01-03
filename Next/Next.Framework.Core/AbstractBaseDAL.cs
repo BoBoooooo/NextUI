@@ -402,7 +402,8 @@ namespace Next.Framework.Core
                 {
                     if (pi.Name != "CurrentLoginUserId")
                     {
-                        if (dr[pi.Name].ToString() != "")
+                        string columnName = pi.Name;
+                        if (dr[columnName].ToString() != "")
                         {
                             string type = pi.PropertyType.Name.ToString();
                             if (type == "Boolean")

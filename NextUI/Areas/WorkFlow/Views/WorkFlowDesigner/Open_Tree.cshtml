@@ -1,7 +1,12 @@
-﻿@{
+﻿@using Next.Admin.BLL;
+
+
+@{
     ViewBag.Title = "Open_Tree";
-    string rootid = new RoadFlow.Platform.Dictionary().GetIDByCode("FlowTypes").ToString();
+    string rootid = new DictTypeBLL().GetIDByName("流程分类").ToString();
 }
+@Styles.Render("~/Assets/RoadUIStyle")
+@Scripts.Render("~/Assets/RoadUIScript")
 <form id="form1">
     <div id="tree"></div>
 </form>
