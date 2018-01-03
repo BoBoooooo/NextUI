@@ -18,5 +18,14 @@ namespace Next.WorkFlow.BLL
 			baseDal.OnOperationLog += new OperationLogEventHandler(Next.Admin.BLL.OperationLogBLL.OnOperationLog);//如果需要记录操作日志，则实现这个事件
 			this.workFlowButtonsDAL = (IWorkFlowButtonsDAL)base.baseDal;
 		}
+
+        /// <summary>
+        /// 查询最大排序
+        /// </summary>
+        public int GetMaxSort()
+        {
+            return workFlowButtonsDAL.GetMaxSort();
+        }
+    
 	}
 }

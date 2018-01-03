@@ -129,6 +129,13 @@ namespace Next.Framework.Core
             return baseDal.Update(obj, primaryKeyValue, trans);
         }
 
+        public virtual bool Update(T obj, DbTransaction trans = null)
+        {
+            CheckDAL();
+            string ID = baseDal.GetPrimaryKeyValue(obj);
+            return baseDal.Update(obj, ID, trans);
+        }
+
         public virtual DbTransaction CreateTransaction()
         {
             CheckDAL();

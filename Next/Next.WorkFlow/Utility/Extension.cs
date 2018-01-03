@@ -12,6 +12,19 @@ namespace Next.WorkFlow.Utility
 {
     public static class MyExtensions
     {
+
+        public static bool IsGuid(this string str)
+        {
+            Guid test;
+            return Guid.TryParse(str, out test);
+        }
+        public static bool IsGuid(this string str, out string test)
+        {
+            Guid temp;
+            bool flag=Guid.TryParse(str, out temp);
+            test = temp.ToString();
+            return flag;
+        }
         public static bool IsDecimal(this string str)
         {
             decimal test;

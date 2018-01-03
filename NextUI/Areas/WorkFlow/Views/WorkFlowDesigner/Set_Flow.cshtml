@@ -7,7 +7,7 @@
     string link_DBConnOptions = ViewBag.bdbConn.GetAllOptions();
     bool isAdd = "1" == Request.QueryString["isadd"];
 
-    string flowID = string.IsNullOrEmpty(Request.QueryString["flowid"]) && !isAdd ? Request.QueryString["flowid"] : Guid.NewGuid().ToString();
+    string flowID = !string.IsNullOrEmpty(Request.QueryString["flowid"]) && !isAdd ? Request.QueryString["flowid"] : Guid.NewGuid().ToString();
     
 }
 

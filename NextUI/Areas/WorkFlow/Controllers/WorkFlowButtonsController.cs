@@ -42,7 +42,7 @@ namespace NextUI.Areas.WorkFlow.Controllers
                         {
                             continue;
                         }
-                        bid=id;
+                        bid = id;
                         var but = bworkFlowButtons.FindByID(bid);
                         if (but != null)
                         {
@@ -92,8 +92,9 @@ namespace NextUI.Areas.WorkFlow.Controllers
             string note = string.Empty;
 
             string buttionID;
-            if (id.IsNullOrEmpty(out buttionID))
+            if (!id.IsNullOrEmpty())
             {
+                buttionID = id;
                 workFlowButton = bworkFlowButtons.FindByID(buttionID);
             }
             string oldXML = workFlowButton.Serialize();
@@ -104,7 +105,7 @@ namespace NextUI.Areas.WorkFlow.Controllers
                 script = Request.Form["Script"];
                 note = Request.Form["Note"];
 
-                bool isAdd = !id.IsGuid();
+                bool isAdd = id.IsNullOrEmpty();
                 if (workFlowButton == null)
                 {
                     workFlowButton = new WorkFlowButtons();
@@ -119,16 +120,18 @@ namespace NextUI.Areas.WorkFlow.Controllers
 
                 if (isAdd)
                 {
-                    bworkFlowButtons.Add(workFlowButton);
-                    RoadFlow.Platform.Log.Add("添加了流程按钮", workFlowButton.Serialize(), RoadFlow.Platform.Log.Types.流程相关);
+                    bworkFlowButtons.Insert(workFlowButton);
+                    //RoadFlow.Platform.Log.Add("添加了流程按钮", workFlowButton.Serialize(), RoadFlow.Platform.Log.Types.流程相关);
                 }
                 else
                 {
-                    bworkFlowButtons.Update(workFlowButton);
-                    RoadFlow.Platform.Log.Add("修改了流程按钮", "", RoadFlow.Platform.Log.Types.流程相关, oldXML, workFlowButton.Serialize());
+                    bworkFlowButtons.Update(workFlowButton, workFlowButton.ID);
+                    //RoadFlow.Platform.Log.Add("修改了流程按钮", "", RoadFlow.Platform.Log.Types.流程相关, oldXML, workFlowButton.Serialize());
                 }
-                bworkFlowButtons.ClearCache();
+                //bworkFlowButtons.ClearCache();
                 ViewBag.Script = "new RoadUI.Window().reloadOpener();alert('保存成功!');new RoadUI.Window().close();";
             }
-            return View(workFlowButton == null ? new RoadFlow.Data.Model.WorkFlowButtons() : workFlowButton);
+            return View(workFlowButton == null ? new WorkFlowButtons() : workFlowButton);
         }
+    }
+}

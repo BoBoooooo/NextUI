@@ -322,7 +322,7 @@ namespace Next.WorkFlow.BLL
                         foreach (LitJson.JsonData button in buttons)
                         {
                             string butID = button["id"].ToString();
-                            if (!butID.IsNullOrEmpty())
+                            if (butID.IsNullOrEmpty())
                             {
                                 continue;
                             }
@@ -567,5 +567,82 @@ namespace Next.WorkFlow.BLL
             }
             return title;
         }
+
+        /// <summary>
+        /// 得到从表数据
+        /// </summary>
+        /// <param name="connID">连接ID</param>
+        /// <param name="secondTable">从表名称</param>
+        /// <param name="relationField">关联字段</param>
+        /// <param name="fieldValue">关联字段值</param>
+        /// <param name="sortField">排序字段</param>
+        /// <returns></returns>
+        public LitJson.JsonData GetSubTableData(string connID, string secondTable, string relationField, string fieldValue, string sortField = "")
+        {
+            LitJson.JsonData jsonData = new LitJson.JsonData();
+            if (fieldValue.IsNullOrEmpty())
+            {
+                return jsonData;
+            }
+            RoadFlow.Platform.DBConnection bdbconn = new RoadFlow.Platform.DBConnection();
+            RoadFlow.Data.Model.DBConnection dbconn = bdbconn.Get(connID.ToGuid());
+            if (dbconn == null)
+            {
+                return "";
+            }
+
+            using (System.Data.IDbConnection conn = bdbconn.GetConnection(dbconn))
+            {
+                if (conn == null)
+                {
+                    return "";
+                }
+                try
+                {
+                    conn.Open();
+                }
+                catch (Exception ex)
+                {
+                    System.Web.HttpContext.Current.Response.Write("连接数据库出错：" + ex.Message);
+                    RoadFlow.Platform.Log.Add(ex);
+                }
+                string sql = string.Empty;
+                List<System.Data.IDataParameter> parList = new List<System.Data.IDataParameter>();
+                switch (dbconn.Type)
+                {
+                    case "SqlServer":
+                        sql = string.Format("SELECT * FROM {0} WHERE {1}=@fieldvalue {2}", secondTable, relationField,
+                                 (sortField.IsNullOrEmpty() ? "" : string.Concat("ORDER BY ", sortField)));
+                        parList.Add(new System.Data.SqlClient.SqlParameter("@fieldvalue", fieldValue));
+                        break;
+                    case "Oracle":
+                        sql = string.Format("SELECT * FROM {0} WHERE {1}=:fieldvalue {2}", secondTable, relationField,
+                                (sortField.IsNullOrEmpty() ? "" : string.Concat("ORDER BY ", sortField)));
+                        parList.Add(new OracleParameter(":fieldvalue", fieldValue));
+                        break;
+                }
+
+                System.Data.IDbDataAdapter dataAdapter = bdbconn.GetDataAdapter(conn, dbconn.Type, sql, parList.ToArray());
+                System.Data.DataSet ds = new System.Data.DataSet();
+                dataAdapter.Fill(ds);
+                if (dataAdapter.SelectCommand != null)
+                {
+                    dataAdapter.SelectCommand.Dispose();
+                }
+                System.Data.DataTable dt = ds.Tables[0];
+                //jsonData.SetJsonType(LitJson.JsonType.Array);
+                foreach (System.Data.DataRow dr in dt.Rows)
+                {
+                    LitJson.JsonData data = new LitJson.JsonData();
+                    for (int i = 0; i < dt.Columns.Count; i++)
+                    {
+                        data[secondTable + "_" + dt.Columns[i].ColumnName] = dr[dt.Columns[i].ColumnName].ToString();
+                    }
+                    jsonData.Add(data);
+                }
+            }
+            return jsonData;
+        }
+
 	}
 }

@@ -49,6 +49,8 @@ namespace Next.Framework.Core
         List<T> GetList(string sql, IDbDataParameter[] paramList = null, DbTransaction trans = null);
 
         DbTransaction CreateTransaction();
+
+        string GetPrimaryKeyValue(T obj, DbTransaction trans = null);
      
     }
 }

@@ -96,6 +96,7 @@
     <Compile Include="IDAL\IWorkGroupDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Config.cs" />
+    <Compile Include="Utility\DateTimeNew.cs" />
     <Compile Include="Utility\Extension.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -10,5 +10,6 @@ namespace Next.WorkFlow.IDAL
 {
     public interface IWorkFlowButtonsDAL : IBaseDAL<WorkFlowButtons>
     {
+        int GetMaxSort();
     }
 }

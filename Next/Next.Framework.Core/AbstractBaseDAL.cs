@@ -92,6 +92,8 @@ namespace Next.Framework.Core
             return list;
         }
 
+
+
         public virtual int SqlExecute(string sql, DbTransaction trans = null)
         {
             Database db = CreateDatabase();
@@ -566,7 +568,8 @@ namespace Next.Framework.Core
             PropertyInfo[] pis = obj.GetType().GetProperties();
             foreach (PropertyInfo pi in pis)
             {
-                if (pi.Name.ToString() == "ID"&&pi.PropertyType.FullName=="System.String")
+                var temp = pi.GetValue(obj);
+                if (pi.Name.ToString() == "ID"&&pi.PropertyType.FullName=="System.String"&&pi.GetValue(obj)==null)
                 {
                     pi.SetValue(obj, Guid.NewGuid().ToString());
                 }
@@ -575,6 +578,21 @@ namespace Next.Framework.Core
             OperationLogOfInsert(obj, trans);
             Hashtable hash = GetHashByEntity(obj);
             return Insert(hash, trans);
+        }
+
+        public virtual string GetPrimaryKeyValue(T obj, DbTransaction trans = null)
+        {
+            string ID = null; ;
+            PropertyInfo[] pis = obj.GetType().GetProperties();
+            foreach (PropertyInfo pi in pis)
+            {
+                var temp = pi.GetValue(obj);
+                if (pi.Name.ToString() == "ID")
+                {
+                    ID=(string)(pi.GetValue(obj));
+                }
+            }
+            return ID;
         }
         public virtual bool Insert(Hashtable recordField, DbTransaction trans)
         {

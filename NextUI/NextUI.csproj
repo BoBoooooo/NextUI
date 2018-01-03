@@ -4843,6 +4843,14 @@
     <Content Include="Assets\Next\FileUpload\Script\exporting\jspdf.js" />
     <Content Include="Assets\Next\FileUpload\Script\exporting\jspdf.plugin.addimage.js" />
     <Content Include="Assets\Next\FileUpload\Script\exporting\rgbcolor.js" />
+    <Content Include="Areas\WorkFlow\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowButtons\Index.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowButtons\Edit.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\SelectIco\File.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\SelectIco\Folder.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\SelectIco\Index.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowFormDesigner\Index.cshtml" />
     <None Include="Assets\Next\FileUpload\Script\jquery-1.9.1-vsdoc.js" />
     <Content Include="Assets\Next\FileUpload\Script\jquery-1.9.1.js" />
     <Content Include="Assets\Next\FileUpload\Script\jquery-1.9.1.min.js" />
@@ -6692,9 +6700,11 @@
     <Compile Include="Areas\WorkFlow\Controllers\DBConnectionController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\DictController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\MembersController.cs" />
+    <Compile Include="Areas\WorkFlow\Controllers\SelectIcoController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\SelectMemberController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\WorkFlowButtonsController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\WorkFlowDesignerController.cs" />
+    <Compile Include="Areas\WorkFlow\Controllers\WorkFlowFormDesignerController.cs" />
     <Compile Include="Areas\WorkFlow\WorkFlowAreaRegistration.cs" />
     <Compile Include="Assets\WorkFlow\Scripts\FormDesinger\ueditor\net\App_Code\Config.cs" />
     <Compile Include="Assets\WorkFlow\Scripts\FormDesinger\ueditor\net\App_Code\ConfigHandler.cs" />
@@ -7134,8 +7144,6 @@
     <Folder Include="Areas\WorkFlow\Models\" />
     <Folder Include="Areas\WorkFlow\Views\Dict\" />
     <Folder Include="Areas\WorkFlow\Views\Members\" />
-    <Folder Include="Areas\WorkFlow\Views\Shared\" />
-    <Folder Include="Areas\WorkFlow\Views\WorkFlowButtons\" />
     <Folder Include="Assets\Insdep\animation\" />
     <Folder Include="Assets\Insdep\expand\columns-ext\__MACOSX\" />
     <Folder Include="Assets\Insdep\expand\datagrid-cellediting\" />
