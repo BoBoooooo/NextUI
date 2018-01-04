@@ -123,7 +123,8 @@ namespace NextUI.Areas.WorkFlow.Controllers
                 return "SQL语句测试错误";
             }
         }
-
+        [HttpPost]
+        [ValidateInput(false)]
         public string Save()
         {
             string html = Request["html"];
@@ -197,7 +198,8 @@ namespace NextUI.Areas.WorkFlow.Controllers
             return data.ToJson();
         }
 
-
+        [HttpPost]
+        [ValidateInput(false)]
         public string Publish()
         {
             string html = Request["html"];

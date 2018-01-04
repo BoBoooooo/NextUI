@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" %>
 <%
     string query = "appid=" + Request.QueryString["appid"] + "&tabid=" + Request.QueryString["appid"];
-    string rootid = new RoadFlow.Platform.Dictionary().GetIDByCode("FormTypes").ToString();
+    string rootid = new Next.Admin.BLL.DictTypeBLL().GetIDByName("表单分类").ToString();
     Next.WorkFlow.Utility.Tools.CheckLogin();
 %>
 <!DOCTYPE html>

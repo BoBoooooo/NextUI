@@ -13,13 +13,13 @@ namespace Next.WorkFlow.Entity
     public struct WorkFlowCustomEventParams
     {
 
-        public Guid FlowID { get; set; }
+        public string FlowID { get; set; }
 
-        public Guid StepID { get; set; }
+        public string StepID { get; set; }
 
-        public Guid GroupID { get; set; }
+        public string GroupID { get; set; }
 
-        public Guid TaskID { get; set; }
+        public string TaskID { get; set; }
 
         public string InstanceID { get; set; }
     }

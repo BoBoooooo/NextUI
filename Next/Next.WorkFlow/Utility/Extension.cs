@@ -321,16 +321,16 @@ namespace Next.WorkFlow.Utility
             }
             return null;
         }
-        public static Guid ToGuid(this string str)
+        public static string ToGuid(this string str)
         {
             Guid test;
             if (Guid.TryParse(str, out test))
             {
-                return test;
+                return test.ToString();
             }
             else
             {
-                return Guid.Empty;
+                return Guid.Empty.ToString();
             }
         }
 
@@ -934,7 +934,7 @@ namespace Next.WorkFlow.Utility
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        public static Guid ToGuid(this int i)
+        public static string ToGuid(this int i)
         {
             return i.ToString("00000000-0000-0000-0000-000000000000").ToGuid();
         }

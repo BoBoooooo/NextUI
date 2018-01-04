@@ -46,7 +46,7 @@ namespace Next.WorkFlow.Utility
     <script type=""text/javascript"" src=""{0}Scripts/roadui.accordion.js""></script>
     <script type=""text/javascript"" src=""{0}Scripts/roadui.grid.js""></script>
     <script type=""text/javascript"" src=""{0}Scripts/roadui.init.js""></script>"
-    , "~/Assets/WorkFlow/", "blue");
+    , "/Assets/WorkFlow/", "blue");
             }
         }
         public static bool CheckLogin(out string msg)

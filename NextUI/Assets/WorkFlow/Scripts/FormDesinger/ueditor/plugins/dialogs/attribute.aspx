@@ -11,7 +11,7 @@
 <body>
 <%
     Next.WorkFlow.Utility.Tools.CheckLogin();
-    RoadFlow.Platform.DBConnection bdbConn = new Next.WorkFlow.BLL.DBConnectionBLL();
+    Next.WorkFlow.BLL.DBConnectionBLL bdbConn = new Next.WorkFlow.BLL.DBConnectionBLL();
     Next.WorkFlow.BLL.WorkFlowFormBLL bworkflowform = new Next.WorkFlow.BLL.WorkFlowFormBLL();
     string link_DBConnOptions = bdbConn.GetAllOptions();
     string typeOptions = bworkflowform.GetTypeOptions("");

@@ -30,7 +30,7 @@ namespace Next.WorkFlow.Entity
 		[DisplayName("Attribute")]
 		public string  Attribute { get; set; }
 		[DisplayName("Status")]
-		public int?  Status { get; set; }
+		public int  Status { get; set; }
 
 	}
 }
