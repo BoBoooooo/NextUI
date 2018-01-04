@@ -1121,7 +1121,7 @@
             html1 += '</thead>';
             html1 += '<tbody>';
             html1 += '@{';
-            html1 += 'System.Data.DataTable Dt = new RoadFlow.Platform.DBConnection().GetDataTable(DBConnID, "' + subtableJSON.secondtable + '","' + subtableJSON.secondtablerelationfield + '", InstanceID);';
+            html1 += 'System.Data.DataTable Dt = new Next.WorkFlow.BLL.DBConnectionBLL().GetDataTable(DBConnID, "' + subtableJSON.secondtable + '","' + subtableJSON.secondtablerelationfield + '", InstanceID);';
             html1 += 'Next.WorkFlow.BLL.WorkFlowFormBLL bWorkFlowForm = new Next.WorkFlow.BLL.WorkFlowFormBLL();';
             html1 += 'foreach(System.Data.DataRow dr in Dt.Rows){';
             html1 += '';

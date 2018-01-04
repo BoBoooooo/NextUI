@@ -64,7 +64,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" style="padding-top:4px;">
-                        <div>数据连接：<select class="myselect" id="ds_sql_dbconn"><%=new RoadFlow.Platform.DBConnection().GetAllOptions() %></select>
+                        <div>数据连接：<select class="myselect" id="ds_sql_dbconn"><%=new Next.WorkFlow.BLL.DBConnectionBLL().GetAllOptions() %></select>
                                 <input type="button" value="测试SQL" onclick="testSql($('#ds_sql_value').val(), $('#ds_sql_dbconn').val());" class="mybutton" />
                             </div>
                         <div style="margin-top:5px;"><textarea cols="1" rows="1" id="ds_sql_value" style="width:99%; height:95px; font-family:Verdana;" class="mytextarea"></textarea></div>

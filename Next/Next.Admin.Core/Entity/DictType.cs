@@ -13,6 +13,12 @@ namespace Next.Admin.Entity
 		public string  PID { get; set; }
 		[DisplayName("Name")]
 		public string  Name { get; set; }
+        [DisplayName("Value")]
+        public string Value { get; set; }
+        [DisplayName("Code")]
+        public string Code { get; set; }
+        [DisplayName("Other")]
+        public string Other { get; set; }
 		[DisplayName("Remark")]
 		public string  Remark { get; set; }
 		[DisplayName("Seq")]

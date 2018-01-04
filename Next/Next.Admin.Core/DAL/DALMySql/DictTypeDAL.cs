@@ -53,6 +53,11 @@ namespace Next.Admin.DALMySql
             return has;
         }
 
-
+        public DictType GetByCode(string code)
+        {
+            string sql = string.Format("SELECT * FROM DictType WHERE Code={0}",code);
+            var result = GetList(sql);
+            return result.FirstOrDefault();
+        }
+        }
 	}
-}

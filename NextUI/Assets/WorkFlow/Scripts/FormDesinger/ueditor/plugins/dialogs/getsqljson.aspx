@@ -7,8 +7,8 @@
         Response.Write("[]");
         Response.End();
     }
-    var dbconn = new RoadFlow.Platform.DBConnection().Get(conn.ToGuid());
-    var dt = new RoadFlow.Platform.DBConnection().GetDataTable(dbconn, sql);
+    var dbconn = new Next.WorkFlow.BLL.DBConnectionBLL().Get(conn.ToGuid());
+    var dt = new Next.WorkFlow.BLL.DBConnectionBLL().GetDataTable(dbconn, sql);
     if (dt == null || dt.Rows.Count == 0)
     {
         Response.Write("[]");

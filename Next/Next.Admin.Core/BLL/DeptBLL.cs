@@ -11,7 +11,7 @@ using Next.Admin.Model;
 
 namespace Next.Admin.BLL
 {
-    public class DeptBLL :BaseBLL<Dept>
+    public class DeptBLL : BaseBLL<Dept>
     {
         private IDeptDAL deptDAL;
         public DeptBLL()
@@ -22,7 +22,7 @@ namespace Next.Admin.BLL
             this.deptDAL = (IDeptDAL)base.baseDal;
         }
 
-        
+
         public List<Dept> GetDeptsByUser(string userID)
         {
             return this.deptDAL.GetDeptsByUser(userID);
@@ -135,7 +135,7 @@ namespace Next.Admin.BLL
 
             foreach (string id in idArray)
             {
-                 userList.AddRange(busers.GetUsersByDept(id));
+                userList.AddRange(busers.GetUsersByDept(id));
             }
             userList.RemoveAll(p => p == null);
             return userList.Distinct(new UsersEqualityComparer()).ToList();
@@ -151,6 +151,65 @@ namespace Next.Admin.BLL
             {
                 return user.ToString().GetHashCode();
             }
+        }
+
+        /// <summary>
+        /// 得到一组机构的名称(逗号分隔，有前缀)
+        /// </summary>
+        /// <param name="idString"></param>
+        /// <param name="split">分隔符</param>
+        /// <returns></returns>
+        public string GetNames(string idString, string split = ",")
+        {
+            if (string.IsNullOrEmpty(idString))
+            {
+                return "";
+            }
+            string[] array = idString.Split(',');
+            StringBuilder sb = new StringBuilder(array.Length * 50);
+            int i = 0;
+            foreach (var arr in array)
+            {
+                if (string.IsNullOrEmpty(arr))
+                {
+                    continue;
+                }
+                sb.Append(GetName(arr));
+                if (i++ < array.Length - 1)
+                {
+                    sb.Append(split);
+                }
+            }
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// 根据ID得到名称(有前缀的情况)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public string GetName(string id)
+        {
+            string name = string.Empty;
+
+            if (!string.IsNullOrEmpty(id))//机构
+            {
+                var result = FindByID(id);
+                if (result != null)
+                {
+                    return result.Name;
+                }
+                else
+                {
+                    var user = BLLFactory<UserBLL>.Instance.FindByID(id);
+                    if (user != null)
+                    {
+                        return user.Name;
+                    }
+                }
+                
+            }
+            return "";
         }
     }
 }

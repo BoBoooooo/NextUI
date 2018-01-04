@@ -226,5 +226,50 @@ namespace Next.WorkFlow.BLL
             }
             return dataAdapter;
         }
+
+        /// <summary>
+        /// 根据连接实体得到数据表
+        /// </summary>
+        /// <param name="linkID"></param>
+        /// <returns></returns>
+        public DataTable GetDataTable(DBConnection dbconn, string sql, IDataParameter[] parameterArray = null)
+        {
+            if (dbconn == null || dbconn.Type.IsNullOrEmpty() || dbconn.ConnectionString.IsNullOrEmpty())
+            {
+                return null;
+            }
+            DataTable dt = new DataTable();
+            switch (dbconn.Type)
+            {
+                case "MySql":
+                    using (MySqlConnection conn = new MySqlConnection(dbconn.ConnectionString))
+                    {
+                        try
+                        {
+                            conn.Open();
+                            using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                            {
+                                if (parameterArray != null && parameterArray.Length > 0)
+                                {
+                                    cmd.Parameters.AddRange((MySqlParameter[])parameterArray);
+                                }
+                                using (MySqlDataAdapter dap = new MySqlDataAdapter(cmd))
+                                {
+                                    dap.Fill(dt);
+                                }
+                            }
+                        }
+                        catch (MySqlException ex)
+                        {
+                            //Platform.Log.Add(ex);
+                        }
+                    }
+                    break;
+
+
+            }
+
+            return dt;
+        }
 	}
 }

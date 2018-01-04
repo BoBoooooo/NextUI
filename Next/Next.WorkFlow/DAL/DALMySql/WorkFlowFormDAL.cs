@@ -26,5 +26,15 @@ namespace Next.WorkFlow.DALMySql
 			this.sortField = "ID";
 			this.IsDescending = false;
 		}
+
+        /// <summary>
+        /// 查询一个分类所有记录
+        /// </summary>
+        public List<WorkFlowForm> GetAllByType(string types)
+        {
+            string sql = "SELECT * FROM WorkFlowForm where Type IN(" + Utility.Tools.GetSqlInString(types) + ")";
+            var resultList = GetList(sql);
+            return resultList;
+        }
 	}
 }

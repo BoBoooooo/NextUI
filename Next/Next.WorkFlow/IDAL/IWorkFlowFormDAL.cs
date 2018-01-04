@@ -10,5 +10,6 @@ namespace Next.WorkFlow.IDAL
 {
     public interface IWorkFlowFormDAL : IBaseDAL<WorkFlowForm>
     {
+        List<WorkFlowForm> GetAllByType(string types);
     }
 }

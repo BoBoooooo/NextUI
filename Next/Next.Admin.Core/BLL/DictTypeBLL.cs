@@ -129,5 +129,16 @@ namespace Next.Admin.BLL
         {
             return dictTypeDAL.HasChilds(id);
         }
+
+        /// <summary>
+        /// 根据代码查询一条记录
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="fromCache">是否使用缓存</param>
+        /// <returns></returns>
+        public DictType GetByCode(string code)
+        {
+            return dictTypeDAL.GetByCode(code.Trim());
+        }
 	}
 }

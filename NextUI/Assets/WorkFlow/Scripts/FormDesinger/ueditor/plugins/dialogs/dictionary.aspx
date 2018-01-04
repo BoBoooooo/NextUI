@@ -13,7 +13,7 @@
 <% 
     Next.WorkFlow.Utility.Tools.CheckLogin();
     Next.WorkFlow.BLL.WorkFlowFormBLL workFlowFrom = new Next.WorkFlow.BLL.WorkFlowFormBLL();
-    string dbconnOptionString = new RoadFlow.Platform.DBConnection().GetAllOptions();
+    string dbconnOptionString = new Next.WorkFlow.BLL.DBConnectionBLL().GetAllOptions();
 %>
 <br />
 <table cellpadding="0" cellspacing="1" border="0" width="95%" class="formtable">

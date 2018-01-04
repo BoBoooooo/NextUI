@@ -38,6 +38,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -75,6 +76,7 @@
     <Compile Include="Entity\WorkFlowArchives.cs" />
     <Compile Include="Entity\WorkFlowButtons.cs" />
     <Compile Include="Entity\WorkFlowComment.cs" />
+    <Compile Include="Entity\WorkFlowCustomEventParams.cs" />
     <Compile Include="Entity\WorkFlowDelegation.cs" />
     <Compile Include="Entity\WorkFlowForm.cs" />
     <Compile Include="Entity\WorkFlowInfo.cs" />
@@ -98,6 +100,7 @@
     <Compile Include="Utility\Config.cs" />
     <Compile Include="Utility\DateTimeNew.cs" />
     <Compile Include="Utility\Extension.cs" />
+    <Compile Include="Utility\HttpHelper.cs" />
     <Compile Include="Utility\Tools.cs" />
   </ItemGroup>
   <ItemGroup>

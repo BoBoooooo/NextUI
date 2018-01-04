@@ -14,6 +14,6 @@ namespace Next.Admin.IDAL
         DictType GetRoot();
         bool HasChilds(string id);
 
-        
+        DictType GetByCode(string code);
     }
 }
