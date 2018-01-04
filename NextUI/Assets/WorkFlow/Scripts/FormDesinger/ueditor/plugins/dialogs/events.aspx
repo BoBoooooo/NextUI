@@ -11,7 +11,7 @@
     <tr>
         <th style="width:80px;">事件:</th>
         <td>
-            <select class="myselect" id="event_name" onchange="event_change(this.value);"><option value=""></option><%=new RoadFlow.Platform.WorkFlowForm().GetEventOptions("","","") %></select>
+            <select class="myselect" id="event_name" onchange="event_change(this.value);"><option value=""></option><%=new Next.WorkFlow.BLL.WorkFlowFormBLL().GetEventOptions("","","") %></select>
         </td>
     </tr>
     <tr>

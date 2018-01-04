@@ -7,12 +7,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script type="text/javascript" src="../../dialogs/internal.js"></script>
     <script type="text/javascript" src="../common.js"></script>
-    <%=WebMvc.Common.Tools.IncludeFiles %>
+    <%=Next.WorkFlow.Utility.Tools.IncludeFiles%>
 </head>
 <body>
 <% 
-    WebMvc.Common.Tools.CheckLogin();
-    RoadFlow.Platform.WorkFlowForm workFlowFrom = new RoadFlow.Platform.WorkFlowForm(); 
+    Next.WorkFlow.Utility.Tools.CheckLogin();
+    Next.WorkFlow.BLL.WorkFlowFormBLL workFlowFrom = new Next.WorkFlow.BLL.WorkFlowFormBLL(); 
 %>
 <br />
 <table cellpadding="0" cellspacing="1" border="0" width="95%" class="formtable">

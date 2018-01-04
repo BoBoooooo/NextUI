@@ -1,13 +1,13 @@
 ﻿<%@ Page Language="C#" %>
 <%
-    WebMvc.Common.Tools.CheckLogin();
+    Next.WorkFlow.Utility.Tools.CheckLogin();
     string typeid = Request.QueryString["typeid"];
     if(!typeid.IsGuid())
     {
         Response.Write("");
         Response.End();
     }
-    RoadFlow.Platform.WorkFlowForm workFlowFrom = new RoadFlow.Platform.WorkFlowForm();
+    Next.WorkFlow.BLL.WorkFlowFormBLL workFlowFrom = new Next.WorkFlow.BLL.WorkFlowFormBLL();
     var forms = workFlowFrom.GetAllByType(typeid.ToGuid());
     System.Text.StringBuilder html = new System.Text.StringBuilder();
     foreach(var form in forms.Where(p=>p.Status<2).OrderBy(p=>p.Name))

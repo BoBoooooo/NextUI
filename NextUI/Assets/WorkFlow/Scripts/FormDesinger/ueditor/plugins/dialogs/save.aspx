@@ -8,10 +8,10 @@
     <title></title>
     <script type="text/javascript" src="../../dialogs/internal.js"></script>
     <script type="text/javascript" src="../common.js"></script>
-    <%=WebMvc.Common.Tools.IncludeFiles %>
+    <%=Next.WorkFlow.Utility.Tools.IncludeFiles%>
 </head>
 <body style="overflow:hidden;">
-    <%WebMvc.Common.Tools.CheckLogin(); %>
+    <%Next.WorkFlow.Utility.Tools.CheckLogin(); %>
     <div style="margin:0 auto; text-align:center; padding-top:38px;">
         <div>
             <img src="/Images/loading/load1.gif" alt="" id="wait" />

@@ -6,16 +6,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script type="text/javascript" src="../../dialogs/internal.js"></script>
     <script type="text/javascript" src="../common.js"></script>
-    <%=WebMvc.Common.Tools.IncludeFiles %>
+    <%=Next.WorkFlow.Utility.Tools.IncludeFiles%>
 </head>
 <body>
 <%
-    WebMvc.Common.Tools.CheckLogin();
+    Next.WorkFlow.Utility.Tools.CheckLogin();
     RoadFlow.Platform.DBConnection bdbConn = new RoadFlow.Platform.DBConnection();
-    RoadFlow.Platform.WorkFlowForm bworkflowform = new RoadFlow.Platform.WorkFlowForm();
+    Next.WorkFlow.BLL.WorkFlowFormBLL bworkflowform = new Next.WorkFlow.BLL.WorkFlowFormBLL();
     string link_DBConnOptions = bdbConn.GetAllOptions();
     string typeOptions = bworkflowform.GetTypeOptions("");
-    string validatePromptType = new RoadFlow.Platform.WorkFlowForm().GetValidatePropTypeRadios("validatealerttype","","");
+    string validatePromptType = new Next.WorkFlow.BLL.WorkFlowFormBLL().GetValidatePropTypeRadios("validatealerttype","","");
 %>
 <br />
 <table cellpadding="0" cellspacing="1" border="0" width="95%" class="formtable">

@@ -98,6 +98,7 @@
     <Compile Include="Utility\Config.cs" />
     <Compile Include="Utility\DateTimeNew.cs" />
     <Compile Include="Utility\Extension.cs" />
+    <Compile Include="Utility\Tools.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LitJSON\LitJSON.csproj">

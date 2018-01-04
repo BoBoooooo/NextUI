@@ -7,12 +7,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script type="text/javascript" src="../../dialogs/internal.js"></script>
     <script type="text/javascript" src="../common.js"></script>
-    <%=WebMvc.Common.Tools.IncludeFiles %>
+    <%=Next.WorkFlow.Utility.Tools.IncludeFiles%>
 </head>
 <body>
 <% 
-    WebMvc.Common.Tools.CheckLogin();
-    RoadFlow.Platform.WorkFlowForm workFlowFrom = new RoadFlow.Platform.WorkFlowForm();
+    Next.WorkFlow.Utility.Tools.CheckLogin();
+    Next.WorkFlow.BLL.WorkFlowFormBLL workFlowFrom = new Next.WorkFlow.BLL.WorkFlowFormBLL();
     if (!Request.Form["name"].IsNullOrEmpty())
     {
         string id = Request.Form["id"];

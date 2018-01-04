@@ -7,7 +7,8 @@ using Next.WorkFlow.DALMySql;
 using Next.WorkFlow.IDAL;
 using MySql.Data.MySqlClient;
 using System.Linq;
-
+using Next.WorkFlow.Utility;
+using System.Data;
 namespace Next.WorkFlow.BLL
 {
 	public class DBConnectionBLL : BaseBLL<DBConnection>
@@ -176,6 +177,54 @@ namespace Next.WorkFlow.BLL
                     string.Compare(conn.ID.ToString(), value, true) == 0 ? "selected=\"selected\"" : "", conn.Name);
             }
             return options.ToString();
+        }
+
+        /// <summary>
+        /// 根据连接实体得到连接
+        /// </summary>
+        /// <param name="linkID"></param>
+        /// <returns></returns>
+        public System.Data.IDbConnection GetConnection(DBConnection dbconn)
+        {
+            if (dbconn == null || dbconn.Type.IsNullOrEmpty() || dbconn.ConnectionString.IsNullOrEmpty())
+            {
+                return null;
+            }
+            System.Data.IDbConnection conn = null;
+            switch (dbconn.Type)
+            {
+                case "MySql":
+                    conn = new MySqlConnection(dbconn.ConnectionString);
+                    break;
+
+            }
+
+            return conn;
+
+        }
+
+        /// <summary>
+        /// 根据连接实体得到数据适配器
+        /// </summary>
+        /// <param name="linkID"></param>
+        /// <returns></returns>
+        public System.Data.IDbDataAdapter GetDataAdapter(IDbConnection conn, string connType, string cmdText, IDataParameter[] parArray)
+        {
+            IDbDataAdapter dataAdapter = null;
+            switch (connType)
+            {
+                case "MySql":
+                    using (MySqlCommand cmd = new MySqlCommand(cmdText, (MySqlConnection)conn))
+                    {
+                        if (parArray != null && parArray.Length > 0)
+                        {
+                            cmd.Parameters.AddRange(parArray);
+                        }
+                        dataAdapter = new MySqlDataAdapter(cmd);
+                    }
+                    break;
+            }
+            return dataAdapter;
         }
 	}
 }

@@ -2,7 +2,7 @@
 <%
     string query = "appid=" + Request.QueryString["appid"] + "&tabid=" + Request.QueryString["appid"];
     string rootid = new RoadFlow.Platform.Dictionary().GetIDByCode("FormTypes").ToString();
-    WebMvc.Common.Tools.CheckLogin();
+    Next.WorkFlow.Utility.Tools.CheckLogin();
 %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,7 +11,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script type="text/javascript" src="../../dialogs/internal.js"></script>
     <script type="text/javascript" src="../common.js"></script>
-    <%=WebMvc.Common.Tools.IncludeFiles %>
+    <%=Next.WorkFlow.Utility.Tools.IncludeFiles%>
 </head>
 <body style="padding:0; margin:0; overflow:hidden;">
 <form method="post">

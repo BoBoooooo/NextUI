@@ -1,13 +1,13 @@
 ﻿<%@ Page Language="C#" %>
 <% 
-    WebMvc.Common.Tools.CheckLogin();
+    Next.WorkFlow.Utility.Tools.CheckLogin();
     string id = Request.QueryString["id"];
     if(!id.IsGuid())
     {
         Response.Write("参数错误!");
         Response.End();
     }
-    RoadFlow.Platform.WorkFlowForm WFF = new RoadFlow.Platform.WorkFlowForm();
+    Next.WorkFlow.BLL.WorkFlowFormBLL WFF = new Next.WorkFlow.BLL.WorkFlowFormBLL();
     
     var wff = WFF.Get(id.ToGuid());
     

@@ -584,8 +584,8 @@ namespace Next.WorkFlow.BLL
             {
                 return jsonData;
             }
-            RoadFlow.Platform.DBConnection bdbconn = new RoadFlow.Platform.DBConnection();
-            RoadFlow.Data.Model.DBConnection dbconn = bdbconn.Get(connID.ToGuid());
+            DBConnectionBLL bdbconn = new DBConnectionBLL();
+            DBConnection dbconn = bdbconn.FindByID(connID);
             if (dbconn == null)
             {
                 return "";
@@ -604,21 +604,16 @@ namespace Next.WorkFlow.BLL
                 catch (Exception ex)
                 {
                     System.Web.HttpContext.Current.Response.Write("连接数据库出错：" + ex.Message);
-                    RoadFlow.Platform.Log.Add(ex);
+                    //RoadFlow.Platform.Log.Add(ex);
                 }
                 string sql = string.Empty;
                 List<System.Data.IDataParameter> parList = new List<System.Data.IDataParameter>();
                 switch (dbconn.Type)
                 {
-                    case "SqlServer":
+                    case "MySql":
                         sql = string.Format("SELECT * FROM {0} WHERE {1}=@fieldvalue {2}", secondTable, relationField,
                                  (sortField.IsNullOrEmpty() ? "" : string.Concat("ORDER BY ", sortField)));
                         parList.Add(new System.Data.SqlClient.SqlParameter("@fieldvalue", fieldValue));
-                        break;
-                    case "Oracle":
-                        sql = string.Format("SELECT * FROM {0} WHERE {1}=:fieldvalue {2}", secondTable, relationField,
-                                (sortField.IsNullOrEmpty() ? "" : string.Concat("ORDER BY ", sortField)));
-                        parList.Add(new OracleParameter(":fieldvalue", fieldValue));
                         break;
                 }
 
