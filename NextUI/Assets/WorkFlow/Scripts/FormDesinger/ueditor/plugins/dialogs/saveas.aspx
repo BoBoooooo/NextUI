@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" %>
 <%@ Page validateRequest="false"  %>
+<%@ Import Namespace="Next.WorkFlow.Utility" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -24,12 +25,12 @@
         }
         else
         {
-            var wff = workFlowFrom.Get(id.ToGuid());
+            var wff = workFlowFrom.FindByID(id.ToGuid());
             if (wff != null)
             {
-                wff.ID = Guid.NewGuid();
+                wff.ID = Guid.NewGuid().ToString(); ;
                 wff.Name = name.Trim();
-                wff.CreateTime = RoadFlow.Utility.DateTimeNew.Now;
+                wff.CreateTime = Next.WorkFlow.Utility.DateTimeNew.Now;
                 wff.LastModifyTime = wff.CreateTime;
                 wff.CreateUserID = RoadFlow.Platform.Users.CurrentUserID;
                 wff.CreateUserName = RoadFlow.Platform.Users.CurrentUserName;
@@ -40,8 +41,8 @@
                 json["name"] = wff.Name;
                 wff.Attribute = LitJson.JsonMapper.ToJson(json);
                 
-                workFlowFrom.Add(wff);
-                RoadFlow.Platform.Log.Add("以另存的方式创建了表单", wff.Serialize(), RoadFlow.Platform.Log.Types.流程相关);
+                workFlowFrom.Insert(wff);
+                //RoadFlow.Platform.Log.Add("以另存的方式创建了表单", wff.Serialize(), RoadFlow.Platform.Log.Types.流程相关);
                 Response.Write("<script>alert('表单已另存为：" + name + "');dialog.close();</script>");
             }
         }

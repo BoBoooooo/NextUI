@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "Open_Tree";
-    string rootid = new DictTypeBLL().GetIDByName("流程分类").ToString();
+    string rootid = new DictTypeBLL().GetIDByCode("FlowTypes").ToString();
 }
 @Styles.Render("~/Assets/RoadUIStyle")
 @Scripts.Render("~/Assets/RoadUIScript")

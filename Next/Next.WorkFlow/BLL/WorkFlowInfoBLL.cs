@@ -53,7 +53,7 @@ namespace Next.WorkFlow.BLL
         /// <returns></returns>
         public string GetTypeOptions(string value = "")
         {
-            return new DictTypeBLL().GetOptionsByName("流程分类", value);
+            return new DictTypeBLL().GetOptionsByCode("FlowTypes", DictTypeBLL.OptionValueField.ID, value);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Next.WorkFlow.BLL
                     wf = new WorkFlowInfo();
                     isAdd = true;
                     wf.ID = flowID;
-                    wf.CreateDate = DateTime.Now;
+                    wf.CreateDate = Next.WorkFlow.Utility.DateTimeNew.Now;
                     wf.CreateUserID = (string) HttpContext.Current.Session["UserID"];// RoadFlow.Platform.Users.CurrentUserID;
                     wf.Status = 1;
                 }
@@ -96,7 +96,7 @@ namespace Next.WorkFlow.BLL
                 wf.InstanceManager = jsonData["instanceManager"].ToString();
                 wf.Manager = jsonData["manager"].ToString();
                 wf.Name = name.Trim();
-                wf.Type = string.IsNullOrEmpty(type) ? type : new DictTypeBLL().GetIDByName("流程分类");
+                wf.Type = string.IsNullOrEmpty(type) ? type : new DictTypeBLL().GetIDByCode("FlowTypes");
                 try
                 {
                     if (isAdd)
@@ -171,7 +171,7 @@ namespace Next.WorkFlow.BLL
                         app.OpenMode = 0;
                         app.Params = "flowid=" + wfInstalled.ID.ToString();
                         app.Title = wfInstalled.Name;
-                        app.Type = wfInstalled.Type.IsNullOrEmpty() ? wfInstalled.Type : new DictTypeBLL().GetIDByName("流程分类");
+                        app.Type = wfInstalled.Type.IsNullOrEmpty() ? wfInstalled.Type : new DictTypeBLL().GetIDByCode("FlowTypes");
                         if (isAdd)
                         {
                             bappLibrary.Insert(app);
@@ -225,7 +225,7 @@ namespace Next.WorkFlow.BLL
             }
 
             string type = json["type"].ToString();
-            wfInstalled.Type = string.IsNullOrEmpty(type) ? new DictTypeBLL().GetIDByName("流程分类").ToString() : type.Trim();
+            wfInstalled.Type = string.IsNullOrEmpty(type) ? new DictTypeBLL().GetIDByCode("FlowTypes") : type.Trim();
 
 
             string manager = json["manager"].ToString();

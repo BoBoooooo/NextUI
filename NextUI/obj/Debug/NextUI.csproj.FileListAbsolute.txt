@@ -65,3 +65,5 @@ F:\NextUI\NextUI\bin\Next.WorkFlow.pdb
 F:\NextUI\NextUI\bin\Antlr3.Runtime.pdb
 F:\NextUI\NextUI\bin\CKFinder.pdb
 F:\NextUI\NextUI\bin\System.Web.Optimization.xml
+F:\NextUI\NextUI\bin\Next.WorkFlow.Utility.dll
+F:\NextUI\NextUI\bin\Next.WorkFlow.Utility.pdb

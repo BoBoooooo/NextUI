@@ -167,7 +167,7 @@ namespace NextUI.Areas.WorkFlow.Controllers
 
             wff.Attribute = att;
             wff.Html = html;
-            wff.LastModifyTime = DateTime.Now;
+            wff.LastModifyTime = Next.WorkFlow.Utility.DateTimeNew.Now;
             wff.Name = name;
             wff.Type = type;
             wff.SubTableJson = subtable;
@@ -309,7 +309,7 @@ namespace NextUI.Areas.WorkFlow.Controllers
             app.OpenMode = 0;
             app.Params = "";
             app.Title = name.Trim();
-            app.Type = appType.IsGuid() ? appType : new DictTypeBLL().GetIDByName("表单分类");
+            app.Type = appType.IsGuid() ? appType : new DictTypeBLL().GetIDByCode("FormTypes");
             if (isAdd)
             {
                 App.Insert(app);

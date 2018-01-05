@@ -14,3 +14,5 @@ F:\NextUI\Next\Next.WorkFlow\bin\Debug\Next.Framework.Core.pdb
 F:\NextUI\Next\Next.WorkFlow\obj\Debug\Next.WorkFlow.csprojResolveAssemblyReference.cache
 F:\NextUI\Next\Next.WorkFlow\obj\Debug\Next.WorkFlow.dll
 F:\NextUI\Next\Next.WorkFlow\obj\Debug\Next.WorkFlow.pdb
+F:\NextUI\Next\Next.WorkFlow\bin\Debug\Next.WorkFlow.Utility.dll
+F:\NextUI\Next\Next.WorkFlow\bin\Debug\Next.WorkFlow.Utility.pdb

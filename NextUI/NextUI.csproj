@@ -82,6 +82,7 @@
     </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -6700,6 +6701,7 @@
     <Compile Include="Areas\WorkFlow\Controllers\DBConnectionController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\DictController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\MembersController.cs" />
+    <Compile Include="Areas\WorkFlow\Controllers\RoleAppController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\SelectIcoController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\SelectMemberController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\WorkFlowButtonsController.cs" />
@@ -7144,6 +7146,7 @@
     <Folder Include="Areas\WorkFlow\Models\" />
     <Folder Include="Areas\WorkFlow\Views\Dict\" />
     <Folder Include="Areas\WorkFlow\Views\Members\" />
+    <Folder Include="Areas\WorkFlow\Views\RoleApp\" />
     <Folder Include="Assets\Insdep\animation\" />
     <Folder Include="Assets\Insdep\expand\columns-ext\__MACOSX\" />
     <Folder Include="Assets\Insdep\expand\datagrid-cellediting\" />
@@ -7193,6 +7196,10 @@
     <ProjectReference Include="..\Jssjw\Jssjw.Organization\Jssjw.Organization.csproj">
       <Project>{a322ba23-f108-410b-b95b-6f3003004f03}</Project>
       <Name>Jssjw.Organization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Next.WorkFlow.Utility\Next.WorkFlow.Utility.csproj">
+      <Project>{9062cc04-045e-41dc-b6e3-638279b20890}</Project>
+      <Name>Next.WorkFlow.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\Next\LitJSON\LitJSON.csproj">
       <Project>{28d9f7ba-2923-4364-9bea-9e1ccd70dd22}</Project>

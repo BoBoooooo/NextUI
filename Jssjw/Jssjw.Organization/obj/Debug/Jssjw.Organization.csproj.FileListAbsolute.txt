@@ -31,3 +31,7 @@ F:\NextUI\Jssjw\Jssjw.Organization\bin\Debug\Next.Framework.Core.pdb
 F:\NextUI\Jssjw\Jssjw.Organization\obj\Debug\Jssjw.Organization.csprojResolveAssemblyReference.cache
 F:\NextUI\Jssjw\Jssjw.Organization\obj\Debug\Jssjw.Organization.dll
 F:\NextUI\Jssjw\Jssjw.Organization\obj\Debug\Jssjw.Organization.pdb
+F:\NextUI\Jssjw\Jssjw.Organization\bin\Debug\Next.WorkFlow.Utility.dll
+F:\NextUI\Jssjw\Jssjw.Organization\bin\Debug\LitJSON.dll
+F:\NextUI\Jssjw\Jssjw.Organization\bin\Debug\Next.WorkFlow.Utility.pdb
+F:\NextUI\Jssjw\Jssjw.Organization\bin\Debug\LitJSON.pdb

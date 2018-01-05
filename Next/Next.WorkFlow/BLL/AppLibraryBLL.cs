@@ -6,6 +6,7 @@ using Next.WorkFlow.Entity;
 using Next.WorkFlow.DALMySql;
 using Next.WorkFlow.IDAL;
 using Next.Admin.BLL;
+using Next.Admin.Entity;
 
 
 namespace Next.WorkFlow.BLL
@@ -36,7 +37,7 @@ namespace Next.WorkFlow.BLL
         /// <returns></returns>
         public string GetTypeOptions(string value = "")
         {
-            return new DictTypeBLL().GetOptionsByName("应用程序库分类", value);
+            return new DictTypeBLL().GetOptionsByCode("AppLibraryTypes", DictTypeBLL.OptionValueField.ID, value);
         }
 	}
 }

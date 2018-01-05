@@ -60,3 +60,7 @@ F:\NextUI\Next\Next.Attachment.Core\bin\Debug\Next.Framework.Core.pdb
 F:\NextUI\Next\Next.Attachment.Core\obj\Debug\Next.Attachment.Core.csprojResolveAssemblyReference.cache
 F:\NextUI\Next\Next.Attachment.Core\obj\Debug\Next.Attachment.Core.dll
 F:\NextUI\Next\Next.Attachment.Core\obj\Debug\Next.Attachment.Core.pdb
+F:\NextUI\Next\Next.Attachment.Core\bin\Debug\Next.WorkFlow.Utility.dll
+F:\NextUI\Next\Next.Attachment.Core\bin\Debug\LitJSON.dll
+F:\NextUI\Next\Next.Attachment.Core\bin\Debug\Next.WorkFlow.Utility.pdb
+F:\NextUI\Next\Next.Attachment.Core\bin\Debug\LitJSON.pdb

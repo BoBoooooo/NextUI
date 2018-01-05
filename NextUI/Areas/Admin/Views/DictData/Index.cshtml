@@ -65,6 +65,7 @@
             $.getJSON("/DictType/FindById?r=" + Math.random() + "&id=" + id, function (json) {
                 $("#typeID1").val(json.ID);
                 $("#typeName1").val(json.Name);
+                $("#typeCode1").val(json.Code);
                 $("#typeSeq1").val(json.Seq);
                 $("#typeRemark1").val(json.Remark);
                 $("#typePID1").combobox('setValue', json.PID);
@@ -673,7 +674,7 @@
     </div>
 
     <!--------------------------编辑字典大类信息的弹出层---------------------------->
-    <div id="DivEditType" class="easyui-dialog" style="width:380px;height:300px;padding:10px 20px"
+    <div id="DivEditType" class="easyui-dialog" style="width:380px;height:320px;padding:10px 20px"
          closed="true" resizable="true" modal="true" data-options="iconCls: 'icon-edit',buttons: '#dlg-buttons'">
         <form id="ffEditType" method="post" novalidate="novalidate">
             <table id="tblEditType" class="view">
@@ -691,6 +692,14 @@
                     </th>
                     <td>
                         <input class="easyui-combobox" type="text" id="typePID1" name="PID" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="typeCode1">唯一代码：</label>
+                    </th>
+                    <td>
+                        <input class="easyui-validatebox" type="text" id="typeCode1" name="Code" />
                     </td>
                 </tr>
                 <tr>
