@@ -34,15 +34,15 @@ namespace Next.Admin.BLL
         /// <summary>
         /// 查询下级记录
         /// </summary>
-        /*public List<DictType> GetChilds(string id, bool fromCache = false)
+        public List<DictType> GetChildsByID(string id, bool fromCache = false)
         {
-            return fromCache ? getChildsByIDFromCache(id) : dictTypeDAL.GetChilds(id);
-        }*/
+            return fromCache ? getChildsByIDFromCache(id) : dictTypeDAL.GetChildsByID(id);
+        }
 
         /// <summary>
         /// 查询下级记录p.Seq
         /// </summary>
-        public List<DictType> GetChilds(string code, bool fromCache = false)
+        public List<DictType> GetChildsByCode(string code, bool fromCache = false)
         {
             return code.IsNullOrEmpty() ? new List<DictType>() :
                 fromCache ? getChildsByCodeFromCache(code) :
@@ -91,7 +91,7 @@ namespace Next.Admin.BLL
 
         private void addChilds(List<DictType> list, string id, bool fromCache = false)
         {
-            var childs = fromCache ? getChildsByIDFromCache(id) : GetChilds(id);
+            var childs = fromCache ? getChildsByIDFromCache(id) : GetChildsByID(id);
             foreach (var child in childs)
             {
                 list.Add(child);
@@ -251,7 +251,7 @@ namespace Next.Admin.BLL
         /// <returns></returns>
         public string GetRadiosByID(string id, string name, OptionValueField valueField = OptionValueField.Value, string value = "", string attr = "")
         {
-            var childs = GetChilds(id, true);
+            var childs = GetChildsByID(id, true);
             return getRadios(childs, name, valueField, value, attr);
         }
 
@@ -267,7 +267,7 @@ namespace Next.Admin.BLL
         public string GetRadiosByCode(string code, string name, OptionValueField valueField = OptionValueField.Value, string value = "", string attr = "")
         {
             if (code.IsNullOrEmpty()) return "";
-            var childs = GetChilds(code.Trim(), true);
+            var childs = GetChildsByCode(code.Trim(), true);
             return getRadios(childs, name, valueField, value, attr);
         }
 
@@ -300,7 +300,7 @@ namespace Next.Admin.BLL
         /// <returns></returns>
         public string GetCheckboxsByID(string id, string name, OptionValueField valueField = OptionValueField.Value, string value = "", string attr = "")
         {
-            var childs = GetChilds(id, true);
+            var childs = GetChildsByID(id, true);
             return getCheckboxs(childs, name, valueField, value, attr);
         }
 
@@ -316,7 +316,7 @@ namespace Next.Admin.BLL
         public string GetCheckboxsByCode(string code, string name, OptionValueField valueField = OptionValueField.Value, string value = "", string attr = "")
         {
             if (code.IsNullOrEmpty()) return "";
-            var childs = GetChilds(code.Trim(), true);
+            var childs = GetChildsByCode(code.Trim(), true);
             return getCheckboxs(childs, name, valueField, value, attr);
         }
 
@@ -476,7 +476,7 @@ namespace Next.Admin.BLL
             {
                 return "";
             }
-            var dicts = GetChilds(id);
+            var dicts = GetChildsByID(id);
             StringBuilder html = new StringBuilder(2000);
             html.Append("<table><thead><tr><th>标题</th><th>备注</th><th>其它</th></tr></thead><tbody>");
             foreach (var dict in dicts)

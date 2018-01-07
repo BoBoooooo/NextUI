@@ -4,7 +4,7 @@
     string id = Request.Form["id"];
     string type = Request.Form["type"];
 
-    RoadFlow.Platform.WorkFlow bworkFlow = new RoadFlow.Platform.WorkFlow();
+    Next.WorkFlow.BLL.WorkFlowInfoBLL bworkFlow = new Next.WorkFlow.BLL.WorkFlowInfoBLL();
     var flow = bworkFlow.Get(id.ToGuid());
     if (flow == null)
     {
@@ -27,7 +27,7 @@
             flow.Status = 4;
             bworkFlow.Update(flow);
             //bworkFlow.ClearWorkFlowCache(flow.ID);
-            RoadFlow.Platform.AppLibrary APP = new RoadFlow.Platform.AppLibrary();
+            Next.WorkFlow.BLL.AppLibraryBLL APP = new Next.WorkFlow.BLL.AppLibraryBLL();
             var app = APP.GetByCode(flow.ID.ToString());
             if (app != null)
             {

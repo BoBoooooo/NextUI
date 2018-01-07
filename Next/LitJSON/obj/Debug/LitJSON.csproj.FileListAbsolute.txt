@@ -22,3 +22,4 @@ F:\NextUI\Next\LitJSON\bin\Debug\LitJSON.dll
 F:\NextUI\Next\LitJSON\bin\Debug\LitJSON.pdb
 F:\NextUI\Next\LitJSON\obj\Debug\LitJSON.dll
 F:\NextUI\Next\LitJSON\obj\Debug\LitJSON.pdb
+F:\NextUI\Next\LitJSON\obj\Debug\LitJSON.csprojResolveAssemblyReference.cache

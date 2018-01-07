@@ -101,7 +101,7 @@
             var height = $(window).height();
             $('#TypeDiv').css('height', height - 10);
             $('#ListDiv').css('height', height - 10);
-            roadTree = new RoadUI.Tree({ id: "TypeDiv", path: top.rootdir + "/Dict/Tree1?root=<%=rootid%>", refreshpath: top.rootdir + "/Dict/TreeRefresh", onclick: openUrl });
+            roadTree = new RoadUI.Tree({ id: "TypeDiv", path: /*top.rootdir + */"/Admin/DictType/Tree1?root=<%=rootid%>", refreshpath: top.rootdir + "/Dict/TreeRefresh", onclick: openUrl });
             openUrl({ id: "<%=rootid%>" });
         });
         function openUrl(json)

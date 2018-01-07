@@ -19,7 +19,7 @@
     wff.Status = 2;
     WFF.Update(wff);
 
-    //RoadFlow.Platform.AppLibrary APP = new RoadFlow.Platform.AppLibrary();
+    //Next.WorkFlow.BLL.AppLibraryBLL APP = new Next.WorkFlow.BLL.AppLibraryBLL();
     //var app = APP.GetByCode(id);
     //if(app!=null)
     //{

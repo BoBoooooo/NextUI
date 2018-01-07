@@ -10,5 +10,6 @@ namespace Next.WorkFlow.IDAL
 {
     public interface IAppLibraryDAL : IBaseDAL<AppLibrary>
     {
+        List<AppLibrary> GetAllByType(string type);
     }
 }

@@ -7,7 +7,7 @@
     string secondtablerelationfield=Request["secondtablerelationfield"];
     string dbconnid = Request["dbconnid"];
 
-    LitJson.JsonData data = new RoadFlow.Platform.WorkFlow().GetSubTableData(dbconnid, secondtable, secondtablerelationfield, primarytablefiledvalue, secondtableprimarykey);
+    LitJson.JsonData data = new Next.WorkFlow.BLL.WorkFlowInfoBLL().GetSubTableData(dbconnid, secondtable, secondtablerelationfield, primarytablefiledvalue, secondtableprimarykey);
 
     Response.Write(data.ToJson());
 %>

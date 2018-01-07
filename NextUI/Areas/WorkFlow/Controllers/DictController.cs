@@ -47,7 +47,7 @@ namespace NextUI.Areas.WorkFlow.Controllers
             json.AppendFormat("\"hasChilds\":\"{0}\",", rootHasChild ? "1" : "0");
             json.Append("\"childs\":[");
 
-            var childs = BDict.GetChilds(root.ID);
+            var childs = BDict.GetChildsByID(root.ID);
             int i = 0;
             int count = childs.Count;
             foreach (var child in childs)
@@ -90,7 +90,7 @@ namespace NextUI.Areas.WorkFlow.Controllers
             }
             System.Text.StringBuilder json = new System.Text.StringBuilder("[", 1000);
             DictTypeBLL BDict = new DictTypeBLL();
-            var childs = BDict.GetChilds(gid).OrderBy(p => p.Seq);
+            var childs = BDict.GetChildsByID(gid).OrderBy(p => p.Seq);
             int i = 0;
             int count = childs.Count();
             foreach (var child in childs)

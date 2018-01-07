@@ -271,5 +271,54 @@ namespace Next.WorkFlow.BLL
 
             return dt;
         }
+
+        /// <summary>
+        /// 删除一个连接表的数据
+        /// </summary>
+        /// <param name="connID"></param>
+        /// <param name="table"></param>
+        /// <param name="pkFiled"></param>
+        /// <param name="pkValue"></param>
+        public int DeleteData(string connID, string table, string pkFiled, string pkValue)
+        {
+            int count = 0;
+            var conn = FindByID(connID);
+            if (conn == null)
+            {
+                return count;
+            }
+            switch (conn.Type)
+            {
+                case "MySql":
+                    using (var dbconn = GetConnection(conn))
+                    {
+                        try
+                        {
+                            dbconn.Open();
+                        }
+                        catch (MySqlException ex)
+                        {
+                            //Platform.Log.Add(ex);
+                        }
+                        string sql = string.Format("DELETE FROM {0} WHERE {1}=@{1}", table, pkFiled);
+                        MySqlParameter par = new MySqlParameter("@" + pkFiled, pkValue);
+                        using (MySqlCommand cmd = new MySqlCommand(sql, (MySqlConnection)dbconn))
+                        {
+                            cmd.Parameters.Add(par);
+                            try
+                            {
+                                count = cmd.ExecuteNonQuery();
+                            }
+                            catch (MySqlException ex)
+                            {
+                                //Platform.Log.Add(ex);
+                            }
+                        }
+                    }
+                    break;
+
+            }
+            return count;
+        }
 	}
 }

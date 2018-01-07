@@ -237,8 +237,8 @@ namespace NextUI.Areas.WorkFlow.Controllers
             serverScript.Append("if(InstanceID.IsNullOrEmpty()){InstanceID = Request.QueryString[\"instanceid1\"];}");
 
             serverScript.Append("\tRoadFlow.Platform.Dictionary BDictionary = new RoadFlow.Platform.Dictionary();\r\n");
-            serverScript.Append("\tRoadFlow.Platform.WorkFlow BWorkFlow = new RoadFlow.Platform.WorkFlow();\r\n");
-            serverScript.Append("\tRoadFlow.Platform.WorkFlowTask BWorkFlowTask = new RoadFlow.Platform.WorkFlowTask();\r\n");
+            serverScript.Append("\tNext.WorkFlow.BLL.WorkFlowInfoBLL BWorkFlow = new Next.WorkFlow.BLL.WorkFlowInfoBLL();\r\n");
+            serverScript.Append("\tNext.WorkFlow.BLL.WorkFlowTaskBLL BWorkFlowTask = new Next.WorkFlow.BLL.WorkFlowTaskBLL();\r\n");
             serverScript.Append("\tstring fieldStatus = BWorkFlow.GetFieldStatus(FlowID, StepID);\r\n");
             serverScript.Append("\tLitJson.JsonData initData = BWorkFlow.GetFormData(DBConnID, DBTable, DBTablePK, InstanceID, fieldStatus);\r\n");
             serverScript.Append("\tstring TaskTitle = BWorkFlow.GetFromFieldData(initData, DBTable, DBTableTitle);\r\n");
@@ -280,7 +280,7 @@ namespace NextUI.Areas.WorkFlow.Controllers
             serverScript.Append("</script>\r\n");
 
 
-            string file = Server.MapPath("~/Views/WorkFlowFormDesigner/Forms/" + fileName);
+            string file = Server.MapPath("~/Areas/Workflow/Views/WorkFlowFormDesigner/Forms/" + fileName);
             System.IO.Stream stream = System.IO.File.Open(file, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None);
             stream.SetLength(0);
 

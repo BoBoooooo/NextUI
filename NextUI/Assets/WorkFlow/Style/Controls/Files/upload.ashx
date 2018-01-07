@@ -71,7 +71,7 @@ public class Upload : IHttpHandler, IReadOnlySessionState
     {
         while (File.Exists(filePath + fileName))
         {
-            fileName = Path.GetFileNameWithoutExtension(fileName) + "_" + RoadFlow.Utility.Tools.GetRandomString() + Path.GetExtension(fileName);
+            fileName = Path.GetFileNameWithoutExtension(fileName) + "_" + Next.WorkFlow.Utility.Tools.GetRandomString() + Path.GetExtension(fileName);
         }
         return fileName;
     }
@@ -82,7 +82,7 @@ public class Upload : IHttpHandler, IReadOnlySessionState
     /// <returns></returns>
     private string getFilePath(out string path1)
     {
-        DateTime date = RoadFlow.Utility.DateTimeNew.Now;
+        DateTime date = Next.WorkFlow.Utility.DateTimeNew.Now;
         path1 = "/Content/Upload/" + date.ToString("yyyyMM") + "/" + date.ToString("dd") + "/";
         return path1;
     }

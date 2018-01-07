@@ -13,7 +13,7 @@
 <%
     Next.WorkFlow.Utility.Tools.CheckLogin();
     Next.WorkFlow.BLL.WorkFlowFormBLL workFlowFrom = new Next.WorkFlow.BLL.WorkFlowFormBLL();
-    RoadFlow.Platform.AppLibrary bappLibrary = new RoadFlow.Platform.AppLibrary();
+    Next.WorkFlow.BLL.AppLibraryBLL bappLibrary = new Next.WorkFlow.BLL.AppLibraryBLL();
     string appLibraryTypes = bappLibrary.GetTypeOptions();
     string displayModelOptions = workFlowFrom.GetDisplayModeOptions("");
 %>
@@ -235,7 +235,7 @@
     function form_types_change(value)
     {
         $.ajax({
-            url: top.rootdir + "/RoleApp/GetApps", data: { type: value }, async: false, type: "post", success: function (txt)
+            url: top.rootdir + "/WorkFlowDesigner/GetApps", data: { type: value }, async: false, type: "post", success: function (txt)
             {
                 $("#editform").html('<option value=""></option>' + txt);
             }

@@ -1,0 +1,30 @@
+﻿@using Next.WorkFlow.Utility;
+@{
+    Next.WorkFlow.Utility.Tools.CheckLogin();
+    string flowid = Request.QueryString["flowid"];
+    string instanceid = Request.QueryString["instanceid"];
+    string taskid = Request.QueryString["taskid"];
+    string stepid = Request.QueryString["stepid"];
+    string groupid = Request.QueryString["groupid"];
+    string opation = Request.QueryString["opation"];
+
+    if (instanceid.IsNullOrEmpty())
+    {
+        instanceid = Request.Form["instanceid"];
+    }
+
+    Next.WorkFlow.BLL.WorkFlowInfoBLL bworkFlow = new Next.WorkFlow.BLL.WorkFlowInfoBLL();
+    Next.WorkFlow.Entity.WorkFlowCustomEventParams eventParams = new Next.WorkFlow.Entity.WorkFlowCustomEventParams();
+    eventParams.FlowID = flowid.ToGuid();
+    eventParams.GroupID = groupid.ToGuid();
+    eventParams.StepID = stepid.ToGuid();
+    eventParams.TaskID = taskid.ToGuid();
+    eventParams.InstanceID = instanceid;
+    string instanceid1 = bworkFlow.SaveFromData(instanceid, eventParams);
+    if (instanceid.IsNullOrEmpty())
+    {
+        instanceid = instanceid1;
+        eventParams.InstanceID = instanceid1;
+    }
+    <script>new RoadUI.Window().close();$('#instanceid',parent.document).val('@instanceid');parent.@(opation)(true);</script>
+}

@@ -38,5 +38,14 @@ namespace Next.WorkFlow.DALMySql
 
             return GetList(sql).FirstOrDefault();
         }
+
+        /// <summary>
+        /// 查询一个类别下所有记录
+        /// </summary>
+        public List<AppLibrary> GetAllByType(string types)
+        {
+            string sql = "SELECT * FROM AppLibrary WHERE Type IN(" + Next.WorkFlow.Utility.Tools.GetSqlInString(types) + ")";
+            return GetList(sql);
+        }
 	}
 }

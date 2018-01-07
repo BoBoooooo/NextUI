@@ -14,7 +14,7 @@
     <%Next.WorkFlow.Utility.Tools.CheckLogin(); %>
     <div style="margin:0 auto; text-align:center; padding-top:38px;">
         <div>
-            <img src="/Images/loading/load1.gif" alt="" id="wait" />
+            <img src="/Assets/WorkFlow/Images/loading/load1.gif" alt="" id="wait" />
         </div>
         <div style="margin-top:5px;">
             正在保存...

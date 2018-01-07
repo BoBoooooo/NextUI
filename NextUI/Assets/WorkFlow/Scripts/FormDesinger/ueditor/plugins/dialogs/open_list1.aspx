@@ -26,7 +26,7 @@
                     <a href=""javascript:void(0);"" onclick=""delform('{0}');return false;"">
                     <img src=""{1}Images/ico/cancel.gif"" alt="""" style=""vertical-align:middle; border:0; margin-left:5px;"" />
                     <span style=""vertical-align:middle;"">删除</span>
-                    </a>", form.ID, "~/Assets/WorkFlow"));
+                    </a>", form.ID, "/Assets/WorkFlow/"));
         html.Append("</tr>");
     }
     Response.Write(html.ToString());

@@ -107,10 +107,10 @@ namespace Next.WorkFlow.BLL
             options.AppendFormat("<option value=\"@(RoadFlow.Platform.Users.CurrentUserName)\" {0}>当前步骤用户姓名</option>", "11" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"@(RoadFlow.Platform.Users.CurrentDeptID)\" {0}>当前步骤用户部门ID</option>", "12" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"@(RoadFlow.Platform.Users.CurrentDeptName)\" {0}>当前步骤用户部门名称</option>", "13" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"u_@(new RoadFlow.Platform.WorkFlowTask().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true))\" {0}>流程发起者ID</option>", "14" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"@(new RoadFlow.Platform.Users().GetName(new RoadFlow.Platform.WorkFlowTask().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true)))\" {0}>流程发起者姓名</option>", "15" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"@(new RoadFlow.Platform.WorkFlowTask().GetFirstSnderDeptID(FlowID.ToGuid(), GroupID.ToGuid()))\" {0}>流程发起者部门ID</option>", "16" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"@(new RoadFlow.Platform.Users().GetName(new RoadFlow.Platform.WorkFlowTask().GetFirstSnderDeptID(FlowID.ToGuid(), GroupID.ToGuid())))\" {0}>流程发起者部门名称</option>", "17" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"u_@(new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true))\" {0}>流程发起者ID</option>", "14" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"@(new RoadFlow.Platform.Users().GetName(new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true)))\" {0}>流程发起者姓名</option>", "15" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"@(new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderDeptID(FlowID.ToGuid(), GroupID.ToGuid()))\" {0}>流程发起者部门ID</option>", "16" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"@(new RoadFlow.Platform.Users().GetName(new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderDeptID(FlowID.ToGuid(), GroupID.ToGuid())))\" {0}>流程发起者部门名称</option>", "17" == value ? "selected=\"selected\"" : "");
             options.Append("<optgroup label=\"日期时间相关选项\"></optgroup>");
             options.AppendFormat("<option value=\"@(Next.WorkFlow.Utility.DateTimeNew.ShortDate)\" {0}>短日期格式(2014-4-15)</option>", "20" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"@(Next.WorkFlow.Utility.DateTimeNew.LongDate)\" {0}>长日期格式(2014年4月15日)</option>", "21" == value ? "selected=\"selected\"" : "");
@@ -138,10 +138,10 @@ namespace Next.WorkFlow.BLL
             options.AppendFormat("<option value=\"<%=RoadFlow.Platform.Users.CurrentUserName%>\" {0}>当前步骤用户姓名</option>", "11" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"<%=RoadFlow.Platform.Users.CurrentDeptID%>\" {0}>当前步骤用户部门ID</option>", "12" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"<%=RoadFlow.Platform.Users.CurrentDeptName%>\" {0}>当前步骤用户部门名称</option>", "13" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"u_<%=new RoadFlow.Platform.WorkFlowTask().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true)%>\" {0}>流程发起者ID</option>", "14" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"<%=new RoadFlow.Platform.Users().GetName(new RoadFlow.Platform.WorkFlowTask().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true))%>\" {0}>流程发起者姓名</option>", "15" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"<%=new RoadFlow.Platform.WorkFlowTask().GetFirstSnderDeptID(FlowID.ToGuid(), GroupID.ToGuid())%>\" {0}>流程发起者部门ID</option>", "16" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"<%=new RoadFlow.Platform.Users().GetName(new RoadFlow.Platform.WorkFlowTask().GetFirstSnderDeptID(FlowID.ToGuid(), GroupID.ToGuid()))%>\" {0}>流程发起者部门名称</option>", "17" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"u_<%=new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true)%>\" {0}>流程发起者ID</option>", "14" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"<%=new RoadFlow.Platform.Users().GetName(new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true))%>\" {0}>流程发起者姓名</option>", "15" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"<%=new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderDeptID(FlowID.ToGuid(), GroupID.ToGuid())%>\" {0}>流程发起者部门ID</option>", "16" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"<%=new RoadFlow.Platform.Users().GetName(new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderDeptID(FlowID.ToGuid(), GroupID.ToGuid()))%>\" {0}>流程发起者部门名称</option>", "17" == value ? "selected=\"selected\"" : "");
             options.Append("<optgroup label=\"日期时间相关选项\"></optgroup>");
             options.AppendFormat("<option value=\"<%=Next.WorkFlow.Utility.DateTimeNew.ShortDate%>\" {0}>短日期格式(2014-4-15)</option>", "20" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"<%=Next.WorkFlow.Utility.DateTimeNew.LongDate%>\" {0}>长日期格式(2014年4月15日)</option>", "21" == value ? "selected=\"selected\"" : "");
@@ -714,7 +714,7 @@ namespace Next.WorkFlow.BLL
         /// <returns></returns>
         public string GetTypeOptions(string value = "")
         {
-            return new DictTypeBLL().GetOptionsByCode("FlowTypes", DictTypeBLL.OptionValueField.ID, value);
+            return new DictTypeBLL().GetOptionsByCode("FormTypes", DictTypeBLL.OptionValueField.ID, value);
         }
 
 

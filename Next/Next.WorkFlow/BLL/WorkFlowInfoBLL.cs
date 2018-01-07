@@ -190,6 +190,30 @@ namespace Next.WorkFlow.BLL
                 }
             }
         }
+
+
+        /// <summary>
+        /// 得到流程运行时实体
+        /// </summary>
+        /// <param name="flowID">流程ID</param>
+        /// <returns></returns>
+        public WorkFlowInstalled GetWorkFlowRunModel(string flowID, bool cache = true)
+        {
+
+            return getWorkFlowRunFromDesign(flowID);
+        }
+
+        private WorkFlowInstalled getWorkFlowRunFromDesign(string flowID)
+        {
+            var wf = FindByID(flowID);
+            if (wf == null || wf.RunJSON.IsNullOrEmpty())
+            {
+                return null;
+            }
+            string msg;
+            var wfi = GetWorkFlowRunModel(wf.RunJSON, out msg);
+            return wfi;
+        }
         /// <summary>
         /// 得到一个流程运行时实体
         /// </summary>

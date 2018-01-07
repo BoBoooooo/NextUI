@@ -7,7 +7,8 @@ using Next.WorkFlow.DALMySql;
 using Next.WorkFlow.IDAL;
 using Next.Admin.BLL;
 using Next.Admin.Entity;
-
+using Next.WorkFlow.Utility;
+using System.Linq;
 
 namespace Next.WorkFlow.BLL
 {
@@ -38,6 +39,48 @@ namespace Next.WorkFlow.BLL
         public string GetTypeOptions(string value = "")
         {
             return new DictTypeBLL().GetOptionsByCode("AppLibraryTypes", DictTypeBLL.OptionValueField.ID, value);
+        }
+
+        /// <summary>
+        /// 得到一个类型选择项
+        /// </summary>
+        /// <param name="type">程序类型</param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public string GetAppsOptions(string type, string value = "")
+        {
+            if (type.IsEmptyGuid()) return "";
+            var apps = GetAllByType(type);
+            StringBuilder options = new StringBuilder();
+            foreach (var app in apps)
+            {
+                options.AppendFormat("<option value=\"{0}\" {1}>{2}</option>", app.ID,
+                    string.Compare(app.ID.ToString(), value, true) == 0 ? "selected=\"selected\"" : "",
+                    app.Title
+                    );
+            }
+            return options.ToString();
+        }
+        /// <summary>
+        /// 查询一个类别下所有记录
+        /// </summary>
+        public List<AppLibrary> GetAllByType(string type)
+        {
+            if (type.IsEmptyGuid())
+            {
+                return new List<AppLibrary>();
+            }
+            return appLibraryDAL.GetAllByType(GetAllChildsIDString(type)).OrderBy(p => p.Title).ToList();
+        }
+
+        /// <summary>
+        /// 得到下级ID字符串
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public string GetAllChildsIDString(string id, bool isSelf = true)
+        {
+            return new DictTypeBLL().GetAllChildsIDString(id, true);
         }
 	}
 }

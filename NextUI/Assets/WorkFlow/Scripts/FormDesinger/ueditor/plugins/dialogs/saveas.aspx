@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" %>
-<%@ Page validateRequest="false"  %>
+﻿<%@ Page Language="C#" validateRequest="false" %>
 <%@ Import Namespace="Next.WorkFlow.Utility" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -32,8 +31,8 @@
                 wff.Name = name.Trim();
                 wff.CreateTime = Next.WorkFlow.Utility.DateTimeNew.Now;
                 wff.LastModifyTime = wff.CreateTime;
-                wff.CreateUserID = RoadFlow.Platform.Users.CurrentUserID;
-                wff.CreateUserName = RoadFlow.Platform.Users.CurrentUserName;
+                wff.CreateUserID = ((Next.Admin.Entity.User)HttpContext.Current.Session["UserInfo"]).ID;
+                wff.CreateUserName = ((Next.Admin.Entity.User)HttpContext.Current.Session["UserInfo"]).FullName;
                 wff.Status = 0;
 
                 var json = LitJson.JsonMapper.ToObject(wff.Attribute);

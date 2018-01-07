@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web;
 using Next.Controllers;
+using Next.WorkFlow.Utility;
 
 namespace NextUI.Areas.WorkFlow.Controllers
 {
@@ -65,7 +66,7 @@ namespace NextUI.Areas.WorkFlow.Controllers
             {
                 return "{}";
             }
-            var flow = BLLFactory<WorkFlowInfoBLL>.Instance.FindByID(flowid);//new RoadFlow.Platform.WorkFlow().Get(flowid.ToGuid());
+            var flow = BLLFactory<WorkFlowInfoBLL>.Instance.FindByID(flowid);//new Next.WorkFlow.BLL.WorkFlowInfoBLL().Get(flowid.ToGuid());
             if (flow == null)
             {
                 return "{}";
@@ -198,6 +199,13 @@ namespace NextUI.Areas.WorkFlow.Controllers
             {
                 return "SQL条件错误!";
             }
+        }
+
+        public string GetApps()
+        {
+            string type = Request.Form["type"];
+            string appid = Request.Form["value"];
+            return new AppLibraryBLL().GetAppsOptions(type.ToGuid(), appid);
         }
 	}
 }

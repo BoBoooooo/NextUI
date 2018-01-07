@@ -14,6 +14,7 @@ namespace Next.Admin.BLL
 {
     public class UserBLL :BaseBLL<User>
     {
+        public const string PREFIX = "";
         private IUserDAL userDAL;
         public UserBLL():base()
         {

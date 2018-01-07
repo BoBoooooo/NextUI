@@ -51,8 +51,6 @@
     <Compile Include="BLL\AppLibraryBLL.cs" />
     <Compile Include="BLL\DBConnectionBLL.cs" />
     <Compile Include="BLL\DictBLL.cs" />
-    <Compile Include="BLL\RoleAppBLL.cs" />
-    <Compile Include="BLL\UserAppBLL.cs" />
     <Compile Include="BLL\WorkFlowArchivesBLL.cs" />
     <Compile Include="BLL\WorkFlowButtonsBLL.cs" />
     <Compile Include="BLL\WorkFlowCommentBLL.cs" />
@@ -64,8 +62,6 @@
     <Compile Include="DAL\DALMySql\AppLibraryDAL.cs" />
     <Compile Include="DAL\DALMySql\DBConnectionDAL.cs" />
     <Compile Include="DAL\DALMySql\DictDAL.cs" />
-    <Compile Include="DAL\DALMySql\RoleAppDAL.cs" />
-    <Compile Include="DAL\DALMySql\UserAppDAL.cs" />
     <Compile Include="DAL\DALMySql\WorkFlowArchivesDAL.cs" />
     <Compile Include="DAL\DALMySql\WorkFlowButtonsDAL.cs" />
     <Compile Include="DAL\DALMySql\WorkFlowCommentDAL.cs" />
@@ -77,8 +73,6 @@
     <Compile Include="Entity\AppLibrary.cs" />
     <Compile Include="Entity\DBConnection.cs" />
     <Compile Include="Entity\Dict.cs" />
-    <Compile Include="Entity\RoleApp.cs" />
-    <Compile Include="Entity\UserApp.cs" />
     <Compile Include="Entity\WorkFlowArchives.cs" />
     <Compile Include="Entity\WorkFlowButtons.cs" />
     <Compile Include="Entity\WorkFlowComment.cs" />
@@ -102,8 +96,6 @@
     <Compile Include="IDAL\IWorkFlowInfoDAL.cs" />
     <Compile Include="IDAL\IWorkFlowTaskDAL.cs" />
     <Compile Include="IDAL\IWorkGroupDAL.cs" />
-    <Compile Include="IDAL\IRoleAppDAL.cs" />
-    <Compile Include="IDAL\IUserAppDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
