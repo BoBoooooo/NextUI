@@ -54,3 +54,4 @@ F:\NextUI\Next\Next.Admin.Core\bin\Debug\Next.WorkFlow.Utility.dll
 F:\NextUI\Next\Next.Admin.Core\bin\Debug\LitJSON.dll
 F:\NextUI\Next\Next.Admin.Core\bin\Debug\Next.WorkFlow.Utility.pdb
 F:\NextUI\Next\Next.Admin.Core\bin\Debug\LitJSON.pdb
+F:\NextUI\Next\Next.Admin.Core\bin\Debug\MySql.Data.dll

@@ -27,9 +27,9 @@
 
     Next.WorkFlow.BLL.WorkFlowInfoBLL bworkFlow = new Next.WorkFlow.BLL.WorkFlowInfoBLL();
     Next.WorkFlow.BLL.WorkFlowTaskBLL btask = new Next.WorkFlow.BLL.WorkFlowTaskBLL();
-    Next.WorkFlow.BLL.WorkFlowInfoBLLDelegation bworkFlowDelegation = new Next.WorkFlow.BLL.WorkFlowInfoBLLDelegation();
-    RoadFlow.Platform.Organize borganize = new RoadFlow.Platform.Organize();
-    RoadFlow.Platform.Users busers = new RoadFlow.Platform.Users();
+    Next.WorkFlow.BLL.WorkFlowDelegationBLL bworkFlowDelegation = new Next.WorkFlow.BLL.WorkFlowDelegationBLL();
+    Next.Admin.BLL.DeptBLL borganize = new Next.Admin.BLL.DeptBLL();
+    Next.Admin.BLL.UserBLL busers = new Next.Admin.BLL.UserBLL();
     
     var wfInstalled=bworkFlow.GetWorkFlowRunModel(flowid);
     if(wfInstalled==null)
@@ -68,7 +68,7 @@
     execute.InstanceID = instanceid;
     execute.IsSign = "1" == issign;
     execute.Note = "";
-    execute.Sender = RoadFlow.Platform.Users.CurrentUser;
+    execute.Sender = new Next.Admin.BLL.UserBLL().CurrentUser;
     execute.StepID = stepid.IsGuid() ? stepid.ToGuid() : wfInstalled.FirstStepID;
     execute.TaskID = taskid.ToGuid();
     execute.Title = title ?? "";
@@ -101,7 +101,7 @@
             }
             if (execute.ExecuteType == Next.WorkFlow.Entity.WorkFlowExecute.EnumType.ExecuteType.Redirect)
             {
-                execute.Steps.Add(Guid.Empty, borganize.GetAllUsers(member));
+                execute.Steps.Add(string.Empty, borganize.GetAllUsers(member));
             }
         }
     }
@@ -158,9 +158,9 @@
         for (int i = 0; i < executeStep.Value.Count; i++)
         {
             string newUserID = bworkFlowDelegation.GetFlowDelegationByUserID(execute.FlowID,  executeStep.Value[i].ID);
-            if (newUserID != Guid.Empty && newUserID != executeStep.Value[i].ID)
+            if (newUserID != string.Empty && newUserID != executeStep.Value[i].ID)
             {
-                executeStep.Value[i] = busers.Get(newUserID);
+                executeStep.Value[i] = busers.FindByID(newUserID);
             }
         }
     }
@@ -176,7 +176,7 @@
         reslut.Messages
         );
 
-    RoadFlow.Platform.Log.Add(string.Format("处理了流程({0})", wfInstalled.Name), logContent, RoadFlow.Platform.Log.Types.流程相关);
+    //RoadFlow.Platform.Log.Add(string.Format("处理了流程({0})", wfInstalled.Name), logContent, RoadFlow.Platform.Log.Types.流程相关);
 
     foreach (var step in steps)
     {
@@ -208,7 +208,7 @@
             string formHtml = Request.Form["form_body_div_textarea"];
             string commentHtml = Request.Form["form_commentlist_div_textarea"];
             stepName = bworkFlow.GetStepName(execute.StepID, execute.FlowID, out flowName, true);
-            string archivesContents = new Next.WorkFlow.BLL.WorkFlowInfoBLLForm().GetArchivesString(formHtml, commentHtml);
+            string archivesContents = new Next.WorkFlow.BLL.WorkFlowFormBLL().GetArchivesString(formHtml, commentHtml);
             Next.WorkFlow.Entity.WorkFlowArchives wfr = new Next.WorkFlow.Entity.WorkFlowArchives();
             wfr.Comments = commentHtml;
             wfr.Contents = archivesContents;
@@ -222,7 +222,7 @@
             wfr.Title = title.IsNullOrEmpty() ? flowName + "-" + stepName : title;
             wfr.TaskID = execute.TaskID;
             wfr.WriteTime = Next.WorkFlow.Utility.DateTimeNew.Now;
-            new Next.WorkFlow.BLL.WorkFlowInfoBLLArchives().Add(wfr);
+            new Next.WorkFlow.BLL.WorkFlowArchivesBLL().Insert(wfr);
         }
     }
     
@@ -235,11 +235,11 @@
     if (reslut.IsSuccess)
     {
         //判断是打开任务还是关闭窗口
-        var nextTasks = reslut.NextTasks.Where(p => p.Status.In(0, 1) && p.ReceiveID == RoadFlow.Platform.Users.CurrentUserID);
+        var nextTasks = reslut.NextTasks.Where(p => p.Status.In(0, 1) && p.ReceiveID == new Next.Admin.BLL.UserBLL().CurrentUserID);
         var nextTask = nextTasks.Count() > 0 ? nextTasks.First() : null;
         if (nextTask != null)
         {
-            string url = string.Format(Url.Content("~/WorkFlowRun/Index?flowid={0}&stepid={1}&taskid={2}&groupid={3}&instanceid={4}&appid={5}&tabid={6}"),
+            string url = string.Format(Url.Content("~/WorkFlow/WorkFlowRun/Index?flowid={0}&stepid={1}&taskid={2}&groupid={3}&instanceid={4}&appid={5}&tabid={6}"),
                 nextTask.FlowID, nextTask.StepID, nextTask.ID, nextTask.GroupID, nextTask.InstanceID,
                 Request.QueryString["appid"], Request.QueryString["tabid"]
                 );

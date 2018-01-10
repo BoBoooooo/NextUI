@@ -46,7 +46,7 @@
             Response.End();
         }
 
-        var form = new Next.WorkFlow.BLL.AppLibraryBLL().Get(currentStep.Forms.First().ID);
+        var form = new Next.WorkFlow.BLL.AppLibraryBLL().FindByID(currentStep.Forms.First().ID);
         if (form != null)
         {
             string src = form.Address;

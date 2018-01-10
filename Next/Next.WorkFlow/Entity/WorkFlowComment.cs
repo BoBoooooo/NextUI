@@ -14,9 +14,9 @@ namespace Next.WorkFlow.Entity
 		[DisplayName("Comment")]
 		public string  Comment { get; set; }
 		[DisplayName("Type")]
-		public int?  Type { get; set; }
+		public int  Type { get; set; }
 		[DisplayName("Sort")]
-		public int?  Sort { get; set; }
+		public int  Sort { get; set; }
 
 	}
 }

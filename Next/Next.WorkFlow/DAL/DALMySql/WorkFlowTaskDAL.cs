@@ -28,6 +28,15 @@ namespace Next.WorkFlow.DALMySql
 			this.sortField = "ID";
 			this.IsDescending = false;
 		}
+
+        /// <summary>
+        /// 删除一个实例
+        /// </summary>
+        public int Delete(string flowID, string groupID)
+        {
+            string sql = string.Format("DELETE FROM WorkFlowTask WHERE FlowID='{0}' AND GroupID='{1}'",flowID,groupID);
+            return SqlExecute(sql);
+        }
         /// <summary>
         /// 更新打开时间
         /// </summary>
@@ -78,30 +87,26 @@ namespace Next.WorkFlow.DALMySql
             }
             if (sender.IsGuid())
             {
-                sql.Append(" AND SenderID=@SenderID");
+                sql.Append(" AND SenderID='@SenderID'");
                 parList.Add(new MySqlParameter("@SenderID", SqlDbType.UniqueIdentifier) { Value = sender.ToGuid() });
             }
             if (date1.IsDateTime())
             {
-                sql.Append(" AND ReceiveTime>=@ReceiveTime");
+                sql.Append(" AND ReceiveTime>='@ReceiveTime'");
                 parList.Add(new MySqlParameter("@ReceiveTime", SqlDbType.DateTime) { Value = date1.ToDateTime().Date });
             }
             if (date2.IsDateTime())
             {
-                sql.Append(" AND ReceiveTime<=@ReceiveTime1");
+                sql.Append(" AND ReceiveTime<='@ReceiveTime1'");
                 parList.Add(new MySqlParameter("@ReceiveTime1", SqlDbType.DateTime) { Value = date2.ToDateTime().AddDays(1).Date });
             }
 
             long count;
             int size = Next.WorkFlow.Utility.Tools.GetPageSize();
             int number = Next.WorkFlow.Utility.Tools.GetPageNumber();
-            string sql1 = dbHelper.GetPaerSql(sql.ToString(), size, number, out count, parList.ToArray());
+            string sql1 = GetPaerSql(sql.ToString(), size, number, out count, parList.ToArray());
             pager = Next.WorkFlow.Utility.Tools.GetPagerHtml(count, size, number, query);
-
-
-            SqlDataReader dataReader = dbHelper.GetDataReader(sql1, parList.ToArray());
-            List<WorkFlowTask> List = DataReaderToList(dataReader);
-            dataReader.Close();
+            List<WorkFlowTask> List = GetList(sql1);
             return List;
         }
 
@@ -145,7 +150,7 @@ namespace Next.WorkFlow.DALMySql
             {
                 if (senderID.Length == 1)
                 {
-                    sql.Append(" AND a.SenderID=@SenderID");
+                    sql.Append(" AND a.SenderID='@SenderID'");
                     parList.Add(new MySqlParameter("@SenderID", SqlDbType.UniqueIdentifier) { Value = senderID[0] });
                 }
                 else
@@ -157,7 +162,7 @@ namespace Next.WorkFlow.DALMySql
             {
                 if (senderID.Length == 1)
                 {
-                    sql.Append(" AND a.ReceiveID=@ReceiveID");
+                    sql.Append(" AND a.ReceiveID='@ReceiveID'");
                     parList.Add(new MySqlParameter("@ReceiveID", SqlDbType.UniqueIdentifier) { Value = receiveID[0] });
                 }
                 else
@@ -168,11 +173,11 @@ namespace Next.WorkFlow.DALMySql
             if (!title.IsNullOrEmpty())
             {
                 sql.Append(" AND CHARINDEX(@Title,a.Title)>0");
-                parList.Add(new MySqlParameter("@Title", SqlDbType.NVarChar, 2000) { Value = title });
+                parList.Add(new MySqlParameter("@Title", MySqlDbType.VarChar, 2000) { Value = title });
             }
             if (flowid.IsGuid())
             {
-                sql.Append(" AND a.FlowID=@FlowID");
+                sql.Append(" AND a.FlowID='@FlowID'");
                 parList.Add(new MySqlParameter("@FlowID", SqlDbType.UniqueIdentifier) { Value = flowid.ToGuid() });
             }
             else if (!flowid.IsNullOrEmpty() && flowid.IndexOf(',') >= 0)
@@ -181,27 +186,83 @@ namespace Next.WorkFlow.DALMySql
             }
             if (date1.IsDateTime())
             {
-                sql.Append(" AND a.SenderTime>=@SenderTime");
+                sql.Append(" AND a.SenderTime>='@SenderTime'");
                 parList.Add(new MySqlParameter("@SenderTime", SqlDbType.DateTime) { Value = date1.ToDateTime().Date });
             }
             if (date2.IsDateTime())
             {
-                sql.Append(" AND a.SenderTime<=@SenderTime1");
+                sql.Append(" AND a.SenderTime<='@SenderTime1'");
                 parList.Add(new MySqlParameter("@SenderTime1", SqlDbType.DateTime) { Value = date1.ToDateTime().AddDays(1).Date });
             }
 
             long count;
             int size = Next.WorkFlow.Utility.Tools.GetPageSize();
             int number = Next.WorkFlow.Utility.Tools.GetPageNumber();
-            string sql1 = dbHelper.GetPaerSql(sql.ToString(), size, number, out count, parList.ToArray());
+            string sql1 = GetPaerSql(sql.ToString(), size, number, out count, parList.ToArray());
             pager = Next.WorkFlow.Utility.Tools.GetPagerHtml(count, size, number, query);
 
-            SqlDataReader dataReader = dbHelper.GetDataReader(sql1, parList.ToArray());
-            List<WorkFlowTask> List = DataReaderToList(dataReader);
-            dataReader.Close();
+            List<WorkFlowTask> List = GetList(sql1);
             return List;
         }
+        /// <summary>
+        /// 得到一个字段的值
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        public string GetFieldValue(string sql, MySqlParameter[] parameter)
+        {
+            return ExecuteScalar(sql, parameter);
+        }
+        /// <summary>
+        /// 得到分页sql
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public string GetPaerSql(string sql, int size, int number, out long count, MySqlParameter[] param = null)
+        {
+            string count1 = GetFieldValue(string.Format("select count(*) from ({0}) as PagerCountTemp", sql), param);
+            long i;
+            count = count1.IsLong(out i) ? i : 0;
 
+            StringBuilder sql1 = new StringBuilder();
+            sql1.Append("select * from (");
+            sql1.Append(sql);
+            sql1.AppendFormat(") as PagerTempTable");
+            if (count > size)
+            {
+                sql1.AppendFormat(" where PagerAutoRowNumber between {0} and {1}", number * size - size + 1, number * size);
+            }
+
+            return sql1.ToString();
+        }
+        private string connectionString;
+        public string ConnectionString
+        {
+            get { return this.connectionString; }
+        }
+
+        /// <summary>
+        /// 得到一个字段的值
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public string ExecuteScalar(string sql, MySqlParameter[] parameter)
+        {
+            using (MySqlConnection conn = new MySqlConnection(ConnectionString))
+            {
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                {
+                    if (parameter != null && parameter.Length > 0)
+                        cmd.Parameters.AddRange(parameter);
+                    object obj = cmd.ExecuteScalar();
+                    cmd.Parameters.Clear();
+                    cmd.Prepare();
+                    return obj != null ? obj.ToString() : string.Empty;
+                }
+            }
+        }
         /// <summary>
         /// 得到一个流程实例的发起者
         /// </summary>

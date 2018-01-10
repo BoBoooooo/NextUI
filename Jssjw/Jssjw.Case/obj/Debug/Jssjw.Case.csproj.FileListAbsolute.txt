@@ -15,3 +15,4 @@ F:\NextUI\Jssjw\Jssjw.Case\bin\Debug\Next.WorkFlow.Utility.dll
 F:\NextUI\Jssjw\Jssjw.Case\bin\Debug\LitJSON.dll
 F:\NextUI\Jssjw\Jssjw.Case\bin\Debug\Next.WorkFlow.Utility.pdb
 F:\NextUI\Jssjw\Jssjw.Case\bin\Debug\LitJSON.pdb
+F:\NextUI\Jssjw\Jssjw.Case\bin\Debug\MySql.Data.dll

@@ -40,7 +40,7 @@ namespace Next.WorkFlow.Entity
 		[DisplayName("ReveiveName")]
 		public string  ReceiveName { get; set; }
 		[DisplayName("ReceiveTime")]
-		public DateTime?  ReceiveTime { get; set; }
+		public DateTime  ReceiveTime { get; set; }
 		[DisplayName("OpenTime")]
 		public DateTime?  OpenTime { get; set; }
 		[DisplayName("CompletedTime")]

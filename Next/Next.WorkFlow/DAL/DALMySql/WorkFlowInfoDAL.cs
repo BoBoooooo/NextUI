@@ -28,18 +28,42 @@ namespace Next.WorkFlow.DALMySql
 		}
 
         /// <summary>
+        /// 查询所有类型
+        /// </summary>
+        public List<string> GetAllTypes()
+        {
+            string sql = "SELECT Type FROM WorkFlowInfo GROUP BY Type";
+            List<string> list = new List<string>();
+            var dt = SqlTable(sql);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                list.Add(dt.Rows[i][0].ToString());
+            }     
+            return list;
+        }
+
+        /// <summary>
         /// 查询所有ID和名称
         /// </summary>
         public Dictionary<string, string> GetAllIDAndName()
         {
-            string sql = "SELECT * FROM WorkFlowInfo WHERE Status<4 ORDER BY Name";
+            string sql = "SELECT ID,Name FROM WorkFlowInfo WHERE Status<4 ORDER BY Name";
             Dictionary<string, string> dict = new Dictionary<string, string>();
-            var resultList = GetList(sql);
-            foreach (var item in resultList)
+            var dt = SqlTable(sql);
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
-                dict.Add(item.ID, item.Name);
-            }
+                dict.Add(dt.Rows[i][0].ToString(), dt.Rows[i][1].ToString());
+            }     
             return dict;
         }
-	}
+
+        /// <summary>
+        /// 查询所有记录
+        /// </summary>
+        public List<WorkFlowInfo> GetByTypes(string typeString)
+        {
+            string sql = "SELECT * FROM WorkFlowInfo where Type IN(" + Next.WorkFlow.Utility.Tools.GetSqlInString(typeString) + ")";
+            return GetList(sql);
+        }
+    }
 }

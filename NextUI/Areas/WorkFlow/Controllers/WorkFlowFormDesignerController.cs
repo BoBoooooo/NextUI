@@ -222,7 +222,9 @@ namespace NextUI.Areas.WorkFlow.Controllers
 
             string fileName = id + ".cshtml";
 
-            System.Text.StringBuilder serverScript = new System.Text.StringBuilder("@{\r\n");
+            System.Text.StringBuilder serverScript = new System.Text.StringBuilder("@using Next.WorkFlow.Utility\r\n");
+
+            serverScript.Append("@{\r\n");
             var attrJSON = LitJson.JsonMapper.ToObject(att);
             serverScript.Append("\tstring FlowID = Request.QueryString[\"flowid\"];\r\n");
             serverScript.Append("\tstring StepID = Request.QueryString[\"stepid\"];\r\n");
@@ -236,7 +238,7 @@ namespace NextUI.Areas.WorkFlow.Controllers
             serverScript.AppendFormat("\tstring DBTableTitle = \"{0}\";\r\n", attrJSON["dbtabletitle"].ToString());
             serverScript.Append("if(InstanceID.IsNullOrEmpty()){InstanceID = Request.QueryString[\"instanceid1\"];}");
 
-            serverScript.Append("\tRoadFlow.Platform.Dictionary BDictionary = new RoadFlow.Platform.Dictionary();\r\n");
+            serverScript.Append("\tNext.Admin.BLL.DictTypeBLL BDictionary = new Next.Admin.BLL.DictTypeBLL();\r\n");
             serverScript.Append("\tNext.WorkFlow.BLL.WorkFlowInfoBLL BWorkFlow = new Next.WorkFlow.BLL.WorkFlowInfoBLL();\r\n");
             serverScript.Append("\tNext.WorkFlow.BLL.WorkFlowTaskBLL BWorkFlowTask = new Next.WorkFlow.BLL.WorkFlowTaskBLL();\r\n");
             serverScript.Append("\tstring fieldStatus = BWorkFlow.GetFieldStatus(FlowID, StepID);\r\n");
@@ -244,14 +246,14 @@ namespace NextUI.Areas.WorkFlow.Controllers
             serverScript.Append("\tstring TaskTitle = BWorkFlow.GetFromFieldData(initData, DBTable, DBTableTitle);\r\n");
 
             serverScript.Append("}\r\n");
-            serverScript.Append("<link href=\"~/Scripts/FlowRun/Forms/flowform.css\" rel=\"stylesheet\" type=\"text/css\" />\r\n");
-            serverScript.Append("<script src=\"~/Scripts/FlowRun/Forms/common.js\" type=\"text/javascript\" ></script>\r\n");
+            serverScript.Append("<link href=\"~/Assets/WorkFlow/Scripts/FlowRun/Forms/flowform.css\" rel=\"stylesheet\" type=\"text/css\" />\r\n");
+            serverScript.Append("<script src=\"~/Assets/WorkFlow/Scripts/FlowRun/Forms/common.js\" type=\"text/javascript\" ></script>\r\n");
 
             if (attrJSON.ContainsKey("hasEditor") && "1" == attrJSON["hasEditor"].ToString())
             {
-                serverScript.Append("<script src=\"~/Scripts/Ueditor/ueditor.config.js\" type=\"text/javascript\" ></script>\r\n");
-                serverScript.Append("<script src=\"~/Scripts/Ueditor/ueditor.all.min.js\" type=\"text/javascript\" ></script>\r\n");
-                serverScript.Append("<script src=\"~/Scripts/Ueditor/lang/zh-cn/zh-cn.js\" type=\"text/javascript\" ></script>\r\n");
+                serverScript.Append("<script src=\"~/Assets/WorkFlow/Scripts/Ueditor/ueditor.config.js\" type=\"text/javascript\" ></script>\r\n");
+                serverScript.Append("<script src=\"~/Assets/WorkFlow/Scripts/Ueditor/ueditor.all.min.js\" type=\"text/javascript\" ></script>\r\n");
+                serverScript.Append("<script src=\"~/Assets/WorkFlow/Scripts/Ueditor/lang/zh-cn/zh-cn.js\" type=\"text/javascript\" ></script>\r\n");
                 serverScript.Append("<input type=\"hidden\" id=\"Form_HasUEditor\" name=\"Form_HasUEditor\" value=\"1\" />\r\n");
             }
             string validatePropType = attrJSON.ContainsKey("validatealerttype") ? attrJSON["validatealerttype"].ToString() : "2";

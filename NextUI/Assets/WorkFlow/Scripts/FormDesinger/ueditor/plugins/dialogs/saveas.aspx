@@ -31,8 +31,8 @@
                 wff.Name = name.Trim();
                 wff.CreateTime = Next.WorkFlow.Utility.DateTimeNew.Now;
                 wff.LastModifyTime = wff.CreateTime;
-                wff.CreateUserID = ((Next.Admin.Entity.User)HttpContext.Current.Session["UserInfo"]).ID;
-                wff.CreateUserName = ((Next.Admin.Entity.User)HttpContext.Current.Session["UserInfo"]).FullName;
+                wff.CreateUserID = new Next.Admin.BLL.UserBLL().CurrentUser.ID;
+                wff.CreateUserName = new Next.Admin.BLL.UserBLL().CurrentUser.FullName;
                 wff.Status = 0;
 
                 var json = LitJson.JsonMapper.ToObject(wff.Attribute);

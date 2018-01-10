@@ -4864,6 +4864,11 @@
     <Content Include="Areas\WorkFlow\Views\WorkFlowRun\ShowDesign.cshtml" />
     <Content Include="Areas\WorkFlow\Views\WorkFlowRun\Sign.cshtml" />
     <Content Include="Areas\WorkFlow\Views\WorkFlowRun\SubTableEdit.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowFormDesigner\Forms\2ccb1d07-3503-ddca-fe13-833744e38631.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowComments\Edit.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowComments\Index.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowDelegation\Edit.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowDelegation\Index.cshtml" />
     <None Include="Assets\Next\FileUpload\Script\jquery-1.9.1-vsdoc.js" />
     <Content Include="Assets\Next\FileUpload\Script\jquery-1.9.1.js" />
     <Content Include="Assets\Next\FileUpload\Script\jquery-1.9.1.min.js" />
@@ -6716,9 +6721,12 @@
     <Compile Include="Areas\WorkFlow\Controllers\SelectIcoController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\SelectMemberController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\WorkFlowButtonsController.cs" />
+    <Compile Include="Areas\WorkFlow\Controllers\WorkFlowCommentsController.cs" />
+    <Compile Include="Areas\WorkFlow\Controllers\WorkFlowDelegationController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\WorkFlowDesignerController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\WorkFlowFormDesignerController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\WorkFlowRunController.cs" />
+    <Compile Include="Areas\WorkFlow\Controllers\WorkFlowSignController.cs" />
     <Compile Include="Areas\WorkFlow\WorkFlowAreaRegistration.cs" />
     <Compile Include="Assets\WorkFlow\Scripts\FormDesinger\ueditor\net\App_Code\Config.cs" />
     <Compile Include="Assets\WorkFlow\Scripts\FormDesinger\ueditor\net\App_Code\ConfigHandler.cs" />
@@ -7159,7 +7167,7 @@
     <Folder Include="Areas\WorkFlow\Views\Dict\" />
     <Folder Include="Areas\WorkFlow\Views\Members\" />
     <Folder Include="Areas\WorkFlow\Views\RoleApp\" />
-    <Folder Include="Areas\WorkFlow\Views\WorkFlowFormDesigner\Forms\" />
+    <Folder Include="Areas\WorkFlow\Views\WorkFlowSign\" />
     <Folder Include="Assets\Insdep\animation\" />
     <Folder Include="Assets\Insdep\expand\columns-ext\__MACOSX\" />
     <Folder Include="Assets\Insdep\expand\datagrid-cellediting\" />

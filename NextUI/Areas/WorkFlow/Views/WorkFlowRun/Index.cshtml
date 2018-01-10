@@ -61,7 +61,7 @@
 
         btask.UpdateOpenTime(taskgid, Next.WorkFlow.Utility.DateTimeNew.Now, true);
 
-        var task = btask.Get(taskgid);
+        var task = btask.FindByID(taskgid);
         if (task != null)
         {
             if ("1" != display && task.Status.In(2, 3, 4, 5))
@@ -69,7 +69,7 @@
                 Response.Write("<script type='text/javascript'>alert('该任务已处理,请刷新您的待办列表!');top.mainTab.closeTab();</script>");
                 Response.End();
             }
-            else if ("1" != display && task.ReceiveID != RoadFlow.Platform.Users.CurrentUserID)
+            else if ("1" != display && task.ReceiveID != new Next.Admin.BLL.UserBLL().CurrentUserID)
             {
                 Response.Write("<script type='text/javascript'>alert('您不能处理当前任务,请刷新您的待办列表!');top.mainTab.closeTab();</script>");
                 Response.End();
@@ -87,11 +87,13 @@
 
     int debugType = wfInstalled.Debug;
     wfInstalled.DebugUsers.RemoveAll(p => p == null);
-    bool isDebug = (debugType == 1 || debugType == 2) && wfInstalled.DebugUsers.Exists(p => p.ID == RoadFlow.Platform.Users.CurrentUserID);
+    bool isDebug = (debugType == 1 || debugType == 2) && wfInstalled.DebugUsers.Exists(p => p.ID == new Next.Admin.BLL.UserBLL().CurrentUserID);
     bool isSign = currentStep.SignatureType == 1 || currentStep.SignatureType == 2;//是否有意见
 
     int signType = currentStep.SignatureType;
 }
+@Styles.Render("~/Assets/RoadUIStyle")
+@Scripts.Render("~/Assets/RoadUIScript")
 <form id="mainform" name="mainform" method="post" target="submiter" style="display:none;">
     @if ("0" == display)//display为0表示执行，1表示查看
     {
@@ -107,7 +109,7 @@
                 {
                     continue;
                 }
-                var funName = string.Concat("fun_", button1.ID.ToString(), "()");
+                var funName = string.Concat("fun_", button1.ID.ToGuid("N"), "()");
             <a href="#" onclick="@funName;return false;" title="@button1.Note.Replace("\"", "'")">
                 <span style="background:url(@Url.Content("~" + button1.Ico)) no-repeat left center;">@button1.Title</span>
             </a>
@@ -161,7 +163,7 @@
     <!--意见处理栏-->   
     @if (isSign && "0" == display)
     {
-        string commentsOptions = new Next.WorkFlow.BLL.WorkFlowCommentBLL().GetOptionsStringByUserID(RoadFlow.Platform.Users.CurrentUserID);
+        string commentsOptions = new Next.WorkFlow.BLL.WorkFlowCommentBLL().GetOptionsStringByUserID(new Next.Admin.BLL.UserBLL().CurrentUserID);
     <div style="height:12px; margin:16px 8px 8px 8px; border-bottom:1px dashed #ccc;"></div>
     <div style="height:30px; margin:15px auto 8px auto; text-align:left; width:96%;">
         处理意见：<select class="myselect" id="mycomment" style="margin-right:6px; width:100px;" onchange="$('#comment').val(this.value);"><option value=""></option>@Html.Raw(commentsOptions)</select>&nbsp;<input type="text" class="mytext" id="comment" name="comment" value="" style="width:70%; margin-right:6px;" />
@@ -169,11 +171,11 @@
         {
         <input type="hidden" value="" id="issign" name="issign" />
         <input type="button" class="mybutton" id="signbutton" onclick="sign();" value="&nbsp;&nbsp;签&nbsp;&nbsp;章&nbsp;&nbsp;"/>
-            string signFile = string.Concat(Server.MapPath(Url.Content("~/Content/UserSigns/")), RoadFlow.Platform.Users.CurrentUserID, ".gif");
-            string signSrc = string.Concat(Url.Content("~/Content/UserSigns/"), RoadFlow.Platform.Users.CurrentUserID, ".gif");
+            string signFile = string.Concat(Server.MapPath(Url.Content("~/Content/UserSigns/")), new Next.Admin.BLL.UserBLL().CurrentUserID, ".gif");
+            string signSrc = string.Concat(Url.Content("~/Content/UserSigns/"), new Next.Admin.BLL.UserBLL().CurrentUserID, ".gif");
             if (!System.IO.File.Exists(signFile))
             {
-                System.Drawing.Bitmap img = new Next.WorkFlow.BLL.WorkFlowInfoBLL().CreateSignImage(RoadFlow.Platform.Users.CurrentUserName);
+                System.Drawing.Bitmap img = new Next.WorkFlow.BLL.WorkFlowInfoBLL().CreateSignImage(new Next.Admin.BLL.UserBLL().CurrentUserName);
                 if (img != null)
                 {
                     img.Save(signFile, System.Drawing.Imaging.ImageFormat.Gif);
@@ -218,4 +220,4 @@
         }
     });
 </script>
-<script type="text/javascript" src="~/Scripts/FlowRun/common.js" ></script>
+<script type="text/javascript" src="~/Assets/WorkFlow/Scripts/FlowRun/common.js" ></script>

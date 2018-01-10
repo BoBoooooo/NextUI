@@ -37,7 +37,7 @@ namespace Next.Admin.BLL
                     info.OperationType = operationType;
                     info.Note = note;
                     info.CreateTime = DateTime.Now;
-                    userId = (string)HttpContext.Current.Session["UserID"];
+                    userId = BLLFactory<UserBLL>.Instance.CurrentUser.ID;
                     if (!string.IsNullOrEmpty(userId))
                     {
                         User userInfo = BLLFactory<UserBLL>.Instance.FindByID(userId, trans);

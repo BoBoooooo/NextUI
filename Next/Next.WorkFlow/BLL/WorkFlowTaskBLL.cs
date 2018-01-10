@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace Next.WorkFlow.BLL
 {
-	public class WorkFlowTaskBLL : BaseBLL<WorkFlowTask>
+	public class WorkFlowTaskBLL : BaseBLL<WorkFlowTask> 
 	{
         private WorkFlowInfoBLL bWorkFlow = new WorkFlowInfoBLL();
         private WorkFlowInstalled wfInstalled;
@@ -62,7 +62,7 @@ namespace Next.WorkFlow.BLL
         public string GetFirstSnderID(string flowID, string groupID, bool isDefault = false)
         {
             string senderID = workFlowTaskDAL.GetFirstSnderID(flowID, groupID);
-            return senderID.IsEmptyGuid() && isDefault ? Users.CurrentUserID : senderID;
+            return senderID.IsEmptyGuid() && isDefault ? new UserBLL().CurrentUserID : senderID;
         }
 
         /// <summary>
@@ -75,10 +75,10 @@ namespace Next.WorkFlow.BLL
         {
             if (flowID.IsEmptyGuid() || groupID.IsEmptyGuid())
             {
-                return Users.CurrentDeptID;
+                return new UserBLL().CurrentDeptID;
             }
             var senderID = workFlowTaskDAL.GetFirstSnderID(flowID, groupID);
-            var dept = new Users().GetDeptByUserID(senderID);
+            var dept = new UserBLL().FindByID(senderID);
             return dept == null ? string.Empty : dept.ID;
         }
 
@@ -120,7 +120,7 @@ namespace Next.WorkFlow.BLL
         /// <param name="flowID"></param>
         /// <param name="groupID"></param>
         /// <returns></returns>
-        public List<Guid> GetPrevSnderID(string flowID, string stepID, string groupID)
+        public List<string> GetPrevSnderID(string flowID, string stepID, string groupID)
         {
             return workFlowTaskDAL.GetPrevSnderID(flowID, stepID, groupID);
         }
@@ -311,7 +311,7 @@ namespace Next.WorkFlow.BLL
                 if (currentStep.Type == "subflow"
                     && currentStep.SubFlowID.IsGuid()
                     && currentStep.Behavior.SubFlowStrategy == 0
-                    && currentTask.SubFlowGroupID.HasValue
+                    && currentTask.SubFlowGroupID.IsGuid()
                     && !currentTask.SubFlowGroupID.IsEmptyGuid()
                     && !GetInstanceIsCompleted(currentStep.SubFlowID.ToGuid(), currentTask.SubFlowGroupID))
                 {
@@ -400,7 +400,7 @@ namespace Next.WorkFlow.BLL
                     return;
                 }
 
-                if (executeModel.ExecuteType == Data.Model.WorkFlowExecute.EnumType.ExecuteType.Completed || executeModel.Steps == null || executeModel.Steps.Count == 0)
+                if (executeModel.ExecuteType == Next.WorkFlow.Entity.WorkFlowExecute.EnumType.ExecuteType.Completed || executeModel.Steps == null || executeModel.Steps.Count == 0)
                 {
                     executeComplete(executeModel, false);
                     scope.Complete();
@@ -581,7 +581,7 @@ namespace Next.WorkFlow.BLL
         {
             //如果是第一步提交并且没有实例则先创建实例
             WorkFlowTask currentTask = null;
-            bool isFirst = executeModel.StepID == wfInstalled.FirstStepID && executeModel.TaskID == string.Empty && executeModel.GroupID == string.Empty;
+            bool isFirst = executeModel.StepID == wfInstalled.FirstStepID && executeModel.TaskID == Guid.Empty.ToString() && executeModel.GroupID == Guid.Empty.ToString();
             if (isFirst)
             {
                 currentTask = createFirstTask(executeModel);
@@ -845,7 +845,7 @@ namespace Next.WorkFlow.BLL
 
                 if (isBack)
                 {
-                    foreach (var task in tasks.Distinct(this))
+                    foreach (var task in tasks)//.Distinct(this))
                     {
                         if (task != null)
                         {
@@ -871,7 +871,7 @@ namespace Next.WorkFlow.BLL
                                 newTask.CompletedTime = null;
                             }
                             newTask.CompletedTime1 = null;
-                            Add(newTask);
+                            Insert(newTask);
                             nextTasks.Add(newTask);
                         }
                     }
@@ -1168,7 +1168,7 @@ namespace Next.WorkFlow.BLL
         /// <returns></returns>
         public List<WorkFlowTask> GetTasks(string userID, out string pager, string query = "", string title = "", string flowid = "", string sender = "", string date1 = "", string date2 = "", int type = 0)
         {
-            return workFlowTaskDAL.GetTasks(userID, out pager, query, title, flowid, RoadFlow.Platform.Users.RemovePrefix(sender), date1, date2, type);
+            return workFlowTaskDAL.GetTasks(userID, out pager, query, title, flowid, Next.Admin.BLL.UserBLL.RemovePrefix(sender), date1, date2, type);
         }
 
         /// <summary>

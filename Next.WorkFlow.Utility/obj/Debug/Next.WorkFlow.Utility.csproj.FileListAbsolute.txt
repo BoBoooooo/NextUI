@@ -5,3 +5,4 @@ F:\NextUI\Next.WorkFlow.Utility\bin\Debug\LitJSON.dll
 F:\NextUI\Next.WorkFlow.Utility\bin\Debug\LitJSON.pdb
 F:\NextUI\Next.WorkFlow.Utility\obj\Debug\Next.WorkFlow.Utility.dll
 F:\NextUI\Next.WorkFlow.Utility\obj\Debug\Next.WorkFlow.Utility.pdb
+F:\NextUI\Next.WorkFlow.Utility\bin\Debug\MySql.Data.dll

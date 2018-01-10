@@ -167,5 +167,7 @@ namespace Next.WorkFlow.IDAL
         /// <param name="subflowGroupID"></param>
         /// <returns></returns>
         List<WorkFlowTask> GetBySubFlowGroupID(string subflowGroupID);
+
+        int Delete(string flowID, string groupID);
     }
 }

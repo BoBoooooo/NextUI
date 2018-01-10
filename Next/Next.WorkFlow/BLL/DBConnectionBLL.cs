@@ -320,5 +320,79 @@ namespace Next.WorkFlow.BLL
             }
             return count;
         }
-	}
+        /// <summary>
+        /// 更新一个连接一个表一个字段的值
+        /// </summary>
+        /// <param name="connID"></param>
+        /// <param name="table"></param>
+        /// <param name="field"></param>
+        /// <param name="value"></param>
+        public void UpdateFieldValue(string connID, string table, string field, string value, string where)
+        {
+            var conn = FindByID(connID);
+            if (conn == null)
+            {
+                return;
+            }
+            switch (conn.Type)
+            {
+                case "MySql":
+                    using (var dbconn = GetConnection(conn))
+                    {
+                        try
+                        {
+                            dbconn.Open();
+                        }
+                        catch (MySqlException ex)
+                        {
+                            //Platform.Log.Add(ex);
+                        }
+                        string sql = string.Format("UPDATE {0} SET {1}=@value WHERE {2}", table, field, where);
+                        MySqlParameter par = new MySqlParameter("@value", value);
+                        using (MySqlCommand cmd = new MySqlCommand(sql, (MySqlConnection)dbconn))
+                        {
+                            cmd.Parameters.Add(par);
+                            try
+                            {
+                                cmd.ExecuteNonQuery();
+                            }
+                            catch (MySqlException ex)
+                            {
+                                //Platform.Log.Add(ex);
+                            }
+                        }
+                    }
+                    break;
+
+            }
+        }
+
+        /// <summary>
+        /// 得到一个表的结构
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="tableName"></param>
+        /// <param name="dbType"></param>
+        /// <returns></returns>
+        public System.Data.DataTable GetTableSchema(System.Data.IDbConnection conn, string tableName, string dbType)
+        {
+            DataTable dt = new DataTable();
+            switch (dbType)
+            {
+                case "MySql":
+                    /*string sql = string.Format(@"select a.name as f_name,b.name as t_name,[length],a.isnullable as is_null, a.cdefault as cdefault,COLUMNPROPERTY( OBJECT_ID('{0}'),a.name,'IsIdentity') as isidentity from 
+                    sys.syscolumns a inner join sys.types b on b.user_type_id=a.xtype 
+                    where object_id('{0}')=id order by a.colid", tableName);
+                    MySqlDataAdapter dap = new MySqlDataAdapter(sql, (MySqlConnection)conn);
+                    dap.Fill(dt);*/
+                    string sql = string.Format("show full fields from {0}", tableName);
+                    dt=dBConnectionDAL.SqlTable(sql);
+                    //MySqlDataAdapter dap = new MySqlDataAdapter(sql, (MySqlConnection)conn);
+                    //dap.Fill(dt);
+                    break;
+            }
+            return dt;
+        }
+    }
 }
+

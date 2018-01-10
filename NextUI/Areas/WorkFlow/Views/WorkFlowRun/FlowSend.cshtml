@@ -14,7 +14,7 @@
 
     Next.WorkFlow.BLL.WorkFlowInfoBLL bworkFlow = new Next.WorkFlow.BLL.WorkFlowInfoBLL();
     Next.WorkFlow.BLL.WorkFlowTaskBLL btask = new Next.WorkFlow.BLL.WorkFlowTaskBLL();
-    RoadFlow.Platform.Users busers = new RoadFlow.Platform.Users();
+    Next.Admin.BLL.UserBLL busers = new Next.Admin.BLL.UserBLL();
     Next.WorkFlow.Entity.WorkFlowInstalled wfInstalled = bworkFlow.GetWorkFlowRunModel(flowid);
     if (wfInstalled == null)
     {
@@ -43,7 +43,7 @@
         //判断流转条件
         if (currentStep.Behavior.FlowType == 0 && nextSteps.Count() > 0)
         {
-            List<Guid> removeIDList = new List<Guid>();
+            List<string> removeIDList = new List<string>();
             Next.WorkFlow.Entity.WorkFlowCustomEventParams eventParams = new Next.WorkFlow.Entity.WorkFlowCustomEventParams();
             eventParams.FlowID = flowid.ToGuid();
             eventParams.GroupID = groupid.ToGuid();
@@ -96,7 +96,7 @@
                         }
                     }
                     #region 组织机构关系判断
-                    string SenderID = RoadFlow.Platform.Users.CurrentUserID;
+                    string SenderID = new Next.Admin.BLL.UserBLL().CurrentUserID;
                     if ("1" == line.Organize_SenderChargeLeader && !busers.IsChargeLeader(SenderID))
                     {
                         removeIDList.Add(step.ID);
@@ -181,9 +181,9 @@
         var defaultMember = string.Empty;//默认处理人员
 
         //如果是调试模式并且当前登录人员包含在调试人员中 则默认为发起者
-        if ((wfInstalled.Debug == 1 || wfInstalled.Debug == 2) && wfInstalled.DebugUsers.Exists(p => p.ID == RoadFlow.Platform.Users.CurrentUserID))
+        if ((wfInstalled.Debug == 1 || wfInstalled.Debug == 2) && wfInstalled.DebugUsers.Exists(p => p.ID == new Next.Admin.BLL.UserBLL().CurrentUserID))
         {
-            defaultMember = Next.Admin.BLL.UserBLL.PREFIX + RoadFlow.Platform.Users.CurrentUserID.ToString();
+            defaultMember = Next.Admin.BLL.UserBLL.PREFIX + new Next.Admin.BLL.UserBLL().CurrentUserID.ToString();
         }
         else
         {
@@ -206,41 +206,41 @@
                     break;
                 case 5://发起者
                     string userid = btask.GetFirstSnderID(wfInstalled.ID, groupid.ToGuid());
-                    if (userid != Guid.Empty)
+                    if (userid != string.Empty)
                     {
                         defaultMember = Next.Admin.BLL.UserBLL.PREFIX + userid.ToString();
                     }
                     if (defaultMember.IsNullOrEmpty() && currentStep.ID == wfInstalled.FirstStepID)
                     {
-                        defaultMember = Next.Admin.BLL.UserBLL.PREFIX + RoadFlow.Platform.Users.CurrentUserID.ToString();
+                        defaultMember = Next.Admin.BLL.UserBLL.PREFIX + new Next.Admin.BLL.UserBLL().CurrentUserID.ToString();
                     }
                     break;
                 case 6://前一步骤处理者
                     defaultMember = btask.GetStepSnderIDString(wfInstalled.ID, currentStep.ID, groupid.ToGuid());
                     if (defaultMember.IsNullOrEmpty() && currentStep.ID == wfInstalled.FirstStepID)
                     {
-                        defaultMember = Next.Admin.BLL.UserBLL.PREFIX + RoadFlow.Platform.Users.CurrentUserID.ToString();
+                        defaultMember = Next.Admin.BLL.UserBLL.PREFIX + new Next.Admin.BLL.UserBLL().CurrentUserID.ToString();
                     }
                     break;
                 case 7://某一步骤处理者
                     defaultMember = btask.GetStepSnderIDString(wfInstalled.ID, step.Behavior.HandlerStepID, groupid.ToGuid());
                     if (defaultMember.IsNullOrEmpty() && step.Behavior.HandlerStepID == wfInstalled.FirstStepID)
                     {
-                        defaultMember = Next.Admin.BLL.UserBLL.PREFIX + RoadFlow.Platform.Users.CurrentUserID.ToString();
+                        defaultMember = Next.Admin.BLL.UserBLL.PREFIX + new Next.Admin.BLL.UserBLL().CurrentUserID.ToString();
                     }
                     break;
                 case 8://字段值
                     string linkString = step.Behavior.ValueField;
                     if (!linkString.IsNullOrEmpty() && !instanceid.IsNullOrEmpty() && wfInstalled.DataBases.Count() > 0)
                     {
-                        defaultMember = new RoadFlow.Platform.DBConnection().GetFieldValue(linkString, wfInstalled.DataBases.First().PrimaryKey, instanceid);
+                        defaultMember = new Next.WorkFlow.BLL.DBConnectionBLL().GetFieldValue(linkString, wfInstalled.DataBases.First().PrimaryKey, instanceid);
                     }
                     break;
                 case 9://发起者主管
                     string firstSenderID = btask.GetFirstSnderID(wfInstalled.ID, groupid.ToGuid());
                     if (firstSenderID.IsEmptyGuid() && currentStep.ID == wfInstalled.FirstStepID)//如果是第一步则发起者为当前人员
                     {
-                        firstSenderID = RoadFlow.Platform.Users.CurrentUserID;
+                        firstSenderID = new Next.Admin.BLL.UserBLL().CurrentUserID;
                     }
                     if (!firstSenderID.IsEmptyGuid())
                     {
@@ -251,7 +251,7 @@
                     string firstSenderID1 = btask.GetFirstSnderID(wfInstalled.ID, groupid.ToGuid());
                     if (firstSenderID1.IsEmptyGuid() && currentStep.ID == wfInstalled.FirstStepID)//如果是第一步则发起者为当前人员
                     {
-                        firstSenderID1 = RoadFlow.Platform.Users.CurrentUserID;
+                        firstSenderID1 = new Next.Admin.BLL.UserBLL().CurrentUserID;
                     }
                     if (!firstSenderID1.IsEmptyGuid())
                     {
@@ -259,10 +259,10 @@
                     }
                     break;
                 case 11://当前处理者主管
-                    defaultMember = busers.GetLeader(RoadFlow.Platform.Users.CurrentUserID);
+                    defaultMember = busers.GetLeader(new Next.Admin.BLL.UserBLL().CurrentUserID);
                     break;
                 case 12://当前处理者分管领导
-                    defaultMember = busers.GetChargeLeader(RoadFlow.Platform.Users.CurrentUserID);
+                    defaultMember = busers.GetChargeLeader(new Next.Admin.BLL.UserBLL().CurrentUserID);
                     break;
             }
         }

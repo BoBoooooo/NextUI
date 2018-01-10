@@ -12,9 +12,9 @@ namespace Next.WorkFlow.Entity
 		[DisplayName("UserID")]
 		public string  UserID { get; set; }
 		[DisplayName("StartTime")]
-		public DateTime?  StartTime { get; set; }
+		public DateTime  StartTime { get; set; }
 		[DisplayName("EndTime")]
-		public DateTime?  EndTime { get; set; }
+		public DateTime  EndTime { get; set; }
 		[DisplayName("FlowID")]
 		public string  FlowID { get; set; }
 		[DisplayName("ToUserID")]

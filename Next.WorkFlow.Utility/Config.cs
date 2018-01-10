@@ -18,6 +18,15 @@ namespace Next.WorkFlow.Utility
                 return System.Configuration.ConfigurationManager.ConnectionStrings["PlatformConnection"].ConnectionString;
             }
         }
+
+
+        public static string PlatformConnectionStringMySql
+        {
+            get
+            {
+                return System.Configuration.ConfigurationManager.ConnectionStrings["mysql"].ConnectionString;
+            }
+        }
         /// <summary>
         /// 平台连接字符串
         /// </summary>

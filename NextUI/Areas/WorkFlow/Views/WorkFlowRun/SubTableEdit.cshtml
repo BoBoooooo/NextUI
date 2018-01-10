@@ -37,7 +37,7 @@
     <div style="padding-top:10px;">
         <input type="hidden" name="@secondtablerelationfield" id="@secondtablerelationfield" value="@Request.QueryString["primarytableid"]" />
          @{
-             var form = new Next.WorkFlow.BLL.AppLibraryBLL().Get(secondtableeditform.ToGuid());
+             var form = new Next.WorkFlow.BLL.AppLibraryBLL().FindByID(secondtableeditform.ToGuid());
              if (form != null)
              {
                  string src = form.Address;

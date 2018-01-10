@@ -334,6 +334,18 @@ namespace Next.WorkFlow.Utility
             }
         }
 
+        public static string ToGuid(this string str, string format)
+        {
+            Guid guid;
+            if (Guid.TryParse(str, out guid))
+            {
+                return guid.ToString(format).ToString();
+            }
+            else
+            {
+                return Guid.Empty.ToString();
+            }
+        }
         /// <summary>
         /// 尝试转换为Boolean类型
         /// </summary>

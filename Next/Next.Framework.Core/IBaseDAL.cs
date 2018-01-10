@@ -46,11 +46,15 @@ namespace Next.Framework.Core
         bool DeleteByCondition(string condition, DbTransaction trans = null, IDbDataParameter[] paramList = null);
         bool Update(T obj, object primaryKeyValue, DbTransaction trans = null);
 
+        bool Update(T obj,  DbTransaction trans = null);
+
         List<T> GetList(string sql, IDbDataParameter[] paramList = null, DbTransaction trans = null);
 
         DbTransaction CreateTransaction();
 
         string GetPrimaryKeyValue(T obj, DbTransaction trans = null);
+
+        DataTable SqlTable(string sql, DbTransaction trans = null);
      
     }
 }

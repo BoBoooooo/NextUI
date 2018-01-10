@@ -107,8 +107,9 @@
                 return true;
             }
             var fieldName = field[1];
-           
+            
             var fieldstatus = "1" != displayModel ? eval("jsonStatus." + dbtable + "_" + fieldName) : "";
+            
             var validatetype = formrun.getValidateType($control.attr("valuetype"));
             var initValue = eval("jsonData." + dbtable + "_" + fieldName);
            
@@ -236,6 +237,7 @@
                 filedcheck = parseInt(fieldstatusArray[1]);
             }
         }
+        
         if (!initValue || $.trim(initValue).length == 0 || initValue.toLowerCase() == "null")
         {
             if (type == "flow_org" || type == "flow_dict" || type == "flow_files")//某些特定控件取值要值前一个对象的值

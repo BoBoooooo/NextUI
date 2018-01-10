@@ -651,6 +651,16 @@ namespace Next.Framework.Core
             return Update(primaryKeyValue, hash, trans);
         }
 
+        public virtual bool Update(T obj, DbTransaction trans = null)
+        {
+            ArgumentValidation.CheckForNullReference(obj, "传入的对象obj为空");
+            Debug.WriteLine("Update(T obj, object primaryKeyValue, DbTransaction trans = null)");
+            string primaryKeyValue = GetPrimaryKeyValue(obj);
+            OperationLogOfUpdate(obj, primaryKeyValue, trans);
+            Hashtable hash = GetHashByEntity(obj);
+            return Update(primaryKeyValue, hash, trans);
+        }
+
         public virtual bool Update(object id, Hashtable recordField, DbTransaction trans)
         {
             
