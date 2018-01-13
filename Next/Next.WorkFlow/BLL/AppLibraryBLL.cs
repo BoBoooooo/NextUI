@@ -28,7 +28,7 @@ namespace Next.WorkFlow.BLL
         public AppLibrary GetByCode(string code)
         {
 
-            return null;// string.IsNullOrEmpty(code) ? null : appLibraryDAL.GetByCode(code.Trim());
+            return string.IsNullOrEmpty(code) ? null : appLibraryDAL.GetByCode(code.Trim());
         }
 
 

@@ -135,11 +135,22 @@ namespace Next.Admin.BLL
 
             foreach (string id in idArray)
             {
-                userList.AddRange(busers.GetUsersByDept(id));
+                User result = new User();
+                Dept test = BLLFactory<DeptBLL>.Instance.FindByID(id);
+                if (test != null)
+                {
+                    userList.AddRange(busers.GetUsersByDept(id));
+                }
+                else
+                {
+                    userList.Add(BLLFactory<UserBLL>.Instance.FindByID(id));
+                }
+                
             }
             userList.RemoveAll(p => p == null);
             return userList.Distinct(new UsersEqualityComparer()).ToList();
         }
+
 
         public class UsersEqualityComparer : IEqualityComparer<User>
         {

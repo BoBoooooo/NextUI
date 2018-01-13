@@ -61,6 +61,7 @@ function flowSend(isSubmit)
     }
     else
     {
+        alert(iframeid);
         top.mainDialog.open({ url: top.rootdir + "/WorkFlowRun/FlowSend?" + query + "&instanceid1=" + $("#instanceid").val(), openerid: iframeid, width: 480, height: 280, title: "选择处理步骤和人员" });
     }
 }

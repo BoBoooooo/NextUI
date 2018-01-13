@@ -153,5 +153,120 @@ namespace Next.Admin.BLL
                 return user == null ? string.Empty : user.FullName;
             }
         }
+
+                /// <summary>
+        /// 判断一个人员是否是部门主管
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        public bool IsLeader(string userID)
+        {
+            //string leader = GetLeader(userID);
+            return true;// leader.Contains(userID.ToString(), StringComparison.CurrentCultureIgnoreCase);
+        }
+        /// <summary>
+        /// 判断一个人员是否是部门分管领导
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        public bool IsChargeLeader(string userID)
+        {
+            //string leader = GetChargeLeader(userID);
+            return true;// leader.Contains(userID.ToString(), StringComparison.CurrentCultureIgnoreCase);
+        }
+        /// <summary>
+        /// 判断一个人员是否在一个组织机构字符串里
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <param name="memberString"></param>
+        /// <returns></returns>
+        public bool IsContains(string userID, string memberString)
+        {
+            if (memberString.IsNullOrEmpty())
+            {
+                return false;
+            }
+            var user = new DeptBLL().GetAllUsers(memberString).Find(p => p.ID == userID);
+            return user != null;
+        }
+        /// <summary>
+        /// 得到一个人员的主管
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        public string GetLeader(string userID)
+        {
+            /*var mainStation = GetMainStation(userID);
+            if (mainStation == null)
+            {
+                return "";
+            }
+            DeptBLL borg = new DeptBLL();
+            var station = borg.FindByID(mainStation);
+            if (station == null)
+            {
+                return "";
+            }
+            if (!station.Leader.IsNullOrEmpty())
+            {
+                return station.Leader;
+            }
+            var parents = borg.GetAllParent(station.Number);
+            foreach (var parent in parents)
+            {
+                if (!parent.Leader.IsNullOrEmpty())
+                {
+                    return parent.Leader;
+                }
+            }*/
+            return "";
+        }
+
+        /// <summary>
+        /// 得到一个人员的分管领导
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        public string GetChargeLeader(string userID)
+        {
+
+            
+            /*var mainStation = GetMainStation(userID);
+            if (mainStation == null)
+            {
+                return "";
+            }
+            DeptBLL borg = new DeptBLL();
+            var station = borg.FindByID(mainStation);
+            if (station == null)
+            {
+                return "";
+            }
+            if (!station.ChargeLeader.IsNullOrEmpty())
+            {
+                return station.ChargeLeader;
+            }
+            var parents = borg.GetAllParent(station.Number);
+            foreach (var parent in parents)
+            {
+                if (!parent.ChargeLeader.IsNullOrEmpty())
+                {
+                    return parent.ChargeLeader;
+                }
+            }*/
+            return "";
+        }
+        /// <summary>
+        /// 得到一个用户的主要岗位
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        public string GetMainStation(string userID)
+        {
+            //var ur = new UsersRelation().GetMainByUserID(userID);
+            //return ur == null ? Guid.Empty : ur.OrganizeID;
+            return "";
+        }
     }
+    
 }

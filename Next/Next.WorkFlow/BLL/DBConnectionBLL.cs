@@ -393,6 +393,90 @@ namespace Next.WorkFlow.BLL
             }
             return dt;
         }
+
+        /// <summary>
+        /// 得到一个连接一个表一个字段的值
+        /// </summary>
+        /// <param name="link_table_field"></param>
+        /// <returns></returns>
+        public string GetFieldValue(string link_table_field, string pkField, string pkFieldValue)
+        {
+            if (link_table_field.IsNullOrEmpty())
+            {
+                return "";
+            }
+            string[] array = link_table_field.Split('.');
+            if (array.Length != 3)
+            {
+                return "";
+            }
+            string link = array[0];
+            string table = array[1];
+            string field = array[2];
+            var allConns = GetAll();
+            string linkid;
+            if (!link.IsGuid(out linkid))
+            {
+                return "";
+            }
+            var conn = allConns.Find(p => p.ID == linkid);
+            if (conn == null)
+            {
+                return "";
+            }
+            string value = string.Empty;
+            switch (conn.Type)
+            {
+                case "MySql":
+                    value = getFieldValue_MySql(conn, table, field, pkField, pkFieldValue);
+                    break;
+            }
+            return value;
+        }
+
+        /// <summary>
+        /// 得到一个连接一个表一个字段的值
+        /// </summary>
+        /// <param name="linkID">连接ID</param>
+        /// <param name="table">表</param>
+        /// <param name="field">字段</param>
+        /// <param name="pkField">主键字段</param>
+        /// <param name="pkFieldValue">主键值</param>
+        /// <returns></returns>
+        private string getFieldValue_MySql(DBConnection conn, string table, string field, string pkField, string pkFieldValue)
+        {
+            string v = "";
+            using (MySqlConnection sqlConn = new MySqlConnection(conn.ConnectionString))
+            {
+                try
+                {
+                    sqlConn.Open();
+                }
+                catch (MySqlException err)
+                {
+                    //Log.Add(err);
+                    return "";
+                }
+                string sql = string.Format("SELECT {0} FROM {1} WHERE {2} = '{3}'", field, table, pkField, pkFieldValue);
+                using (MySqlDataAdapter dap = new MySqlDataAdapter(sql, sqlConn))
+                {
+                    try
+                    {
+                        DataTable dt = new DataTable();
+                        dap.Fill(dt);
+                        if (dt.Rows.Count > 0)
+                        {
+                            v = dt.Rows[0][0].ToString();
+                        }
+                    }
+                    catch (MySqlException err)
+                    {
+                        //Log.Add(err);
+                    }
+                    return v;
+                }
+            }
+        }
     }
 }
 

@@ -273,7 +273,7 @@ namespace Next.WorkFlow.BLL
             {
                 //如果是第一步提交并且没有实例则先创建实例
                 WorkFlowTask currentTask = null;
-                bool isFirst = executeModel.StepID == wfInstalled.FirstStepID && executeModel.TaskID == string.Empty && executeModel.GroupID == string.Empty;
+                bool isFirst = executeModel.StepID == wfInstalled.FirstStepID && executeModel.TaskID == Guid.Empty.ToString() && executeModel.GroupID == Guid.Empty.ToString();
                 if (isFirst)
                 {
                     currentTask = createFirstTask(executeModel);

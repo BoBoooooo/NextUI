@@ -5,6 +5,11 @@ var addTabs = function (options) {
     //var id = rand.substring(rand.indexOf('.') + 1);
     var url = window.location.protocol + '//' + window.location.host;
     options.url = url + options.url;
+    if (options.url.indexOf("?") > 0) {
+        options.url += "&appid=" + options.id + "&tabid=tab_" + options.id;
+        }else{
+        options.url += "?appid=" + options.id + "&tabid=tab_" + options.id;
+    }
     id = "tab_" + options.id;
     $(".active").removeClass("active");
     //如果TAB不存在，创建一个新的TAB

@@ -4869,6 +4869,16 @@
     <Content Include="Areas\WorkFlow\Views\WorkFlowComments\Index.cshtml" />
     <Content Include="Areas\WorkFlow\Views\WorkFlowDelegation\Edit.cshtml" />
     <Content Include="Areas\WorkFlow\Views\WorkFlowDelegation\Index.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowTasks\CompletedList.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowTasks\Designate.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowTasks\Detail.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowTasks\DetailSubFlow.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowTasks\Instance.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowTasks\InstanceList.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowTasks\InstanceManage.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowTasks\InstanceTree.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowTasks\WaitList.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\WorkFlowFormDesigner\Forms\a30ed2ee-d8a7-60db-fd5d-697f481fd217.cshtml" />
     <None Include="Assets\Next\FileUpload\Script\jquery-1.9.1-vsdoc.js" />
     <Content Include="Assets\Next\FileUpload\Script\jquery-1.9.1.js" />
     <Content Include="Assets\Next\FileUpload\Script\jquery-1.9.1.min.js" />
@@ -6727,6 +6737,7 @@
     <Compile Include="Areas\WorkFlow\Controllers\WorkFlowFormDesignerController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\WorkFlowRunController.cs" />
     <Compile Include="Areas\WorkFlow\Controllers\WorkFlowSignController.cs" />
+    <Compile Include="Areas\WorkFlow\Controllers\WorkFlowTasksController.cs" />
     <Compile Include="Areas\WorkFlow\WorkFlowAreaRegistration.cs" />
     <Compile Include="Assets\WorkFlow\Scripts\FormDesinger\ueditor\net\App_Code\Config.cs" />
     <Compile Include="Assets\WorkFlow\Scripts\FormDesinger\ueditor\net\App_Code\ConfigHandler.cs" />

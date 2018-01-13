@@ -12,6 +12,7 @@ namespace Next.WorkFlow.DALMySql
 {
 	public class WorkFlowTaskDAL: BaseDALMySql<WorkFlowTask> , IWorkFlowTaskDAL
 	{
+        private DBHelper dbHelper = new DBHelper();
 		public static WorkFlowTaskDAL Instance
 		{
 			get
@@ -68,9 +69,9 @@ namespace Next.WorkFlow.DALMySql
             StringBuilder sql = new StringBuilder();
             if (type == 0)
             {
-                sql = new StringBuilder("SELECT *,ROW_NUMBER() OVER (ORDER BY ReceiveTime DESC) AS PagerAutoRowNumber FROM WorkFlowTask WHERE ReceiveID='"+userID+"' AND Status IN(0,1)");
+                sql = new StringBuilder("SELECT * {0} FROM WorkFlowTask {1} WHERE ReceiveID='" + userID + "' AND Status IN(0,1)");
             }else{
-                sql = new StringBuilder("SELECT *,ROW_NUMBER() OVER (ORDER BY CompletedTime1 DESC) AS PagerAutoRowNumber FROM WorkFlowTask WHERE ReceiveID='" + userID + "' AND Status IN(2,3)");
+                sql = new StringBuilder("SELECT * {0} FROM WorkFlowTask {1} WHERE ReceiveID='" + userID + "' AND Status IN(2,3)");
             }
 
             if (!title.IsNullOrEmpty())
@@ -100,13 +101,17 @@ namespace Next.WorkFlow.DALMySql
                 sql.Append(" AND ReceiveTime<='@ReceiveTime1'");
                 parList.Add(new MySqlParameter("@ReceiveTime1", SqlDbType.DateTime) { Value = date2.ToDateTime().AddDays(1).Date });
             }
-
+            //sql.Append(" JOIN (SELECT @rownum := 0) r");
+            string sqlTemp = sql.ToString();
+            var sqlForCount = string.Format(sqlTemp, ",@rownum := @rownum + 1 AS PagerAutoRowNumber", "JOIN (SELECT @rownum := 0) r");
+            var sqlForQuery=string.Format(sqlTemp, "", "");
+            
             long count;
             int size = Next.WorkFlow.Utility.Tools.GetPageSize();
             int number = Next.WorkFlow.Utility.Tools.GetPageNumber();
-            string sql1 = GetPaerSql(sql.ToString(), size, number, out count, parList.ToArray());
+            string sql1 = dbHelper.GetPaerSql(sqlForCount, size, number, out count, parList.ToArray());
             pager = Next.WorkFlow.Utility.Tools.GetPagerHtml(count, size, number, query);
-            List<WorkFlowTask> List = GetList(sql1);
+            List<WorkFlowTask> List = GetList(sqlForQuery);
             return List;
         }
 
@@ -198,71 +203,13 @@ namespace Next.WorkFlow.DALMySql
             long count;
             int size = Next.WorkFlow.Utility.Tools.GetPageSize();
             int number = Next.WorkFlow.Utility.Tools.GetPageNumber();
-            string sql1 = GetPaerSql(sql.ToString(), size, number, out count, parList.ToArray());
+            string sql1 = dbHelper.GetPaerSql(sql.ToString(), size, number, out count, parList.ToArray());
             pager = Next.WorkFlow.Utility.Tools.GetPagerHtml(count, size, number, query);
 
             List<WorkFlowTask> List = GetList(sql1);
             return List;
         }
-        /// <summary>
-        /// 得到一个字段的值
-        /// </summary>
-        /// <param name="sql"></param>
-        /// <param name="parameter"></param>
-        /// <returns></returns>
-        public string GetFieldValue(string sql, MySqlParameter[] parameter)
-        {
-            return ExecuteScalar(sql, parameter);
-        }
-        /// <summary>
-        /// 得到分页sql
-        /// </summary>
-        /// <param name="sql"></param>
-        /// <returns></returns>
-        public string GetPaerSql(string sql, int size, int number, out long count, MySqlParameter[] param = null)
-        {
-            string count1 = GetFieldValue(string.Format("select count(*) from ({0}) as PagerCountTemp", sql), param);
-            long i;
-            count = count1.IsLong(out i) ? i : 0;
 
-            StringBuilder sql1 = new StringBuilder();
-            sql1.Append("select * from (");
-            sql1.Append(sql);
-            sql1.AppendFormat(") as PagerTempTable");
-            if (count > size)
-            {
-                sql1.AppendFormat(" where PagerAutoRowNumber between {0} and {1}", number * size - size + 1, number * size);
-            }
-
-            return sql1.ToString();
-        }
-        private string connectionString;
-        public string ConnectionString
-        {
-            get { return this.connectionString; }
-        }
-
-        /// <summary>
-        /// 得到一个字段的值
-        /// </summary>
-        /// <param name="sql"></param>
-        /// <returns></returns>
-        public string ExecuteScalar(string sql, MySqlParameter[] parameter)
-        {
-            using (MySqlConnection conn = new MySqlConnection(ConnectionString))
-            {
-                conn.Open();
-                using (MySqlCommand cmd = new MySqlCommand(sql, conn))
-                {
-                    if (parameter != null && parameter.Length > 0)
-                        cmd.Parameters.AddRange(parameter);
-                    object obj = cmd.ExecuteScalar();
-                    cmd.Parameters.Clear();
-                    cmd.Prepare();
-                    return obj != null ? obj.ToString() : string.Empty;
-                }
-            }
-        }
         /// <summary>
         /// 得到一个流程实例的发起者
         /// </summary>
@@ -322,9 +269,9 @@ namespace Next.WorkFlow.DALMySql
         {
             string sql=string.Empty;
             if(note.IsNullOrEmpty()){
-                sql = string.Format("UPDATE WorkFlowTask SET Comment='{0}',CompletedTime1='{1}',IsSign={2},Status={3}  WHERE ID={4}",comment,Next.WorkFlow.Utility.DateTimeNew.Now, isSign?1:0 ,status,taskID);
+                sql = string.Format("UPDATE WorkFlowTask SET Comment='{0}',CompletedTime1='{1}',IsSign={2},Status={3}  WHERE ID='{4}'",comment,Next.WorkFlow.Utility.DateTimeNew.Now, isSign?1:0 ,status,taskID);
             }else{
-                sql = string.Format("UPDATE WorkFlowTask SET Comment='{0}',CompletedTime1='{1}',IsSign={2},Status={3} ,Note={4}  WHERE ID={5}",comment,Next.WorkFlow.Utility.DateTimeNew.Now, isSign?1:0 ,status,note,taskID);
+                sql = string.Format("UPDATE WorkFlowTask SET Comment='{0}',CompletedTime1='{1}',IsSign={2},Status={3} ,Note={4}  WHERE ID='{5}'", comment, Next.WorkFlow.Utility.DateTimeNew.Now, isSign ? 1 : 0, status, note, taskID);
             }
             return SqlExecute(sql);
         }
@@ -406,11 +353,11 @@ namespace Next.WorkFlow.DALMySql
             string sql = null; 
             if (isStepID)
             {
-                sql = string.Format("SELECT * FROM WorkFlowTask WHERE PrevID={'0} AND {1}", task.PrevID, task.StepID);//isStepID ? "StepID=@StepID" : "PrevStepID=@StepID");
+                sql = string.Format("SELECT * FROM WorkFlowTask WHERE PrevID='{0}' AND StepID='{1}'", task.PrevID, task.StepID);//isStepID ? "StepID=@StepID" : "PrevStepID=@StepID");
             }
             else
             {
-                sql = string.Format("SELECT * FROM WorkFlowTask WHERE PrevID={'0} AND {1}", task.PrevID, task.PrevStepID);
+                sql = string.Format("SELECT * FROM WorkFlowTask WHERE PrevID='{0}' AND PrevStepID='{1}'", task.PrevID, task.PrevStepID);
             }
             return GetList(sql);
         }
@@ -435,7 +382,7 @@ namespace Next.WorkFlow.DALMySql
         /// <returns></returns>
         public List<WorkFlowTask> GetNextTaskList(string taskID)
         {
-            string sql = string.Format("SELECT * FROM WorkFlowTask WHERE PrevID='{0}')", taskID);
+            string sql = string.Format("SELECT * FROM WorkFlowTask WHERE PrevID='{0}'", taskID);
             return GetList(sql);
         }
 
@@ -447,7 +394,7 @@ namespace Next.WorkFlow.DALMySql
         /// <returns></returns>
         public bool HasTasks(string flowID)
         {
-            string sql = string.Format("SELECT TOP 1 ID FROM WorkFlowTask WHERE FlowID='{0}')", flowID);
+            string sql = string.Format("SELECT ID FROM WorkFlowTask WHERE FlowID='{0}' limit 1", flowID);
             bool has = GetList(sql).Count > 0;
             return has;
         }
@@ -459,7 +406,7 @@ namespace Next.WorkFlow.DALMySql
         /// <returns></returns>
         public bool HasNoCompletedTasks(string flowID, string stepID, string groupID, string userID)
         {
-            string sql = string.Format("SELECT TOP 1 ID FROM WorkFlowTask WHERE FlowID='{0}' AND StepID='{1}' AND GroupID='{2}' AND ReceiveID='{3}' AND Status IN(0,1)", flowID, stepID, groupID, userID);
+            string sql = string.Format("SELECT ID FROM WorkFlowTask WHERE FlowID='{0}' AND StepID='{1}' AND GroupID='{2}' AND ReceiveID='{3}' AND Status IN(0,1) limit 1", flowID, stepID, groupID, userID);
             bool has = GetList(sql).Count>0;
             return has;
         }
@@ -484,7 +431,7 @@ namespace Next.WorkFlow.DALMySql
         /// <returns></returns>
         public List<WorkFlowTask> GetBySubFlowGroupID(string subflowGroupID)
         {
-            string sql = string.Format("SELECT * FROM WorkFlowTask WHERE SubFlowGroupID='{0}')", subflowGroupID);
+            string sql = string.Format("SELECT * FROM WorkFlowTask WHERE SubFlowGroupID='{0}'", subflowGroupID);
             return GetList(sql);
         }
     }

@@ -26,7 +26,7 @@ namespace Next.Admin.BLL
             {
                 //虽然实现了这个事件，但是我们还需要判断该表是否在配置表里面，如果不在，则不记录操作日志。
                 flag = true;
-                Debug.WriteLine("Hello World!");
+                //Debug.WriteLine("Hello World!");
                 bool insert = operationType == "增加";
                 bool update = operationType == "修改";
                 bool delete = operationType == "删除";

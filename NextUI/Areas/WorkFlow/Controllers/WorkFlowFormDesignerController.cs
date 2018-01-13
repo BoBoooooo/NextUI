@@ -306,7 +306,7 @@ namespace NextUI.Areas.WorkFlow.Controllers
                 app.Code = id;
                 isAdd = true;
             }
-            app.Address = "/Views/WorkFlowFormDesigner/Forms/" + fileName;
+            app.Address = "/Areas/WorkFlow/Views/WorkFlowFormDesigner/Forms/" + fileName;
             app.Note = "流程表单";
             app.OpenMode = 0;
             app.Params = "";

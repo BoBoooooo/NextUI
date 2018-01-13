@@ -54,14 +54,14 @@ namespace Next.Areas.Admin.Controllers
                             continue;
                         }
                         string icon = "icon-computer";// string.IsNullOrEmpty(subNode.WebIcon) ? "icon-computer" : subNode.WebIcon;
-                        if (subNode.Url.IndexOf('?') > 0)
+                        /*if (subNode.Url.IndexOf('?') > 0)
                         {
                             subNode.Url += "&appid=" + subNode.ID + "&tabid=tab_" + subNode.ID;
                         }
                         else
                         {
                             subNode.Url += "?appid=" + subNode.ID + "&tabid=tab_" + subNode.ID;
-                        }
+                        }*/
                         MenuData secondMenuData = new MenuData(subNode.ID, subNode.Name, icon, subNode.Url);
                         menuData.menus.Add(secondMenuData);
                         if (subNode.Children != null)

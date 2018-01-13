@@ -7,7 +7,7 @@
 	string InstanceID = Request.QueryString["instanceid"];
 	string DisplayModel = Request.QueryString["display"] ?? "0";
 	string DBConnID = "2953af3a-866b-4544-91f7-2939e47ff2d2";
-	string DBTable = "Example";
+	string DBTable = "Contact";
 	string DBTablePK = "ID";
 	string DBTableTitle = "";
 if(InstanceID.IsNullOrEmpty()){InstanceID = Request.QueryString["instanceid1"];}	Next.Admin.BLL.DictTypeBLL BDictionary = new Next.Admin.BLL.DictTypeBLL();
@@ -19,10 +19,11 @@ if(InstanceID.IsNullOrEmpty()){InstanceID = Request.QueryString["instanceid1"];}
 }
 <link href="~/Assets/WorkFlow/Scripts/FlowRun/Forms/flowform.css" rel="stylesheet" type="text/css" />
 <script src="~/Assets/WorkFlow/Scripts/FlowRun/Forms/common.js" type="text/javascript" ></script>
-<input type="hidden" id="Form_ValidateAlertType" name="Form_ValidateAlertType" value="1" />
-<input type="hidden" id="Form_TitleField" name="Form_TitleField" value="Example." />
+<input type="hidden" id="Form_ValidateAlertType" name="Form_ValidateAlertType" value="0" />
+<input type="hidden" id="Contact." name="Contact." value="@(TaskTitle.IsNullOrEmpty() ? BWorkFlow.GetAutoTaskTitle(FlowID, StepID, Request.QueryString["groupid"]) : TaskTitle)" />
+<input type="hidden" id="Form_TitleField" name="Form_TitleField" value="Contact." />
 <input type="hidden" id="Form_DBConnID" name="Form_DBConnID" value="2953af3a-866b-4544-91f7-2939e47ff2d2" />
-<input type="hidden" id="Form_DBTable" name="Form_DBTable" value="Example" />
+<input type="hidden" id="Form_DBTable" name="Form_DBTable" value="Contact" />
 <input type="hidden" id="Form_DBTablePk" name="Form_DBTablePk" value="ID" />
 <input type="hidden" id="Form_DBTableTitle" name="Form_DBTableTitle" value="" />
 <input type="hidden" id="Form_AutoSaveData" name="Form_AutoSaveData" value="1" />
@@ -31,7 +32,7 @@ if(InstanceID.IsNullOrEmpty()){InstanceID = Request.QueryString["instanceid1"];}
 	var fieldStatus = "1"=="@Request.QueryString["isreadonly"]" ? {} : @Html.Raw(fieldStatus);
 	var displayModel = '@DisplayModel';
 	$(window).load(function (){
-		formrun.initData(initData, "Example", fieldStatus, displayModel);
+		formrun.initData(initData, "Contact", fieldStatus, displayModel);
 	});
 </script>
-<table class="flowformtable" cellpadding="0" cellspacing="1"><tbody><tr class="firstRow"><td style="word-break: break-all;" valign="top" width="803">名称<br/></td><td valign="top" width="803"><input title="" class="mytext" isflow="1" id="Example.Name" type1="flow_text" name="Example.Name" value="" valuetype="0" type="text"/></td></tr><tr><td valign="top" width="803">地址<br/></td><td valign="top" width="803"><input title="" class="mytext" isflow="1" id="Example.Address" type1="flow_text" name="Example.Address" value="" valuetype="0" type="text"/></td></tr><tr><td valign="top" width="803">电话<br/></td><td valign="top" width="803"><input title="" class="mytext" isflow="1" id="Example.Phone" type1="flow_text" name="Example.Phone" value="" valuetype="0" type="text"/></td></tr></tbody></table>
+<p><br/></p><p><br/></p><table class="flowformtable" cellpadding="0" cellspacing="1"><tbody><tr class="firstRow"><td valign="top" width="338">姓名<br/></td><td valign="top" width="338"><input title="" class="mytext" isflow="1" id="Contact.Name" type1="flow_text" name="Contact.Name" value="" valuetype="0" type="text"/></td><td valign="top" width="338">联系电话<br/></td><td valign="top" width="338"><input title="" class="mytext" isflow="1" id="Contact.Phone" type1="flow_text" name="Contact.Phone" value="" valuetype="0" type="text"/></td></tr><tr><td valign="top" width="338">部门<br/></td><td valign="top" width="338"><input title="" class="mytext" isflow="1" id="Contact.DeptName" type1="flow_text" name="Contact.DeptName" value="" valuetype="0" type="text"/></td><td valign="top" width="338">地址<br/></td><td valign="top" width="338"><input title="" class="mytext" isflow="1" id="Contact.Address" type1="flow_text" name="Contact.Address" value="" valuetype="0" type="text"/></td></tr></tbody></table>

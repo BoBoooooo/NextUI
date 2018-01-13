@@ -34,7 +34,7 @@ namespace Next.WorkFlow.Entity
 		[DisplayName("SenderName")]
 		public string  SenderName { get; set; }
 		[DisplayName("SenderTime")]
-		public DateTime?  SenderTime { get; set; }
+		public DateTime  SenderTime { get; set; }
 		[DisplayName("ReceiveID")]
 		public string  ReceiveID { get; set; }
 		[DisplayName("ReveiveName")]

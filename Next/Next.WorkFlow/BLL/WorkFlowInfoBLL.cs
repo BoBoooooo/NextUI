@@ -11,6 +11,8 @@ using Next.Admin.Entity;
 using System.Web;
 using System.Linq;
 using System.Drawing;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace Next.WorkFlow.BLL
 {
@@ -182,7 +184,7 @@ namespace Next.WorkFlow.BLL
                             app = new AppLibrary();
                             app.ID = Guid.NewGuid().ToString();
                         }
-                        app.Address = isMvc ? "WorkFlowRun/Index" : "Platform/WorkFlowRun/Default.aspx";
+                        app.Address = isMvc ? "WorkFlow/WorkFlowRun/Index" : "Platform/WorkFlowRun/Default.aspx";
                         app.Code = wfInstalled.ID.ToString();
                         app.Note = "流程应用";
                         app.OpenMode = 0;
@@ -1098,15 +1100,24 @@ namespace Next.WorkFlow.BLL
                     switch (dbconn.Type)
                     {
                         case "MySql":
-                            sql = string.Format("SELECT * FROM {0} WHERE {1}=@pk", dbtable, dbtablepk);
-                            parList.Add(new MySql.Data.MySqlClient.MySqlParameter("@pk", instanceid));
+                            sql = string.Format("SELECT * FROM {0} WHERE {1}='{2}'", dbtable, dbtablepk, instanceid);
+                            
                             break;
 
                     }
                 }
-                System.Data.IDbDataAdapter dataAdapter = bdbconn.GetDataAdapter(conn, dbconn.Type, sql, parList.ToArray());
-                System.Data.DataSet ds = new System.Data.DataSet();
+                var sConnectionString = "Database='Next';Data Source='localhost';Port='3306';User Id='root';Password='';charset='utf8';pooling=true";
+                MySqlConnection Conn = new MySqlConnection(sConnectionString);
+
+                //打开Conn
+
+                Conn.Open();
+
+                System.Data.IDbDataAdapter dataAdapter = new MySqlDataAdapter(sql, Conn);//bdbconn.GetDataAdapter(conn, dbconn.Type, sql, parList.ToArray());
+                //System.Data.DataSet ds = new System.Data.DataSet();
+                DataSet ds = new DataSet();
                 dataAdapter.Fill(ds);
+                //ds = workFlowInfoDAL.SqlTable(sql).DataSet;
                 System.Data.DataTable schemaDt = bdbconn.GetTableSchema(conn, dbtable, dbconn.Type);
                 System.Data.DataTable dt = ds.Tables[0];
                 bool isNew = dt.Rows.Count == 0;
@@ -1221,6 +1232,7 @@ namespace Next.WorkFlow.BLL
                         break;
 
                 }
+                //workFlowInfoDAL.Update
                 dataAdapter.Update(ds);
                 #endregion
 
