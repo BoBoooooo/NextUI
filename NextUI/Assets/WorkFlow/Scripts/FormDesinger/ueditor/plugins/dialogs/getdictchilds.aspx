@@ -6,7 +6,7 @@
         Response.Write("[]");
         Response.End();
     }
-    var dicts = new RoadFlow.Platform.Dictionary().GetChilds(dictid.ToGuid());
+    var dicts = new Next.WorkFlow.BLL.DictBLL().GetChilds(dictid.ToGuid());
     System.Text.StringBuilder json = new StringBuilder();
     json.Append("[");
     foreach (var dict in dicts)

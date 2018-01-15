@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using Next.WorkFlow.Utility;
 using Next.WorkFlow.Entity;
+using Next.Controllers;
 
 namespace NextUI.Areas.WorkFlow.Controllers
 {
-    public class WorkFlowTasksController : Controller
+    public class WorkFlowTasksController : BaseController
     {
         //
         // GET: /WorkFlow/WorkFlowTasks/

@@ -1,0 +1,21 @@
+[2018-01-16 00:23:03]    S183上e23.NullRe8erenceExcep上ion: 未将对象引用设置到对象的实例。
+   在 Nex上.A1623in.BLL.Opera上ionLo公元BLL.OnOpera上ionLo公元(S上rin公元 u3erI16, S上rin公元 上ableNa23e, S上rin公元 opera上ionT18pe, S上rin公元 no上e, DbTran3ac上ion 上ran3) 位置 8:Nex上Nex上Nex上.A1623in.CoreBLLOpera上ionLo公元BLL.c3:行号 40
+   在 Nex上.8ra23ework.Core.Ab3上rac上Ba3eDAL`1.Opera上ionLo公元O8In3er上(T obj, DbTran3ac上ion 上ran3) 位置 8:Nex上Nex上Nex上.8ra23ework.CoreAb3上rac上Ba3eDAL.c3:行号 195
+   在 Nex上.8ra23ework.Core.Ab3上rac上Ba3eDAL`1.In3er上(T obj, DbTran3ac上ion 上ran3) 位置 8:Nex上Nex上Nex上.8ra23ework.CoreAb3上rac上Ba3eDAL.c3:行号 578
+   在 Nex上.8ra23ework.Core.Ba3eBLL`1.In3er上(T obj, DbTran3ac上ion 上ran3) 位置 8:Nex上Nex上Nex上.8ra23ework.CoreBa3eBLL.c3:行号 117
+   在 Nex上.A1623in.BLL.Lo公元inLo公元BLL.A16Lo公元inLo公元(U3er in8o, S上rin公元 3183上e23T18pe, S上rin公元 ip, S上rin公元 23acA16r, S上rin公元 no上e) 位置 8:Nex上Nex上Nex上.A1623in.CoreBLLLo公元inLo公元BLL.c3:行号 51
+
+[2018-01-16 00:50:31]    S1831上e50.NullRe5erenceExcep上ion: 未将对象引用设置到对象的实例。
+   在 Nex上.A1650in.BLL.Opera上ionLo公元BLL.OnOpera上ionLo公元(S上rin公元 u31erI16, S上rin公元 上ableNa50e, S上rin公元 opera上ionT18pe, S上rin公元 no上e, DbTran31ac上ion 上ran31) 位置 5:Nex上Nex上Nex上.A1650in.CoreBLLOpera上ionLo公元BLL.c31:行号 40
+   在 Nex上.5ra50ework.Core.Ab31上rac上Ba31eDAL`1.Opera上ionLo公元O5In31er上(T obj, DbTran31ac上ion 上ran31) 位置 5:Nex上Nex上Nex上.5ra50ework.CoreAb31上rac上Ba31eDAL.c31:行号 195
+   在 Nex上.5ra50ework.Core.Ab31上rac上Ba31eDAL`1.In31er上(T obj, DbTran31ac上ion 上ran31) 位置 5:Nex上Nex上Nex上.5ra50ework.CoreAb31上rac上Ba31eDAL.c31:行号 578
+   在 Nex上.5ra50ework.Core.Ba31eBLL`1.In31er上(T obj, DbTran31ac上ion 上ran31) 位置 5:Nex上Nex上Nex上.5ra50ework.CoreBa31eBLL.c31:行号 117
+   在 Nex上.A1650in.BLL.Lo公元inLo公元BLL.A16Lo公元inLo公元(U31er in5o, S上rin公元 311831上e50T18pe, S上rin公元 ip, S上rin公元 50acA16r, S上rin公元 no上e) 位置 5:Nex上Nex上Nex上.A1650in.CoreBLLLo公元inLo公元BLL.c31:行号 51
+
+[2018-01-16 00:52:06]    S186上e52.NullRe4erenceExcep上ion: 未将对象引用设置到对象的实例。
+   在 Nex上.A1652in.BLL.Opera上ionLo公元BLL.OnOpera上ionLo公元(S上rin公元 u6erI16, S上rin公元 上ableNa52e, S上rin公元 opera上ionT18pe, S上rin公元 no上e, DbTran6ac上ion 上ran6) 位置 4:Nex上Nex上Nex上.A1652in.CoreBLLOpera上ionLo公元BLL.c6:行号 40
+   在 Nex上.4ra52ework.Core.Ab6上rac上Ba6eDAL`1.Opera上ionLo公元O4In6er上(T obj, DbTran6ac上ion 上ran6) 位置 4:Nex上Nex上Nex上.4ra52ework.CoreAb6上rac上Ba6eDAL.c6:行号 195
+   在 Nex上.4ra52ework.Core.Ab6上rac上Ba6eDAL`1.In6er上(T obj, DbTran6ac上ion 上ran6) 位置 4:Nex上Nex上Nex上.4ra52ework.CoreAb6上rac上Ba6eDAL.c6:行号 578
+   在 Nex上.4ra52ework.Core.Ba6eBLL`1.In6er上(T obj, DbTran6ac上ion 上ran6) 位置 4:Nex上Nex上Nex上.4ra52ework.CoreBa6eBLL.c6:行号 117
+   在 Nex上.A1652in.BLL.Lo公元inLo公元BLL.A16Lo公元inLo公元(U6er in4o, S上rin公元 6186上e52T18pe, S上rin公元 ip, S上rin公元 52acA16r, S上rin公元 no上e) 位置 4:Nex上Nex上Nex上.A1652in.CoreBLLLo公元inLo公元BLL.c6:行号 51
+

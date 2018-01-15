@@ -29,7 +29,7 @@
                     case "0":
                     default:
                         $.ajax({
-                            url: (top.rootdir || "") + "/Controls/SelectDict/GetNames?values=" + encodeURI(value), type: "get", async: false, cache: false, success: function (txt)
+                            url: (top.rootdir || "") + "/SelectDict/GetNames?values=" + encodeURI(value), type: "get", async: false, cache: false, success: function (txt)
                             {
                                 $_member.val(txt);
                             }
@@ -39,7 +39,7 @@
                         var dbconn = $_member.attr("dbconn");
                         var sql = $_member.attr("sql");
                         $.ajax({
-                            url: (top.rootdir || "") + "/Controls/SelectDict/GetNames_SQL?values=" + encodeURI(value) + "&dbconn=" + dbconn + "&sql=" + encodeURI(sql), type: "get", async: false, cache: false, success: function (txt)
+                            url: (top.rootdir || "") + "/SelectDict/GetNames_SQL?values=" + encodeURI(value) + "&dbconn=" + dbconn + "&sql=" + encodeURI(sql), type: "get", async: false, cache: false, success: function (txt)
                             {
                                 $_member.val(txt);
                             }
@@ -61,7 +61,7 @@
                         var valuefield = $_member.attr("valuefield") || "";
                         var titlefield = $_member.attr("titlefield") || "";
 
-                        url = (top.rootdir || "") + "/Controls/SelectDict/GetNames_Table?values=" + encodeURI(value);
+                        url = (top.rootdir || "") + "/SelectDict/GetNames_Table?values=" + encodeURI(value);
                         url += "&dbconn=" + dbconn + "&dbtable=" + dbtable + "&valuefield=" + valuefield + "&titlefield=" + titlefield;
                         $.ajax({
                             url: (top.rootdir || "") + url, type: "get", async: false, cache: false, success: function (txt)
@@ -109,7 +109,7 @@
                         + "&parentfield=" + parentfield + "&where1=" + encodeURIComponent(where);
 
                     new RoadUI.Window().open({
-                        id: "dict_" + id, url: (top.rootdir || "") + "/Controls/SelectDict/Index?" + params, width: 500, height: 470, resize: false,
+                        id: "dict_" + id, url: (top.rootdir || "") + "/SelectDict/Index?" + params, width: 500, height: 470, resize: false,
                         title: dialogtitle, openerid: RoadUI.Core.query("tabid") || ""
                     });
                 });
@@ -139,7 +139,7 @@
                 case "0": //数据字典
                 default:
                     $.ajax({
-                        url: (top.rootdir || "") + "/Controls/SelectDict/GetNames?values=" + value, type: "get", async: false, cache: false, success: function (txt)
+                        url: (top.rootdir || "") + "/SelectDict/GetNames?values=" + value, type: "get", async: false, cache: false, success: function (txt)
                         {
                             $obj.next().val(txt);
                         }
@@ -149,7 +149,7 @@
                     var dbconn = $obj.next().attr("dbconn");
                     var sql = $obj.next().attr("sql");
                     $.ajax({
-                        url: (top.rootdir || "") + "/Controls/SelectDict/GetNames_SQL?values=" + encodeURI(value) + "&dbconn=" + dbconn + "&sql=" + encodeURI(sql), type: "get", async: false, cache: false, success: function (txt)
+                        url: (top.rootdir || "") + "/SelectDict/GetNames_SQL?values=" + encodeURI(value) + "&dbconn=" + dbconn + "&sql=" + encodeURI(sql), type: "get", async: false, cache: false, success: function (txt)
                         {
                             $obj.next().val(txt);
                         }
@@ -171,7 +171,7 @@
                     var valuefield = $obj.next().attr("valuefield") || "";
                     var titlefield = $obj.next().attr("titlefield") || "";
 
-                    url = (top.rootdir || "") + "/Controls/SelectDict/GetNames_Table?values=" + encodeURI(value);
+                    url = (top.rootdir || "") + "/SelectDict/GetNames_Table?values=" + encodeURI(value);
                     url += "&dbconn=" + dbconn + "&dbtable=" + dbtable + "&valuefield=" + valuefield + "&titlefield=" + titlefield;
                     $.ajax({
                         url: (top.rootdir || "") + url, type: "get", async: false, cache: false, success: function (txt)

@@ -41,3 +41,12 @@ F:\NextUI\Next\Next.Framework.Core\bin\Debug\System.Data.SQLite.dll
 F:\NextUI\Next\Next.Framework.Core\obj\Debug\Next.Framework.Core.dll
 F:\NextUI\Next\Next.Framework.Core\obj\Debug\Next.Framework.Core.pdb
 F:\NextUI\Next\Next.Framework.Core\obj\Debug\Next.Framework.Core.csprojResolveAssemblyReference.cache
+F:\Next\Next\Next.Framework.Core\bin\Debug\Next.Framework.Core.dll
+F:\Next\Next\Next.Framework.Core\bin\Debug\Next.Framework.Core.pdb
+F:\Next\Next\Next.Framework.Core\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+F:\Next\Next\Next.Framework.Core\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+F:\Next\Next\Next.Framework.Core\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+F:\Next\Next\Next.Framework.Core\bin\Debug\System.Data.SQLite.dll
+F:\Next\Next\Next.Framework.Core\obj\Debug\Next.Framework.Core.csprojResolveAssemblyReference.cache
+F:\Next\Next\Next.Framework.Core\obj\Debug\Next.Framework.Core.dll
+F:\Next\Next\Next.Framework.Core\obj\Debug\Next.Framework.Core.pdb

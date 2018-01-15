@@ -5,9 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using Next.WorkFlow.Utility;
 using Next.WorkFlow.Entity;
+using Next.Controllers;
 namespace NextUI.Areas.WorkFlow.Controllers
 {
-    public class WorkFlowCommentsController : Controller
+    public class WorkFlowCommentsController : BaseController
     {
         //
         // GET: /WorkFlow/WorkFlowComments/

@@ -27,7 +27,7 @@ namespace Next.Admin.DALMySql
             this.sortField = "ID";
             this.IsDescending = false;
         }
-
+        /*
         public List<DictType> GetChildsByID(string id)
         {
             string sql = "SELECT * FROM DictType WHERE PID='" + id + "' ORDER BY Seq";
@@ -97,6 +97,6 @@ namespace Next.Admin.DALMySql
             string sql = string.Format("UPDATE Dictionary SET Seq={0} WHERE ID='{1}'", sort, id);
             return SqlExecute(sql);
         }
-
+        */
     }
 }

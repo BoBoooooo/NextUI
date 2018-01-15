@@ -29,7 +29,7 @@ namespace Next.Areas.Admin.Controllers
         {
             return View();
         }
-
+        
         public ActionResult GetDictJson()
         {
             List<DictType> list = baseBLL.GetAll();
@@ -80,7 +80,7 @@ namespace Next.Areas.Admin.Controllers
                 GetTreeJson(model.ID, node);
             }
         }
-
+        /*
         public string Tree1()
         {
             DictTypeBLL BDict = new DictTypeBLL();
@@ -174,6 +174,6 @@ namespace Next.Areas.Admin.Controllers
             json.Append("]");
             return json.ToString();
         }
-
+        */
     }
 }

@@ -1,9 +1,9 @@
-﻿@using Next.Admin.BLL;
+﻿@using Next.WorkFlow.BLL;
 
 
 @{
     ViewBag.Title = "Open_Tree";
-    string rootid = new DictTypeBLL().GetIDByCode("FlowTypes").ToString();
+    string rootid = new DictBLL().GetIDByCode("FlowTypes").ToString();
 }
 @Styles.Render("~/Assets/RoadUIStyle")
 @Scripts.Render("~/Assets/RoadUIScript")

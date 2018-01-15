@@ -10,6 +10,7 @@ namespace Next.Admin.IDAL
 {
     public interface IDictTypeDAL : IBaseDAL<DictType>
     {
+        /*
         DictType GetRoot();
 
         /// <summary>
@@ -45,6 +46,6 @@ namespace Next.Admin.IDAL
         /// <summary>
         /// 根据代码查询一条记录
         /// </summary>
-        DictType GetByCode(string code);
+        DictType GetByCode(string code);*/
     }
 }

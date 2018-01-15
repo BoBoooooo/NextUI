@@ -101,6 +101,31 @@ namespace Next.WorkFlow.Utility
             }
             return true;
         }
+
+        /// <summary>
+        /// 将当前url参数转换为RouteValueDictionary(以便于在mvc中重定向时的参数)
+        /// </summary>
+        /// <returns></returns>
+        public static System.Web.Routing.RouteValueDictionary GetRouteValueDictionary()
+        {
+            Dictionary<string, object> dict = new Dictionary<string, object>();
+            string query = System.Web.HttpContext.Current.Request.Url.Query;
+            if (query.IsNullOrEmpty())
+            {
+                return new System.Web.Routing.RouteValueDictionary(dict);
+            }
+            string[] queryArray = query.TrimStart('?').Split('&');
+            foreach (string q in queryArray)
+            {
+                string[] qArray = q.Split('=');
+                if (qArray.Length < 2)
+                {
+                    continue;
+                }
+                dict.Add(qArray[0], qArray[1]);
+            }
+            return new System.Web.Routing.RouteValueDictionary(dict);
+        }
         public static DateTime DateTime
         {
             get

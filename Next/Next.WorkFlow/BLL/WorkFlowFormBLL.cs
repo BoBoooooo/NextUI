@@ -103,11 +103,11 @@ namespace Next.WorkFlow.BLL
             StringBuilder options = new StringBuilder(1000);
             options.Append("<option value=\"\"></option>");
             options.Append("<optgroup label=\"组织机构相关选项\"></optgroup>");
-            options.AppendFormat("<option value=\"u_@RoadFlow.Platform.Users.CurrentUserID.ToString()\" {0}>当前步骤用户ID</option>", "10" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"@(RoadFlow.Platform.Users.CurrentUserName)\" {0}>当前步骤用户姓名</option>", "11" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"@(RoadFlow.Platform.Users.CurrentDeptID)\" {0}>当前步骤用户部门ID</option>", "12" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"@(RoadFlow.Platform.Users.CurrentDeptName)\" {0}>当前步骤用户部门名称</option>", "13" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"u_@(new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true))\" {0}>流程发起者ID</option>", "14" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"@new Next.Admin.BLL.UserBLL().CurrentUserID.ToString()\" {0}>当前步骤用户ID</option>", "10" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"@(new Next.Admin.BLL.UserBLL().CurrentUserName)\" {0}>当前步骤用户姓名</option>", "11" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"@(new Next.Admin.BLL.UserBLL().CurrentDeptID)\" {0}>当前步骤用户部门ID</option>", "12" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"@(new Next.Admin.BLL.UserBLL().CurrentDeptName)\" {0}>当前步骤用户部门名称</option>", "13" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"@(new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true))\" {0}>流程发起者ID</option>", "14" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"@(new RoadFlow.Platform.Users().GetName(new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true)))\" {0}>流程发起者姓名</option>", "15" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"@(new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderDeptID(FlowID.ToGuid(), GroupID.ToGuid()))\" {0}>流程发起者部门ID</option>", "16" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"@(new RoadFlow.Platform.Users().GetName(new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderDeptID(FlowID.ToGuid(), GroupID.ToGuid())))\" {0}>流程发起者部门名称</option>", "17" == value ? "selected=\"selected\"" : "");
@@ -134,10 +134,10 @@ namespace Next.WorkFlow.BLL
             StringBuilder options = new StringBuilder(1000);
             options.Append("<option value=\"\"></option>");
             options.Append("<optgroup label=\"组织机构相关选项\"></optgroup>");
-            options.AppendFormat("<option value=\"u_<%=RoadFlow.Platform.Users.CurrentUserID.ToString()%>\" {0}>当前步骤用户ID</option>", "10" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"<%=RoadFlow.Platform.Users.CurrentUserName%>\" {0}>当前步骤用户姓名</option>", "11" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"<%=RoadFlow.Platform.Users.CurrentDeptID%>\" {0}>当前步骤用户部门ID</option>", "12" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"<%=RoadFlow.Platform.Users.CurrentDeptName%>\" {0}>当前步骤用户部门名称</option>", "13" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"u_<%=new Next.Admin.BLL.UserBLL().CurrentUserID.ToString()%>\" {0}>当前步骤用户ID</option>", "10" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"<%=new Next.Admin.BLL.UserBLL().CurrentUserName%>\" {0}>当前步骤用户姓名</option>", "11" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"<%=new Next.Admin.BLL.UserBLL().CurrentDeptID%>\" {0}>当前步骤用户部门ID</option>", "12" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"<%=new Next.Admin.BLL.UserBLL().CurrentDeptName%>\" {0}>当前步骤用户部门名称</option>", "13" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"u_<%=new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true)%>\" {0}>流程发起者ID</option>", "14" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"<%=new RoadFlow.Platform.Users().GetName(new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true))%>\" {0}>流程发起者姓名</option>", "15" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"<%=new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderDeptID(FlowID.ToGuid(), GroupID.ToGuid())%>\" {0}>流程发起者部门ID</option>", "16" == value ? "selected=\"selected\"" : "");
@@ -278,43 +278,43 @@ namespace Next.WorkFlow.BLL
                     value1 = value;
                     break;
                 case "dict_id_title":
-                    var dict = new DictTypeBLL().FindByID(value.ToGuid());
-                    value1 = dict == null ? "" : dict.Name;
+                    var dict = new DictBLL().FindByID(value.ToGuid());
+                    value1 = dict == null ? "" : dict.Title;
                     break;
                 case "dict_id_code":
-                    var dict1 = new DictTypeBLL().FindByID(value.ToGuid());
+                    var dict1 = new DictBLL().FindByID(value.ToGuid());
                     value1 = dict1 == null ? "" : dict1.Code;
                     break;
                 case "dict_id_value":
-                    var dict2 = new DictTypeBLL().FindByID(value.ToGuid());
+                    var dict2 = new DictBLL().FindByID(value.ToGuid());
                     value1 = dict2 == null ? "" : dict2.Value;
                     break;
                 case "dict_id_note":
-                    var dict3 = new DictTypeBLL().FindByID(value.ToGuid());
-                    value1 = dict3 == null ? "" : dict3.Remark;
+                    var dict3 = new DictBLL().FindByID(value.ToGuid());
+                    value1 = dict3 == null ? "" : dict3.Note;
                     break;
                 case "dict_id_other":
-                    var dict4 = new DictTypeBLL().FindByID(value.ToGuid());
+                    var dict4 = new DictBLL().FindByID(value.ToGuid());
                     value1 = dict4 == null ? "" : dict4.Other;
                     break;
                 case "dict_code_title":
-                    var dict5 = new DictTypeBLL().GetByCode(value);
-                    value1 = dict5 == null ? "" : dict5.Name;
+                    var dict5 = new DictBLL().GetByCode(value);
+                    value1 = dict5 == null ? "" : dict5.Title;
                     break;
                 case "dict_code_id":
-                    var dict6 = new DictTypeBLL().GetByCode(value);
+                    var dict6 = new DictBLL().GetByCode(value);
                     value1 = dict6 == null ? "" : dict6.ID.ToString();
                     break;
                 case "dict_code_value":
-                    var dict7 = new DictTypeBLL().GetByCode(value);
+                    var dict7 = new DictBLL().GetByCode(value);
                     value1 = dict7 == null ? "" : dict7.Value;
                     break;
                 case "dict_code_note":
-                    var dict8 = new DictTypeBLL().GetByCode(value);
-                    value1 = dict8 == null ? "" : dict8.Remark;
+                    var dict8 = new DictBLL().GetByCode(value);
+                    value1 = dict8 == null ? "" : dict8.Note;
                     break;
                 case "dict_code_other":
-                    var dict9 = new DictTypeBLL().GetByCode(value);
+                    var dict9 = new DictBLL().GetByCode(value);
                     value1 = dict9 == null ? "" : dict9.Other;
                     break;
                 case "organize_id_name":
@@ -697,7 +697,7 @@ namespace Next.WorkFlow.BLL
         /// <returns></returns>
         public string GetAllChildsIDString(string id, bool isSelf = true)
         {
-            return new DictTypeBLL().GetAllChildsIDString(id, true);
+            return new DictBLL().GetAllChildsIDString(id, true);
         }
 
         /// <summary>
@@ -714,7 +714,7 @@ namespace Next.WorkFlow.BLL
         /// <returns></returns>
         public string GetTypeOptions(string value = "")
         {
-            return new DictTypeBLL().GetOptionsByCode("FormTypes", DictTypeBLL.OptionValueField.ID, value);
+            return new DictBLL().GetOptionsByCode("FormTypes", DictBLL.OptionValueField.ID, value);
         }
 
 

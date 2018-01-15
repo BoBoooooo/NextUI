@@ -10,10 +10,11 @@ using System.IO;
 using Next.Admin.BLL;
 using System.Web;
 using Next.Admin.Entity;
+using Next.Controllers;
 
 namespace NextUI.Areas.WorkFlow.Controllers
 {
-    public class WorkFlowFormDesignerController : Controller
+    public class WorkFlowFormDesignerController : BaseController
     {
         //
         // GET: /WorkFlow/WorkFlowFormDesigner/
@@ -238,7 +239,7 @@ namespace NextUI.Areas.WorkFlow.Controllers
             serverScript.AppendFormat("\tstring DBTableTitle = \"{0}\";\r\n", attrJSON["dbtabletitle"].ToString());
             serverScript.Append("if(InstanceID.IsNullOrEmpty()){InstanceID = Request.QueryString[\"instanceid1\"];}");
 
-            serverScript.Append("\tNext.Admin.BLL.DictTypeBLL BDictionary = new Next.Admin.BLL.DictTypeBLL();\r\n");
+            serverScript.Append("\tNext.WorkFlow.BLL.DictBLL BDictionary = new Next.WorkFlow.BLL.DictBLL();\r\n");
             serverScript.Append("\tNext.WorkFlow.BLL.WorkFlowInfoBLL BWorkFlow = new Next.WorkFlow.BLL.WorkFlowInfoBLL();\r\n");
             serverScript.Append("\tNext.WorkFlow.BLL.WorkFlowTaskBLL BWorkFlowTask = new Next.WorkFlow.BLL.WorkFlowTaskBLL();\r\n");
             serverScript.Append("\tstring fieldStatus = BWorkFlow.GetFieldStatus(FlowID, StepID);\r\n");
@@ -311,7 +312,7 @@ namespace NextUI.Areas.WorkFlow.Controllers
             app.OpenMode = 0;
             app.Params = "";
             app.Title = name.Trim();
-            app.Type = appType.IsGuid() ? appType : new DictTypeBLL().GetIDByCode("FormTypes");
+            app.Type = appType.IsGuid() ? appType : new DictBLL().GetIDByCode("FormTypes");
             if (isAdd)
             {
                 App.Insert(app);

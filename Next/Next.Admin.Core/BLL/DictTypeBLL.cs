@@ -22,7 +22,7 @@ namespace Next.Admin.BLL
             this.dictTypeDAL = (IDictTypeDAL)base.baseDal;
         }
 
-
+        /*
         /// <summary>
         /// 查询根记录
         /// </summary>
@@ -74,7 +74,7 @@ namespace Next.Admin.BLL
             var dict = GetByCode(code, fromCache);
             if (dict == null) return new List<DictType>();
             return GetAllChilds(dict.ID, fromCache);
-        }*/
+        }
 
         /// <summary>
         /// 得到所有下级
@@ -496,6 +496,6 @@ namespace Next.Admin.BLL
             html.Append("</tbody>");
             html.Append("</table>");
             return html.ToString();
-        }
+        }*/
     }
 }

@@ -115,7 +115,7 @@ namespace Next.WorkFlow.BLL
                 wf.InstanceManager = jsonData["instanceManager"].ToString();
                 wf.Manager = jsonData["manager"].ToString();
                 wf.Name = name.Trim();
-                wf.Type = type.IsGuid() ? type.ToGuid() : new Next.Admin.BLL.DictTypeBLL().GetIDByCode("FlowTypes");
+                wf.Type = type.IsGuid() ? type.ToGuid() : new Next.WorkFlow.BLL.DictBLL().GetIDByCode("FlowTypes");
                 try
                 {
                     if (isAdd)
@@ -190,7 +190,7 @@ namespace Next.WorkFlow.BLL
                         app.OpenMode = 0;
                         app.Params = "flowid=" + wfInstalled.ID.ToString();
                         app.Title = wfInstalled.Name;
-                        app.Type = wfInstalled.Type.IsGuid() ? wfInstalled.Type.ToGuid() : new Next.Admin.BLL.DictTypeBLL().GetIDByCode("FlowTypes");
+                        app.Type = wfInstalled.Type.IsGuid() ? wfInstalled.Type.ToGuid() : new Next.WorkFlow.BLL.DictBLL().GetIDByCode("FlowTypes");
                         if (isAdd)
                         {
                             bappLibrary.Insert(app);
@@ -391,7 +391,7 @@ namespace Next.WorkFlow.BLL
             }
 
             string type = json["type"].ToString();
-            wfInstalled.Type = type.IsNullOrEmpty() ? new Next.Admin.BLL.DictTypeBLL().GetIDByCode("FlowTypes").ToString() : type.Trim();
+            wfInstalled.Type = type.IsNullOrEmpty() ? new Next.WorkFlow.BLL.DictBLL().GetIDByCode("FlowTypes").ToString() : type.Trim();
 
 
             string manager = json["manager"].ToString();
@@ -1106,19 +1106,27 @@ namespace Next.WorkFlow.BLL
 
                     }
                 }
-                var sConnectionString = "Database='Next';Data Source='localhost';Port='3306';User Id='root';Password='';charset='utf8';pooling=true";
-                MySqlConnection Conn = new MySqlConnection(sConnectionString);
+                //var sConnectionString = "Database='Next';Data Source='localhost';Port='3306';User Id='root';Password='';charset='utf8';pooling=true";
+                //MySqlConnection Conn = new MySqlConnection(sConnectionString);
+
+                //打开Conn
+
+                //Conn.Open();
+
+                //System.Data.IDbDataAdapter dataAdapter = new MySqlDataAdapter(sql, Conn);//bdbconn.GetDataAdapter(conn, dbconn.Type, sql, parList.ToArray());
+                //System.Data.DataSet ds = new System.Data.DataSet();
+                //DataSet ds = new DataSet();
+                //dataAdapter.Fill(ds);
+                //ds = workFlowInfoDAL.SqlTable(sql).DataSet;
+                MySqlConnection Conn = new MySqlConnection(conn.ConnectionString);
 
                 //打开Conn
 
                 Conn.Open();
-
-                System.Data.IDbDataAdapter dataAdapter = new MySqlDataAdapter(sql, Conn);//bdbconn.GetDataAdapter(conn, dbconn.Type, sql, parList.ToArray());
-                //System.Data.DataSet ds = new System.Data.DataSet();
-                DataSet ds = new DataSet();
+                System.Data.IDbDataAdapter dataAdapter = bdbconn.GetDataAdapter(Conn, dbconn.Type, sql, parList.ToArray());
+                System.Data.DataSet ds = new System.Data.DataSet();
                 dataAdapter.Fill(ds);
-                //ds = workFlowInfoDAL.SqlTable(sql).DataSet;
-                System.Data.DataTable schemaDt = bdbconn.GetTableSchema(conn, dbtable, dbconn.Type);
+                System.Data.DataTable schemaDt = bdbconn.GetTableSchema(Conn, dbtable, dbconn.Type);
                 System.Data.DataTable dt = ds.Tables[0];
                 bool isNew = dt.Rows.Count == 0;
                 if (isNew)
@@ -1507,14 +1515,26 @@ namespace Next.WorkFlow.BLL
                 }
 
                 //System.Data.IDbDataAdapter dataAdapter = bdbconn.GetDataAdapter(conn, dbconn.Type, sql, parList.ToArray());
-                System.Data.DataSet ds = new System.Data.DataSet();
+                //System.Data.DataSet ds = new System.Data.DataSet();
                 //dataAdapter.Fill(ds);
-                ds=workFlowInfoDAL.SqlTable(sql).DataSet;
+                //ds=workFlowInfoDAL.SqlTable(sql).DataSet;
                 /*if (dataAdapter.SelectCommand != null)
                 {
                     dataAdapter.SelectCommand.Dispose();
                 }*/
+                //var sConnectionString = "Database='App';Data Source='localhost';Port='3306';User Id='root';Password='';charset='utf8';pooling=true";
+                MySqlConnection Conn = new MySqlConnection(conn.ConnectionString);
 
+                //打开Conn
+
+                Conn.Open();
+                System.Data.IDbDataAdapter dataAdapter = bdbconn.GetDataAdapter(Conn, dbconn.Type, sql, parList.ToArray());
+                System.Data.DataSet ds = new System.Data.DataSet();
+                dataAdapter.Fill(ds);
+                if (dataAdapter.SelectCommand != null)
+                {
+                    dataAdapter.SelectCommand.Dispose();
+                }
                 System.Data.DataTable dt = ds.Tables[0];
                 LitJson.JsonData json = null;
                 if (!filedStatus.IsNullOrEmpty())
@@ -1726,7 +1746,7 @@ namespace Next.WorkFlow.BLL
         /// <returns></returns>
         public string GetAllChildsIDString(string id, bool isSelf = true)
         {
-            return new Next.Admin.BLL.DictTypeBLL().GetAllChildsIDString(id, true);
+            return new Next.WorkFlow.BLL.DictBLL().GetAllChildsIDString(id, true);
         }
 
         /// <summary>
@@ -1735,7 +1755,7 @@ namespace Next.WorkFlow.BLL
         /// <returns></returns>
         public string GetTypeOptions(string value = "")
         {
-            return new Next.Admin.BLL.DictTypeBLL().GetOptionsByCode("FlowTypes", DictTypeBLL.OptionValueField.ID, value);
+            return new Next.WorkFlow.BLL.DictBLL().GetOptionsByCode("FlowTypes", DictBLL.OptionValueField.ID, value);
         }
 
         /// <summary>

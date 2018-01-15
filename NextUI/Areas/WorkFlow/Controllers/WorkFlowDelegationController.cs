@@ -6,10 +6,11 @@ using System.Web.Mvc;
 using Next.WorkFlow.Utility;
 using Next.WorkFlow.Entity;
 using Next.WorkFlow.Utility;
+using Next.Controllers;
 
 namespace NextUI.Areas.WorkFlow.Controllers
 {
-    public class WorkFlowDelegationController : Controller
+    public class WorkFlowDelegationController : BaseController
     {
         //
         // GET: /WorkFlow/WorkFlowDelegation/

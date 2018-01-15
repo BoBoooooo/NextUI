@@ -21,7 +21,23 @@ namespace Next.WorkFlow.BLL
 			baseDal.OnOperationLog += new OperationLogEventHandler(Next.Admin.BLL.OperationLogBLL.OnOperationLog);//如果需要记录操作日志，则实现这个事件
 			this.appLibraryDAL = (IAppLibraryDAL)base.baseDal;
 		}
-
+        /// <summary>
+        /// 得到一页数据
+        /// </summary>
+        /// <param name="pager"></param>
+        /// <param name="query"></param>
+        /// <param name="order"></param>
+        /// <param name="size"></param>
+        /// <param name="numbe"></param>
+        /// <param name="title"></param>
+        /// <param name="type"></param>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        public List<AppLibrary> GetPagerData(out string pager, string query = "", string title = "", string type = "", string address = "")
+        {
+            return appLibraryDAL.GetPagerData(out pager, query, "Type,Title", Next.WorkFlow.Utility.Tools.GetPageSize(),
+                Next.WorkFlow.Utility.Tools.GetPageNumber(), title, type, address);
+        }
         /// <summary>
         /// 根据代码查询一条记录
         /// </summary>
@@ -38,7 +54,7 @@ namespace Next.WorkFlow.BLL
         /// <returns></returns>
         public string GetTypeOptions(string value = "")
         {
-            return new DictTypeBLL().GetOptionsByCode("AppLibraryTypes", DictTypeBLL.OptionValueField.ID, value);
+            return new DictBLL().GetOptionsByCode("AppLibraryTypes", DictBLL.OptionValueField.ID, value);
         }
 
         /// <summary>
@@ -80,7 +96,7 @@ namespace Next.WorkFlow.BLL
         /// <returns></returns>
         public string GetAllChildsIDString(string id, bool isSelf = true)
         {
-            return new DictTypeBLL().GetAllChildsIDString(id, true);
+            return new DictBLL().GetAllChildsIDString(id, true);
         }
 	}
 }

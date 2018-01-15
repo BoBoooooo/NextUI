@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" %>
 <%
     string query = "appid=" + Request.QueryString["appid"] + "&tabid=" + Request.QueryString["appid"];
-    string rootid = new Next.Admin.BLL.DictTypeBLL().GetIDByCode("FormTypes").ToString();
+    string rootid = new Next.WorkFlow.BLL.DictBLL().GetIDByCode("FormTypes").ToString();
     Next.WorkFlow.Utility.Tools.CheckLogin();
 %>
 <!DOCTYPE html>
@@ -101,7 +101,7 @@
             var height = $(window).height();
             $('#TypeDiv').css('height', height - 10);
             $('#ListDiv').css('height', height - 10);
-            roadTree = new RoadUI.Tree({ id: "TypeDiv", path: /*top.rootdir + */"/Admin/DictType/Tree1?root=<%=rootid%>", refreshpath: top.rootdir + "/Dict/TreeRefresh", onclick: openUrl });
+            roadTree = new RoadUI.Tree({ id: "TypeDiv", path: /*top.rootdir + */"/WorkFlow/Dict/Tree1?root=<%=rootid%>", refreshpath: top.rootdir + "/WorkFlow/Dict/TreeRefresh", onclick: openUrl });
             openUrl({ id: "<%=rootid%>" });
         });
         function openUrl(json)

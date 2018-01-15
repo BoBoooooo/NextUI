@@ -1,11 +1,12 @@
-﻿@{
+﻿@using Next.WorkFlow.Utility;
+@{
     Layout = null;
-   
+
     string id = Request.Form["id"];
     string type = Request.Form["type"];
 
     Next.WorkFlow.BLL.WorkFlowInfoBLL bworkFlow = new Next.WorkFlow.BLL.WorkFlowInfoBLL();
-    var flow = bworkFlow.Get(id.ToGuid());
+    var flow = bworkFlow.FindByID(id.ToGuid());
     if (flow == null)
     {
         Response.Write("该流程还未保存!");
@@ -17,8 +18,8 @@
         {
             flow.Status = 3;
             bworkFlow.Update(flow);
-            bworkFlow.RefreshWrokFlowCache(flow.ID);
-            RoadFlow.Platform.Log.Add("卸载了流程", flow.Serialize(), RoadFlow.Platform.Log.Types.流程相关);
+            //bworkFlow.RefreshWrokFlowCache(flow.ID);
+            //RoadFlow.Platform.Log.Add("卸载了流程", flow.Serialize(), RoadFlow.Platform.Log.Types.流程相关);
             Response.Write("1");
             Response.End();
         }
@@ -34,7 +35,7 @@
                 APP.Delete(app.ID);
                 new RoadFlow.Platform.RoleApp().DeleteByAppID(app.ID);
             }
-            RoadFlow.Platform.Log.Add("删除了流程", flow.Serialize(), RoadFlow.Platform.Log.Types.流程相关);
+            //RoadFlow.Platform.Log.Add("删除了流程", flow.Serialize(), RoadFlow.Platform.Log.Types.流程相关);
 
             Response.Write("1");
             Response.End();

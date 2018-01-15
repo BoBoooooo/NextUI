@@ -386,9 +386,9 @@ namespace Next.WorkFlow.BLL
                     MySqlDataAdapter dap = new MySqlDataAdapter(sql, (MySqlConnection)conn);
                     dap.Fill(dt);*/
                     string sql = string.Format("show full fields from {0}", tableName);
-                    dt=dBConnectionDAL.SqlTable(sql);
-                    //MySqlDataAdapter dap = new MySqlDataAdapter(sql, (MySqlConnection)conn);
-                    //dap.Fill(dt);
+                    //dt=dBConnectionDAL.SqlTable(sql);
+                    MySqlDataAdapter dap = new MySqlDataAdapter(sql, (MySqlConnection)conn);
+                    dap.Fill(dt);
                     break;
             }
             return dt;
