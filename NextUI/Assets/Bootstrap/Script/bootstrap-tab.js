@@ -1,6 +1,6 @@
 var addTabs = function (options) {
-	$("#tabs").find("li").remove(); 
-	$(".active").remove(); 
+	//$("#tabs").find("li").remove(); 
+	//$(".active").remove(); 
     //var rand = Math.random().toString();
     //var id = rand.substring(rand.indexOf('.') + 1);
     var url = window.location.protocol + '//' + window.location.host;
@@ -16,6 +16,27 @@ var addTabs = function (options) {
     if (!$("#" + id)[0]) {
         //固定TAB中IFRAME高度
         mainHeight =  $(window).height()-160; //$(document.body).height() - 90;
+        //创建新TAB的title
+        title = '<li role="presentation" id="tab_' + id + '"><a href="#' + id + '" aria-controls="' + id + '" role="tab" data-toggle="tab">' + options.title;
+        //是否允许关闭
+        if (options.close) {
+            title += ' <i class="glyphicon glyphicon-remove" tabclose="' + id + '"></i>';
+        }
+        title += '</a></li>';
+        //是否指定TAB内容
+        if (options.content) {
+            content = '<div role="tabpanel" class="tab-pane" id="' + id + '">' + options.content + '</div>';
+        } else {//没有内容，使用IFRAME打开链接
+            content = '<div role="tabpanel" class="tab-pane" id="' + id + '"><iframe id="' + id + '_iframe" name="' + id + '_iframe" src="' + options.url + '" width="100%" height="' + mainHeight +
+                    '" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="yes" allowtransparency="yes"></iframe></div>';
+        }
+        //加入TABS
+        $(".nav-tabs").append(title);
+        $(".tab-content").append(content);
+    } else {
+        closeTab(id);
+        //固定TAB中IFRAME高度
+        mainHeight = $(window).height() - 160; //$(document.body).height() - 90;
         //创建新TAB的title
         title = '<li role="presentation" id="tab_' + id + '"><a href="#' + id + '" aria-controls="' + id + '" role="tab" data-toggle="tab">' + options.title;
         //是否允许关闭

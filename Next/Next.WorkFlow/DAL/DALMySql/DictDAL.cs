@@ -94,7 +94,7 @@ namespace Next.WorkFlow.DALMySql
         /// </summary>
         public int UpdateSort(string id, int sort)
         {
-            string sql = string.Format("UPDATE Dictionary SET Sort={0} WHERE ID='{1}'", sort, id);
+            string sql = string.Format("UPDATE Dict SET Sort={0} WHERE ID='{1}'", sort, id);
             return SqlExecute(sql);
         }
 

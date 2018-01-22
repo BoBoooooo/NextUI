@@ -23,7 +23,6 @@ F:\Next\Jssjw\Jssjw.Case\bin\Debug\Next.Framework.Core.dll
 F:\Next\Jssjw\Jssjw.Case\bin\Debug\Next.WorkFlow.Utility.dll
 F:\Next\Jssjw\Jssjw.Case\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
 F:\Next\Jssjw\Jssjw.Case\bin\Debug\System.Data.SQLite.dll
-F:\Next\Jssjw\Jssjw.Case\bin\Debug\MySql.Data.dll
 F:\Next\Jssjw\Jssjw.Case\bin\Debug\LitJSON.dll
 F:\Next\Jssjw\Jssjw.Case\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
 F:\Next\Jssjw\Jssjw.Case\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
@@ -34,3 +33,4 @@ F:\Next\Jssjw\Jssjw.Case\bin\Debug\LitJSON.pdb
 F:\Next\Jssjw\Jssjw.Case\obj\Debug\Jssjw.Case.csprojResolveAssemblyReference.cache
 F:\Next\Jssjw\Jssjw.Case\obj\Debug\Jssjw.Case.dll
 F:\Next\Jssjw\Jssjw.Case\obj\Debug\Jssjw.Case.pdb
+F:\Next\Jssjw\Jssjw.Case\bin\Debug\MySql.Data.dll

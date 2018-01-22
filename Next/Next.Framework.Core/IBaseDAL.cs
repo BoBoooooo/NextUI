@@ -12,6 +12,12 @@ namespace Next.Framework.Core
     public interface IBaseDAL<T> where T:BaseEntity
     {
         event OperationLogEventHandler OnOperationLog;
+
+        /// <summary>
+        /// 设置数据库配置项名称
+        /// </summary>
+        /// <param name="dbConfigName">数据库配置项名称</param>
+        void SetDbConfigName(string dbConfigName);
         T FindSingle(string condition, DbTransaction trans = null);
 
         T FindSingle(string condition, string orderBy, DbTransaction trans = null);

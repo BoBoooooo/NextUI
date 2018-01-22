@@ -114,13 +114,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Next.WorkFlow.Utility\Next.WorkFlow.Utility.csproj">
-      <Project>{9062cc04-045e-41dc-b6e3-638279b20890}</Project>
-      <Name>Next.WorkFlow.Utility</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Next.Framework.Core\Next.Framework.Core.csproj">
       <Project>{8408ea95-7bdb-43b2-9edb-3f2629b02bda}</Project>
       <Name>Next.Framework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Next.WorkFlow.Utility\Next.WorkFlow.Utility.csproj">
+      <Project>{9062cc04-045e-41dc-b6e3-638279b20890}</Project>
+      <Name>Next.WorkFlow.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

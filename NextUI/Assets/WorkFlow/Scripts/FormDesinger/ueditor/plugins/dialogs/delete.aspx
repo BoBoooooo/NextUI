@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" %>
+<%@ Import   Namespace="Next.WorkFlow.Utility"   %>
 <% 
     Next.WorkFlow.Utility.Tools.CheckLogin();
     string id = Request.QueryString["id"];
@@ -9,7 +10,7 @@
     }
     Next.WorkFlow.BLL.WorkFlowFormBLL WFF = new Next.WorkFlow.BLL.WorkFlowFormBLL();
     
-    var wff = WFF.Get(id.ToGuid());
+    var wff = WFF.FindByID(id.ToGuid());
     
     if(wff==null)
     {
@@ -26,7 +27,7 @@
     //    APP.Delete(app.ID);
     //}
 
-    RoadFlow.Platform.Log.Add("删除了流程表单", wff.Serialize(), RoadFlow.Platform.Log.Types.流程相关);
+    //RoadFlow.Platform.Log.Add("删除了流程表单", wff.Serialize(), RoadFlow.Platform.Log.Types.流程相关);
 
     Response.Write("1");
     Response.End();

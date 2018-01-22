@@ -119,7 +119,7 @@ namespace NextUI.Areas.WorkFlow.Controllers
             {
                 try
                 {
-                    System.IO.File.Delete(Server.MapPath(Path.Combine(Url.Content("~/Content/Controls/UploadFiles/"), file)));
+                    System.IO.File.Delete(Server.MapPath(Path.Combine(Url.Content("~/WorkFlow/UploadFiles/"), file)));
                     return "var json = {\"success\":1,\"message\":\"\"}";
                 }
                 catch (Exception e)

@@ -61,6 +61,10 @@ namespace Next.Areas.Jssjw.Controllers
             string sql = "select *  FROM CaseIndex,(SELECT MAX(ID) AS max from CaseIndex) M1 WHERE ID=M1.max";
             var result = BLLFactory<CaseIndexBLL>.Instance.GetList(sql);
             CaseIndex max = result.FirstOrDefault();
+            if (max == null)
+            {
+                return 1;
+            }
             return max.ID;
         }
         private string AddUsersRightToWhereCondition(string where)

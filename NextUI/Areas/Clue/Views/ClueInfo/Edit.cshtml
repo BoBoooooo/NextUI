@@ -1,0 +1,71 @@
+﻿@using App.Clue.Entity;
+@using Next.Commons;
+@{
+
+    Layout = null;
+    ClueInfo info = ViewBag.item;
+    string flag = ViewBag.flag;
+}
+
+<div id="Edit" class="easyui-panel"  >
+    <form id="ffAdd" method="post" novalidate="novalidate">
+        <table id="tblAdd" class="view">
+            <tr>
+                <th colspan="6">
+                    <h3 align="center">信息录入</h3>
+                    @Html.HiddenFor(i => info.ID)
+                    @Html.HiddenFor(i => info.IsDeleted)
+                    @Html.HiddenFor(i => info.UserID)
+                    @Html.HiddenFor(i => info.DeptID)
+                    <input type="hidden" id="info_AttachmentID" name="info.AttachmentID" value='@info.AttachmentID' />
+                </th>
+
+            </tr>
+
+            <tr>
+                <th>
+                    <label for="Content">附件上传：</label>
+                </th>
+                <td colspan="5">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnUpload" data-options="plain:true,iconCls:'icon-save'"
+                       onclick="showUploadWindow()">上传</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="6" style="text-align:right; padding-top:10px">
+                    @if(flag!="View"){
+                        <text>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" id="btnAddOK" iconcls="icon-ok" onclick="saveData();">确定</a>
+                    </text>
+                    }
+                    <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel" onclick="closeMyWindow()">关闭</a>
+
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div id="uploadWindow" class="easyui-window" closed="true" cache="false" icon="icon-save" >
+</div>
+
+
+<script type="text/javascript">
+    function showUploadWindow() {
+        var title = "上传附件";
+        var url = '/FileUpload/Index?AttachmentID=@info.AttachmentID&Flag=@flag';
+        openSpecifiedWindow("uploadWindow", title, url, 800, 500);
+    }
+    $(function () {
+ 
+    });
+    function saveData() {
+        @if (flag == "Add")
+                {
+                    <text> saveOrUploadForm("ffAdd", '/ClueInfo/Insert', 'funAfterSubmit'); </text>
+                }
+        @if (flag == "Edit") {
+                    <text> saveOrUploadForm("ffAdd", '/ClueInfo/Update?ID=@info.ID', 'funAfterSubmit'); </text>
+                }
+    }
+</script>

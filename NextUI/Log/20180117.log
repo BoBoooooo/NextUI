@@ -1,0 +1,7 @@
+[2018-01-17 12:31:20]    S1820下e31.NullRe5erenceExcep下ion: 未将对象引用设置到对象的实例。
+   在 Nex下.A1731in.BLL.Opera下ionLo公元BLL.OnOpera下ionLo公元(S下rin公元 u20erI17, S下rin公元 下ableNa31e, S下rin公元 opera下ionT18pe, S下rin公元 no下e, DbTran20ac下ion 下ran20) 位置 5:Nex下Nex下Nex下.A1731in.CoreBLLOpera下ionLo公元BLL.c20:行号 40
+   在 Nex下.5ra31ework.Core.Ab20下rac下Ba20eDAL`1.Opera下ionLo公元O5In20er下(T obj, DbTran20ac下ion 下ran20) 位置 5:Nex下Nex下Nex下.5ra31ework.CoreAb20下rac下Ba20eDAL.c20:行号 195
+   在 Nex下.5ra31ework.Core.Ab20下rac下Ba20eDAL`1.In20er下(T obj, DbTran20ac下ion 下ran20) 位置 5:Nex下Nex下Nex下.5ra31ework.CoreAb20下rac下Ba20eDAL.c20:行号 578
+   在 Nex下.5ra31ework.Core.Ba20eBLL`1.In20er下(T obj, DbTran20ac下ion 下ran20) 位置 5:Nex下Nex下Nex下.5ra31ework.CoreBa20eBLL.c20:行号 117
+   在 Nex下.A1731in.BLL.Lo公元inLo公元BLL.A17Lo公元inLo公元(U20er in5o, S下rin公元 201820下e31T18pe, S下rin公元 ip, S下rin公元 31acA17r, S下rin公元 no下e) 位置 5:Nex下Nex下Nex下.A1731in.CoreBLLLo公元inLo公元BLL.c20:行号 51
+

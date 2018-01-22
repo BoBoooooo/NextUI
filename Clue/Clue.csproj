@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7C55910D-C5C0-4203-8BC8-E722E1B3F60C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Clue</RootNamespace>
+    <AssemblyName>Clue</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\ApprovalBLL.cs" />
+    <Compile Include="BLL\ArchiveBLL.cs" />
+    <Compile Include="BLL\ClueInfoBLL.cs" />
+    <Compile Include="BLL\ClueLinkBLL.cs" />
+    <Compile Include="BLL\CodeListBLL.cs" />
+    <Compile Include="BLL\DeptBLL.cs" />
+    <Compile Include="BLL\DictBLL.cs" />
+    <Compile Include="BLL\FastBLL.cs" />
+    <Compile Include="BLL\HandleBLL.cs" />
+    <Compile Include="BLL\HandleRegBLL.cs" />
+    <Compile Include="BLL\LetterBLL.cs" />
+    <Compile Include="BLL\LogBLL.cs" />
+    <Compile Include="BLL\MenuBLL.cs" />
+    <Compile Include="BLL\NodeBLL.cs" />
+    <Compile Include="BLL\ProcessBLL.cs" />
+    <Compile Include="BLL\RoleToMenuBLL.cs" />
+    <Compile Include="BLL\Sheet1BLL.cs" />
+    <Compile Include="BLL\UsersBLL.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="DAL\DALMySql\AffixFlagDAL.cs" />
+    <Compile Include="DAL\DALMySql\ApprovalDAL.cs" />
+    <Compile Include="DAL\DALMySql\ArchiveDAL.cs" />
+    <Compile Include="DAL\DALMySql\ClueInfoDAL.cs" />
+    <Compile Include="DAL\DALMySql\ClueLinkDAL.cs" />
+    <Compile Include="DAL\DALMySql\CodeListDAL.cs" />
+    <Compile Include="DAL\DALMySql\DeptDAL.cs" />
+    <Compile Include="DAL\DALMySql\DictDAL.cs" />
+    <Compile Include="DAL\DALMySql\FastDAL.cs" />
+    <Compile Include="DAL\DALMySql\HandleDAL.cs" />
+    <Compile Include="DAL\DALMySql\HandleRegDAL.cs" />
+    <Compile Include="DAL\DALMySql\LetterDAL.cs" />
+    <Compile Include="DAL\DALMySql\LogDAL.cs" />
+    <Compile Include="DAL\DALMySql\MenuDAL.cs" />
+    <Compile Include="DAL\DALMySql\NodeDAL.cs" />
+    <Compile Include="DAL\DALMySql\ProcessDAL.cs" />
+    <Compile Include="DAL\DALMySql\RoleToMenuDAL.cs" />
+    <Compile Include="DAL\DALMySql\Sheet1DAL.cs" />
+    <Compile Include="DAL\DALMySql\UsersDAL.cs" />
+    <Compile Include="Entity\AffixFlag.cs" />
+    <Compile Include="Entity\Approval.cs" />
+    <Compile Include="Entity\Archive.cs" />
+    <Compile Include="Entity\ClueInfo.cs" />
+    <Compile Include="Entity\ClueLink.cs" />
+    <Compile Include="Entity\CodeList.cs" />
+    <Compile Include="Entity\Dept.cs" />
+    <Compile Include="Entity\Dict.cs" />
+    <Compile Include="Entity\Fast.cs" />
+    <Compile Include="Entity\Handle.cs" />
+    <Compile Include="Entity\HandleReg.cs" />
+    <Compile Include="Entity\Letter.cs" />
+    <Compile Include="Entity\Log.cs" />
+    <Compile Include="Entity\Menu.cs" />
+    <Compile Include="Entity\Node.cs" />
+    <Compile Include="Entity\Process.cs" />
+    <Compile Include="Entity\RoleToMenu.cs" />
+    <Compile Include="Entity\Sheet1.cs" />
+    <Compile Include="Entity\Users.cs" />
+    <Compile Include="IDAL\AffixFlagIDAL.cs" />
+    <Compile Include="IDAL\ApprovalIDAL.cs" />
+    <Compile Include="IDAL\ArchiveIDAL.cs" />
+    <Compile Include="IDAL\ClueInfoIDAL.cs" />
+    <Compile Include="IDAL\ClueLinkIDAL.cs" />
+    <Compile Include="IDAL\CodeListIDAL.cs" />
+    <Compile Include="IDAL\DeptIDAL.cs" />
+    <Compile Include="IDAL\DictIDAL.cs" />
+    <Compile Include="IDAL\FastIDAL.cs" />
+    <Compile Include="IDAL\HandleIDAL.cs" />
+    <Compile Include="IDAL\HandleRegIDAL.cs" />
+    <Compile Include="IDAL\LetterIDAL.cs" />
+    <Compile Include="IDAL\LogIDAL.cs" />
+    <Compile Include="IDAL\MenuIDAL.cs" />
+    <Compile Include="IDAL\NodeIDAL.cs" />
+    <Compile Include="IDAL\ProcessIDAL.cs" />
+    <Compile Include="IDAL\RoleToMenuIDAL.cs" />
+    <Compile Include="IDAL\Sheet1IDAL.cs" />
+    <Compile Include="IDAL\UsersIDAL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Next\Next.Admin.Core\Next.Admin.csproj">
+      <Project>{8601bafd-a7b2-4389-867b-aa6fd8bb6cdc}</Project>
+      <Name>Next.Admin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Next\Next.Framework.Core\Next.Framework.Core.csproj">
+      <Project>{8408ea95-7bdb-43b2-9edb-3f2629b02bda}</Project>
+      <Name>Next.Framework.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

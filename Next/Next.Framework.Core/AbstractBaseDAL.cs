@@ -30,6 +30,7 @@ namespace Next.Framework.Core
         public event OperationLogEventHandler OnOperationLog;//定义一个操作记录的事件处理
         public string SortField { get; set; }
 
+
         public bool IsDescending { get; set; }
 
         public AbstractBaseDAL()
@@ -42,6 +43,15 @@ namespace Next.Framework.Core
             this.primaryKey = primaryKey;
             this.sortField = primaryKey;
             
+        }
+
+        /// <summary>
+        /// 设置数据库配置项名称
+        /// </summary>
+        /// <param name="dbConfigName">数据库配置项名称</param>
+        public virtual void SetDbConfigName(string dbConfigName)
+        {
+            this.dbConfigName = dbConfigName;
         }
         protected virtual Database CreateDatabase()
         {
@@ -408,6 +418,7 @@ namespace Next.Framework.Core
                         if (dr[columnName].ToString() != "")
                         {
                             string type = pi.PropertyType.Name.ToString();
+
                             if (type == "Boolean")
                             {
                                 string str = dr[pi.Name].ToString();
@@ -421,6 +432,9 @@ namespace Next.Framework.Core
                                     throw new Exception("布尔类型值赋值错误！" + e.ToString());
                                 }
 
+                            }else if (type == "System.Guid")
+                            {
+                                pi.SetValue(obj, dr[pi.Name].ToString() ?? "", null);
                             }
                             else
                             {

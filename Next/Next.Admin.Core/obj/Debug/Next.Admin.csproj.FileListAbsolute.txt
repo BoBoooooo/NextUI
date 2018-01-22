@@ -62,7 +62,6 @@ F:\Next\Next\Next.Admin.Core\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Dat
 F:\Next\Next\Next.Admin.Core\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
 F:\Next\Next\Next.Admin.Core\bin\Debug\Next.Framework.Core.dll
 F:\Next\Next\Next.Admin.Core\bin\Debug\Next.WorkFlow.Utility.dll
-F:\Next\Next\Next.Admin.Core\bin\Debug\MySql.Data.dll
 F:\Next\Next\Next.Admin.Core\bin\Debug\LitJSON.dll
 F:\Next\Next\Next.Admin.Core\bin\Debug\System.Data.SQLite.dll
 F:\Next\Next\Next.Admin.Core\bin\Debug\Next.WorkFlow.Utility.pdb
@@ -71,3 +70,4 @@ F:\Next\Next\Next.Admin.Core\bin\Debug\LitJSON.pdb
 F:\Next\Next\Next.Admin.Core\obj\Debug\Next.Admin.csprojResolveAssemblyReference.cache
 F:\Next\Next\Next.Admin.Core\obj\Debug\Next.Admin.dll
 F:\Next\Next\Next.Admin.Core\obj\Debug\Next.Admin.pdb
+F:\Next\Next\Next.Admin.Core\bin\Debug\MySql.Data.dll

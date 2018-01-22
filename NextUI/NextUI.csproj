@@ -4887,6 +4887,9 @@
     <Content Include="Areas\WorkFlow\Views\Dict\Sort.cshtml" />
     <Content Include="Areas\WorkFlow\Views\Dict\Tree.cshtml" />
     <Content Include="Areas\WorkFlow\Views\SelectDict\Index.cshtml" />
+    <Content Include="Areas\Clue\Views\web.config" />
+    <Content Include="Areas\Clue\Views\ClueInfo\Edit.cshtml" />
+    <Content Include="Areas\Clue\Views\ClueInfo\Index.cshtml" />
     <None Include="Assets\Next\FileUpload\Script\jquery-1.9.1-vsdoc.js" />
     <Content Include="Assets\Next\FileUpload\Script\jquery-1.9.1.js" />
     <Content Include="Assets\Next\FileUpload\Script\jquery-1.9.1.min.js" />
@@ -6728,7 +6731,11 @@
     <Compile Include="Areas\Admin\Controllers\RoleDataController.cs" />
     <Compile Include="Areas\Admin\Controllers\SystemTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Clue\ClueAreaRegistration.cs" />
+    <Compile Include="Areas\Clue\Controllers\ApprovalController.cs" />
+    <Compile Include="Areas\Clue\Controllers\ClueInfoController.cs" />
     <Compile Include="Areas\Jssjw\Controllers\CaseIndexController.cs" />
+    <Compile Include="Areas\Jssjw\Controllers\ClueInfoController.cs" />
     <Compile Include="Areas\Jssjw\Controllers\JournalController.cs" />
     <Compile Include="Areas\Jssjw\Controllers\LoanController.cs" />
     <Compile Include="Areas\Jssjw\Controllers\PropertyController.cs" />
@@ -7182,7 +7189,11 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Clue\Models\" />
+    <Folder Include="Areas\Clue\Views\Approval\" />
+    <Folder Include="Areas\Clue\Views\Shared\" />
     <Folder Include="Areas\Jssjw\Models\" />
+    <Folder Include="Areas\Jssjw\Views\ClueInfo\" />
     <Folder Include="Areas\Jssjw\Views\Example\" />
     <Folder Include="Areas\Jssjw\Views\Shared\" />
     <Folder Include="Areas\WorkFlow\Models\" />
@@ -7228,6 +7239,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Clue\Clue.csproj">
+      <Project>{7c55910d-c5c0-4203-8bc8-e722e1b3f60c}</Project>
+      <Name>Clue</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Jssjw\Jssjw.Case\Jssjw.Case.csproj">
       <Project>{d9882522-e108-4e76-b59d-d990ef3dc427}</Project>
       <Name>Jssjw.Case</Name>
@@ -7239,10 +7254,6 @@
     <ProjectReference Include="..\Jssjw\Jssjw.Organization\Jssjw.Organization.csproj">
       <Project>{a322ba23-f108-410b-b95b-6f3003004f03}</Project>
       <Name>Jssjw.Organization</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Next.WorkFlow.Utility\Next.WorkFlow.Utility.csproj">
-      <Project>{9062cc04-045e-41dc-b6e3-638279b20890}</Project>
-      <Name>Next.WorkFlow.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\Next\LitJSON\LitJSON.csproj">
       <Project>{28d9f7ba-2923-4364-9bea-9e1ccd70dd22}</Project>
@@ -7259,6 +7270,10 @@
     <ProjectReference Include="..\Next\Next.Framework.Core\Next.Framework.Core.csproj">
       <Project>{8408ea95-7bdb-43b2-9edb-3f2629b02bda}</Project>
       <Name>Next.Framework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Next\Next.WorkFlow.Utility\Next.WorkFlow.Utility.csproj">
+      <Project>{9062cc04-045e-41dc-b6e3-638279b20890}</Project>
+      <Name>Next.WorkFlow.Utility</Name>
     </ProjectReference>
     <ProjectReference Include="..\Next\Next.WorkFlow\Next.WorkFlow.csproj">
       <Project>{fac6dc07-5d31-4fa4-b7d6-8c34f2fccd1a}</Project>

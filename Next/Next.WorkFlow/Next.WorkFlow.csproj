@@ -99,10 +99,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Next.WorkFlow.Utility\Next.WorkFlow.Utility.csproj">
-      <Project>{9062cc04-045e-41dc-b6e3-638279b20890}</Project>
-      <Name>Next.WorkFlow.Utility</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LitJSON\LitJSON.csproj">
       <Project>{28d9f7ba-2923-4364-9bea-9e1ccd70dd22}</Project>
       <Name>LitJSON</Name>
@@ -114,6 +110,10 @@
     <ProjectReference Include="..\Next.Framework.Core\Next.Framework.Core.csproj">
       <Project>{8408ea95-7bdb-43b2-9edb-3f2629b02bda}</Project>
       <Name>Next.Framework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Next.WorkFlow.Utility\Next.WorkFlow.Utility.csproj">
+      <Project>{9062cc04-045e-41dc-b6e3-638279b20890}</Project>
+      <Name>Next.WorkFlow.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

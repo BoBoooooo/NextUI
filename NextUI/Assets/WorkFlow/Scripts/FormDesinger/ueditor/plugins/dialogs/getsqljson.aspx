@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" %>
+<%@ Import   Namespace="Next.WorkFlow.Utility"   %>
 <% 
     string sql = Request["sql"];
     string conn = Request["conn"];
@@ -7,7 +8,7 @@
         Response.Write("[]");
         Response.End();
     }
-    var dbconn = new Next.WorkFlow.BLL.DBConnectionBLL().Get(conn.ToGuid());
+    var dbconn = new Next.WorkFlow.BLL.DBConnectionBLL().FindByID(conn.ToGuid());
     var dt = new Next.WorkFlow.BLL.DBConnectionBLL().GetDataTable(dbconn, sql);
     if (dt == null || dt.Rows.Count == 0)
     {

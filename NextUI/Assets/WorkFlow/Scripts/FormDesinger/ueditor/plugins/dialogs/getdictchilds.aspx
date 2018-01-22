@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" %>
+<%@ Import   Namespace="Next.WorkFlow.Utility"   %>
 <% 
     string dictid = Request.QueryString["dictid"];
     if (!dictid.IsGuid())

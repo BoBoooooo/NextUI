@@ -23,3 +23,8 @@ F:\NextUI\Next\LitJSON\bin\Debug\LitJSON.pdb
 F:\NextUI\Next\LitJSON\obj\Debug\LitJSON.dll
 F:\NextUI\Next\LitJSON\obj\Debug\LitJSON.pdb
 F:\NextUI\Next\LitJSON\obj\Debug\LitJSON.csprojResolveAssemblyReference.cache
+F:\Next\Next\LitJSON\bin\Debug\LitJSON.dll
+F:\Next\Next\LitJSON\bin\Debug\LitJSON.pdb
+F:\Next\Next\LitJSON\obj\Debug\LitJSON.csprojResolveAssemblyReference.cache
+F:\Next\Next\LitJSON\obj\Debug\LitJSON.dll
+F:\Next\Next\LitJSON\obj\Debug\LitJSON.pdb

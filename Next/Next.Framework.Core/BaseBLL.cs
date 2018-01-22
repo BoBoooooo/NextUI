@@ -24,8 +24,10 @@ namespace Next.Framework.Core
 
         public BaseBLL() { }
 
-        protected void Init(string bllFullName, string dalAssemblyName = null, string bllPrefix="BLL.")
+        protected void Init(string bllFullName, string dalAssemblyName = null, string bllPrefix="BLL.",string dbConfigName="mysql")
         {
+
+            
             if (string.IsNullOrEmpty(bllFullName))
             {
                 throw new ArgumentNullException("子类未设置bllFullName业务类全名!");
@@ -57,6 +59,7 @@ namespace Next.Framework.Core
             this.dalName = bllFullName.Replace(bllPrefix, DALPrefix);
             this.dalName = this.dalName.Replace("BLL", "DAL");
             baseDal = Reflect<IBaseDAL<T>>.Create(this.dalName, dalAssemblyName);
+            baseDal.SetDbConfigName(dbConfigName); //设置数据库配置项名称
         }
 
         protected void CheckDAL()

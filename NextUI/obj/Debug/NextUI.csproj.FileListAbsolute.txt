@@ -136,3 +136,5 @@ F:\Next\NextUI\bin\zh-Hans\System.Web.Http.WebHost.resources.dll
 F:\Next\NextUI\obj\Debug\NextUI.csprojResolveAssemblyReference.cache
 F:\Next\NextUI\obj\Debug\NextUI.dll
 F:\Next\NextUI\obj\Debug\NextUI.pdb
+F:\Next\NextUI\bin\Clue.dll
+F:\Next\NextUI\bin\Clue.pdb

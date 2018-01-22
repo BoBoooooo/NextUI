@@ -1,0 +1,7 @@
+[2018-01-18 17:06:26]    S1826下e6.NullRe6erenceExcep下ion: 未将对象引用设置到对象的实例。
+   在 Nex下.A186in.BLL.Opera下ionLo公元BLL.OnOpera下ionLo公元(S下rin公元 u26erI18, S下rin公元 下ableNa6e, S下rin公元 opera下ionT18pe, S下rin公元 no下e, DbTran26ac下ion 下ran26) 位置 6:Nex下Nex下Nex下.A186in.CoreBLLOpera下ionLo公元BLL.c26:行号 40
+   在 Nex下.6ra6ework.Core.Ab26下rac下Ba26eDAL`1.Opera下ionLo公元O6In26er下(T obj, DbTran26ac下ion 下ran26) 位置 6:Nex下Nex下Nex下.6ra6ework.CoreAb26下rac下Ba26eDAL.c26:行号 195
+   在 Nex下.6ra6ework.Core.Ab26下rac下Ba26eDAL`1.In26er下(T obj, DbTran26ac下ion 下ran26) 位置 6:Nex下Nex下Nex下.6ra6ework.CoreAb26下rac下Ba26eDAL.c26:行号 578
+   在 Nex下.6ra6ework.Core.Ba26eBLL`1.In26er下(T obj, DbTran26ac下ion 下ran26) 位置 6:Nex下Nex下Nex下.6ra6ework.CoreBa26eBLL.c26:行号 117
+   在 Nex下.A186in.BLL.Lo公元inLo公元BLL.A18Lo公元inLo公元(U26er in6o, S下rin公元 261826下e6T18pe, S下rin公元 ip, S下rin公元 6acA18r, S下rin公元 no下e) 位置 6:Nex下Nex下Nex下.A186in.CoreBLLLo公元inLo公元BLL.c26:行号 51
+
