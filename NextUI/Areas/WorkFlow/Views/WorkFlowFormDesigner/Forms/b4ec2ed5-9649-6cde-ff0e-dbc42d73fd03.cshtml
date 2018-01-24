@@ -34,4 +34,241 @@ if(InstanceID.IsNullOrEmpty()){InstanceID = Request.QueryString["instanceid1"];}
 		formrun.initData(initData, "Approval", fieldStatus, displayModel);
 	});
 </script>
-<p><br/></p><p><br/></p><p style="text-align: center;"><span style="font-size: 22px; color: rgb(79, 129, 189);">重要信访拟办单（检举控告）</span></p><table data-sort="sortDisabled" class="flowformtable" align="center" cellpadding="0" cellspacing="1"><tbody><tr class="firstRow"><td valign="top" width="254"><br/></td><td valign="top" width="254"><br/></td><td valign="top" width="254"><br/></td><td valign="top" width="254"><br/></td><td style="word-break: break-all;" valign="top" width="254">日期：<br/></td><td valign="top" width="254"><input title="" class="mycalendar" isflow="1" type1="flow_datetime" id="Approval.fillInDate" name="Approval.fillInDate" value="" defaultvalue="" istime="0" daybefor="0" dayafter="0" currentmonth="0" type="text"/></td></tr><tr><td style="word-break: break-all;" valign="top" width="254">信访方式：<br/></td><td valign="top" width="254"><input title="" class="mytext" isflow="1" id="Approval.clueMode" type1="flow_text" name="Approval.clueMode" value="" valuetype="0" type="text"/></td><td style="word-break: break-all;" valign="top" width="254">来源：<br/></td><td valign="top" width="254"><input title="" class="mytext" isflow="1" id="Approval.clueSource" type1="flow_text" name="Approval.clueSource" value="" valuetype="0" type="text"/></td><td style="word-break: break-all;" valign="top" width="254">函号：<br/></td><td valign="top" width="254"><input title="" class="mytext" isflow="1" id="Approval.letterNum" type1="flow_text" name="Approval.letterNum" value="" valuetype="0" type="text"/></td></tr><tr><td colspan="1" rowspan="2" style="word-break: break-all;" valign="top" width="254"><p>被反映人姓名：</p></td><td colspan="1" rowspan="2" valign="top" width="254"><input title="" class="mytext" isflow="1" id="Approval.objName" type1="flow_text" name="Approval.objName" value="" valuetype="0" type="text"/></td><td style="word-break: break-all;" valign="top" width="254">单位：<br/></td><td valign="top" width="254"><input title="" class="mytext" isflow="1" id="Approval.objAddress" type1="flow_text" name="Approval.objAddress" value="" valuetype="0" type="text"/></td><td valign="top" width="254"><br/></td><td valign="top" width="254"><br/></td></tr><tr><td style="word-break: break-all;" valign="top" width="254">职务：<br/></td><td valign="top" width="254"><input title="" class="mytext" isflow="1" id="Approval.objAdminLvl" type1="flow_text" name="Approval.objAdminLvl" value="" valuetype="0" type="text"/></td><td style="word-break: break-all;" valign="top" width="254">级别：<br/></td><td valign="top" width="254"><input title="" class="mytext" isflow="1" id="Approval.objAdminLvl" type1="flow_text" name="Approval.objAdminLvl" value="" valuetype="0" type="text"/></td></tr><tr><td colspan="1" rowspan="2" style="word-break: break-all;" valign="top" width="254">反映人姓名：<br/></td><td colspan="1" rowspan="2" style="word-break: break-all;" valign="top" width="254"><input title="" class="mytext" isflow="1" id="Approval.reflectName" type1="flow_text" name="Approval.reflectName" value="" valuetype="0" type="text"/></td><td style="word-break: break-all;" valign="top" width="254">单位：<br/></td><td valign="top" width="254"><input title="" class="mytext" isflow="1" id="Approval.reflectAddress" type1="flow_text" name="Approval.reflectAddress" value="" valuetype="0" type="text"/></td><td valign="top" width="254"><br/></td><td valign="top" width="254"><br/></td></tr><tr><td style="word-break: break-all;" valign="top" width="254">职务：<br/></td><td valign="top" width="254"><input title="" class="mytext" isflow="1" id="Approval.reflectPost" type1="flow_text" name="Approval.reflectPost" value="" valuetype="0" type="text"/></td><td style="word-break: break-all;" valign="top" width="254">联系方式：<br/></td><td style="word-break: break-all;" valign="top" width="254"><input title="" class="mytext" isflow="1" id="Approval.reflectLinkPhone" type1="flow_text" name="Approval.reflectLinkPhone" value="" valuetype="0" type="text"/></td></tr><tr><td style="word-break: break-all;" valign="top" width="254">主要内容：<br/></td><td colspan="5" rowspan="1" valign="top"><textarea isflow="1" type1="flow_textarea" id="Approval.des" name="Approval.des" class="mytext" style="width:80%;height:60px"></textarea></td></tr><tr><td style="word-break: break-all;" valign="top" width="254">承办人：<br/></td><td valign="top" width="254"><input title="" class="mytext" isflow="1" id="Approval.undertaker" type1="flow_text" name="Approval.undertaker" value="" valuetype="0" type="text"/></td><td valign="top" width="254"><br/></td><td valign="top" width="254"><br/></td><td valign="top" width="254"><br/></td><td valign="top" width="254"><br/></td></tr><tr><td style="word-break: break-all;" valign="top" width="254">拟办意见：<br/></td><td colspan="5" rowspan="1" valign="top"><textarea isflow="1" type1="flow_textarea" id="Approval.deviseMethod" name="Approval.deviseMethod" class="mytext" style="width:80%;height:60px"></textarea></td></tr><tr><td style="word-break: break-all;" valign="top" width="254">部门意见：<br/></td><td colspan="5" rowspan="1" valign="top"><textarea isflow="1" type1="flow_textarea" id="Approval.deptOpinion" name="Approval.deptOpinion" class="mytext" style="width:80%;height:60px"></textarea></td></tr><tr><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">领导批示：<br/></td><td rowspan="1" colspan="5" valign="top"><textarea isflow="1" type1="flow_textarea" id="Approval.leaderInstruction" name="Approval.leaderInstruction" class="mytext" style="width:80%;height:60px"></textarea></td></tr><tr><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">信访编号：<br/></td><td rowspan="1" colspan="1" valign="top"><input title="" class="mytext" isflow="1" id="Approval.clueCode" type1="flow_text" name="Approval.clueCode" value="" valuetype="0" type="text"/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td></tr><tr><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td></tr></tbody></table><p><br/></p>
+<p>
+    <br/>
+</p>
+<p>
+    <br/>
+</p>
+<p style="text-align: center;">
+    <span style="font-size: 22px; color: rgb(79, 129, 189);">
+        重要信访拟办单（检举控告）
+    </span>
+</p>
+<table data-sort="sortDisabled" class="flowformtable" align="center" cellpadding="0" cellspacing="1">
+    <tbody>
+        <tr class="firstRow">
+            <td valign="top" width="254">
+                <br/>
+            </td>
+            <td colspan="3" rowspan="1" valign="top">
+                <input id="Approval.TaskID" name="Approval.TaskID" isflow="1" type1="flow_hidden" value="@TaskID" type="hidden"/>
+                <input id="Approval.UserID" name="Approval.UserID" isflow="1" type1="flow_hidden" value="@(new Next.Admin.BLL.UserBLL().CurrentUserID.ToString())" type="hidden"/>
+                <input id="Approval.DeptID" name="Approval.DeptID" isflow="1" type1="flow_hidden" value="@(new Next.Admin.BLL.UserBLL().CurrentDeptID)" type="hidden"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="254">
+                日期：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mycalendar" isflow="1" type1="flow_datetime" id="Approval.FillInDate" name="Approval.FillInDate" value="@(Next.WorkFlow.Utility.DateTimeNew.LongDate)" defaultvalue="@(Next.WorkFlow.Utility.DateTimeNew.LongDate)" istime="0" daybefor="0" dayafter="0" currentmonth="0" type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                信访方式：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Approval.ClueMethod" type1="flow_text" name="Approval.ClueMethod" value="" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="254">
+                来源：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Approval.ClueSource" type1="flow_text" name="Approval.ClueSource" value="" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="254">
+                函号：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Approval.LetterNumber" type1="flow_text" name="Approval.LetterNumber" value="" valuetype="0" type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" rowspan="2" style="word-break: break-all;" valign="top" width="254">
+                <p>
+                    被反映人姓名：
+                </p>
+            </td>
+            <td colspan="1" rowspan="2" valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Approval.TargetName" type1="flow_text" name="Approval.TargetName" value="" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="254">
+                单位：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Approval.TargetAddressAndUnit" type1="flow_text" name="Approval.TargetAddressAndUnit" value="" valuetype="0" type="text"/>
+            </td>
+            <td valign="top" width="254">
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <br/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                职务：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Approval.TargetDuty" type1="flow_text" name="Approval.TargetDuty" value="" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="254">
+                级别：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Approval.TargetRank" type1="flow_text" name="Approval.TargetRank" value="" valuetype="0" type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1" rowspan="2" style="word-break: break-all;" valign="top" width="254">
+                反映人姓名：
+                <br/>
+            </td>
+            <td colspan="1" rowspan="2" style="word-break: break-all;" valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Approval.ReporterName" type1="flow_text" name="Approval.ReporterName" value="" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="254">
+                单位：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Approval.ReporterAddressAndUnit" type1="flow_text" name="Approval.ReporterAddressAndUnit" value="" valuetype="0" type="text"/>
+            </td>
+            <td valign="top" width="254">
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <br/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                职务：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Approval.ReporterDuty" type1="flow_text" name="Approval.ReporterDuty" value="" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="254">
+                联系方式：
+                <br/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Approval.ReporterPhone" type1="flow_text" name="Approval.ReporterPhone" value="" valuetype="0" type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                主要内容：
+                <br/>
+            </td>
+            <td colspan="5" rowspan="1" valign="top">
+                <textarea isflow="1" type1="flow_textarea" id="Approval.Content" name="Approval.Content" class="mytext" style="width:80%;height:60px">
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                承办人：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Approval.UnderTaker" type1="flow_text" name="Approval.UnderTaker" value="" valuetype="0" type="text"/>
+            </td>
+            <td valign="top" width="254">
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <br/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                拟办意见：
+                <br/>
+            </td>
+            <td colspan="5" rowspan="1" valign="top">
+                <textarea isflow="1" type1="flow_textarea" id="Approval.DeviseOpinion" name="Approval.DeviseOpinion" class="mytext" style="width:80%;height:60px">
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                部门意见：
+                <br/>
+            </td>
+            <td colspan="5" rowspan="1" valign="top">
+                <textarea isflow="1" type1="flow_textarea" id="Approval.DeptOpinion" name="Approval.DeptOpinion" class="mytext" style="width:80%;height:60px">
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                领导批示：
+                <br/>
+            </td>
+            <td rowspan="1" colspan="5" valign="top">
+                <textarea isflow="1" type1="flow_textarea" id="Approval.LeaderOpinion" name="Approval.LeaderOpinion" class="mytext" style="width:80%;height:60px">
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                信访编号：
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <input title="" class="mytext" isflow="1" id="Approval.ClueCode" type1="flow_text" name="Approval.ClueCode" value="" valuetype="0" type="text"/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <br/>
+</p>
+

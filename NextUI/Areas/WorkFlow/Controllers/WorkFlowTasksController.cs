@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Next.WorkFlow.Utility;
 using Next.WorkFlow.Entity;
 using Next.Controllers;
+using Next.Framework.Core;
+using Next.WorkFlow.BLL;
 
 namespace NextUI.Areas.WorkFlow.Controllers
 {
@@ -180,7 +182,14 @@ namespace NextUI.Areas.WorkFlow.Controllers
         {
             return WaitList(null);
         }
-
+        public string GetTaskString(string TaskID)
+        {
+            
+            var task=BLLFactory<WorkFlowTaskBLL>.Instance.FindByID(TaskID);
+            string query1 = string.Format("flowid={0}&stepid={1}&instanceid={2}&taskid={3}&groupid={4}",
+            task.FlowID, task.StepID, task.InstanceID, task.ID, task.GroupID);
+            return query1;
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult WaitList(FormCollection collection)

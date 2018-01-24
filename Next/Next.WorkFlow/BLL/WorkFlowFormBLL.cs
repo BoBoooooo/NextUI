@@ -103,7 +103,7 @@ namespace Next.WorkFlow.BLL
             StringBuilder options = new StringBuilder(1000);
             options.Append("<option value=\"\"></option>");
             options.Append("<optgroup label=\"组织机构相关选项\"></optgroup>");
-            options.AppendFormat("<option value=\"@new Next.Admin.BLL.UserBLL().CurrentUserID.ToString()\" {0}>当前步骤用户ID</option>", "10" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"@(new Next.Admin.BLL.UserBLL().CurrentUserID.ToString())\" {0}>当前步骤用户ID</option>", "10" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"@(new Next.Admin.BLL.UserBLL().CurrentUserName)\" {0}>当前步骤用户姓名</option>", "11" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"@(new Next.Admin.BLL.UserBLL().CurrentDeptID)\" {0}>当前步骤用户部门ID</option>", "12" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"@(new Next.Admin.BLL.UserBLL().CurrentDeptName)\" {0}>当前步骤用户部门名称</option>", "13" == value ? "selected=\"selected\"" : "");
@@ -121,6 +121,7 @@ namespace Next.WorkFlow.BLL
             options.Append("<optgroup label=\"流程实例相关选项\"></optgroup>");
             options.AppendFormat("<option value=\"@Html.Raw(BWorkFlow.GetFlowName(FlowID.ToGuid()))\" {0}>当前流程名称</option>", "30" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"@Html.Raw(BWorkFlow.GetStepName(StepID.ToGuid(), FlowID.ToGuid(), true))\" {0}>当前步骤名称</option>", "31" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"@TaskID\" {0}>当前任务ID</option>", "31" == value ? "selected=\"selected\"" : "");
             return options.ToString();
         }
 
@@ -134,11 +135,11 @@ namespace Next.WorkFlow.BLL
             StringBuilder options = new StringBuilder(1000);
             options.Append("<option value=\"\"></option>");
             options.Append("<optgroup label=\"组织机构相关选项\"></optgroup>");
-            options.AppendFormat("<option value=\"u_<%=new Next.Admin.BLL.UserBLL().CurrentUserID.ToString()%>\" {0}>当前步骤用户ID</option>", "10" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"<%=new Next.Admin.BLL.UserBLL().CurrentUserID.ToString()%>\" {0}>当前步骤用户ID</option>", "10" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"<%=new Next.Admin.BLL.UserBLL().CurrentUserName%>\" {0}>当前步骤用户姓名</option>", "11" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"<%=new Next.Admin.BLL.UserBLL().CurrentDeptID%>\" {0}>当前步骤用户部门ID</option>", "12" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"<%=new Next.Admin.BLL.UserBLL().CurrentDeptName%>\" {0}>当前步骤用户部门名称</option>", "13" == value ? "selected=\"selected\"" : "");
-            options.AppendFormat("<option value=\"u_<%=new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true)%>\" {0}>流程发起者ID</option>", "14" == value ? "selected=\"selected\"" : "");
+            options.AppendFormat("<option value=\"<%=new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true)%>\" {0}>流程发起者ID</option>", "14" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"<%=new RoadFlow.Platform.Users().GetName(new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true))%>\" {0}>流程发起者姓名</option>", "15" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"<%=new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderDeptID(FlowID.ToGuid(), GroupID.ToGuid())%>\" {0}>流程发起者部门ID</option>", "16" == value ? "selected=\"selected\"" : "");
             options.AppendFormat("<option value=\"<%=new RoadFlow.Platform.Users().GetName(new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderDeptID(FlowID.ToGuid(), GroupID.ToGuid()))%>\" {0}>流程发起者部门名称</option>", "17" == value ? "selected=\"selected\"" : "");

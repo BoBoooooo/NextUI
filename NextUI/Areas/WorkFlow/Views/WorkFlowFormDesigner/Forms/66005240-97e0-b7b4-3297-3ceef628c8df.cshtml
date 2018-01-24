@@ -9,7 +9,7 @@
 	string DBConnID = "2953af3a-866b-4544-91f7-2939e47ff2d2";
 	string DBTable = "ClueInfo";
 	string DBTablePK = "ID";
-	string DBTableTitle = "objName";
+	string DBTableTitle = "TargetName";
 if(InstanceID.IsNullOrEmpty()){InstanceID = Request.QueryString["instanceid1"];}	Next.WorkFlow.BLL.DictBLL BDictionary = new Next.WorkFlow.BLL.DictBLL();
 	Next.WorkFlow.BLL.WorkFlowInfoBLL BWorkFlow = new Next.WorkFlow.BLL.WorkFlowInfoBLL();
 	Next.WorkFlow.BLL.WorkFlowTaskBLL BWorkFlowTask = new Next.WorkFlow.BLL.WorkFlowTaskBLL();
@@ -20,11 +20,11 @@ if(InstanceID.IsNullOrEmpty()){InstanceID = Request.QueryString["instanceid1"];}
 <link href="~/Assets/WorkFlow/Scripts/FlowRun/Forms/flowform.css" rel="stylesheet" type="text/css" />
 <script src="~/Assets/WorkFlow/Scripts/FlowRun/Forms/common.js" type="text/javascript" ></script>
 <input type="hidden" id="Form_ValidateAlertType" name="Form_ValidateAlertType" value="1" />
-<input type="hidden" id="Form_TitleField" name="Form_TitleField" value="ClueInfo.objName" />
+<input type="hidden" id="Form_TitleField" name="Form_TitleField" value="ClueInfo.TargetName" />
 <input type="hidden" id="Form_DBConnID" name="Form_DBConnID" value="2953af3a-866b-4544-91f7-2939e47ff2d2" />
 <input type="hidden" id="Form_DBTable" name="Form_DBTable" value="ClueInfo" />
 <input type="hidden" id="Form_DBTablePk" name="Form_DBTablePk" value="ID" />
-<input type="hidden" id="Form_DBTableTitle" name="Form_DBTableTitle" value="objName" />
+<input type="hidden" id="Form_DBTableTitle" name="Form_DBTableTitle" value="TargetName" />
 <input type="hidden" id="Form_AutoSaveData" name="Form_AutoSaveData" value="1" />
 <script type="text/javascript">
 	var initData = @Html.Raw(BWorkFlow.GetFormDataJsonString(initData));
@@ -34,4 +34,604 @@ if(InstanceID.IsNullOrEmpty()){InstanceID = Request.QueryString["instanceid1"];}
 		formrun.initData(initData, "ClueInfo", fieldStatus, displayModel);
 	});
 </script>
-<p><br/></p><p><br/></p><p style="text-align: center;"><span style="font-size: 28px; color: rgb(84, 141, 212);">线索登记</span></p><table data-sort="sortDisabled" class="flowformtable" cellpadding="0" cellspacing="1"><tbody><tr class="firstRow"><td colspan="8" rowspan="1" valign="top"><span style="font-size: 16px;">基本信息<br/></span></td></tr><tr><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">信访编号：<br/></span></td><td valign="top" width="185"><input title="" class="mytext" isflow="1" id="ClueInfo.clueCode" type1="flow_text" name="ClueInfo.clueCode" value="" style="width:150px" valuetype="0" type="text"/></td><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">条形码：<br/></span></td><td valign="top" width="185"><input title="" class="mytext" isflow="1" id="ClueInfo.barCode" type1="flow_text" name="ClueInfo.barCode" value="" style="width:150px" valuetype="0" type="text"/></td><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">信访方式：<br/></span></td><td colspan="3" rowspan="1" valign="top"><select class="myselect" id="ClueInfo.clueMode" name="ClueInfo.clueMode" style="width:155px" isflow="1" type1="flow_select"><option value=""></option>@Html.Raw(BDictionary.GetOptionsByID("6d0f038f-4dea-4cd2-ae5b-7a2676dcbbc4".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, ""))</select></td></tr><tr><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">信访日期：<br/></span></td><td valign="top" width="185"><input title="" class="mycalendar" isflow="1" type1="flow_datetime" id="ClueInfo.clueDate" name="ClueInfo.clueDate" value="@(Next.WorkFlow.Utility.DateTimeNew.LongDate)" style="width:150px" defaultvalue="@(Next.WorkFlow.Utility.DateTimeNew.LongDate)" istime="0" daybefor="0" dayafter="0" currentmonth="0" type="text"/></td><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">信访类别：<br/></span></td><td valign="top" width="185"><select class="myselect" id="ClueInfo.clueType" name="ClueInfo.clueType" style="width:155px" isflow="1" type1="flow_select"><option value=""></option>@Html.Raw(BDictionary.GetOptionsByID("60d609b1-8d14-4918-96b8-0960e58662a2".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, ""))</select></td><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">信访来源：<br/></span></td><td colspan="3" rowspan="1" valign="top"><select class="myselect" id="ClueInfo.clueSource" name="ClueInfo.clueSource" style="width:155px" isflow="1" type1="flow_select">@Html.Raw(BDictionary.GetOptionsByID("6b24168b-1142-4b16-97c5-7b2aaa2bf9b0".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, ""))</select></td></tr><tr><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">信访人数：<br/></span></td><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><input title="" class="mytext" isflow="1" id="ClueInfo.clueNum" type1="flow_text" name="ClueInfo.clueNum" value="" style="width:150px" valuetype="0" type="text"/></td><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">紧急程度：<br/></span></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td></tr><tr><td colspan="8" rowspan="1" valign="top"><span style="font-size: 16px;">被反应对象-其他被反映对象<br/></span></td></tr><tr><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">对象类型：<br/></span></td><td valign="top" width="185">@Html.Raw(BDictionary.GetRadiosByID("fd1a5a17-736f-4839-8f99-5e32ddbd9792".ToGuid(), "ClueInfo.objType", Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, "", "isflow='1' type1='flow_radio'"))</td><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">姓名：<br/></span></td><td valign="top" width="185"><input title="" class="mytext" isflow="1" id="ClueInfo.objName" type1="flow_text" name="ClueInfo.objName" value="" style="width:150px" valuetype="0" type="text"/></td><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">单位或地址：<br/></span></td><td colspan="3" rowspan="1" valign="top"><input title="" class="mytext" isflow="1" id="ClueInfo.objAddress" type1="flow_text" name="ClueInfo.objAddress" value="" style="width:150px" valuetype="0" type="text"/></td></tr><tr><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">行政级别：<br/></span></td><td valign="top" width="185"><select class="myselect" id="ClueInfo.objAdminLvl" name="ClueInfo.objAdminLvl" style="width:155px" isflow="1" type1="flow_select"><option value=""></option>@Html.Raw(BDictionary.GetOptionsByID("bee14f51-59a9-4491-a1c6-848f893d5fbe".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, ""))</select></td><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">单位性质：<br/></span></td><td valign="top" width="185"><select class="myselect" id="ClueInfo.objComMode" name="ClueInfo.objComMode" style="width:155px" isflow="1" type1="flow_select"><option value=""></option>@Html.Raw(BDictionary.GetOptionsByID("db23a1a6-5c14-4cc8-89eb-54116676db45".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, ""))</select></td><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">所属区域：<br/></span></td><td style="word-break: break-all;" valign="top" width="185"><input title="" class="mytext" isflow="1" id="ClueInfo.objArea" type1="flow_text" name="ClueInfo.objArea" value="" style="width:150px" valuetype="0" type="text"/></td><td valign="top" width="185"><br/></td><td valign="top" width="185"><br/></td></tr><tr><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">职务：<br/></span></td><td style="word-break: break-all;" valign="top" width="185"><select class="myselect" id="ClueInfo.objPost" name="ClueInfo.objPost" style="width:155px" isflow="1" type1="flow_select"><option value=""></option>@Html.Raw(BDictionary.GetOptionsByID("bc73f9f7-d881-4b88-bca5-f03f7f6de96b".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, ""))</select></td><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">监察对象：<br/></span></td><td valign="top" width="185"><select class="myselect" id="ClueInfo.objControler" name="ClueInfo.objControler" style="width:155px" isflow="1" type1="flow_select"><option value=""></option>@Html.Raw(BDictionary.GetOptionsByID("36786f6a-4538-444b-9f19-6770c3d6bd19".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, ""))</select></td><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">是否负责人：<br/></span></td><td valign="top" width="185">@Html.Raw(BDictionary.GetRadiosByID("4ded7b9c-2060-43e5-b57b-5781da0fc5d2".ToGuid(), "ClueInfo.objIsManager", Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, "", "isflow='1' type1='flow_radio'"))</td><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">是否本级干部：<br/></span></td><td valign="top" width="185">@Html.Raw(BDictionary.GetRadiosByID("4ded7b9c-2060-43e5-b57b-5781da0fc5d2".ToGuid(), "ClueInfo.objIsLeader", Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, "", "isflow='1' type1='flow_radio'"))</td></tr><tr><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">身份证号：<br/></span></td><td valign="top" width="185"><input title="" class="mytext" isflow="1" id="ClueInfo.objCardNum" type1="flow_text" name="ClueInfo.objCardNum" value="" style="width:150px" valuetype="0" type="text"/></td><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">性别：<br/></span></td><td valign="top" width="185">@Html.Raw(BDictionary.GetRadiosByID("06212b06-66df-476d-94d6-999acc5424de".ToGuid(), "ClueInfo.objSex", Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, "", "isflow='1' type1='flow_radio'"))</td><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">出生日期：<br/></span></td><td valign="top" width="185"><input title="" class="mycalendar" isflow="1" type1="flow_datetime" id="ClueInfo.objBirthday" name="ClueInfo.objBirthday" value="" style="width:150px" defaultvalue="" istime="0" daybefor="0" dayafter="0" currentmonth="0" type="text"/></td><td style="word-break: break-all;" valign="top" width="185"><span style="font-size: 16px;">民族：<br/></span></td><td valign="top" width="185"><input title="" class="mytext" isflow="1" id="ClueInfo.objNation" type1="flow_text" name="ClueInfo.objNation" value="" style="width:150px" valuetype="0" type="text"/></td></tr><tr><td style="word-break: break-all;" colspan="8" rowspan="1" valign="top"><span style="font-size: 16px;">反映人信息-其他反映人<br/></span></td></tr><tr><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">是否署名：<br/></span></td><td rowspan="1" colspan="1" valign="top">@Html.Raw(BDictionary.GetRadiosByID("4ded7b9c-2060-43e5-b57b-5781da0fc5d2".ToGuid(), "ClueInfo.reflectIsSign", Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, "", "isflow='1' type1='flow_radio'"))</td><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">姓名：<br/></span></td><td rowspan="1" colspan="1" valign="top"><input title="" class="mytext" isflow="1" id="ClueInfo.reflectName" type1="flow_text" name="ClueInfo.reflectName" value="" style="width:150px" valuetype="0" type="text"/></td><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">单位或地址：<br/></span></td><td rowspan="1" colspan="1" valign="top"><input title="" class="mytext" isflow="1" id="ClueInfo.reflectAddress" type1="flow_text" name="ClueInfo.reflectAddress" value="" style="width:150px" valuetype="0" type="text"/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td></tr><tr><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">行政级别：</span></td><td rowspan="1" colspan="1" valign="top"><select class="myselect" id="ClueInfo.reflectAdminLvl" name="ClueInfo.reflectAdminLvl" style="width:155px" isflow="1" type1="flow_select"><option value=""></option>@Html.Raw(BDictionary.GetOptionsByID("bee14f51-59a9-4491-a1c6-848f893d5fbe".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, ""))</select></td><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">联系电话：<br/></span></td><td rowspan="1" colspan="1" valign="top"><input title="" class="mytext" isflow="1" id="ClueInfo.reflectLinkPhone" type1="flow_text" name="ClueInfo.reflectLinkPhone" value="" style="width:150px" valuetype="0" type="text"/></td><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">所属区域：<br/></span></td><td rowspan="1" colspan="1" valign="top"><input title="" class="mytext" isflow="1" id="ClueInfo.reflectArea" type1="flow_text" name="ClueInfo.reflectArea" value="" style="width:150px" valuetype="0" type="text"/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td></tr><tr><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">职务：<br/></span></td><td rowspan="1" colspan="1" valign="top"><select class="myselect" id="ClueInfo.reflectPost" name="ClueInfo.reflectPost" style="width:155px" isflow="1" type1="flow_select"><option value=""></option>@Html.Raw(BDictionary.GetOptionsByID("bc73f9f7-d881-4b88-bca5-f03f7f6de96b".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, ""))</select></td><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">电子邮件：<br/></span></td><td rowspan="1" colspan="1" valign="top"><input title="" class="mytext" isflow="1" id="ClueInfo.reflectEmail" type1="flow_text" name="ClueInfo.reflectEmail" value="" style="width:150px" valuetype="0" type="text"/></td><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">邮政编码：<br/></span></td><td rowspan="1" colspan="1" valign="top"><input title="" class="mytext" isflow="1" id="ClueInfo.reflectZipCode" type1="flow_text" name="ClueInfo.reflectZipCode" value="" style="width:150px" valuetype="0" type="text"/></td><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">通讯地址：<br/></span></td><td rowspan="1" colspan="1" valign="top"><input title="" class="mytext" isflow="1" id="ClueInfo.reflectTxaddress" type1="flow_text" name="ClueInfo.reflectTxaddress" value="" style="width:150px" valuetype="0" type="text"/></td></tr><tr><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">民族：<br/></span></td><td rowspan="1" colspan="1" valign="top"><input title="" class="mytext" isflow="1" id="ClueInfo.reflectNation" type1="flow_text" name="ClueInfo.reflectNation" value="" style="width:150px" valuetype="0" type="text"/></td><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">性别：<br/></span></td><td rowspan="1" colspan="1" valign="top">@Html.Raw(BDictionary.GetRadiosByID("4ded7b9c-2060-43e5-b57b-5781da0fc5d2".ToGuid(), "ClueInfo.reflectSex", Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, "", "isflow='1' type1='flow_radio'"))</td><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">政治面貌：<br/></span></td><td rowspan="1" colspan="1" valign="top"><select class="myselect" id="ClueInfo.reflectPolitics" name="ClueInfo.reflectPolitics" style="width:155px" isflow="1" type1="flow_select"><option value=""></option>@Html.Raw(BDictionary.GetOptionsByID("fd49059e-67c1-4af1-8aaf-db2eebba8c45".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, ""))</select></td><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">职业：<br/></span></td><td rowspan="1" colspan="1" valign="top"><input title="" class="mytext" isflow="1" id="ClueInfo.reflectVocation" type1="flow_text" name="ClueInfo.reflectVocation" value="" valuetype="0" type="text"/></td></tr><tr><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">身份证号码：<br/></span></td><td rowspan="1" colspan="1" valign="top"><input title="" class="mytext" isflow="1" id="ClueInfo.reflectCardNumr" type1="flow_text" name="ClueInfo.reflectCardNumr" value="" style="width:150px" valuetype="0" type="text"/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td></tr><tr><td rowspan="1" colspan="8" valign="top"><span style="font-size: 16px;">反映问题-其他反映问题<br/></span></td></tr><tr><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">问题类别：<br/></span></td><td rowspan="1" colspan="7" valign="top"><select class="myselect" id="ClueInfo.mainMode" name="ClueInfo.mainMode" style="width:305px" isflow="1" type1="flow_select"><option value=""></option>@Html.Raw(BDictionary.GetOptionsByID("314f5a8c-d3b3-4767-ac4d-502d389f0972".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, ""))</select></td></tr><tr><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">问题属地：<br/></span></td><td rowspan="1" colspan="2" valign="top"><input title="" class="mytext" isflow="1" id="ClueInfo.belongAddress" type1="flow_text" name="ClueInfo.belongAddress" value="" style="width:300px" valuetype="0" type="text"/></td><td rowspan="1" colspan="1" valign="top"><br/></td><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">关键词：<br/></span></td><td rowspan="1" colspan="1" valign="top"><select class="myselect" id="ClueInfo.keyWord" name="ClueInfo.keyWord" isflow="1" type1="flow_select">@Html.Raw(BDictionary.GetOptionsByID("".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, ""))</select></td><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="1" valign="top"><br/></td></tr><tr><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">问题描述：<br/></span></td><td rowspan="1" colspan="7" valign="top"><textarea isflow="1" type1="flow_textarea" id="ClueInfo.des" name="ClueInfo.des" class="mytext" style="width:80%;height:60px"></textarea></td></tr><tr><td rowspan="1" colspan="8" valign="top"><span style="font-size: 16px;">问题备注<br/></span></td></tr><tr><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">备注：<br/></span></td><td rowspan="1" colspan="7" valign="top"><textarea isflow="1" type1="flow_textarea" id="ClueInfo.remark" name="ClueInfo.remark" class="mytext" style="width:80%;height:60px"></textarea></td></tr><tr><td rowspan="1" colspan="8" valign="top"><span style="font-size: 16px;">回复信息<br/></span></td></tr><tr><td style="word-break: break-all;" rowspan="1" colspan="1" valign="top"><span style="font-size: 16px;">回复内容：<br/></span></td><td rowspan="1" colspan="7" valign="top"><textarea isflow="1" type1="flow_textarea" id="ClueInfo.replyNote" name="ClueInfo.replyNote" class="mytext" style="width:80%;height:60px"></textarea></td></tr><tr><td style="word-break: break-all;" rowspan="1" colspan="8" valign="top">已上传附件<br/></td></tr><tr><td rowspan="1" colspan="1" valign="top"><br/></td><td rowspan="1" colspan="7" valign="top"><input title="" class="myfile" isflow="1" type1="flow_files" id="ClueInfo.affix" name="ClueInfo.affix" value="" style="width:200" filetype="" type="text"/></td></tr></tbody></table>
+<p>
+    <br/>
+</p>
+<p>
+    <br/>
+</p>
+<p style="text-align: center;">
+    <span style="font-size: 28px; color: rgb(84, 141, 212);">
+        线索登记
+    </span>
+</p>
+<table data-sort="sortDisabled" class="flowformtable" cellpadding="0" cellspacing="1">
+    <tbody>
+        <tr class="firstRow">
+            <td colspan="1" rowspan="1" valign="top" width="182">
+                <span style="font-size: 16px;">
+                    基本信息
+                </span>
+            </td>
+            <td colspan="7" rowspan="1" align="null" valign="top">
+                <input id="ClueInfo.UserID" name="ClueInfo.UserID" isflow="1" type1="flow_hidden" value="@(new Next.Admin.BLL.UserBLL().CurrentUserID.ToString())" type="hidden"/>
+                <input id="ClueInfo.DeptID" name="ClueInfo.DeptID" isflow="1" type1="flow_hidden" value="@(new Next.Admin.BLL.UserBLL().CurrentDeptID)" type="hidden"/>
+                <input id="ClueInfo.FlowID" name="ClueInfo.FlowID" isflow="1" type1="flow_hidden" value="@(new Next.WorkFlow.BLL.WorkFlowTaskBLL().GetFirstSnderID(FlowID.ToGuid(), GroupID.ToGuid(), true))" type="hidden"/>
+                <input id="ClueInfo.TaskID" name="ClueInfo.TaskID" isflow="1" type1="flow_hidden" value="@TaskID" type="hidden"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    信访编号：
+                    <br/>
+                </span>
+            </td>
+            <td valign="top" width="185">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.ClueCode" type1="flow_text" name="ClueInfo.ClueCode" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    条形码：
+                    <br/>
+                </span>
+            </td>
+            <td valign="top" width="185">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.BarCode" type1="flow_text" name="ClueInfo.BarCode" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    信访方式：
+                    <br/>
+                </span>
+            </td>
+            <td colspan="3" rowspan="1" valign="top">
+                <select class="myselect" id="ClueInfo.ClueMethod" name="ClueInfo.ClueMethod" style="width:155px" isflow="1" type1="flow_select">
+                    <option value="">
+                    </option>
+                    @Html.Raw(BDictionary.GetOptionsByID("6d0f038f-4dea-4cd2-ae5b-7a2676dcbbc4".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, ""))
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    信访日期：
+                    <br/>
+                </span>
+            </td>
+            <td valign="top" width="185">
+                <input title="" class="mycalendar" isflow="1" type1="flow_datetime" id="ClueInfo.ClueDate" name="ClueInfo.ClueDate" value="@(Next.WorkFlow.Utility.DateTimeNew.LongDate)" style="width:150px" defaultvalue="@(Next.WorkFlow.Utility.DateTimeNew.LongDate)" istime="0" daybefor="0" dayafter="0" currentmonth="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    信访类别：
+                    <br/>
+                </span>
+            </td>
+            <td valign="top" width="185">
+                <select class="myselect" id="ClueInfo.ClueType" name="ClueInfo.ClueType" style="width:155px" isflow="1" type1="flow_select">
+                    <option value="">
+                    </option>
+                    @Html.Raw(BDictionary.GetOptionsByID("60d609b1-8d14-4918-96b8-0960e58662a2".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, ""))
+                </select>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    信访来源：
+                    <br/>
+                </span>
+            </td>
+            <td colspan="3" rowspan="1" valign="top">
+                <select class="myselect" id="ClueInfo.ClueSource" name="ClueInfo.ClueSource" style="width:155px" isflow="1" type1="flow_select">
+                    <option value="">
+                    </option>
+                    @Html.Raw(BDictionary.GetOptionsByID("6b24168b-1142-4b16-97c5-7b2aaa2bf9b0".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, ""))
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    信访人数：
+                    <br/>
+                </span>
+            </td>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.CluePersonCount" type1="flow_text" name="ClueInfo.CluePersonCount" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    紧急程度：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                @Html.Raw(BDictionary.GetRadiosByID("4ded7b9c-2060-43e5-b57b-5781da0fc5d2".ToGuid(), "ClueInfo.IsEmergency", Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, "", "isflow='1' type1='flow_radio'"))
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="8" rowspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    被反应对象-其他被反映对象
+                    <br/>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    对象类型：
+                    <br/>
+                </span>
+            </td>
+            <td valign="top" width="185">
+                @Html.Raw(BDictionary.GetRadiosByID("fd1a5a17-736f-4839-8f99-5e32ddbd9792".ToGuid(), "ClueInfo.TargetType", Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, "", "isflow='1' type1='flow_radio'"))
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    姓名：
+                    <br/>
+                </span>
+            </td>
+            <td valign="top" width="185">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.TargetName" type1="flow_text" name="ClueInfo.TargetName" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    单位或地址：
+                    <br/>
+                </span>
+            </td>
+            <td colspan="3" rowspan="1" valign="top">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.TargetUnitAndAddress" type1="flow_text" name="ClueInfo.TargetUnitAndAddress" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    行政级别：
+                    <br/>
+                </span>
+            </td>
+            <td valign="top" width="185">
+                <select class="myselect" id="ClueInfo.TargetRank" name="ClueInfo.TargetRank" style="width:155px" isflow="1" type1="flow_select">
+                    <option value="">
+                    </option>
+                    @Html.Raw(BDictionary.GetOptionsByID("bee14f51-59a9-4491-a1c6-848f893d5fbe".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, ""))
+                </select>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    单位性质：
+                    <br/>
+                </span>
+            </td>
+            <td valign="top" width="185">
+                <select class="myselect" id="ClueInfo.TargetUnitNature" name="ClueInfo.TargetUnitNature" style="width:155px" isflow="1" type1="flow_select">
+                    <option value="">
+                    </option>
+                    @Html.Raw(BDictionary.GetOptionsByID("db23a1a6-5c14-4cc8-89eb-54116676db45".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, ""))
+                </select>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    所属区域：
+                    <br/>
+                </span>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.TargetArea" type1="flow_text" name="ClueInfo.TargetArea" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+            <td valign="top" width="185">
+                <br/>
+            </td>
+            <td valign="top" width="185">
+                <br/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    职务：
+                    <br/>
+                </span>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <select class="myselect" id="ClueInfo.TargetDuty" name="ClueInfo.TargetDuty" style="width:155px" isflow="1" type1="flow_select">
+                    <option value="">
+                    </option>
+                    @Html.Raw(BDictionary.GetOptionsByID("bc73f9f7-d881-4b88-bca5-f03f7f6de96b".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, ""))
+                </select>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    监察对象：
+                    <br/>
+                </span>
+            </td>
+            <td valign="top" width="185">
+                <select class="myselect" id="ClueInfo.TargetMonitor" name="ClueInfo.TargetMonitor" style="width:155px" isflow="1" type1="flow_select">
+                    <option value="">
+                    </option>
+                    @Html.Raw(BDictionary.GetOptionsByID("36786f6a-4538-444b-9f19-6770c3d6bd19".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, ""))
+                </select>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    是否负责人：
+                    <br/>
+                </span>
+            </td>
+            <td valign="top" width="185">
+                @Html.Raw(BDictionary.GetRadiosByID("4ded7b9c-2060-43e5-b57b-5781da0fc5d2".ToGuid(), "ClueInfo.TargetIsLeader", Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, "", "isflow='1' type1='flow_radio'"))
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    是否本级干部：
+                    <br/>
+                </span>
+            </td>
+            <td valign="top" width="185">
+                @Html.Raw(BDictionary.GetRadiosByID("4ded7b9c-2060-43e5-b57b-5781da0fc5d2".ToGuid(), "ClueInfo.TargetIsCurrentLevelOfficer", Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, "", "isflow='1' type1='flow_radio'"))
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    身份证号：
+                    <br/>
+                </span>
+            </td>
+            <td valign="top" width="185">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.TargetIDCard" type1="flow_text" name="ClueInfo.TargetIDCard" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    性别：
+                    <br/>
+                </span>
+            </td>
+            <td valign="top" width="185">
+                @Html.Raw(BDictionary.GetRadiosByID("06212b06-66df-476d-94d6-999acc5424de".ToGuid(), "ClueInfo.TargetSex", Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, "", "isflow='1' type1='flow_radio'"))
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    出生日期：
+                    <br/>
+                </span>
+            </td>
+            <td valign="top" width="185">
+                <input title="" class="mycalendar" isflow="1" type1="flow_datetime" id="ClueInfo.TargetDOB" name="ClueInfo.TargetDOB" value="@(Next.WorkFlow.Utility.DateTimeNew.LongDate)" style="width:150px" defaultvalue="@(Next.WorkFlow.Utility.DateTimeNew.LongDate)" istime="0" daybefor="0" dayafter="0" currentmonth="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="185">
+                <span style="font-size: 16px;">
+                    民族：
+                    <br/>
+                </span>
+            </td>
+            <td valign="top" width="185">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.TargetNation" type1="flow_text" name="ClueInfo.TargetNation" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" colspan="8" rowspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    反映人信息-其他反映人
+                    <br/>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    是否署名：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                @Html.Raw(BDictionary.GetRadiosByID("4ded7b9c-2060-43e5-b57b-5781da0fc5d2".ToGuid(), "ClueInfo.ReporterIsSign", Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, "", "isflow='1' type1='flow_radio'"))
+            </td>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    姓名：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.ReporterName" type1="flow_text" name="ClueInfo.ReporterName" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    单位或地址：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.ReporterUnitAndAddress" type1="flow_text" name="ClueInfo.ReporterUnitAndAddress" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    行政级别：
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <select class="myselect" id="ClueInfo.ReporterRank" name="ClueInfo.ReporterRank" style="width:155px" isflow="1" type1="flow_select">
+                    <option value="">
+                    </option>
+                    @Html.Raw(BDictionary.GetOptionsByID("bee14f51-59a9-4491-a1c6-848f893d5fbe".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, ""))
+                </select>
+            </td>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    联系电话：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.ReporterPhone" type1="flow_text" name="ClueInfo.ReporterPhone" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    所属区域：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.ReporterArea" type1="flow_text" name="ClueInfo.ReporterArea" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    职务：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <select class="myselect" id="ClueInfo.ReporterDuty" name="ClueInfo.ReporterDuty" style="width:155px" isflow="1" type1="flow_select">
+                    <option value="">
+                    </option>
+                    @Html.Raw(BDictionary.GetOptionsByID("bc73f9f7-d881-4b88-bca5-f03f7f6de96b".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, ""))
+                </select>
+            </td>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    电子邮件：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.ReporterEmail" type1="flow_text" name="ClueInfo.ReporterEmail" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    邮政编码：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.ReporterPostCode" type1="flow_text" name="ClueInfo.ReporterPostCode" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    通讯地址：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.ReporterAddress" type1="flow_text" name="ClueInfo.ReporterAddress" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    民族：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.ReporterNation" type1="flow_text" name="ClueInfo.ReporterNation" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    性别：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                @Html.Raw(BDictionary.GetRadiosByID("4ded7b9c-2060-43e5-b57b-5781da0fc5d2".ToGuid(), "ClueInfo.ReporterSex", Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, "", "isflow='1' type1='flow_radio'"))
+            </td>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    政治面貌：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <select class="myselect" id="ClueInfo.ReporterPoliticsStatus" name="ClueInfo.ReporterPoliticsStatus" style="width:155px" isflow="1" type1="flow_select">
+                    <option value="">
+                    </option>
+                    @Html.Raw(BDictionary.GetOptionsByID("fd49059e-67c1-4af1-8aaf-db2eebba8c45".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, ""))
+                </select>
+            </td>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    职业：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.ReporterJob" type1="flow_text" name="ClueInfo.ReporterJob" value="" valuetype="0" type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    身份证号码：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.ReporterIDCard" type1="flow_text" name="ClueInfo.ReporterIDCard" value="" style="width:150px" valuetype="0" type="text"/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="1" colspan="8" valign="top">
+                <span style="font-size: 16px;">
+                    反映问题-其他反映问题
+                    <br/>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    问题类别：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="7" valign="top">
+                <select class="myselect" id="ClueInfo.ContentType" name="ClueInfo.ContentType" style="width:305px" isflow="1" type1="flow_select">
+                    <option value="">
+                    </option>
+                    @Html.Raw(BDictionary.GetOptionsByID("314f5a8c-d3b3-4767-ac4d-502d389f0972".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, ""))
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    问题属地：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="2" valign="top">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.ContentArea" type1="flow_text" name="ClueInfo.ContentArea" value="" style="width:300px" valuetype="0" type="text"/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    关键词：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="3" valign="top">
+                <input title="" class="mytext" isflow="1" id="ClueInfo.Keyword" type1="flow_text" name="ClueInfo.Keyword" value="" style="width:300px" valuetype="0" type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    问题描述：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="7" valign="top">
+                <textarea isflow="1" type1="flow_textarea" id="ClueInfo.Content" name="ClueInfo.Content" class="mytext" style="width:80%;height:60px">
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="1" colspan="8" valign="top">
+                <span style="font-size: 16px;">
+                    问题备注
+                    <br/>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    备注：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="7" valign="top">
+                <textarea isflow="1" type1="flow_textarea" id="ClueInfo.Note" name="ClueInfo.Note" class="mytext" style="width:80%;height:60px">
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="1" colspan="8" valign="top">
+                <span style="font-size: 16px;">
+                    回复信息
+                    <br/>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                <span style="font-size: 16px;">
+                    回复内容：
+                    <br/>
+                </span>
+            </td>
+            <td rowspan="1" colspan="7" valign="top">
+                <textarea isflow="1" type1="flow_textarea" id="ClueInfo.Reply" name="ClueInfo.Reply" class="mytext" style="width:80%;height:60px">
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="8" valign="top">
+                已上传附件
+                <br/>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="7" valign="top">
+                <input title="" class="myfile" isflow="1" type1="flow_files" id="ClueInfo.affix" name="ClueInfo.affix" value="" style="width:200" filetype="" type="text"/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+

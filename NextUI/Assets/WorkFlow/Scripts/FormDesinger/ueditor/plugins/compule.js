@@ -170,11 +170,11 @@
 
             if ('radio' == type)
             {
-                radios = '<span>@Html.Raw(BDictionary.GetRadiosByID("' + dictid + '".ToGuid(), "' + id + '", Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, "' + defaultvalue + '", "isflow=\'1\' type1=\'flow_radio\'' + eventArrs + '"))' + eventScripts + '</span>';
+                radios = '<span>@Html.Raw(BDictionary.GetRadiosByID("' + dictid + '".ToGuid(), "' + id + '", Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, "' + defaultvalue + '", "isflow=\'1\' type1=\'flow_radio\'' + eventArrs + '"))' + eventScripts + '</span>';
             }
             else if ('checkbox' == type)
             {
-                radios = '<span>@Html.Raw(BDictionary.GetCheckboxsByID("' + dictid + '".ToGuid(), "' + id + '", Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, "' + defaultvalue + '", "isflow=\'1\' type1=\'flow_checkbox\'' + eventArrs + '"))' + eventScripts + '</span>';
+                radios = '<span>@Html.Raw(BDictionary.GetCheckboxsByID("' + dictid + '".ToGuid(), "' + id + '", Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, "' + defaultvalue + '", "isflow=\'1\' type1=\'flow_checkbox\'' + eventArrs + '"))' + eventScripts + '</span>';
             }
 
             $control.after(radios);
@@ -238,7 +238,7 @@
             {
                 radios += '<option value=""></option>';
             }
-            radios += '@Html.Raw(BDictionary.GetOptionsByID("' + dictid + '".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, "' + defaultvalue + '"))';
+            radios += '@Html.Raw(BDictionary.GetOptionsByID("' + dictid + '".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, "' + defaultvalue + '"))';
             radios += '</select>';
             var $radios = $(radios);
             $radios.attr("eventsid", $control.attr("eventsid"));
@@ -318,7 +318,7 @@
                 {
                     radios += '<option value=""></option>';
                 }
-                radios += '@Html.Raw(BDictionary.GetOptionsByID("' + dictid + '".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, "' + defaultvalue + '"))';
+                radios += '@Html.Raw(BDictionary.GetOptionsByID("' + dictid + '".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, "' + defaultvalue + '"))';
                 radios += '</select>';
                 var $radios = $(radios);
                 $radios.attr("eventsid", $control.attr("eventsid"));
@@ -332,7 +332,7 @@
                 var table = '<span class="mycombox" id="' + id + '" name="' + id + '" ' + (width1 ? 'style="width:' + width1 + '"' : '') + (width2 ? 'width1="' + width2 + '"' : '') + (height1 ? 'height1="' + height1 + '"' : '') + ' datasource="' + datasource + '" listmode="' + listmode + '" isflow="1" type1="flow_combox"';
                 table += "1" == ismultiple ? ' multiple="multiple"' : '';
                 table += '>';
-                table += '@Html.Raw(BDictionary.GetComboxTableHtmlByID("' + dictid + '",Next.WorkFlow.BLL.DictBLL.OptionValueField.ID,"' + defaultvalue + '"))';
+                table += '@Html.Raw(BDictionary.GetComboxTableHtmlByID("' + dictid + '",Next.WorkFlow.BLL.DictBLL.OptionValueField.Value,"' + defaultvalue + '"))';
                 table += '</span>';
                 var $table = $(table);
                 $table.attr("eventsid", $control.attr("eventsid"));
@@ -780,7 +780,7 @@
                 {
                     select += '<option value=""></option>';
                 }
-                select += '@Html.Raw(BDictionary.GetOptionsByID("' + rootid + '".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, "' + dvalue + '"))';
+                select += '@Html.Raw(BDictionary.GetOptionsByID("' + rootid + '".ToGuid(), Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, "' + dvalue + '"))';
                 break;
             case "select_dssql":
                 var conn = editmode.select_ds_dbconn;
@@ -814,7 +814,7 @@
         {
             case "checkbox_dsdict":
                 var rootid = editmode.checkbox_ds_dict;
-                checkbox = '<span>@Html.Raw(BDictionary.GetCheckboxsByID("' + rootid + '".ToGuid(), "' + name + '", Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, "' + dvalue + '", "issubflow=\'1\' type1=\'subflow_checkbox\' colname=\'' + colnumJSON.name + '\'"))</span>';
+                checkbox = '<span>@Html.Raw(BDictionary.GetCheckboxsByID("' + rootid + '".ToGuid(), "' + name + '", Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, "' + dvalue + '", "issubflow=\'1\' type1=\'subflow_checkbox\' colname=\'' + colnumJSON.name + '\'"))</span>';
                 break;
             case "checkbox_dssql":
                 var conn = editmode.checkbox_ds_dbconn;
@@ -840,7 +840,7 @@
         {
             case "radio_dsdict":
                 var rootid = editmode.radio_ds_dict;
-                radio = '<span>@Html.Raw(BDictionary.GetRadiosByID("' + rootid + '".ToGuid(), "' + name + '", Next.WorkFlow.BLL.DictBLL.OptionValueField.ID, "' + dvalue + '", "issubflow=\'1\' type1=\'subflow_radio\' colname=\'' + colnumJSON.name + '\'"))</span>';
+                radio = '<span>@Html.Raw(BDictionary.GetRadiosByID("' + rootid + '".ToGuid(), "' + name + '", Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, "' + dvalue + '", "issubflow=\'1\' type1=\'subflow_radio\' colname=\'' + colnumJSON.name + '\'"))</span>';
                 break;
             case "radio_dssql":
                 var conn = editmode.radio_ds_dbconn;

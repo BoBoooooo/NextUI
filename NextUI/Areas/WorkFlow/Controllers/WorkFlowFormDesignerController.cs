@@ -289,7 +289,9 @@ namespace NextUI.Areas.WorkFlow.Controllers
 
             StreamWriter sw = new StreamWriter(stream, System.Text.Encoding.UTF8);
             sw.Write(serverScript.ToString());
-            sw.Write(Server.HtmlDecode(html));
+            string temp = Server.HtmlDecode(html);
+            string content = HtmlCodeFormat.Format(temp);
+            sw.Write(content);
 
             sw.Close();
             stream.Close();

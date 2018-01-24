@@ -9,123 +9,102 @@ namespace App.Clue.Entity
 	{
 		[DisplayName("ID")]
 		public string  ID { get; set; }
-		[DisplayName("createUser")]
-
-        public string DeptID { get; set; }
-        [DisplayName("UserID")]
-        public string UserID { get; set; }
-        [DisplayName("AttachmentID")]
-        public string AttachmentID { get; set; }
-        [DisplayName("Dept")]
-		public string  createUser { get; set; }
-		[DisplayName("createDate")]
-		public DateTime?  createDate { get; set; }
-		[DisplayName("source")]
-		public string  source { get; set; }
-		[DisplayName("sync")]
-		public string  sync { get; set; }
-		[DisplayName("handleDept")]
-		public string  handleDept { get; set; }
-		[DisplayName("handleStaff")]
-		public string  handleStaff { get; set; }
-		[DisplayName("affix")]
-		public string  affix { get; set; }
-		[DisplayName("status")]
-		public string  status { get; set; }
-		[DisplayName("handleType")]
-		public string  handleType { get; set; }
-		[DisplayName("clueCode")]
-		public string  clueCode { get; set; }
-		[DisplayName("barCode")]
-		public string  barCode { get; set; }
-		[DisplayName("clueMode")]
-		public string  clueMode { get; set; }
-		[DisplayName("clueDate")]
-		public string  clueDate { get; set; }
-		[DisplayName("clueType")]
-		public string  clueType { get; set; }
-		[DisplayName("clueSource")]
-		public string  clueSource { get; set; }
-		[DisplayName("clueNum")]
-		public string  clueNum { get; set; }
-		[DisplayName("urgency")]
-		public string  urgency { get; set; }
-		[DisplayName("objType")]
-		public string  objType { get; set; }
-		[DisplayName("objName")]
-		public string  objName { get; set; }
-		[DisplayName("objAddress")]
-		public string  objAddress { get; set; }
-		[DisplayName("objAdminLvl")]
-		public string  objAdminLvl { get; set; }
-		[DisplayName("objComMode")]
-		public string  objComMode { get; set; }
-		[DisplayName("objArea")]
-		public string  objArea { get; set; }
-		[DisplayName("objPost")]
-		public string  objPost { get; set; }
-		[DisplayName("objControler")]
-		public string  objControler { get; set; }
-		[DisplayName("objIsManager")]
-		public string  objIsManager { get; set; }
-		[DisplayName("objIsLeader")]
-		public string  objIsLeader { get; set; }
-		[DisplayName("objCardNum")]
-		public string  objCardNum { get; set; }
-		[DisplayName("objSex")]
-		public string  objSex { get; set; }
-		[DisplayName("objBirthday")]
-		public string  objBirthday { get; set; }
-		[DisplayName("objNation")]
-		public string  objNation { get; set; }
-		[DisplayName("reflectIsSign")]
-		public string  reflectIsSign { get; set; }
-		[DisplayName("reflectName")]
-		public string  reflectName { get; set; }
-		[DisplayName("reflectAddress")]
-		public string  reflectAddress { get; set; }
-		[DisplayName("reflectAdminLvl")]
-		public string  reflectAdminLvl { get; set; }
-		[DisplayName("reflectLinkPhone")]
-		public string  reflectLinkPhone { get; set; }
-		[DisplayName("reflectArea")]
-		public string  reflectArea { get; set; }
-		[DisplayName("reflectPost")]
-		public string  reflectPost { get; set; }
-		[DisplayName("reflectEmail")]
-		public string  reflectEmail { get; set; }
-		[DisplayName("reflectZipCode")]
-		public string  reflectZipCode { get; set; }
-		[DisplayName("reflectTxaddress")]
-		public string  reflectTxaddress { get; set; }
-		[DisplayName("reflectNation")]
-		public string  reflectNation { get; set; }
-		[DisplayName("reflectSex")]
-		public string  reflectSex { get; set; }
-		[DisplayName("reflectPolitics")]
-		public string  reflectPolitics { get; set; }
-		[DisplayName("reflectVocation")]
-		public string  reflectVocation { get; set; }
-		[DisplayName("reflectCardNumr")]
-		public string  reflectCardNumr { get; set; }
-		[DisplayName("mainMode")]
-		public string  mainMode { get; set; }
-		[DisplayName("belongAddress")]
-		public string  belongAddress { get; set; }
-		[DisplayName("otherMode")]
-		public string  otherMode { get; set; }
-		[DisplayName("keyWord")]
-		public string  keyWord { get; set; }
-		[DisplayName("des")]
-		public string  des { get; set; }
-		[DisplayName("remark")]
-		public string  remark { get; set; }
-		[DisplayName("replyNote")]
-		public string  replyNote { get; set; }
-		[DisplayName("rollOut")]
-		public string  rollOut { get; set; }
-		[DisplayName("TimeStamp")]
-		public DateTime?  TimeStamp { get; set; }
+		[DisplayName("FlowID")]
+		public string  FlowID { get; set; }
+		[DisplayName("TaskID")]
+		public string  TaskID { get; set; }
+		[DisplayName("UserID")]
+		public string  UserID { get; set; }
+		[DisplayName("DeptID")]
+		public string  DeptID { get; set; }
+		[DisplayName("AttachmentID")]
+		public string  AttachmentID { get; set; }
+		[DisplayName("ClueCode")]
+		public string  ClueCode { get; set; }
+		[DisplayName("BarCode")]
+		public string  BarCode { get; set; }
+		[DisplayName("ClueMethod")]
+		public string  ClueMethod { get; set; }
+		[DisplayName("ClueDate")]
+		public DateTime?  ClueDate { get; set; }
+		[DisplayName("ClueType")]
+		public string  ClueType { get; set; }
+		[DisplayName("ClueSource")]
+		public string  ClueSource { get; set; }
+		[DisplayName("CluePersonCount")]
+		public int?  CluePersonCount { get; set; }
+		[DisplayName("IsEmergency")]
+		public string  IsEmergency { get; set; }
+		[DisplayName("TargetType")]
+		public string  TargetType { get; set; }
+		[DisplayName("TargetName")]
+		public string  TargetName { get; set; }
+		[DisplayName("TargetUnitAndAddress")]
+		public string  TargetUnitAndAddress { get; set; }
+		[DisplayName("TargetRank")]
+		public string  TargetRank { get; set; }
+		[DisplayName("TargetUnitNature")]
+		public string  TargetUnitNature { get; set; }
+		[DisplayName("TargetArea")]
+		public string  TargetArea { get; set; }
+		[DisplayName("TargetDuty")]
+		public string  TargetDuty { get; set; }
+		[DisplayName("TargetMonitor")]
+		public string  TargetMonitor { get; set; }
+		[DisplayName("TargetIsLeader")]
+		public string  TargetIsLeader { get; set; }
+		[DisplayName("TargetIsCurrentLevelOfficer")]
+		public string  TargetIsCurrentLevelOfficer { get; set; }
+		[DisplayName("TargetIDCard")]
+		public string  TargetIDCard { get; set; }
+		[DisplayName("TargetSex")]
+		public string  TargetSex { get; set; }
+		[DisplayName("TargetDOB")]
+		public DateTime?  TargetDOB { get; set; }
+		[DisplayName("TargetNation")]
+		public string  TargetNation { get; set; }
+		[DisplayName("ReporterIsSign")]
+		public string  ReporterIsSign { get; set; }
+		[DisplayName("ReporterName")]
+		public string  ReporterName { get; set; }
+		[DisplayName("ReporterUnitAndAddress")]
+		public string  ReporterUnitAndAddress { get; set; }
+		[DisplayName("ReporterRank")]
+		public string  ReporterRank { get; set; }
+		[DisplayName("ReporterPhone")]
+		public string  ReporterPhone { get; set; }
+		[DisplayName("ReporterArea")]
+		public string  ReporterArea { get; set; }
+		[DisplayName("ReporterDuty")]
+		public string  ReporterDuty { get; set; }
+		[DisplayName("ReporterEmail")]
+		public string  ReporterEmail { get; set; }
+		[DisplayName("ReporterPostCode")]
+		public string  ReporterPostCode { get; set; }
+		[DisplayName("ReporterAddress")]
+		public string  ReporterAddress { get; set; }
+		[DisplayName("ReporterNation")]
+		public string  ReporterNation { get; set; }
+		[DisplayName("ReporterSex")]
+		public string  ReporterSex { get; set; }
+		[DisplayName("ReporterPoliticsStatus")]
+		public string  ReporterPoliticsStatus { get; set; }
+		[DisplayName("ReporterJob")]
+		public string  ReporterJob { get; set; }
+		[DisplayName("ReporterIDCard")]
+		public string  ReporterIDCard { get; set; }
+		[DisplayName("ContentType")]
+		public string  ContentType { get; set; }
+		[DisplayName("ContentArea")]
+		public string  ContentArea { get; set; }
+		[DisplayName("Keyword")]
+		public string  Keyword { get; set; }
+		[DisplayName("Content")]
+		public string  Content { get; set; }
+		[DisplayName("Note")]
+		public string  Note { get; set; }
+		[DisplayName("Reply")]
+		public string  Reply { get; set; }
 		[DisplayName("IsDeleted")]
 		public bool  IsDeleted { get; set; }
 

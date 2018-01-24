@@ -14,7 +14,7 @@ namespace App.Clue.BLL
 		private IClueInfoDAL clueInfoDAL;
 		public ClueInfoBLL(): base()
 		{
-            base.Init(this.GetType().FullName, System.Reflection.Assembly.GetExecutingAssembly().GetName().Name, "BLL.","Clue");
+            base.Init(this.GetType().FullName, System.Reflection.Assembly.GetExecutingAssembly().GetName().Name, "BLL.", "Clue");
 			baseDal.OnOperationLog += new OperationLogEventHandler(Next.Admin.BLL.OperationLogBLL.OnOperationLog);//如果需要记录操作日志，则实现这个事件
 			this.clueInfoDAL = (IClueInfoDAL)base.baseDal;
 		}

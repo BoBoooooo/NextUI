@@ -6732,7 +6732,6 @@
     <Compile Include="Areas\Admin\Controllers\SystemTypeController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Clue\ClueAreaRegistration.cs" />
-    <Compile Include="Areas\Clue\Controllers\ApprovalController.cs" />
     <Compile Include="Areas\Clue\Controllers\ClueInfoController.cs" />
     <Compile Include="Areas\Jssjw\Controllers\CaseIndexController.cs" />
     <Compile Include="Areas\Jssjw\Controllers\ClueInfoController.cs" />

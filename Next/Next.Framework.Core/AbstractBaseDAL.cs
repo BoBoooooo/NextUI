@@ -419,7 +419,7 @@ namespace Next.Framework.Core
                         {
                             string type = pi.PropertyType.Name.ToString();
 
-                            if (type == "Boolean")
+                            if (type.IndexOf("Boolean")>=0)
                             {
                                 string str = dr[pi.Name].ToString();
                                 try
@@ -432,7 +432,8 @@ namespace Next.Framework.Core
                                     throw new Exception("布尔类型值赋值错误！" + e.ToString());
                                 }
 
-                            }else if (type == "System.Guid")
+                            }
+                            else if (type == "System.Guid")
                             {
                                 pi.SetValue(obj, dr[pi.Name].ToString() ?? "", null);
                             }

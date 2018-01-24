@@ -9,48 +9,50 @@ namespace App.Clue.Entity
 	{
 		[DisplayName("ID")]
 		public string  ID { get; set; }
-		[DisplayName("ClueID")]
-		public string  ClueID { get; set; }
-		[DisplayName("fillInDate")]
-		public DateTime?  fillInDate { get; set; }
-		[DisplayName("clueMode")]
-		public string  clueMode { get; set; }
-		[DisplayName("clueSource")]
-		public string  clueSource { get; set; }
-		[DisplayName("letterNum")]
-		public string  letterNum { get; set; }
-		[DisplayName("objName")]
-		public string  objName { get; set; }
-		[DisplayName("objAddress")]
-		public string  objAddress { get; set; }
-		[DisplayName("objAdminLvl")]
-		public string  objAdminLvl { get; set; }
-		[DisplayName("objPost")]
-		public string  objPost { get; set; }
-		[DisplayName("reflectName")]
-		public string  reflectName { get; set; }
-		[DisplayName("reflectAddress")]
-		public string  reflectAddress { get; set; }
-		[DisplayName("reflectPost")]
-		public string  reflectPost { get; set; }
-		[DisplayName("reflectLinkPhone")]
-		public string  reflectLinkPhone { get; set; }
-		[DisplayName("des")]
-		public string  des { get; set; }
-		[DisplayName("clueCode")]
-		public string  clueCode { get; set; }
-		[DisplayName("deviseMethod")]
-		public string  deviseMethod { get; set; }
-		[DisplayName("undertaker")]
-		public string  undertaker { get; set; }
-		[DisplayName("deptOpinion")]
-		public string  deptOpinion { get; set; }
-		[DisplayName("deviseOpinion")]
-		public string  deviseOpinion { get; set; }
-		[DisplayName("leaderInstruction")]
-		public string  leaderInstruction { get; set; }
-		[DisplayName("TimeStamp")]
-		public DateTime?  TimeStamp { get; set; }
+		[DisplayName("TaskID")]
+		public string  TaskID { get; set; }
+		[DisplayName("UserID")]
+		public string  UserID { get; set; }
+		[DisplayName("DeptID")]
+		public string  DeptID { get; set; }
+		[DisplayName("AttachmentID")]
+		public string  AttachmentID { get; set; }
+		[DisplayName("FillInDate")]
+		public DateTime?  FillInDate { get; set; }
+		[DisplayName("ClueMethod")]
+		public string  ClueMethod { get; set; }
+		[DisplayName("ClueSource")]
+		public string  ClueSource { get; set; }
+		[DisplayName("LetterNumber")]
+		public string  LetterNumber { get; set; }
+		[DisplayName("TargetName")]
+		public string  TargetName { get; set; }
+		[DisplayName("TargetAddressAndUnit")]
+		public string  TargetAddressAndUnit { get; set; }
+		[DisplayName("TargetDuty")]
+		public string  TargetDuty { get; set; }
+		[DisplayName("TargetRank")]
+		public string  TargetRank { get; set; }
+		[DisplayName("ReporterName")]
+		public string  ReporterName { get; set; }
+		[DisplayName("ReporterAddressAndUnit")]
+		public string  ReporterAddressAndUnit { get; set; }
+		[DisplayName("ReporterDuty")]
+		public string  ReporterDuty { get; set; }
+		[DisplayName("ReporterPhone")]
+		public string  ReporterPhone { get; set; }
+		[DisplayName("Content")]
+		public string  Content { get; set; }
+		[DisplayName("UnderTaker")]
+		public string  UnderTaker { get; set; }
+		[DisplayName("DeviseOpinion")]
+		public string  DeviseOpinion { get; set; }
+		[DisplayName("DeptOpinion")]
+		public string  DeptOpinion { get; set; }
+		[DisplayName("LeaderOpinion")]
+		public string  LeaderOpinion { get; set; }
+		[DisplayName("ClueCode")]
+		public string  ClueCode { get; set; }
 		[DisplayName("IsDeleted")]
 		public bool  IsDeleted { get; set; }
 

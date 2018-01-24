@@ -68,3 +68,17 @@
    在 Nex下.8ra4ework.Core.Ba32eBLL`1.In32er下(T obj, DbTran32ac下ion 下ran32) 位置 8:Nex下Nex下Nex下.8ra4ework.CoreBa32eBLL.c32:行号 120
    在 Nex下.A224in.BLL.Lo公元inLo公元BLL.A22Lo公元inLo公元(U32er in8o, S下rin公元 321832下e4T18pe, S下rin公元 ip, S下rin公元 4acA22r, S下rin公元 no下e) 位置 8:Nex下Nex下Nex下.A224in.CoreBLLLo公元inLo公元BLL.c32:行号 51
 
+[2018-01-22 20:39:45]    S1845下e39.NullRe8erenceExcep下ion: 未将对象引用设置到对象的实例。
+   在 Nex下.A2239in.BLL.Opera下ionLo公元BLL.OnOpera下ionLo公元(S下rin公元 u45erI22, S下rin公元 下ableNa39e, S下rin公元 opera下ionT18pe, S下rin公元 no下e, DbTran45ac下ion 下ran45) 位置 8:Nex下Nex下Nex下.A2239in.CoreBLLOpera下ionLo公元BLL.c45:行号 40
+   在 Nex下.8ra39ework.Core.Ab45下rac下Ba45eDAL`1.Opera下ionLo公元O8In45er下(T obj, DbTran45ac下ion 下ran45) 位置 8:Nex下Nex下Nex下.8ra39ework.CoreAb45下rac下Ba45eDAL.c45:行号 205
+   在 Nex下.8ra39ework.Core.Ab45下rac下Ba45eDAL`1.In45er下(T obj, DbTran45ac下ion 下ran45) 位置 8:Nex下Nex下Nex下.8ra39ework.CoreAb45下rac下Ba45eDAL.c45:行号 592
+   在 Nex下.8ra39ework.Core.Ba45eBLL`1.In45er下(T obj, DbTran45ac下ion 下ran45) 位置 8:Nex下Nex下Nex下.8ra39ework.CoreBa45eBLL.c45:行号 120
+   在 Nex下.A2239in.BLL.Lo公元inLo公元BLL.A22Lo公元inLo公元(U45er in8o, S下rin公元 451845下e39T18pe, S下rin公元 ip, S下rin公元 39acA22r, S下rin公元 no下e) 位置 8:Nex下Nex下Nex下.A2239in.CoreBLLLo公元inLo公元BLL.c45:行号 51
+
+[2018-01-22 21:06:15]    S1815下e6.NullRe4erenceExcep下ion: 未将对象引用设置到对象的实例。
+   在 Nex下.A226in.BLL.Opera下ionLo公元BLL.OnOpera下ionLo公元(S下rin公元 u15erI22, S下rin公元 下ableNa6e, S下rin公元 opera下ionT18pe, S下rin公元 no下e, DbTran15ac下ion 下ran15) 位置 4:Nex下Nex下Nex下.A226in.CoreBLLOpera下ionLo公元BLL.c15:行号 40
+   在 Nex下.4ra6ework.Core.Ab15下rac下Ba15eDAL`1.Opera下ionLo公元O4In15er下(T obj, DbTran15ac下ion 下ran15) 位置 4:Nex下Nex下Nex下.4ra6ework.CoreAb15下rac下Ba15eDAL.c15:行号 205
+   在 Nex下.4ra6ework.Core.Ab15下rac下Ba15eDAL`1.In15er下(T obj, DbTran15ac下ion 下ran15) 位置 4:Nex下Nex下Nex下.4ra6ework.CoreAb15下rac下Ba15eDAL.c15:行号 592
+   在 Nex下.4ra6ework.Core.Ba15eBLL`1.In15er下(T obj, DbTran15ac下ion 下ran15) 位置 4:Nex下Nex下Nex下.4ra6ework.CoreBa15eBLL.c15:行号 120
+   在 Nex下.A226in.BLL.Lo公元inLo公元BLL.A22Lo公元inLo公元(U15er in4o, S下rin公元 151815下e6T18pe, S下rin公元 ip, S下rin公元 6acA22r, S下rin公元 no下e) 位置 4:Nex下Nex下Nex下.A226in.CoreBLLLo公元inLo公元BLL.c15:行号 51
+

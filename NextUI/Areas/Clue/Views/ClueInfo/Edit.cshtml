@@ -21,6 +21,350 @@
                 </th>
 
             </tr>
+			<tr>
+				<th>
+                    <label for="Content">信访编号</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ClueCode, Html.TextBoxFor(i => info.ClueCode, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">条形码</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.BarCode, Html.TextBoxFor(i => info.BarCode, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">信访方式</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ClueMethod, Html.TextBoxFor(i => info.ClueMethod, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">信访日期</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ClueDate, Html.TextBoxFor(i => info.ClueDate, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">信访类别</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ClueType, Html.TextBoxFor(i => info.ClueType, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">信访来源</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ClueSource, Html.TextBoxFor(i => info.ClueSource, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">信访人数</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.CluePersonCount, Html.TextBoxFor(i => info.CluePersonCount, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">紧急程度</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.IsEmergency, Html.TextBoxFor(i => info.IsEmergency, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">对象类型</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.TargetType, Html.TextBoxFor(i => info.TargetType, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">姓名</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.TargetName, Html.TextBoxFor(i => info.TargetName, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">单位或地址</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.TargetUnitAndAddress, Html.TextBoxFor(i => info.TargetUnitAndAddress, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">行政级别</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.TargetRank, Html.TextBoxFor(i => info.TargetRank, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">单位性质</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.TargetUnitNature, Html.TextBoxFor(i => info.TargetUnitNature, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">所属区域</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.TargetArea, Html.TextBoxFor(i => info.TargetArea, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">职务</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.TargetDuty, Html.TextBoxFor(i => info.TargetDuty, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">监察对象</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.TargetMonitor, Html.TextBoxFor(i => info.TargetMonitor, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">是否负责人</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.TargetIsLeader, Html.TextBoxFor(i => info.TargetIsLeader, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">是否本级干部</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.TargetIsCurrentLevelOfficer, Html.TextBoxFor(i => info.TargetIsCurrentLevelOfficer, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">身份证号</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.TargetIDCard, Html.TextBoxFor(i => info.TargetIDCard, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">性别</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.TargetSex, Html.TextBoxFor(i => info.TargetSex, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">出生日期</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.TargetDOB, Html.TextBoxFor(i => info.TargetDOB, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">民族</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.TargetNation, Html.TextBoxFor(i => info.TargetNation, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">是否署名</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ReporterIsSign, Html.TextBoxFor(i => info.ReporterIsSign, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">姓名</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ReporterName, Html.TextBoxFor(i => info.ReporterName, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">单位或地址</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ReporterUnitAndAddress, Html.TextBoxFor(i => info.ReporterUnitAndAddress, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">行政级别</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ReporterRank, Html.TextBoxFor(i => info.ReporterRank, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">联系电话</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ReporterPhone, Html.TextBoxFor(i => info.ReporterPhone, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">所属区域</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ReporterArea, Html.TextBoxFor(i => info.ReporterArea, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">职务</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ReporterDuty, Html.TextBoxFor(i => info.ReporterDuty, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">电子邮件</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ReporterEmail, Html.TextBoxFor(i => info.ReporterEmail, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">邮政编码</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ReporterPostCode, Html.TextBoxFor(i => info.ReporterPostCode, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">通讯地址</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ReporterAddress, Html.TextBoxFor(i => info.ReporterAddress, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">民族</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ReporterNation, Html.TextBoxFor(i => info.ReporterNation, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">性别</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ReporterSex, Html.TextBoxFor(i => info.ReporterSex, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">政治面貌</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ReporterPoliticsStatus, Html.TextBoxFor(i => info.ReporterPoliticsStatus, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">职业</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ReporterJob, Html.TextBoxFor(i => info.ReporterJob, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">身份证号码</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ReporterIDCard, Html.TextBoxFor(i => info.ReporterIDCard, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">问题类别</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ContentType, Html.TextBoxFor(i => info.ContentType, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">问题属地</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.ContentArea, Html.TextBoxFor(i => info.ContentArea, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">关键词</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.Keyword, Html.TextBoxFor(i => info.Keyword, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">问题描述</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.Content, Html.TextBoxFor(i => info.Content, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">备注</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.Note, Html.TextBoxFor(i => info.Note, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
+			<tr>
+				<th>
+                    <label for="Content">回复内容</label>
+                </th>
+                <td colspan="5">
+                    @Html.HtmlOutput(flag, info.Reply, Html.TextBoxFor(i => info.Reply, new { size = 30, @class = "easyui-textbox" }))
+                </td>
+            </tr>
 
             <tr>
                 <th>
