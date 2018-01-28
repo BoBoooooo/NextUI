@@ -4890,6 +4890,7 @@
     <Content Include="Areas\Clue\Views\web.config" />
     <Content Include="Areas\Clue\Views\ClueInfo\Edit.cshtml" />
     <Content Include="Areas\Clue\Views\ClueInfo\Index.cshtml" />
+    <Content Include="Areas\WorkFlow\Views\UploadFiles\Index.cshtml" />
     <None Include="Assets\Next\FileUpload\Script\jquery-1.9.1-vsdoc.js" />
     <Content Include="Assets\Next\FileUpload\Script\jquery-1.9.1.js" />
     <Content Include="Assets\Next\FileUpload\Script\jquery-1.9.1.min.js" />

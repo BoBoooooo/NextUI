@@ -79,7 +79,7 @@ F:\Next\Next\Next.Attachment.Core\bin\Debug\Next.Admin.pdb
 F:\Next\Next\Next.Attachment.Core\bin\Debug\Next.Framework.Core.pdb
 F:\Next\Next\Next.Attachment.Core\bin\Debug\Next.WorkFlow.Utility.pdb
 F:\Next\Next\Next.Attachment.Core\bin\Debug\LitJSON.pdb
-F:\Next\Next\Next.Attachment.Core\obj\Debug\Next.Attachment.Core.csprojResolveAssemblyReference.cache
 F:\Next\Next\Next.Attachment.Core\obj\Debug\Next.Attachment.Core.dll
 F:\Next\Next\Next.Attachment.Core\obj\Debug\Next.Attachment.Core.pdb
 F:\Next\Next\Next.Attachment.Core\bin\Debug\MySql.Data.dll
+F:\Next\Next\Next.Attachment.Core\obj\Debug\Next.Attachment.Core.csprojResolveAssemblyReference.cache

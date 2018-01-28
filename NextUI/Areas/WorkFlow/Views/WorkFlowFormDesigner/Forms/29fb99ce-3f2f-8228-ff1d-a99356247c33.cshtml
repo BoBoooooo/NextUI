@@ -1,0 +1,222 @@
+﻿@using Next.WorkFlow.Utility
+@{
+	string FlowID = Request.QueryString["flowid"];
+	string StepID = Request.QueryString["stepid"];
+	string GroupID = Request.QueryString["groupid"];
+	string TaskID = Request.QueryString["taskid"];
+	string InstanceID = Request.QueryString["instanceid"];
+	string DisplayModel = Request.QueryString["display"] ?? "0";
+	string DBConnID = "2953af3a-866b-4544-91f7-2939e47ff2d2";
+	string DBTable = "Handle";
+	string DBTablePK = "ID";
+	string DBTableTitle = "TargetName";
+if(InstanceID.IsNullOrEmpty()){InstanceID = Request.QueryString["instanceid1"];}	Next.WorkFlow.BLL.DictBLL BDictionary = new Next.WorkFlow.BLL.DictBLL();
+	Next.WorkFlow.BLL.WorkFlowInfoBLL BWorkFlow = new Next.WorkFlow.BLL.WorkFlowInfoBLL();
+	Next.WorkFlow.BLL.WorkFlowTaskBLL BWorkFlowTask = new Next.WorkFlow.BLL.WorkFlowTaskBLL();
+	string fieldStatus = BWorkFlow.GetFieldStatus(FlowID, StepID);
+	LitJson.JsonData initData = BWorkFlow.GetFormData(DBConnID, DBTable, DBTablePK, InstanceID, fieldStatus);
+	string TaskTitle = BWorkFlow.GetFromFieldData(initData, DBTable, DBTableTitle);
+}
+<link href="~/Assets/WorkFlow/Scripts/FlowRun/Forms/flowform.css" rel="stylesheet" type="text/css" />
+<script src="~/Assets/WorkFlow/Scripts/FlowRun/Forms/common.js" type="text/javascript" ></script>
+<input type="hidden" id="Form_ValidateAlertType" name="Form_ValidateAlertType" value="1" />
+<input type="hidden" id="Form_TitleField" name="Form_TitleField" value="Handle.TargetName" />
+<input type="hidden" id="Form_DBConnID" name="Form_DBConnID" value="2953af3a-866b-4544-91f7-2939e47ff2d2" />
+<input type="hidden" id="Form_DBTable" name="Form_DBTable" value="Handle" />
+<input type="hidden" id="Form_DBTablePk" name="Form_DBTablePk" value="ID" />
+<input type="hidden" id="Form_DBTableTitle" name="Form_DBTableTitle" value="TargetName" />
+<input type="hidden" id="Form_AutoSaveData" name="Form_AutoSaveData" value="1" />
+<script type="text/javascript">
+	var initData = @Html.Raw(BWorkFlow.GetFormDataJsonString(initData));
+	var fieldStatus = "1"=="@Request.QueryString["isreadonly"]" ? {} : @Html.Raw(fieldStatus);
+	var displayModel = '@DisplayModel';
+	$(window).load(function (){
+		formrun.initData(initData, "Handle", fieldStatus, displayModel);
+	});
+</script>
+<p>
+    <br/>
+</p>
+<p style="text-align: center;">
+    <span style="font-size: 20px;">
+        线索处置
+    </span>
+</p>
+<table data-sort="sortDisabled" class="flowformtable" cellpadding="0" cellspacing="1">
+    <tbody>
+        <tr class="firstRow">
+            <td style="word-break: break-all;" valign="top" width="254">
+                线索来源：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Handle.ClueSource" type1="flow_text" name="Handle.ClueSource" value="" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="254">
+                呈批日期：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mycalendar" isflow="1" type1="flow_datetime" id="Handle.ApprovalDate" name="Handle.ApprovalDate" value="" defaultvalue="" istime="0" daybefor="0" dayafter="0" currentmonth="0" type="text"/>
+            </td>
+            <td valign="top" width="254">
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <br/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                姓名：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Handle.TargetName" type1="flow_text" name="Handle.TargetName" value="" valuetype="0" type="text"/>
+            </td>
+            <td valign="top" width="254">
+                性别
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                @Html.Raw(BDictionary.GetRadiosByID("06212b06-66df-476d-94d6-999acc5424de".ToGuid(), "Handle.Sex", Next.WorkFlow.BLL.DictBLL.OptionValueField.Value, "", "isflow='1' type1='flow_radio'"))
+            </td>
+            <td valign="top" width="254">
+                年龄
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Handle.Age" type1="flow_text" name="Handle.Age" value="" valuetype="0" type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                职务：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Handle.Duty" type1="flow_text" name="Handle.Duty" value="" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="254">
+                民族：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mytext" isflow="1" id="Handle.Nation" type1="flow_text" name="Handle.Nation" value="" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" valign="top" width="254">
+                处置日期：
+                <br/>
+            </td>
+            <td valign="top" width="254">
+                <input title="" class="mycalendar" isflow="1" type1="flow_datetime" id="Handle.HandleDate" name="Handle.HandleDate" value="" defaultvalue="" istime="0" daybefor="0" dayafter="0" currentmonth="0" type="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                个人基本情况：
+                <br/>
+            </td>
+            <td style="word-break: break-all;" colspan="5" rowspan="1" valign="top">
+                <textarea isflow="1" type1="flow_textarea" id="Handle.Background" name="Handle.Background" class="mytext" style="width:80%;height:60px">
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                线索来源和反映的主要问题：
+                <br/>
+            </td>
+            <td colspan="5" rowspan="1" valign="top">
+                <textarea isflow="1" type1="flow_textarea" id="Handle.Content" name="Handle.Content" class="mytext" style="width:80%;height:60px">
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                线索处置方式：
+                <br/>
+            </td>
+            <td colspan="5" rowspan="1" valign="top">
+                <textarea isflow="1" type1="flow_textarea" id="Handle.HandleMethod" name="Handle.HandleMethod" class="mytext" style="width:80%;height:60px">
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                处置理由和办理进展情况：
+                <br/>
+            </td>
+            <td colspan="5" rowspan="1" valign="top">
+                <textarea isflow="1" type1="flow_textarea" id="Handle.HandleReason" name="Handle.HandleReason" class="mytext" style="width:80%;height:60px">
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                备注：
+                <br/>
+            </td>
+            <td colspan="5" rowspan="1" valign="top">
+                <textarea isflow="1" type1="flow_textarea" id="Handle.Note" name="Handle.Note" class="mytext" style="width:80%;height:60px">
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                承办室意见：
+                <br/>
+            </td>
+            <td colspan="5" rowspan="1" valign="top">
+                <textarea isflow="1" type1="flow_textarea" id="Handle.DeptOpinion" name="Handle.DeptOpinion" class="mytext" style="width:80%;height:60px">
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" valign="top" width="254">
+                分管领导意见：
+                <br/>
+            </td>
+            <td colspan="5" rowspan="1" valign="top">
+                <textarea isflow="1" type1="flow_textarea" id="Handle.LeaderOpinion" name="Handle.LeaderOpinion" class="mytext" style="width:80%;height:60px">
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                主要领导意见：
+                <br/>
+            </td>
+            <td rowspan="1" colspan="5" valign="top">
+                <textarea isflow="1" type1="flow_textarea" id="Handle.TopLeaderOpinion" name="Handle.TopLeaderOpinion" class="mytext" style="width:80%;height:60px">
+                </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                填表（厅）室：
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <input title="" class="mytext" isflow="1" id="Handle.FillInDept" type1="flow_text" name="Handle.FillInDept" value="" valuetype="0" type="text"/>
+            </td>
+            <td style="word-break: break-all;" rowspan="1" colspan="1" valign="top">
+                填表人：
+                <input title="" class="mytext" isflow="1" id="Handle.FillInPerson" type1="flow_text" name="Handle.FillInPerson" value="" valuetype="0" type="text"/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+            <td rowspan="1" colspan="1" valign="top">
+                <br/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <br/>
+</p>
+

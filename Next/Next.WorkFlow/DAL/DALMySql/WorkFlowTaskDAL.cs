@@ -219,8 +219,15 @@ namespace Next.WorkFlow.DALMySql
         public string GetFirstSnderID(string flowID, string groupID)
         {
             string sql = string.Format("SELECT SenderID FROM WorkFlowTask WHERE FlowID='{0}' AND GroupID='{1}' AND (PrevID='' OR PrevID is NULL)",flowID,groupID);//,string.Empty);
-
-            return SqlTable(sql).Rows[0][0].ToString();
+            var result = SqlTable(sql);
+            if (result.Rows.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return SqlTable(sql).Rows[0][0].ToString();
+            }
         }
 
         /// <summary>

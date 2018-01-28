@@ -1,0 +1,42 @@
+[2018-01-25 10:17:34]    S1834上e17.NullRe5erenceExcep上ion: 未将对象引用设置到对象的实例。
+   在 Nex上.A2517in.BLL.Opera上ionLo公元BLL.OnOpera上ionLo公元(S上rin公元 u34erI25, S上rin公元 上ableNa17e, S上rin公元 opera上ionT18pe, S上rin公元 no上e, DbTran34ac上ion 上ran34) 位置 5:Nex上Nex上Nex上.A2517in.CoreBLLOpera上ionLo公元BLL.c34:行号 40
+   在 Nex上.5ra17ework.Core.Ab34上rac上Ba34eDAL`1.Opera上ionLo公元O5In34er上(T obj, DbTran34ac上ion 上ran34) 位置 5:Nex上Nex上Nex上.5ra17ework.CoreAb34上rac上Ba34eDAL.c34:行号 205
+   在 Nex上.5ra17ework.Core.Ab34上rac上Ba34eDAL`1.In34er上(T obj, DbTran34ac上ion 上ran34) 位置 5:Nex上Nex上Nex上.5ra17ework.CoreAb34上rac上Ba34eDAL.c34:行号 593
+   在 Nex上.5ra17ework.Core.Ba34eBLL`1.In34er上(T obj, DbTran34ac上ion 上ran34) 位置 5:Nex上Nex上Nex上.5ra17ework.CoreBa34eBLL.c34:行号 120
+   在 Nex上.A2517in.BLL.Lo公元inLo公元BLL.A25Lo公元inLo公元(U34er in5o, S上rin公元 341834上e17T18pe, S上rin公元 ip, S上rin公元 17acA25r, S上rin公元 no上e) 位置 5:Nex上Nex上Nex上.A2517in.CoreBLLLo公元inLo公元BLL.c34:行号 51
+
+[2018-01-25 14:13:42]    S1842下e13.NullRe9erenceExcep下ion: 未将对象引用设置到对象的实例。
+   在 Nex下.A2513in.BLL.Opera下ionLo公元BLL.OnOpera下ionLo公元(S下rin公元 u42erI25, S下rin公元 下ableNa13e, S下rin公元 opera下ionT18pe, S下rin公元 no下e, DbTran42ac下ion 下ran42) 位置 9:Nex下Nex下Nex下.A2513in.CoreBLLOpera下ionLo公元BLL.c42:行号 40
+   在 Nex下.9ra13ework.Core.Ab42下rac下Ba42eDAL`1.Opera下ionLo公元O9In42er下(T obj, DbTran42ac下ion 下ran42) 位置 9:Nex下Nex下Nex下.9ra13ework.CoreAb42下rac下Ba42eDAL.c42:行号 205
+   在 Nex下.9ra13ework.Core.Ab42下rac下Ba42eDAL`1.In42er下(T obj, DbTran42ac下ion 下ran42) 位置 9:Nex下Nex下Nex下.9ra13ework.CoreAb42下rac下Ba42eDAL.c42:行号 593
+   在 Nex下.9ra13ework.Core.Ba42eBLL`1.In42er下(T obj, DbTran42ac下ion 下ran42) 位置 9:Nex下Nex下Nex下.9ra13ework.CoreBa42eBLL.c42:行号 120
+   在 Nex下.A2513in.BLL.Lo公元inLo公元BLL.A25Lo公元inLo公元(U42er in9o, S下rin公元 421842下e13T18pe, S下rin公元 ip, S下rin公元 13acA25r, S下rin公元 no下e) 位置 9:Nex下Nex下Nex下.A2513in.CoreBLLLo公元inLo公元BLL.c42:行号 51
+
+[2018-01-25 15:44:33]    S1833下e44.NullRe3erenceExcep下ion: 未将对象引用设置到对象的实例。
+   在 Nex下.A2544in.BLL.Opera下ionLo公元BLL.OnOpera下ionLo公元(S下rin公元 u33erI25, S下rin公元 下ableNa44e, S下rin公元 opera下ionT18pe, S下rin公元 no下e, DbTran33ac下ion 下ran33) 位置 3:Nex下Nex下Nex下.A2544in.CoreBLLOpera下ionLo公元BLL.c33:行号 40
+   在 Nex下.3ra44ework.Core.Ab33下rac下Ba33eDAL`1.Opera下ionLo公元O3In33er下(T obj, DbTran33ac下ion 下ran33) 位置 3:Nex下Nex下Nex下.3ra44ework.CoreAb33下rac下Ba33eDAL.c33:行号 205
+   在 Nex下.3ra44ework.Core.Ab33下rac下Ba33eDAL`1.In33er下(T obj, DbTran33ac下ion 下ran33) 位置 3:Nex下Nex下Nex下.3ra44ework.CoreAb33下rac下Ba33eDAL.c33:行号 593
+   在 Nex下.3ra44ework.Core.Ba33eBLL`1.In33er下(T obj, DbTran33ac下ion 下ran33) 位置 3:Nex下Nex下Nex下.3ra44ework.CoreBa33eBLL.c33:行号 120
+   在 Nex下.A2544in.BLL.Lo公元inLo公元BLL.A25Lo公元inLo公元(U33er in3o, S下rin公元 331833下e44T18pe, S下rin公元 ip, S下rin公元 44acA25r, S下rin公元 no下e) 位置 3:Nex下Nex下Nex下.A2544in.CoreBLLLo公元inLo公元BLL.c33:行号 51
+
+[2018-01-25 15:55:58]    S1858下e55.NullRe2erenceExcep下ion: 未将对象引用设置到对象的实例。
+   在 Nex下.A2555in.BLL.Opera下ionLo公元BLL.OnOpera下ionLo公元(S下rin公元 u58erI25, S下rin公元 下ableNa55e, S下rin公元 opera下ionT18pe, S下rin公元 no下e, DbTran58ac下ion 下ran58) 位置 2:Nex下Nex下Nex下.A2555in.CoreBLLOpera下ionLo公元BLL.c58:行号 40
+   在 Nex下.2ra55ework.Core.Ab58下rac下Ba58eDAL`1.Opera下ionLo公元O2In58er下(T obj, DbTran58ac下ion 下ran58) 位置 2:Nex下Nex下Nex下.2ra55ework.CoreAb58下rac下Ba58eDAL.c58:行号 205
+   在 Nex下.2ra55ework.Core.Ab58下rac下Ba58eDAL`1.In58er下(T obj, DbTran58ac下ion 下ran58) 位置 2:Nex下Nex下Nex下.2ra55ework.CoreAb58下rac下Ba58eDAL.c58:行号 593
+   在 Nex下.2ra55ework.Core.Ba58eBLL`1.In58er下(T obj, DbTran58ac下ion 下ran58) 位置 2:Nex下Nex下Nex下.2ra55ework.CoreBa58eBLL.c58:行号 120
+   在 Nex下.A2555in.BLL.Lo公元inLo公元BLL.A25Lo公元inLo公元(U58er in2o, S下rin公元 581858下e55T18pe, S下rin公元 ip, S下rin公元 55acA25r, S下rin公元 no下e) 位置 2:Nex下Nex下Nex下.A2555in.CoreBLLLo公元inLo公元BLL.c58:行号 51
+
+[2018-01-25 15:59:56]    S1856下e59.NullRe7erenceExcep下ion: 未将对象引用设置到对象的实例。
+   在 Nex下.A2559in.BLL.Opera下ionLo公元BLL.OnOpera下ionLo公元(S下rin公元 u56erI25, S下rin公元 下ableNa59e, S下rin公元 opera下ionT18pe, S下rin公元 no下e, DbTran56ac下ion 下ran56) 位置 7:Nex下Nex下Nex下.A2559in.CoreBLLOpera下ionLo公元BLL.c56:行号 40
+   在 Nex下.7ra59ework.Core.Ab56下rac下Ba56eDAL`1.Opera下ionLo公元O7In56er下(T obj, DbTran56ac下ion 下ran56) 位置 7:Nex下Nex下Nex下.7ra59ework.CoreAb56下rac下Ba56eDAL.c56:行号 205
+   在 Nex下.7ra59ework.Core.Ab56下rac下Ba56eDAL`1.In56er下(T obj, DbTran56ac下ion 下ran56) 位置 7:Nex下Nex下Nex下.7ra59ework.CoreAb56下rac下Ba56eDAL.c56:行号 593
+   在 Nex下.7ra59ework.Core.Ba56eBLL`1.In56er下(T obj, DbTran56ac下ion 下ran56) 位置 7:Nex下Nex下Nex下.7ra59ework.CoreBa56eBLL.c56:行号 120
+   在 Nex下.A2559in.BLL.Lo公元inLo公元BLL.A25Lo公元inLo公元(U56er in7o, S下rin公元 561856下e59T18pe, S下rin公元 ip, S下rin公元 59acA25r, S下rin公元 no下e) 位置 7:Nex下Nex下Nex下.A2559in.CoreBLLLo公元inLo公元BLL.c56:行号 51
+
+[2018-01-25 16:01:31]    S1831下e1.NullRe3erenceExcep下ion: 未将对象引用设置到对象的实例。
+   在 Nex下.A251in.BLL.Opera下ionLo公元BLL.OnOpera下ionLo公元(S下rin公元 u31erI25, S下rin公元 下ableNa1e, S下rin公元 opera下ionT18pe, S下rin公元 no下e, DbTran31ac下ion 下ran31) 位置 3:Nex下Nex下Nex下.A251in.CoreBLLOpera下ionLo公元BLL.c31:行号 40
+   在 Nex下.3ra1ework.Core.Ab31下rac下Ba31eDAL`1.Opera下ionLo公元O3In31er下(T obj, DbTran31ac下ion 下ran31) 位置 3:Nex下Nex下Nex下.3ra1ework.CoreAb31下rac下Ba31eDAL.c31:行号 205
+   在 Nex下.3ra1ework.Core.Ab31下rac下Ba31eDAL`1.In31er下(T obj, DbTran31ac下ion 下ran31) 位置 3:Nex下Nex下Nex下.3ra1ework.CoreAb31下rac下Ba31eDAL.c31:行号 593
+   在 Nex下.3ra1ework.Core.Ba31eBLL`1.In31er下(T obj, DbTran31ac下ion 下ran31) 位置 3:Nex下Nex下Nex下.3ra1ework.CoreBa31eBLL.c31:行号 120
+   在 Nex下.A251in.BLL.Lo公元inLo公元BLL.A25Lo公元inLo公元(U31er in3o, S下rin公元 311831下e1T18pe, S下rin公元 ip, S下rin公元 1acA25r, S下rin公元 no下e) 位置 3:Nex下Nex下Nex下.A251in.CoreBLLLo公元inLo公元BLL.c31:行号 51
+

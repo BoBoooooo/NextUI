@@ -18,6 +18,8 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using Next.Admin.Entity;
 using Next.Admin.BLL;
+using Next.WorkFlow.BLL;
+using Next.WorkFlow.Entity;
 namespace NextUI.Areas.Clue.Controllers
 {
     public class ClueInfoController : BusinessController<ClueInfoBLL, ClueInfo>
@@ -26,6 +28,7 @@ namespace NextUI.Areas.Clue.Controllers
         // GET: /Jssjw/Loan/
         public ActionResult Index()
         {
+            Session["Type"] = Request["Type"];
             return View();
         }
 
@@ -103,8 +106,28 @@ namespace NextUI.Areas.Clue.Controllers
             string where = GetPagerCondition();
             where = AddUsersRightToWhereCondition(where);
             PagerInfo pagerInfo = GetPagerInfo();
-            List<ClueInfo> list = baseBLL.FindWithPager(where, pagerInfo);
-            var result = new { total = pagerInfo.RecordCount, rows = list };
+            
+            
+            string sql=null;
+            string type=(string)Session["Type"];
+            if (type == "Waiting")
+            {
+                sql = "ReceiveID='"+CurrentUser.ID+"' and Status<=1 ";
+            }
+            else
+            {
+                sql = "ReceiveID='" + CurrentUser.ID + "' and Status>=2 ";
+            }
+
+            List<WorkFlowTask> list = BLLFactory<WorkFlowTaskBLL>.Instance.FindWithPager(sql, pagerInfo);
+            List<ClueInfo> resultList = new List<ClueInfo>();
+            foreach (var item in list)
+            {
+                var target = BLLFactory<ClueInfoBLL>.Instance.FindByID(item.InstanceID);
+                target.TaskID = item.ID;
+                resultList.Add(target);
+            }
+            var result = new { total = pagerInfo.RecordCount, rows = resultList };
             return JsonDate(result);
         }
         private Dictionary<string, string> realNameTable = null;

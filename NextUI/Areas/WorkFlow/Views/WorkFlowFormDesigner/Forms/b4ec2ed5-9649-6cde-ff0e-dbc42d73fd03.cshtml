@@ -9,7 +9,7 @@
 	string DBConnID = "2953af3a-866b-4544-91f7-2939e47ff2d2";
 	string DBTable = "Approval";
 	string DBTablePK = "ID";
-	string DBTableTitle = "objName";
+	string DBTableTitle = "TargetName";
 if(InstanceID.IsNullOrEmpty()){InstanceID = Request.QueryString["instanceid1"];}	Next.WorkFlow.BLL.DictBLL BDictionary = new Next.WorkFlow.BLL.DictBLL();
 	Next.WorkFlow.BLL.WorkFlowInfoBLL BWorkFlow = new Next.WorkFlow.BLL.WorkFlowInfoBLL();
 	Next.WorkFlow.BLL.WorkFlowTaskBLL BWorkFlowTask = new Next.WorkFlow.BLL.WorkFlowTaskBLL();
@@ -20,11 +20,11 @@ if(InstanceID.IsNullOrEmpty()){InstanceID = Request.QueryString["instanceid1"];}
 <link href="~/Assets/WorkFlow/Scripts/FlowRun/Forms/flowform.css" rel="stylesheet" type="text/css" />
 <script src="~/Assets/WorkFlow/Scripts/FlowRun/Forms/common.js" type="text/javascript" ></script>
 <input type="hidden" id="Form_ValidateAlertType" name="Form_ValidateAlertType" value="1" />
-<input type="hidden" id="Form_TitleField" name="Form_TitleField" value="Approval.objName" />
+<input type="hidden" id="Form_TitleField" name="Form_TitleField" value="Approval.TargetName" />
 <input type="hidden" id="Form_DBConnID" name="Form_DBConnID" value="2953af3a-866b-4544-91f7-2939e47ff2d2" />
 <input type="hidden" id="Form_DBTable" name="Form_DBTable" value="Approval" />
 <input type="hidden" id="Form_DBTablePk" name="Form_DBTablePk" value="ID" />
-<input type="hidden" id="Form_DBTableTitle" name="Form_DBTableTitle" value="objName" />
+<input type="hidden" id="Form_DBTableTitle" name="Form_DBTableTitle" value="TargetName" />
 <input type="hidden" id="Form_AutoSaveData" name="Form_AutoSaveData" value="1" />
 <script type="text/javascript">
 	var initData = @Html.Raw(BWorkFlow.GetFormDataJsonString(initData));
