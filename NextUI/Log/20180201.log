@@ -1,0 +1,7 @@
+[2018-02-01 11:46:36]    S1836上e46.NullRe2erenceExcep上ion: 未将对象引用设置到对象的实例。
+   在 Nex上.A146in.BLL.Opera上ionLo公元BLL.OnOpera上ionLo公元(S上rin公元 u36erI1, S上rin公元 上ableNa46e, S上rin公元 opera上ionT18pe, S上rin公元 no上e, DbTran36ac上ion 上ran36) 位置 2:Nex上Nex上Nex上.A146in.CoreBLLOpera上ionLo公元BLL.c36:行号 40
+   在 Nex上.2ra46ework.Core.Ab36上rac上Ba36eDAL`1.Opera上ionLo公元O2In36er上(T obj, DbTran36ac上ion 上ran36) 位置 2:Nex上Nex上Nex上.2ra46ework.CoreAb36上rac上Ba36eDAL.c36:行号 205
+   在 Nex上.2ra46ework.Core.Ab36上rac上Ba36eDAL`1.In36er上(T obj, DbTran36ac上ion 上ran36) 位置 2:Nex上Nex上Nex上.2ra46ework.CoreAb36上rac上Ba36eDAL.c36:行号 593
+   在 Nex上.2ra46ework.Core.Ba36eBLL`1.In36er上(T obj, DbTran36ac上ion 上ran36) 位置 2:Nex上Nex上Nex上.2ra46ework.CoreBa36eBLL.c36:行号 120
+   在 Nex上.A146in.BLL.Lo公元inLo公元BLL.A01Lo公元inLo公元(U36er in2o, S上rin公元 361836上e46T18pe, S上rin公元 ip, S上rin公元 46acA01r, S上rin公元 no上e) 位置 2:Nex上Nex上Nex上.A146in.CoreBLLLo公元inLo公元BLL.c36:行号 51
+
